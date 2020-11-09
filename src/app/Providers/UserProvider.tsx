@@ -9,22 +9,18 @@ interface UserDto {
 }
 
 interface IUserProvider {
-    user: UserDto;
     login: (userDto: UserDto) => void;
     logout: () => void;
-    isLogin: () => {};
-    getUser: () => {};
+    isLogin: () => boolean;
+    getUser: () => UserDto;
 }
 
 let UnauthorizedUser: UserDto = {id: 0, firstName: '', lastName: '', userName: ''}
 
 
 export const UserContext = React.createContext<IUserProvider>({
-    user: UnauthorizedUser,
-    login: () => {
-    },
-    logout: () => {
-    },
+    login: () => {},
+    logout: () => {},
     getUser: () => {
         return UnauthorizedUser
     },
@@ -39,7 +35,6 @@ const UserProvider: React.FC = ({children}) => {
     const [User, setUser] = useState<UserDto>(UnauthorizedUser);
 
     return <UserContext.Provider value={{
-        user: User,
         login: (userDto: UserDto) => {
             setUser(userDto)
         },
@@ -49,10 +44,7 @@ const UserProvider: React.FC = ({children}) => {
         getUser: () => {
             return User;
         },
-        isLogin: () => {
-            if (User.id === 0) return false;
-            return true;
-        },
+        isLogin : () => User.id !==0
     }}> {children}</UserContext.Provider>
 
 }
