@@ -1,3 +1,9 @@
 import ProfileSvg from "./components/ProfileSvg";
-const Svgs = { ProfileSvg };
+import ReactLogoSvg from "./components/ReactLogoSvg";
+
+const Svgs = {
+  ProfileSvg,
+  ReactLogoSvg,
+};
+
 export default Svgs;
