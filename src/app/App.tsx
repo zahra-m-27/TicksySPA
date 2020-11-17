@@ -16,17 +16,20 @@ function App() {
             <li style={{ display: "inline-block" }}>
               <Link to="/test">Test</Link>
             </li>
+            <li style={{ display: "inline-block", paddingLeft: 20 }}>
+              <Link to="/SignIn">SignIn</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
+          <Route path="/SignIn">
+            <SignInPage />
+          </Route>
           <Route path="/test">
             <NotFound />
           </Route>
           <Route path="/">
             <Home />
-          </Route>
-          <Route path="/">
-            <SignInPage />
           </Route>
         </Switch>
       </Router>
