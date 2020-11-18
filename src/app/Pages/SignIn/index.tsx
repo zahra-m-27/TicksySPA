@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../SignIn/styles.module.scss";
+import SignInInputBox from "./Components/SignInInputBox";
 
 function SignInPage() {
   return (
@@ -16,6 +17,7 @@ function SignInPage() {
           گذشته،حال وآینده شناخت فراوان جامعه و .متخصصان را مي طلبد
         </p>
       </div>
+        <SignInInputBox />
     </div>
   );
 }
