@@ -1,0 +1,65 @@
+$button_color: #328ddc;
+$input_background_color: #f0f0f0;
+
+.input_box_container {
+  top: 25%;
+  width: 25%;
+  height: 50%;
+  margin-left: 60%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+}
+
+.input_box_title {
+  color: #2682cd;
+  font-size: 47px;
+  margin-bottom: 10%;
+  align-self: center;
+}
+
+//className
+.input_class {
+  margin: 5% 0;
+}
+
+//inputClassName
+.input {
+  width: 90%;
+  background-color: $input_background_color;
+}
+
+//inputContainerClassName
+.inner_container {
+  background-color: $input_background_color;
+}
+
+.forget_pass {
+  color: #515457;
+  text-decoration: none;
+  font-size: 22px;
+  margin-bottom: 10%;
+  align-self: center;
+}
+
+
+.enter_button {
+  background-color: $button_color;
+  color: white;
+  margin: 5% 0;
+  width: 40%;
+  border-radius: 5px;
+  font-size: 24px;
+  border: 0;
+  box-shadow: none;
+  font-family: Shabnam;
+  font-weight: normal;
+  align-self: center;
+}
+
+
+
+
+
+
