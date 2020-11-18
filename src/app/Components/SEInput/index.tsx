@@ -70,7 +70,8 @@ export default function SEInput({
     onChangeText(event.target.value, IsRegexFailed);
   };
 
-  let inputContainerStyle = ClassNames(styles.input_container, className);  if (IsFocused) {
+  let inputContainerStyle = ClassNames(styles.input_container, className);
+  if (IsFocused) {
     if (IsRegexFailed) {
       inputContainerStyle = ClassNames(
         styles.input_container,

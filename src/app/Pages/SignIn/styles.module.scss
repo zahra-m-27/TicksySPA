@@ -7,6 +7,18 @@ $text-color: #2d1e1e;
   background-image: url("../../Assets/Svgs/components/seamless_backgroud.svg");
 }
 
+.input_box_container {
+  top: 50%;
+  width: 25%;
+  height: 50%;
+  display: flex;
+  direction: rtl;
+  right: 10%;
+  position: absolute;
+  flex-direction: column;
+  transform: translateY(-30%);
+}
+
 .message_box {
   top: 50%;
   width: 38%;

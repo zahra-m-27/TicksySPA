@@ -17,7 +17,7 @@ function SignInPage() {
           گذشته،حال وآینده شناخت فراوان جامعه و .متخصصان را مي طلبد
         </p>
       </div>
-        <SignInInputBox />
+      <SignInInputBox className={styles.input_box_container} />
     </div>
   );
 }

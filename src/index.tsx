@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "antd/dist/antd.css";
 import App from "./app/App";
 import reportWebVitals from "./reportWebVitals";
 import UserProvider from "./app/Providers/UserProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-      <UserProvider>
-          <App />
-      </UserProvider>
+    <UserProvider>
+      <App />
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

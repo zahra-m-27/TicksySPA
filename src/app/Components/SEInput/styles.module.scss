@@ -1,5 +1,5 @@
-$input_primary_color: blue;
-$failed_regex_primary_color: #e60000;
+$input_primary_color: #0073ff;
+$failed_regex_primary_color: #e62e00;
 
 ::placeholder {
   color: #B8B8B8;
@@ -15,6 +15,7 @@ $failed_regex_primary_color: #e60000;
 }
 
 .focused_input_container {
+  border-radius: 8px;
   border-color: $input_primary_color;
   box-shadow: 0 0 8px 0 rgba($input_primary_color, .65);
 }
@@ -27,7 +28,6 @@ $failed_regex_primary_color: #e60000;
 .label {
   top: 50%;
   color: #B8B8B8;
-  font-size: 24px;
   margin: 0 10px 0;
   transition: 200ms;
   position: absolute;
@@ -36,12 +36,12 @@ $failed_regex_primary_color: #e60000;
 }
 
 .focused_label {
-  top: -5px;
+  top: -8px;
   padding: 0 5px;
-  font-size: 16px;
   margin-right: 8px;
   visibility: visible;
-  background-color: white;
+  border-radius: 10px;
+  background-color: #fbfbfb;
   color: $input_primary_color;
 }
 
