@@ -1,0 +1,74 @@
+$input_primary_color: blue;
+$failed_regex_primary_color: #e60000;
+
+::placeholder {
+  color: #B8B8B8;
+}
+
+.inner_container {
+  direction: rtl;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 0 0 0;
+  display: inline-block;
+  border: 1px solid #B8B8B8;
+}
+
+.focused_input_container {
+  border-color: $input_primary_color;
+  box-shadow: 0 0 8px 0 rgba($input_primary_color, .65);
+}
+
+.inner_container {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  top: 50%;
+  color: #B8B8B8;
+  font-size: 24px;
+  margin: 0 10px 0;
+  transition: 200ms;
+  position: absolute;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.focused_label {
+  top: -5px;
+  padding: 0 5px;
+  font-size: 16px;
+  margin-right: 8px;
+  visibility: visible;
+  background-color: white;
+  color: $input_primary_color;
+}
+
+.input {
+  height: 48px;
+  outline: none;
+  border: hidden;
+  color: #606060;
+  padding: 0 10px;
+  font-size: 24px;
+  font-weight: 400;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+.eye_svg {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.failed_regex_focused_input_container {
+  border-color: $failed_regex_primary_color;
+  box-shadow: 0 0 8px 0 rgba($failed_regex_primary_color, .65);
+}
+
+.failed_regex_focused_label_color {
+  color: $failed_regex_primary_color;
+}
