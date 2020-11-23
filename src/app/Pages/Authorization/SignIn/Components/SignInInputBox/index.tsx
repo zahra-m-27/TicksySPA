@@ -1,13 +1,13 @@
 import React from "react";
 import { Button } from "antd";
-import SEInput from "../../../../Components/SEInput";
+import SEInput from "../../../../../Components/SEInput";
 import styles from "./styles.module.scss";
 
 interface Props {
   className?: string;
 }
 
-function SignInInputBox({ className }: Props) {
+export default function SignInInputBox({ className }: Props) {
   return (
     <div className={className}>
       <p className={styles.input_box_title}>وارد شوید!</p>
@@ -41,5 +41,3 @@ function SignInInputBox({ className }: Props) {
     </div>
   );
 }
-
-export default SignInInputBox;

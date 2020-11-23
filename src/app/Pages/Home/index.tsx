@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import Assets from "../../Assets";
 import { Link } from "react-router-dom";
 
-function Home() {
+export default function HomePage() {
   return (
     <div className={styles.App}>
       <header className={styles.AppHeader}>
@@ -26,22 +26,42 @@ function Home() {
             </li>
             <li style={{ display: "inline-block" }}>
               <Link
-                to="/test"
+                to="/404"
                 style={{
                   color: "#61dafb",
                 }}
               >
-                Test
+                NotFound
               </Link>
             </li>
             <li style={{ display: "inline-block", paddingLeft: 20 }}>
               <Link
-                to="/SignIn"
+                to="/sign-in"
                 style={{
                   color: "#61dafb",
                 }}
               >
                 SignIn
+              </Link>
+            </li>
+            <li style={{ display: "inline-block", paddingLeft: 20 }}>
+              <Link
+                to="/sign-up"
+                style={{
+                  color: "#61dafb",
+                }}
+              >
+                SignUp
+              </Link>
+            </li>
+            <li style={{ display: "inline-block", paddingLeft: 20 }}>
+              <Link
+                to="/forgot-password"
+                style={{
+                  color: "#61dafb",
+                }}
+              >
+                Forgot Password
               </Link>
             </li>
           </ul>
@@ -52,5 +72,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;

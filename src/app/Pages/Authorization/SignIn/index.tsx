@@ -1,12 +1,10 @@
 import React from "react";
-import styles from "../SignIn/styles.module.scss";
+import styles from "./styles.module.scss";
 import SignInInputBox from "./Components/SignInInputBox";
 
-function SignInPage() {
+export default function SignInPage() {
   return (
     <div className={styles.container}>
-      <div className={styles.header} />
-
       <div className={styles.message_box}>
         <p className={styles.message1}>:) خوشحاليم كه ما رو انتخاب كرديد</p>
         <p className={styles.message2}>
@@ -21,5 +19,3 @@ function SignInPage() {
     </div>
   );
 }
-
-export default SignInPage;
