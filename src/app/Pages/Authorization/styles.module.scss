@@ -5,11 +5,12 @@
   background-image: url("../../Assets/Svgs/components/seamless_backgroud.svg");
 }
 
-.header {
-  top: 0;
+.header {top: 0;
   width: 100%;
-  height: 20%;
+  height: 13%;
   position: fixed;
+  background-size: inherit;
   background-repeat: repeat-x;
+  background-position-x: center;
   background-image: url("../../Assets/Svgs/components/wave.svg");
 }
