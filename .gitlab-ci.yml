@@ -6,7 +6,7 @@ deploy:
   script:
     - npm install
     - CI='' npm run build
-    - find ./build --name "*.map" -delete
+    - find ./build -name "*.map" -delete
     - rm -rf /temp/*
     - cp -R ./build/* /temp
   tags:
