@@ -50,7 +50,6 @@ const UserProvider: React.FC = ({ children }) => {
         isLogin: () => User.id !== 0,
       }}
     >
-      {" "}
       {children}
     </UserContext.Provider>
   );
