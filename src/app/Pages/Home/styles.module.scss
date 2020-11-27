@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+
+.container{
+  background-image: url("../../Assets/Images/Files/home.png");
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.nav_link{
+  color: #707070;
+}
+
+.nav{
+  padding-top: 50px;
+  padding-left: 40%;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.nav li{
+  padding-left: 5%;
+  font-size: clamp(14px, 2vw, 23px);
+  font-family: Shabnam;
+}
+
