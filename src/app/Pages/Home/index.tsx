@@ -56,6 +56,16 @@ export default function HomePage() {
             </li>
             <li style={{ display: "inline-block", paddingLeft: 20 }}>
               <Link
+                to="/change-password"
+                style={{
+                  color: "#61dafb",
+                }}
+              >
+                Change Password
+              </Link>
+            </li>
+            <li style={{ display: "inline-block", paddingLeft: 20 }}>
+              <Link
                 to="/forgot-password"
                 style={{
                   color: "#61dafb",
