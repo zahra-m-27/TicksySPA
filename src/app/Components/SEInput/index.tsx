@@ -14,6 +14,7 @@ interface Props {
   icon?: JSX.Element;
   isNumeric?: boolean;
   inputClassName?: string;
+  labelClassName?: string;
   type: "password" | "text";
   onIconPressed?: () => void;
   passwordCanBeVisible?: boolean;
@@ -30,6 +31,7 @@ export default function SEInput({
   className,
   onChangeText,
   onIconPressed,
+  labelClassName,
   inputClassName,
   isNumeric = false,
   innerContainerClassName,
@@ -108,16 +110,21 @@ export default function SEInput({
     }
   }
 
-  let labelStyle = styles.label;
+  let labelStyle = ClassNames(styles.label, labelClassName);
   if (IsFocused) {
     if (IsRegexFailed) {
       labelStyle = ClassNames(
         styles.label,
         styles.focused_label,
-        styles.failed_regex_focused_label_color
+        styles.failed_regex_focused_label_color,
+        labelClassName
       );
     } else {
-      labelStyle = ClassNames(styles.label, styles.focused_label);
+      labelStyle = ClassNames(
+        styles.label,
+        styles.focused_label,
+        labelClassName
+      );
     }
   }
 
@@ -132,7 +139,7 @@ export default function SEInput({
           onFocus={onFocus}
           onChange={onChange}
           placeholder={IsFocused ? hint : ""}
-          className={ClassNames(styles.input, inputClassName)}
+          className={ClassNames(styles.input, inputClassName, labelClassName)}
         />
         {passwordCanBeVisible &&
           type === "password" &&

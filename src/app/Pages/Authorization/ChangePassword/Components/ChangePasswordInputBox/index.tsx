@@ -16,18 +16,20 @@ export default function ForgotPasswordInputBox({ className }: Props) {
         label="گذرواژه"
         hint=""
         onChangeText={() => {}}
-        innerContainerClassName={styles.inner_container}
         inputClassName={styles.input}
         className={styles.input_class}
+        labelClassName={styles.input_label}
+        innerContainerClassName={styles.inner_container}
       />
       <SEInput
         type="password"
         label="تاييد گذرواژه"
         hint=""
         onChangeText={() => {}}
-        innerContainerClassName={styles.inner_container}
         inputClassName={styles.input}
         className={styles.input_class}
+        labelClassName={styles.input_label}
+        innerContainerClassName={styles.inner_container}
       />
       <Button type="primary" className={styles.enter_button}>
         ثبت
