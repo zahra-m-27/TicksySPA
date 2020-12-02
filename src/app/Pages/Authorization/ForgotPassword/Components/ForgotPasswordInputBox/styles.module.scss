@@ -16,7 +16,12 @@ $input_background_color: #fff;
 
 .input {
   width: 100%;
+  font-size: clamp(14px, 1.1vw, 20px);
   background-color: $input_background_color;
+}
+
+.input_label {
+  font-size: clamp(14px, 1.1vw, 20px);
 }
 
 .inner_container {
