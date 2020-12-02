@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import ClassNames from "../Utilities/ClassNames";
+import ClassNames from "../../Utilities/ClassNames";
 import VisiblePassSvg from "../Assets/Svgs/VisiblePassSvg";
 import InVisiblePassSvg from "../Assets/Svgs/InvisiblePassSvg";
 
@@ -88,6 +88,26 @@ export default function SEInput({
     }
   }
 
+  let innerContainer = ClassNames(
+    styles.inner_container,
+    innerContainerClassName
+  );
+  if (IsFocused) {
+    if (IsRegexFailed) {
+      innerContainer = ClassNames(
+        styles.inner_container,
+        styles.failed_regex_focused_label_color,
+        innerContainerClassName
+      );
+    } else {
+      innerContainer = ClassNames(
+        styles.inner_container,
+        styles.focused_input_container,
+        innerContainerClassName
+      );
+    }
+  }
+
   let labelStyle = styles.label;
   if (IsFocused) {
     if (IsRegexFailed) {
@@ -103,9 +123,7 @@ export default function SEInput({
 
   return (
     <div className={inputContainerStyle}>
-      <div
-        className={ClassNames(styles.inner_container, innerContainerClassName)}
-      >
+      <div className={innerContainer}>
         <p className={labelStyle}>{label}</p>
         <input
           type={Type}
