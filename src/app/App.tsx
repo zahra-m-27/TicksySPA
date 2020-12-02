@@ -9,7 +9,7 @@ export default function App() {
     <Router>
       <Switch>
         <Route
-          path="/(sign-in|sign-up|forgot-password)"
+          path="/(sign-in|sign-up|forgot-password|change-password|confirm-email)"
           component={Authorization}
         />
         <Route path="/404" component={NotFound} />

@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import SignInInputBox from "./Components/SignInInputBox";
+import ForgotPasswordInputBox from "./Components/ForgotPasswordInputBox";
 
-export default function SignInPage() {
+export default function ForgotPasswordPage() {
   return (
     <div className={styles.container}>
       <div className={styles.message_box}>
@@ -15,7 +15,7 @@ export default function SignInPage() {
           درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد
         </p>
       </div>
-      <SignInInputBox className={styles.input_box_container} />
+      <ForgotPasswordInputBox className={styles.input_box_container} />
     </div>
   );
 }
