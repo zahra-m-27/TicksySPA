@@ -1,15 +1,23 @@
 .container {
+  direction: rtl;
   height: 100%;
+  background-color: #fffefd;
 }
 
 .header {
-  display: flex;
-  flex-direction: row;
-  height: clamp(700px, 100vh, 1080px);
+  // display: flex;
+  // flex-direction: row;
+  // height: clamp(700px, 100vh, 1080px);
+  position: relative;
+  overflow: auto;
 }
 
 .landing_image {
-  height: 100%;
+  width: 40%;
+  //height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .nav_link > a {
@@ -17,20 +25,126 @@
 }
 
 .nav {
-  width: 28%;
-  margin-left: 3%;
-  padding-top: 75px;
+  width: 50%;
+  margin: 2rem 4rem;
+  // margin-left: 3%;
+  // padding-top: 75px;
+  z-index: 1;
+}
+
+.nav img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 2rem;
 }
 
 .nav ul {
   padding: 0;
   display: flex;
   list-style: none;
-  flex-direction: row-reverse;
+  //flex-direction: row-reverse;
   justify-content: space-between;
 }
 
 .nav li {
-  font-size: clamp(14px, 2vw, 23px);
+  font-size: clamp(14px, 2vw, 18px);
 }
 
+.title {
+  width: 30%;
+  margin-top: 5rem;
+  margin-right: 10%;
+  font-size: clamp(15px, 2vw, 20px);
+}
+
+.title > h1:nth-child(1) {
+  color: #0a1f58;
+}
+.title > h1:nth-child(1) span {
+  color: #103cb7;
+}
+.title > h1:nth-child(2) {
+  color: #0a9ea2;
+}
+.title > h6 {
+  margin-top: 3rem;
+  text-align: right;
+  color: #777777;
+}
+
+.main {
+  direction: rtl;
+}
+
+.main_title {
+  display: inline-block;
+  margin: 2rem 5rem;
+  color: #2d1e1e;
+  border-bottom: solid 5px #26a9ad;
+  font-weight: bold;
+  font-size: clamp(25px, 2vw, 35px);
+}
+
+.topic_container {
+  width: calc(100% - 10rem);
+  display: flex;
+  flex-flow: row wrap;
+  margin: 2rem 5rem;
+  justify-content: space-between;
+}
+
+.footer {
+  direction: rtl;
+  width: 100%;
+  border-top: solid 20px #0a9fa3;
+  background-color: rgba(3, 19, 115, 0.88);
+  padding: 1rem 5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer_contact {
+  flex: 50%;
+}
+
+.footer_contact h1 {
+  color: white;
+  margin: 1rem 0;
+}
+.footer_contact h1 img {
+  width: 3.5rem;
+  height: 3rem;
+  margin: 0 0.5rem;
+}
+
+.footer_contact div {
+  color: #d4d8e3;
+  margin: 2rem;
+}
+
+.footer_contact div img {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 0.5rem;
+}
+
+.footer_social {
+  flex: 50%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer_social div {
+  width: 3rem;
+  height: 3rem;
+  margin: 0.5rem 1rem;
+}
+
+.footer_social div img {
+  width: 100%;
+  height: 100%;
+}
