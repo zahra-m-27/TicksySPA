@@ -19,14 +19,12 @@
 
 .nav_link > a {
   color: #707070;
-  font-size: 23px;
+  font-size: clamp(15px, 1.1vw, 20px);
 }
 
 .nav {
-  width: calc(100% - 7vw - 2vw);
-  margin-right: 7vw;
   padding-top: 8.5vh;
-  z-index: 1;
+  margin-right: clamp(88px, 7.2vw, 137px);
 }
 
 .nav img:nth-child(2) {
@@ -136,7 +134,7 @@
   color: white;
   margin: 1rem 6vw;
   font-weight: bold;
-  font-size: clamp(30px, 2.5vw, 47px);
+  font-size: clamp(30px, 2.4vw, 43px);
 }
 
 .footer_contact p img {
@@ -148,7 +146,7 @@
 .footer_contact div {
   color: #d4d8e3;
   margin: 2rem 12vw 0 0;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .footer_contact div img {
