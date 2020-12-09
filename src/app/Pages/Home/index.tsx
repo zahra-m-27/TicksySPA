@@ -57,51 +57,49 @@ const topics = [
 
 export default function HomePage() {
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <div className={styles.content}>
-            <nav className={styles.nav}>
-              <ul>
-                <li className={styles.nav_link}>
-                  <Link style={{ color: "#103cb7", fontWeight: "bold" }} to="/">
-                    <img src={Ticksy} />
-                    <img src={Grid} />
-                    تیکسی
-                  </Link>
-                </li>
-                <li className={styles.nav_link}>
-                  <Link to="/sign-in">ورود</Link>/
-                  <Link to="/sign-up">ثبت نام</Link>
-                </li>
-                <li className={styles.nav_link}>
-                  <Link to="/dashboard">داشبورد</Link>
-                </li>
-                <li className={styles.nav_link}>
-                  <Link to="/contact-us">ارتباط با ما</Link>
-                </li>
-              </ul>
-            </nav>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.content}>
+          <nav className={styles.nav}>
+            <ul>
+              <li className={styles.nav_link}>
+                <Link style={{ color: "#103cb7", fontWeight: "bold" }} to="/">
+                  <img src={Ticksy} />
+                  <img src={Grid} />
+                  تیکسی
+                </Link>
+              </li>
+              <li className={styles.nav_link}>
+                <Link to="/sign-in">ورود</Link>/
+                <Link to="/sign-up">ثبت نام</Link>
+              </li>
+              <li className={styles.nav_link}>
+                <Link to="/dashboard">داشبورد</Link>
+              </li>
+              <li className={styles.nav_link}>
+                <Link to="/contact-us">ارتباط با ما</Link>
+              </li>
+            </ul>
+          </nav>
 
-            <div className={styles.title}>
-              <p>
-                سامانه <span>تیکتینگ</span>
-              </p>
-              <p>دانشگاه خوارزمی</p>
+          <div className={styles.title}>
+            <p>
+              سامانه <span>تیکتینگ</span>
+            </p>
+            <p>دانشگاه خوارزمی</p>
 
-              <p>
-                لورم اپسیوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                استفاده از طراحان گرافیک است. <br />
-                چاپگر ها و متون بلکه روزنامه مجلمه در ستون و سطر آنچنان که لازم
-                است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع با
-                هدف بهبود ابزار کاربردی میباشد
-              </p>
-            </div>
+            <p>
+              لورم اپسیوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+              استفاده از طراحان گرافیک است. <br />
+              چاپگر ها و متون بلکه روزنامه مجلمه در ستون و سطر آنچنان که لازم
+              است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع با هدف
+              بهبود ابزار کاربردی میباشد
+            </p>
           </div>
-          <img className={styles.landing_image} src={LandingImage} />
         </div>
+        <img className={styles.landing_image} src={LandingImage} />
       </div>
-      <main className={styles.main}>
+      <div className={styles.main}>
         <h2 className={styles.main_title}>تاپیک های پیشنهادی</h2>
         <div className={styles.topic_container}>
           {topics.map((topic) => (
@@ -113,7 +111,7 @@ export default function HomePage() {
             />
           ))}
         </div>
-      </main>
+      </div>
 
       <footer className={styles.footer}>
         <div className={styles.footer_contact}>
@@ -150,6 +148,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
