@@ -1,0 +1,89 @@
+.container {
+  height: 100%;
+  background-color: #212f84;
+}
+
+.right_side{
+  position: fixed;
+  right: clamp(50px,5vw,108px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.left_side{
+  border-radius: 0 40px 40px 0;
+  background-color: #ffffff;
+  position: fixed;
+  left: 0;
+  height:100%;
+  width: 75%;
+}
+
+.nav ul{
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  direction: rtl;
+  align-self: center;
+  margin-top: clamp(60px,9vh,97px)
+}
+.nav li{
+  height: 6.8vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #ffffff;
+  font-family:Shabnam ;
+  font-size:clamp(12px, 2vw, 22px);
+  font-weight:bold ;
+  margin-bottom: clamp(10px,2.5%,26px);
+}
+
+.nav li > a{
+  color: #ffffff;
+}
+
+.nav li:hover , .exit:hover{
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 30px 0 0 30px;
+}
+
+
+.info{
+  display: flex;
+  flex-direction: column;
+  font-weight: normal;
+  font-size: clamp(15px, 2vw, 30px);
+  font-family: Shabnam;
+  color: white;
+  position: absolute;
+  top: clamp(5%,12%,20%);
+}
+
+.avatar{
+  border-radius: 50%;
+  border: solid 7px rgba(4, 22, 128, 0.88);
+  height:clamp(80px, 15vh, 163px) ;
+  width:clamp(80px, 8vw, 163px) ;
+  margin-bottom: 30px;
+}
+
+
+.exit{
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-family:Shabnam ;
+  font-size:clamp(12px, 2vw, 22px);
+  font-weight:bold ;
+  position: fixed;
+  bottom: 17%;
+  height: 6.8vh;
+}
+
+.exit > a{
+  color: white;
+}
