@@ -1,27 +1,155 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
+
+import Topic from "./Components/Topic";
+
 import LandingImage from "../../Assets/Images/Files/home.png";
+import Grid from "../../Assets/Images/Files/grid.svg";
+import TopicPic from "../../Assets/Images/Files/topic_pic.png";
+import TopicBadge from "../../Assets/Images/Files/topic_badge.png";
+import Facebook from "../../Assets/Images/Files/social/facebook.svg";
+import Instagram from "../../Assets/Images/Files/social/instagram.svg";
+import Linkedin from "../../Assets/Images/Files/social/linkedin.svg";
+import Twitter from "../../Assets/Images/Files/social/twitter.svg";
+import User from "../../Assets/Images/Files/user.svg";
+import Flags from "../../Assets/Images/Files/flags.svg";
+import Ticksy from "../../Assets/Images/Files/ticksy.png";
+
+const topics = [
+  {
+    title: "لورم اپسیوم متن ساختگی",
+    description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
+    pic: TopicPic,
+    badge: TopicBadge,
+  },
+  {
+    title: "لورم اپسیوم متن ساختگی",
+    description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
+    pic: TopicPic,
+    badge: TopicBadge,
+  },
+  {
+    title: "لورم اپسیوم متن ساختگی",
+    description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
+    pic: TopicPic,
+    badge: TopicBadge,
+  },
+  {
+    title: "لورم اپسیوم متن ساختگی",
+    description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
+    pic: TopicPic,
+    badge: TopicBadge,
+  },
+  {
+    title: "لورم اپسیوم متن ساختگی",
+    description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
+    pic: TopicPic,
+    badge: TopicBadge,
+  },
+  {
+    title: "لورم اپسیوم متن ساختگی",
+    description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
+    pic: TopicPic,
+    badge: TopicBadge,
+  },
+];
 
 export default function HomePage() {
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <img className={styles.landing_image} src={LandingImage} />
-        <nav className={styles.nav}>
-          <ul>
-            <li className={styles.nav_link}>
-              <Link to="/sign-in">ورود</Link>/<Link to="/sign-up">ثبت نام</Link>
-            </li>
-            <li className={styles.nav_link}>
-              <Link to="/dashboard">داشبورد</Link>
-            </li>
-            <li className={styles.nav_link}>
-              <Link to="/contact-us">ارتباط با ما</Link>
-            </li>
-          </ul>
-        </nav>
+    <>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <div className={styles.content}>
+            <nav className={styles.nav}>
+              <ul>
+                <li className={styles.nav_link}>
+                  <Link style={{ color: "#103cb7", fontWeight: "bold" }} to="/">
+                    <img src={Ticksy} />
+                    <img src={Grid} />
+                    تیکسی
+                  </Link>
+                </li>
+                <li className={styles.nav_link}>
+                  <Link to="/sign-in">ورود</Link>/
+                  <Link to="/sign-up">ثبت نام</Link>
+                </li>
+                <li className={styles.nav_link}>
+                  <Link to="/dashboard">داشبورد</Link>
+                </li>
+                <li className={styles.nav_link}>
+                  <Link to="/contact-us">ارتباط با ما</Link>
+                </li>
+              </ul>
+            </nav>
+
+            <div className={styles.title}>
+              <p>
+                سامانه <span>تیکتینگ</span>
+              </p>
+              <p>دانشگاه خوارزمی</p>
+
+              <p>
+                لورم اپسیوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                استفاده از طراحان گرافیک است. <br />
+                چاپگر ها و متون بلکه روزنامه مجلمه در ستون و سطر آنچنان که لازم
+                است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربرد های متنوع با
+                هدف بهبود ابزار کاربردی میباشد
+              </p>
+            </div>
+          </div>
+          <img className={styles.landing_image} src={LandingImage} />
+        </div>
       </div>
-    </div>
+      <main className={styles.main}>
+        <h2 className={styles.main_title}>تاپیک های پیشنهادی</h2>
+        <div className={styles.topic_container}>
+          {topics.map((topic) => (
+            <Topic
+              title={topic.title}
+              description={topic.description}
+              pic={topic.pic}
+              badge={topic.badge}
+            />
+          ))}
+        </div>
+      </main>
+
+      <footer className={styles.footer}>
+        <div className={styles.footer_contact}>
+          <p>
+            <img src={Ticksy} />
+            سامانه تیکتینگ
+          </p>
+
+          <div>
+            <img src={User} />
+            supourtickcy@khu.com
+          </div>
+          <div>
+            <img src={Flags} /> تهران - خیابان شهید مفتح نرسیده به انقلاب پلاک
+            ۴۳{" "}
+          </div>
+          <div>
+            <img src={Flags} />
+            کرج - انتهای خیابان شهید بهشتی - میدان دانشگاه{" "}
+          </div>
+        </div>
+        <div className={styles.footer_social}>
+          <div>
+            <img src={Facebook} alt="facebook" />
+          </div>
+          <div>
+            <img src={Instagram} alt="instagram" />
+          </div>
+          <div>
+            <img src={Linkedin} alt="linkedin" />
+          </div>
+          <div>
+            <img src={Twitter} alt="twitter" />
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }
