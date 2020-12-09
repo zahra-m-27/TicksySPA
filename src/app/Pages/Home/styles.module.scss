@@ -1,13 +1,16 @@
 .container {
+  height: 100%;
   direction: rtl;
-  background-color: #fffefd;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
 .header {
   display: flex;
-  flex-direction: row;
-  height: clamp(700px, 100vh, 1080px);
   position: relative;
+  flex-direction: row;
+  scroll-snap-align: center;
+  height: clamp(700px, 100vh, 1080px);
 }
 
 .landing_image {
@@ -90,8 +93,9 @@
 }
 
 .main {
-  min-height: 100%;
   direction: rtl;
+  min-height: 105vh;
+  scroll-snap-align: center;
 }
 
 .main_title {
@@ -121,6 +125,7 @@
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
+  scroll-snap-align: center;
 }
 
 .footer_contact {
