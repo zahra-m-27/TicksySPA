@@ -1,0 +1,81 @@
+
+.topic {
+    width: 23vw;
+    height: 14rem;
+    //background-color: red;
+    margin: 2rem 0.5rem;
+    position: relative;
+  }
+
+  .topic_badge {
+    padding: 0.5rem 0.35rem;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 2px 2px 6px 0 rgba(110, 57, 122, 0.4);
+  }
+
+  .topic_badge img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .topic_content {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    width: calc(100% - 5rem);
+    height: calc(100% - 2rem);
+    margin-top: 1.5rem;
+    border-radius: 25px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.15),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    text-align: center;
+  }
+
+  .topic:nth-child(2n) > .topic_content {
+    background-color: #0a9ea2;
+    background-position: center;
+    background-image: url("../../../../Assets/Images/Files/card_cyan_background.png");
+  }
+
+  .topic:nth-child(2n + 1) > .topic_content {
+    background-color: royalblue;
+    background-position: center;
+    background-image: url("../../../../Assets/Images/Files/card_blue_background.png");
+  }
+
+  .topic_content > h3 {
+    color: #fcfcfc;
+  }
+
+  .topic_content > h4 {
+    color: #fcfcfc;
+  }
+
+  .topic_pic {
+    position: absolute;
+    padding: 0.5rem;
+    top: 1.5rem;
+    left: 0;
+    width: 6rem;
+    height: 5rem;
+    background-color: #f9f5f2;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    border: solid 1px #707070;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.15),
+      0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  .topic_pic img {
+    width: 100%;
+    height: 100%;
+  }
