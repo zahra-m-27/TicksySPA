@@ -1,0 +1,107 @@
+$button_color:#26a9ad;
+$white_background_color: #fff;
+$border_radius:5px;
+$header-background-color: #265ecd;
+
+
+.container {
+  height: 100%;
+  width:100%;
+  position: fixed;
+}
+
+.rectangle{
+  width: 100%;
+  height:12%;
+  padding: 0 8% 4% 12%;
+  border: #707070;
+  background-color:$header-background-color;
+}
+.ticksy_image {
+  height:50px;
+  weight:63px;
+  margin-left:100%;
+}
+.ticksy{
+  color:$white_background_color;
+  font-family: Shabnam;
+  font-weight:Bold;
+  font-size: clamp(14px, 2vw, 23px);
+
+}
+.nav_link > a {
+  color:$white_background_color;
+}
+.nav {
+    width: 28%;
+    margin-left:75%;
+    padding-top:20px;
+    font-family: Shabnam;
+    font-weight:normal;
+  }
+
+.nav ul {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+}
+.nav li {
+  font-size: clamp(14px, 2vw, 23px);
+}
+.upload_image {
+  visibility: hidden;
+}
+.upload_image2{
+  width:140px;
+  height:140px;
+  background-color:$white_background_color;
+  border:solid 5px $header-background-color;
+
+  border-radius:70px;
+}  
+.input_box_title {
+ margin-top:10%;
+  margin-left:50%;
+  font-family: Shabnam;
+  font-size: 32px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.input_class{
+  width: 40%;
+  margin: 0 auto 15%;
+}
+.input1{
+  width: 40%;
+
+  font-size: clamp(14px, 1.1vw, 20px);
+  background-color: $white_background_color;
+}
+
+.input2{
+  width: 40%;
+  height:30%;
+  font-size: clamp(14px, 1.1vw, 20px);
+  background-color: $white_background_color;
+}
+
+.input_label {
+  font-size: clamp(14px, 1.1vw, 20px);
+  width:40%;
+  height:90%;
+}
+
+.inner_container {
+  background-color: $white_background_color;
+}
+
+.enter_button {
+  background-color:$button_color;
+  width: 20%;
+  height: 42px;
+  align-self: center;
+}
