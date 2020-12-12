@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import ClassNames from "../../Utilities/ClassNames";
-import VisiblePassSvg from "../Assets/Svgs/VisiblePassSvg";
-import InVisiblePassSvg from "../Assets/Svgs/InvisiblePassSvg";
+import VisiblePassSvg from "../../Assets/Svgs/components/VisiblePassSvg";
+import InVisiblePassSvg from "../../Assets/Svgs/components/InvisiblePassSvg";
 
 //Software Engineering Evaluation(module) Input
 

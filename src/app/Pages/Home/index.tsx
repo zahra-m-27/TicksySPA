@@ -12,7 +12,7 @@ import Facebook from "../../Assets/Images/Files/social/facebook.svg";
 import Instagram from "../../Assets/Images/Files/social/instagram.svg";
 import Linkedin from "../../Assets/Images/Files/social/linkedin.svg";
 import Twitter from "../../Assets/Images/Files/social/twitter.svg";
-import User from "../../Assets/Images/Files/user.svg";
+import User from "../../Assets/Svgs/components/user.svg";
 import Flags from "../../Assets/Images/Files/flags.svg";
 import Ticksy from "../../Assets/Images/Files/ticksy.png";
 
@@ -59,25 +59,26 @@ export default function HomePage() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
+        <img className={styles.landing_image} src={LandingImage} />
         <div className={styles.content}>
           <nav className={styles.nav}>
             <ul>
               <li className={styles.nav_link}>
-                <Link style={{ color: "#103cb7", fontWeight: "bold" }} to="/">
-                  <img src={Ticksy} />
-                  <img src={Grid} />
-                  تیکسی
-                </Link>
+                <Link to="/contact-us">ارتباط با ما</Link>
+              </li>
+              <li className={styles.nav_link}>
+                <Link to="/dashboard">داشبورد</Link>
               </li>
               <li className={styles.nav_link}>
                 <Link to="/sign-in">ورود</Link>/
                 <Link to="/sign-up">ثبت نام</Link>
               </li>
               <li className={styles.nav_link}>
-                <Link to="/dashboard">داشبورد</Link>
-              </li>
-              <li className={styles.nav_link}>
-                <Link to="/contact-us">ارتباط با ما</Link>
+                <Link style={{ color: "#103cb7", fontWeight: "bold" }} to="/">
+                  تیکسی
+                  <img src={Grid} />
+                  <img src={Ticksy} />
+                </Link>
               </li>
             </ul>
           </nav>
@@ -97,7 +98,6 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-        <img className={styles.landing_image} src={LandingImage} />
       </div>
       <div className={styles.main}>
         <h2 className={styles.main_title}>تاپیک های پیشنهادی</h2>
