@@ -1,41 +1,77 @@
 import React from "react";
+import Assets from "../../Assets";
+import DashboardLayout from "./Layout";
 import styles from "./styles.module.scss";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import LandingImage from "../../Assets/Images/Files/home.png";
-import CreateTopic from "./CreateTopic";
+import { useHistory } from "react-router-dom";
 
 export default function Dashboard() {
+  const history = useHistory();
+
   return (
     <div className={styles.container}>
+      <div className={styles.left_side}>
+        <DashboardLayout />
+      </div>
       <div className={styles.right_side}>
         <div className={styles.info}>
-          <img src={LandingImage} className={styles.avatar} />
+          <div className={styles.info_avatar}>
+            <img src={Assets.Images.DotSquare} />
+            <img src={Assets.Images.UserAvatar} className={styles.avatar} />
+          </div>
           <p>سید علی علوی</p>
         </div>
         <div className={styles.nav}>
           <ul>
             <li>
-              <Link to="/manage-tickets"> مدیریت تیکت ها</Link>
+              <div
+                className={styles.item}
+                onClick={() => history.push("/dashboard/tickets")}
+              >
+                <img src={Assets.Images.Ticket} />
+                <div className={styles.item_label}>
+                  <p>مدیریت تیکت ها</p>
+                </div>
+              </div>
             </li>
             <li>
-              <Link to="/manage-topics"> مدیریت تاپیک ها</Link>
+              <div
+                className={styles.item}
+                onClick={() => history.push("/dashboard/topics")}
+              >
+                <img src={Assets.Images.Topic} />
+                <div className={styles.item_label}>
+                  <p>مدیریت تاپیک ها</p>
+                </div>
+              </div>
             </li>
             <li>
-              <Link to="/manage-account"> مدیریت حساب</Link>
-              {/*<p>مدیریت حساب</p>*/}
-            </li>
-            <li className={styles.exit}>
-              <Link to="/">خروج</Link>
+              <div
+                className={styles.item}
+                onClick={() => history.push("/dashboard/users")}
+              >
+                <img src={Assets.Images.User} />
+                <div className={styles.item_label}>
+                  <p>مدیریت حساب</p>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
-      </div>
-      <div className={styles.left_side}>
-        <Router>
-          <Switch>
-            <Route path="/create-topic" component={CreateTopic} />
-          </Switch>
-        </Router>
+        <div
+          className={styles.nav}
+          style={{ marginTop: "auto", marginBottom: "10%" }}
+        >
+          <ul>
+            <li className={styles.exit}>
+              <div className={styles.item} onClick={() => history.push("/")}>
+                <img src={Assets.Images.Exit} />
+                <div className={styles.item_label}>
+                  <p>خروج</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

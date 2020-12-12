@@ -1,6 +1,5 @@
 .container {
   height: 100%;
-  direction: rtl;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
 }
@@ -27,13 +26,13 @@
   margin-right: clamp(88px, 7.2vw, 137px);
 }
 
-.nav img:nth-child(2) {
+.nav img:nth-child(1) {
   width: 2rem;
   height: 2rem;
   margin: 0 0 0 3vw;
 }
 
-.nav img:nth-child(1) {
+.nav img:nth-child(2) {
   width: 3.6rem;
   height: 3rem;
   margin: 0 0 0 2vw;
@@ -43,7 +42,6 @@
   padding: 0;
   display: flex;
   list-style: none;
-  //flex-direction: row-reverse;
   justify-content: space-between;
 }
 
@@ -158,8 +156,8 @@
 .footer_social {
   flex: 50%;
   display: flex;
-  flex-flow: row nowrap;
   align-items: center;
+  flex-flow: row nowrap;
   justify-content: center;
 }
 
