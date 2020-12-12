@@ -5,6 +5,7 @@ import styles from "./styles.module.scss";
 import ConfirmEmailPage from "./ConfirmEmail";
 import ForgotPasswordPage from "./ForgotPassword";
 import ChangePasswordPage from "./ChangePassword";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function Authorization() {
