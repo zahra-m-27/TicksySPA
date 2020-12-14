@@ -1,10 +1,10 @@
 import React from "react";
 import routes from "./routes";
 import { Breadcrumb } from "antd";
+import Assets from "../../../Assets";
 import styles from "./styles.module.scss";
 import { Route, Switch } from "react-router-dom";
 import Grid from "../../../Assets/Images/Files/grid.svg";
-import Ticksy from "../../../Assets/Images/Files/ticksy.png";
 import { breadcrumbFindRoute, getRoutes } from "../../../Utilities";
 
 export default function DashboardLayout() {
@@ -15,7 +15,7 @@ export default function DashboardLayout() {
       <div className={styles.header}>
         تیکسی
         <img src={Grid} />
-        <img src={Ticksy} />
+        <img src={Assets.Images.Ticksy} />
       </div>
       <div className={styles.breadcrumb}>
         {breadcrumb.route && (
