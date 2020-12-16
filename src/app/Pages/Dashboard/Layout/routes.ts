@@ -28,7 +28,7 @@ const routes: DashboardRoute[] = [
         children: [
           {
             path: "/topics/new",
-            name: "ایجاد تاپیک",
+            name: " تاپیک جدید",
             component: CreateTopic,
           },
         ],
