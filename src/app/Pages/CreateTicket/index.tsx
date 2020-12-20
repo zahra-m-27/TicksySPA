@@ -3,8 +3,8 @@ import { Button, Tag } from "antd";
 import SEInput from "../../Components/SEInput";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
-import TicksyLogo from "../../Assets/Images/Files/ticksy.png";
-import LandingImage from "../../Assets/Images/Files/home.png";
+import Grid from "../../Assets/Images/Files/grid.svg";
+import Assets from "../../Assets";
 
 interface Props {
   className?: string;
@@ -13,57 +13,58 @@ interface Props {
 export default function CreateTicket({ className }: Props) {
   return (
     <div className={styles.container}>
-      <div className={styles.rectangle}>
-        <nav className={styles.nav}>
-          <ul>
-            <li className={styles.nav_link}>
-              <img className={styles.ticksy_image} src={TicksyLogo} />
-            </li>
-            <li className={styles.nav_link}>
-              <p className={styles.ticksy}> تيكسي</p>
-            </li>
-            <li className={styles.nav_link}>
-              <Link to="/home">خانه</Link>
-            </li>
-            <li className={styles.nav_link}>
-              <Link to="/dashboard">داشبورد</Link>
-            </li>
-            <li className={styles.nav_link}>
-              <Link to="/contact-us">ارتباط با ما</Link>
-            </li>
-          </ul>
-        </nav>
+      <div className={styles.header}>
+        <Link to="/contact-us">ارتباط با ما</Link>
+        <Link to="/dashboard">داشبورد</Link>
+        <Link to="/home">خانه</Link>
+        <Link to="/">تیکسی</Link>
+        <img src={Grid} />
+        <img src={Assets.Images.Ticksy} />
       </div>
-      <label className={styles.upload_image2}>
-        <input type="file" className={styles.upload_image} />
-      </label>
-      <p className={styles.input_box_title}>اسم تاپیک</p>
+      <div className={styles.card_container}>
+        <label htmlFor="avatar">
+          <img src={Assets.Images.GoogleImage} className={styles.avatar} />
+        </label>
+        <input type="file" id="avatar" className={styles.upload_image} />
+        <p className={styles.input_box_title}>اسم تاپیک</p>
+        <p className={styles.input_box_description} dir="auto">
+          لورم اپسیوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+          از طراحان گرافیک است.کتابهای زیادی در شصت و سه درصد گذشته ، حال و
+          آینده شناخت فراوان جامعه و متخصصان را می طلبد
+        </p>
 
-      <SEInput
-        type="text"
-        label="موضوع"
-        hint=""
-        onChangeText={() => {}}
-        inputClassName={styles.input1}
-        className={styles.input_class}
-        labelClassName={styles.input_label}
-        innerContainerClassName={styles.inner_container}
-      />
-      <SEInput
-        type="text"
-        label="پيام شما..."
-        hint=""
-        onChangeText={() => {}}
-        inputClassName={styles.input2}
-        className={styles.input_class}
-        labelClassName={styles.input_label}
-        innerContainerClassName={styles.inner_container}
-      />
-      <Button type="primary" className={styles.enter_button}>
-        ثبت
-      </Button>
+        <SEInput
+          label="موضوع"
+          onChangeText={() => {}}
+          inputClassName={styles.input}
+          className={styles.input_class}
+          labelClassName={styles.input_label}
+        />
+        <SEInput
+          minLines={5}
+          label="پيام شما..."
+          onChangeText={() => {}}
+          handleAttachment={() => {}}
+          inputClassName={styles.input}
+          className={styles.input_class}
+          labelClassName={styles.input_label}
+        />
 
-      <div className={className}></div>
+        <div className={styles.submit_container}>
+          <Button type="primary" className={styles.enter_button}>
+            ثبت
+          </Button>
+          <SEInput
+            label="تگ ها"
+            onChangeText={() => {}}
+            inputClassName={styles.input}
+            className={styles.tag_input_class}
+            labelClassName={styles.input_label}
+          />
+        </div>
+
+        <div className={className}></div>
+      </div>
     </div>
   );
 }

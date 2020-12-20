@@ -22,6 +22,11 @@ $failed_regex_primary_color: #e62e00;
 
 .inner_container {
   display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
   align-items: center;
 }
 
@@ -48,14 +53,15 @@ $failed_regex_primary_color: #e62e00;
 }
 
 .input {
+  width: 100%;
   outline: none;
   border: hidden;
   color: #606060;
   font-size: 20px;
   font-weight: 400;
+  padding: .3em 10px;
   border-radius: 8px;
   font-family: inherit;
-  padding: .3em 10px;
 }
 
 .eye_svg {
@@ -73,4 +79,52 @@ $failed_regex_primary_color: #e62e00;
 .failed_regex_focused_label_color {
   color: $failed_regex_primary_color;
   border-color: $failed_regex_primary_color;
+}
+
+.attachments {
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .new {
+    cursor: pointer;
+
+    &:hover {
+      background-color: #27bdc1;
+    }
+  }
+
+  .attachment {
+    height: 36px;
+    display: flex;
+    margin: 0 5px;
+    padding: 0 10px;
+    border-radius: 5px;
+    align-items: center;
+    transition: all 0.5s;
+    background-color: #26a9ad;
+
+    &_icon {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin-left: 5px;
+
+      &:last-child {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &_input {
+      display: none;
+    }
+
+    .name {
+      margin: 0;
+      color: #ffffff;
+      user-select: none;
+    }
+  }
 }
