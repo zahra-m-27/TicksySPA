@@ -4,7 +4,6 @@ import SEInput from "../../Components/SEInput";
 import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
 import TicksyLogo from "../../Assets/Images/Files/ticksy.png";
-import LandingImage from "../../Assets/Images/Files/home.png";
 
 interface Props {
   className?: string;

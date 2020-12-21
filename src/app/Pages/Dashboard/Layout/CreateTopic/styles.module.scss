@@ -15,44 +15,55 @@ $header-background-color: #265ecd;
   width:400px;
   height: 40px;
   background-color:$header-background-color;
+  opacity:.9;
   display: flex;
   color: #fff;
-  font-size: 15px;
+  font-size: 13px;
   border-radius:29% 12% 0 0;
-  padding-right: 5%;
+  padding-right: 4%;
   align-items: center;
   justify-content: flex-end;
 
   img:nth-child(1) {
-    width:27px;
-    height: 26px;
+    width:25px;
+    height: 24px;
     margin: 0 0 0 2vw;
     color: #fff;
     border-color:#fff;
   }
-}
-.upload{
-  margin-left:40%;
-  margin-top:2%;
-  width:90px;
-  height: 90px;
-  border-radius:50%;
-  border:solid 4px $header-background-color;
-  img:nth-child(1) {
-    width:50px;
-    height: 48px;
-    margin:20% 0 0 20%;
-    color:$header-background-color;
 
-  }
-   label{
-   visibility:hidden;
-  }
-   input{
-    margin-top:-300%;
 
+}
+.upload {
+  width:80%;
+  margin-left:-17%;
+  text-align:right;
+}
+.upload label{
+  display: block;
+  margin:5px;
+  text-align:right;
+  font-size:12px;
+  color:#707070;
+  opacity:0.8;
+  direction: rtl;
+}
+.upload input {
+  visibility: hidden;
+  width:80px;
+  height:80px;
+  border-radius: 50%;
+  padding: 5px;
+  direction: rtl;
+  box-shadow: 1px 2px 3px  #ccc;
+
+}
+@media(min-width:500px){
+  .upload{
+    width:450px;
   }
 }
+
 .middle{
   width:80%;
   margin-left:-17%;
@@ -74,8 +85,8 @@ $header-background-color: #265ecd;
   border-radius: 5px;
   padding: 5px;
   direction: rtl;
-  box-shadow: 1px 2px 3px  #ccc;
-
+  box-shadow: .5px .5px 1px 1px #707070;
+  border:none;
 }
 @media(min-width:500px){
   .middle{
@@ -102,7 +113,8 @@ $header-background-color: #265ecd;
   height: 85px;
   border-radius: 5px;
   direction: rtl;
-  box-shadow: 0 2px 3px #ccc;
+  box-shadow: .5px .5px 1px 1px #707070;
+  border:none;
 
 }
 
@@ -117,4 +129,5 @@ $header-background-color: #265ecd;
   width: 40%;
   height: 32px;
   align-self: center;
+  opacity:.9;
 }

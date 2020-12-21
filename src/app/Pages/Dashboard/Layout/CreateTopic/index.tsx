@@ -12,11 +12,17 @@ export default function CreateTopic() {
           تاپيک جدید
           <img src={Topic} />
         </div>
-        <div className={styles.upload}>
-          <img src={Picture} />
-          <label>
-            <input type="file" id="input-file" accept=".jpg" />
-          </label>
+        <div className={styles.border1}>
+          <div className={styles.upload}>
+            <label>
+              <input
+                type="file"
+                id="input-file"
+                src={Picture}
+                accept=".jpg , .png"
+              />
+            </label>
+          </div>
         </div>
         <div className={styles.middle}>
           <label> عنوان:</label>
@@ -35,3 +41,38 @@ export default function CreateTopic() {
     </div>
   );
 }
+/*
+.upload{
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+    margin-left:-50%;
+    text-align:right;
+    padding-bottom:10px;
+}
+.upload label{
+    display: block;
+    margin:5px;
+    text-align:right;
+    font-size:12px;
+    color:#707070;
+    opacity:0.8;
+    direction: rtl;
+
+}
+//*.upload input {
+    direction: rtl;
+    box-shadow: 1px 2px 3px  #ccc;
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+    padding: 30px 8px;
+
+}
+@media(min-width:500px){
+.upload{
+        width:450px;
+    }
+}
+
+ */
