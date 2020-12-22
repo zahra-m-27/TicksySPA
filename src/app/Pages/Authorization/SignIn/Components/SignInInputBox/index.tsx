@@ -1,7 +1,8 @@
 import React from "react";
 import { Button } from "antd";
-import SEInput from "../../../../../Components/SEInput";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
+import SEInput from "../../../../../Components/SEInput";
 
 interface Props {
   className?: string;
@@ -37,9 +38,9 @@ export default function SignInInputBox({ className }: Props) {
       <Button type="primary" className={styles.enter_button}>
         ورود
       </Button>
-      <a className={styles.forget_pass} href="">
+      <Link className={styles.forget_pass} to="/forgot-password">
         فراموشی گذرواژه
-      </a>
+      </Link>
     </div>
   );
 }

@@ -3,36 +3,41 @@ import styles from "./styles.module.scss";
 import ClassNames from "../../Utilities/ClassNames";
 import VisiblePassSvg from "../../Assets/Svgs/components/VisiblePassSvg";
 import InVisiblePassSvg from "../../Assets/Svgs/components/InvisiblePassSvg";
+import Assets from "../../Assets";
 
 //Software Engineering Evaluation(module) Input
 
 interface Props {
-  hint: string;
+  hint?: string;
   label: string;
   regex?: RegExp;
+  minLines?: number;
   className?: string;
   icon?: JSX.Element;
   isNumeric?: boolean;
   inputClassName?: string;
   labelClassName?: string;
-  type: "password" | "text";
+  type?: "password" | "text";
   onIconPressed?: () => void;
+  handleAttachment?: () => void;
   passwordCanBeVisible?: boolean;
   innerContainerClassName?: string;
   onChangeText: (text: string, isRegexFailed: boolean) => void;
 }
 
 export default function SEInput({
-  hint,
   icon,
-  type,
   regex,
   label,
+  minLines,
   className,
+  hint = "",
   onChangeText,
+  type = "text",
   onIconPressed,
   labelClassName,
   inputClassName,
+  handleAttachment,
   isNumeric = false,
   innerContainerClassName,
   passwordCanBeVisible = true,
@@ -52,7 +57,7 @@ export default function SEInput({
     }
   };
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<any>) => {
     if (isNumeric && !/^\d*$/.test(event.target.value)) {
       setContent(event.target.value);
       setTimeout(() => {
@@ -131,34 +136,81 @@ export default function SEInput({
   return (
     <div className={inputContainerStyle}>
       <div className={innerContainer}>
-        <p className={labelStyle}>{label}</p>
-        <input
-          type={Type}
-          value={Content}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          onChange={onChange}
-          placeholder={IsFocused ? hint : ""}
-          className={ClassNames(styles.input, inputClassName, labelClassName)}
-        />
-        {passwordCanBeVisible &&
-          type === "password" &&
-          (Type === "password" ? (
-            <div onClick={() => setType("text")}>
-              <VisiblePassSvg className={styles.eye_svg} />
-            </div>
+        <div className={styles.content}>
+          <p className={labelStyle}>{label}</p>
+          {minLines ? (
+            <textarea
+              rows={minLines}
+              value={Content}
+              onBlur={onBlur}
+              onFocus={onFocus}
+              onChange={onChange}
+              placeholder={IsFocused ? hint : ""}
+              className={ClassNames(
+                styles.input,
+                inputClassName,
+                labelClassName
+              )}
+            />
           ) : (
-            <div onClick={() => setType("password")}>
-              <InVisiblePassSvg className={styles.eye_svg} />
+            <input
+              type={Type}
+              value={Content}
+              onBlur={onBlur}
+              onFocus={onFocus}
+              onChange={onChange}
+              placeholder={IsFocused ? hint : ""}
+              className={ClassNames(
+                styles.input,
+                inputClassName,
+                labelClassName
+              )}
+            />
+          )}
+          {passwordCanBeVisible &&
+            type === "password" &&
+            (Type === "password" ? (
+              <div onClick={() => setType("text")}>
+                <VisiblePassSvg className={styles.eye_svg} />
+              </div>
+            ) : (
+              <div onClick={() => setType("password")}>
+                <InVisiblePassSvg className={styles.eye_svg} />
+              </div>
+            ))}
+          {icon && (
+            <div
+              onClick={onIconPressed}
+              className={styles.eye_svg}
+              style={onIconPressed ? { cursor: "pointer" } : {}}
+            >
+              {icon}
             </div>
-          ))}
-        {icon && (
-          <div
-            onClick={onIconPressed}
-            className={styles.eye_svg}
-            style={onIconPressed ? { cursor: "pointer" } : {}}
-          >
-            {icon}
+          )}
+        </div>
+        {handleAttachment && (
+          <div className={styles.attachments}>
+            <label htmlFor="attachment_input">
+              <div className={ClassNames(styles.attachment, styles.new)}>
+                <img
+                  src={Assets.Images.Attach}
+                  className={styles.attachment_icon}
+                />
+                <p className={styles.name}>چسباندن فایل</p>
+              </div>
+            </label>
+            <input
+              type="file"
+              id="attachment_input"
+              className={styles.attachment_input}
+            />
+            <div className={styles.attachment}>
+              <img
+                src={Assets.Images.Cancel}
+                className={styles.attachment_icon}
+              />
+              <p className={styles.name}>mainpage.png</p>
+            </div>
           </div>
         )}
       </div>
