@@ -12,6 +12,7 @@ import DotSquare2 from "./Files/dot_square_2.png";
 import GoogleImage from "./Files/google_images.png";
 import ManTicket from "./Files/man_cinema_ticket.png";
 import TopicCard from "./Files/topic_card_background.png";
+import Search from "./Files/search.png";
 
 const Images = {
   Exit,
@@ -28,5 +29,6 @@ const Images = {
   DotSquare2,
   UserAvatar,
   GoogleImage,
+  Search
 };
 export default Images;
