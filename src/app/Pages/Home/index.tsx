@@ -104,10 +104,10 @@ export default function HomePage() {
         <div className={styles.topic_container}>
           {topics.map((topic) => (
             <Topic
-              title={topic.title}
-              description={topic.description}
               pic={topic.pic}
+              title={topic.title}
               badge={topic.badge}
+              description={topic.description}
             />
           ))}
         </div>

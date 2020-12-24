@@ -14,6 +14,9 @@ export default function TopicCard() {
           </div>
         </div>
         <div className={styles.card_content_footer}>
+          <div className={styles.card_content_footer_edit}>
+            <img src={Assets.Images.EditProperty} />
+          </div>
           <span>عنوان اول</span>
           <p>نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد</p>
         </div>
