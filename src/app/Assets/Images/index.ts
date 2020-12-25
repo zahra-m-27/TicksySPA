@@ -13,6 +13,7 @@ import GoogleImage from "./Files/google_images.png";
 import EditProperty from "./Files/edit_property.png";
 import ManTicket from "./Files/man_cinema_ticket.png";
 import TopicCard from "./Files/topic_card_background.png";
+import Search from "./Files/search.png";
 
 const Images = {
   Exit,
@@ -30,5 +31,6 @@ const Images = {
   UserAvatar,
   GoogleImage,
   EditProperty,
+  Search,
 };
 export default Images;
