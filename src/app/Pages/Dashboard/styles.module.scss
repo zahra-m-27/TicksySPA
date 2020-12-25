@@ -14,9 +14,26 @@
 
 .left_side {
   height: 100%;
+  overflow-y: scroll;
   background-color: #ffffff;
   border-radius: 0 40px 40px 0;
   width: calc(100% - clamp(200px, 25%, 462px));
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #212f84;
+    background-color: #212f84;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px #212f84;
+    background-color: #919ff1;
+  }
 }
 
 .nav ul {

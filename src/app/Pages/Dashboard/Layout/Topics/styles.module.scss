@@ -1,5 +1,32 @@
 .container {
-  height: 100%;
+
+  .add_topic {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 20px 5vw 0;
+    transition: all 0.2s;
+    display: inline-block;
+    background-color: #3d6cc9;
+    box-shadow: 0 0 5px 0 #3d6cc9;
+
+    &:hover {
+      background-color: #4e7cd4;
+      box-shadow: 0 0 5px 0 #4e7cd4;
+    }
+
+    p {
+      margin: 0 10px;
+      color: white;
+      display: inline-block;
+    }
+
+    img {
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+    }
+  }
 
   .cards {
     height: 65vh;

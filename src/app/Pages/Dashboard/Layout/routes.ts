@@ -7,6 +7,7 @@ export interface DashboardRoute {
   name?: string;
   path?: string;
   exact?: boolean;
+  redirect?: string;
   component?: () => JSX.Element;
   children?: DashboardRoute[];
 }
@@ -15,6 +16,7 @@ const routes: DashboardRoute[] = [
   {
     path: "/",
     name: "داشبورد",
+    redirect: "/tickets",
     children: [
       {
         path: "/tickets",

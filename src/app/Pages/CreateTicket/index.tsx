@@ -1,16 +1,16 @@
-import React from "react";
-import { Button, Tag } from "antd";
-import SEInput from "../../Components/SEInput";
-import styles from "./styles.module.scss";
-import { Link } from "react-router-dom";
-import Grid from "../../Assets/Images/Files/grid.svg";
+import React, { useState } from "react";
+import { Button } from "antd";
 import Assets from "../../Assets";
+import { Link } from "react-router-dom";
+import styles from "./styles.module.scss";
+import SEInput from "../../Components/SEInput";
+import Grid from "../../Assets/Images/Files/grid.svg";
 
-interface Props {
-  className?: string;
-}
+export default function CreateTicket() {
+  const [Tags, setTags] = useState<string[]>([]);
+  const [CurrentTag, setCurrentTag] = useState<string>("");
+  const [Attachments, setAttachments] = useState<File[]>([]);
 
-export default function CreateTicket({ className }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -22,10 +22,7 @@ export default function CreateTicket({ className }: Props) {
         <img src={Assets.Images.Ticksy} />
       </div>
       <div className={styles.card_container}>
-        <label htmlFor="avatar">
-          <img src={Assets.Images.GoogleImage} className={styles.avatar} />
-        </label>
-        <input type="file" id="avatar" className={styles.upload_image} />
+        <img src={Assets.Images.GoogleImage} className={styles.avatar} />
         <p className={styles.input_box_title}>اسم تاپیک</p>
         <p className={styles.input_box_description} dir="auto">
           لورم اپسیوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
@@ -44,10 +41,15 @@ export default function CreateTicket({ className }: Props) {
           minLines={5}
           label="پيام شما..."
           onChangeText={() => {}}
-          handleAttachment={() => {}}
+          attachments={Attachments}
+          onRemoveAttachment={(index) => {
+            Attachments.splice(index, 1);
+            setAttachments([...Attachments]);
+          }}
           inputClassName={styles.input}
           className={styles.input_class}
           labelClassName={styles.input_label}
+          onSelectFile={(file) => setAttachments([file, ...Attachments])}
         />
 
         <div className={styles.submit_container}>
@@ -55,15 +57,22 @@ export default function CreateTicket({ className }: Props) {
             ثبت
           </Button>
           <SEInput
+            tags={Tags}
             label="تگ ها"
-            onChangeText={() => {}}
+            onTagClose={(index) => {
+              Tags.splice(index, 1);
+              setTags([...Tags]);
+            }}
+            onChangeText={setCurrentTag}
+            onEnter={() => {
+              setTags([CurrentTag, ...Tags]);
+              setCurrentTag("");
+            }}
             inputClassName={styles.input}
             className={styles.tag_input_class}
             labelClassName={styles.input_label}
           />
         </div>
-
-        <div className={className}></div>
       </div>
     </div>
   );

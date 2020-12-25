@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
+import { useHistory } from "react-router-dom";
 
 interface Props {
   pic: string;
@@ -9,8 +10,9 @@ interface Props {
 }
 
 export default function Topic({ title, description, pic, badge }: Props) {
+  const history = useHistory();
   return (
-    <div className={styles.topic}>
+    <div className={styles.topic} onClick={() => history.push("/ticket/test")}>
       <div className={styles.topic_badge}>
         <img src={badge} />
       </div>

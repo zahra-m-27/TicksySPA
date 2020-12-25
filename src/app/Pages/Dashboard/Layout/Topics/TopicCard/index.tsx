@@ -1,13 +1,23 @@
 import React from "react";
 import styles from "../styles.module.scss";
 import Assets from "../../../../../Assets";
+import { useHistory } from "react-router-dom";
 
-export default function TopicCard() {
+interface Props {
+  username: string;
+}
+
+export default function TopicCard({ username }: Props) {
+  const history = useHistory();
+
   return (
     <div className={styles.card}>
       <img src={Assets.Images.TopicCard} />
       <div className={styles.card_content}>
-        <div className={styles.card_content_header}>
+        <div
+          className={styles.card_content_header}
+          onClick={() => history.push("/dashboard/tickets/" + username)}
+        >
           <div className={styles.topic_avatar}>
             <img src={Assets.Images.DotSquare2} />
             <img src={Assets.Images.ManTicket} className={styles.avatar} />

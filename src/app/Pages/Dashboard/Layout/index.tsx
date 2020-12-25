@@ -3,7 +3,7 @@ import routes from "./routes";
 import { Breadcrumb } from "antd";
 import Assets from "../../../Assets";
 import styles from "./styles.module.scss";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect, Link } from "react-router-dom";
 import Grid from "../../../Assets/Images/Files/grid.svg";
 import { breadcrumbFindRoute, getRoutes } from "../../../Utilities";
 
@@ -23,7 +23,7 @@ export default function DashboardLayout() {
             <Breadcrumb.Item>خانه</Breadcrumb.Item>
             {breadcrumb.parents.map((parent, index) => (
               <Breadcrumb.Item key={index}>
-                <a href={"/dashboard" + parent.path}>{parent.name}</a>
+                <Link to={"/dashboard" + parent.path}>{parent.name}</Link>
               </Breadcrumb.Item>
             ))}
             <Breadcrumb.Item>{breadcrumb.route.name}</Breadcrumb.Item>
@@ -33,8 +33,17 @@ export default function DashboardLayout() {
       </div>
       <Switch>
         {getRoutes(routes)
-          .filter((route) => route.component)
+          .filter((route) => route.component || route.redirect)
           .map((route, index) => {
+            if (route.redirect) {
+              return (
+                <Redirect
+                  path={"/dashboard" + route.path}
+                  exact={route.exact}
+                  to={"/dashboard" + route.redirect}
+                />
+              );
+            }
             return (
               <Route
                 key={index}

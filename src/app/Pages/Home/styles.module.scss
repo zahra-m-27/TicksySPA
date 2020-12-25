@@ -173,7 +173,7 @@
 .footer_contact div {
   color: #d4d8e3;
   margin: 2rem 12vw 0 0;
-  font-size: 15px;
+  font-size: clamp(13px, 0.8vw, 15px);
 }
 
 .footer_contact div img {

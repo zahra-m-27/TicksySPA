@@ -1,44 +1,55 @@
 import React, { useState } from "react";
+import { Tag } from "antd";
+import Assets from "../../Assets";
 import styles from "./styles.module.scss";
 import ClassNames from "../../Utilities/ClassNames";
 import VisiblePassSvg from "../../Assets/Svgs/components/VisiblePassSvg";
 import InVisiblePassSvg from "../../Assets/Svgs/components/InvisiblePassSvg";
-import Assets from "../../Assets";
 
 //Software Engineering Evaluation(module) Input
 
 interface Props {
   hint?: string;
-  label: string;
+  label?: string;
   regex?: RegExp;
+  tags?: string[];
   minLines?: number;
   className?: string;
   icon?: JSX.Element;
   isNumeric?: boolean;
+  onEnter?: () => void;
+  attachments?: File[];
   inputClassName?: string;
   labelClassName?: string;
   type?: "password" | "text";
   onIconPressed?: () => void;
-  handleAttachment?: () => void;
   passwordCanBeVisible?: boolean;
   innerContainerClassName?: string;
+  onSelectFile?: (file: File) => void;
+  onTagClose?: (index: number) => void;
+  onRemoveAttachment?: (index: number) => void;
   onChangeText: (text: string, isRegexFailed: boolean) => void;
 }
 
 export default function SEInput({
   icon,
+  tags,
   regex,
   label,
+  onEnter,
   minLines,
   className,
   hint = "",
+  onTagClose,
+  attachments,
+  onSelectFile,
   onChangeText,
   type = "text",
   onIconPressed,
   labelClassName,
   inputClassName,
-  handleAttachment,
   isNumeric = false,
+  onRemoveAttachment,
   innerContainerClassName,
   passwordCanBeVisible = true,
 }: Props) {
@@ -87,11 +98,7 @@ export default function SEInput({
         className
       );
     } else {
-      inputContainerStyle = ClassNames(
-        styles.input_container,
-        styles.focused_input_container,
-        className
-      );
+      inputContainerStyle = ClassNames(styles.input_container, className);
     }
   }
 
@@ -131,13 +138,29 @@ export default function SEInput({
         labelClassName
       );
     }
+  } else if ((tags && tags.length > 0) || attachments) {
+    labelStyle = ClassNames(styles.label, styles.label_margin, labelClassName);
   }
+
+  const tagColors = [
+    "red",
+    "gold",
+    "lime",
+    "cyan",
+    "blue",
+    "green",
+    "purple",
+    "orange",
+    "magenta",
+    "volcano",
+    "geekblue",
+  ];
 
   return (
     <div className={inputContainerStyle}>
       <div className={innerContainer}>
         <div className={styles.content}>
-          <p className={labelStyle}>{label}</p>
+          {label && <p className={labelStyle}>{label}</p>}
           {minLines ? (
             <textarea
               rows={minLines}
@@ -159,6 +182,9 @@ export default function SEInput({
               onBlur={onBlur}
               onFocus={onFocus}
               onChange={onChange}
+              onKeyDown={(e) =>
+                e.key === "Enter" && onEnter && (onEnter(), setContent(""))
+              }
               placeholder={IsFocused ? hint : ""}
               className={ClassNames(
                 styles.input,
@@ -188,8 +214,22 @@ export default function SEInput({
             </div>
           )}
         </div>
-        {handleAttachment && (
-          <div className={styles.attachments}>
+        {tags && tags.length > 0 && (
+          <div className={ClassNames(styles.tags_container, styles.scrollview)}>
+            {tags.map((tag, i) => (
+              <Tag
+                key={tag}
+                closable
+                color={tagColors[i % tagColors.length]}
+                onClose={() => onTagClose && onTagClose(i)}
+              >
+                #{tag}
+              </Tag>
+            ))}
+          </div>
+        )}
+        {onSelectFile && attachments && (
+          <div className={ClassNames(styles.attachments, styles.scrollview)}>
             <label htmlFor="attachment_input">
               <div className={ClassNames(styles.attachment, styles.new)}>
                 <img
@@ -202,15 +242,24 @@ export default function SEInput({
             <input
               type="file"
               id="attachment_input"
+              onChange={(e) =>
+                e.target.files &&
+                onSelectFile &&
+                onSelectFile(e.target.files[0])
+              }
               className={styles.attachment_input}
             />
-            <div className={styles.attachment}>
-              <img
-                src={Assets.Images.Cancel}
-                className={styles.attachment_icon}
-              />
-              <p className={styles.name}>mainpage.png</p>
-            </div>
+            {attachments &&
+              attachments.map((attachment, i) => (
+                <div className={styles.attachment} key={i}>
+                  <img
+                    src={Assets.Images.Cancel}
+                    className={styles.attachment_icon}
+                    onClick={() => onRemoveAttachment && onRemoveAttachment(i)}
+                  />
+                  <p className={styles.name}>{attachment.name}</p>
+                </div>
+              ))}
           </div>
         )}
       </div>

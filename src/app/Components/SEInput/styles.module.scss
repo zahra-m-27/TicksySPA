@@ -5,6 +5,10 @@ $failed_regex_primary_color: #e62e00;
   color: #B8B8B8;
 }
 
+.input_container {
+  width: 100%;
+}
+
 .inner_container {
   direction: rtl;
   border-radius: 8px;
@@ -41,6 +45,10 @@ $failed_regex_primary_color: #e62e00;
   transform: translateY(-50%);
 }
 
+.label_margin {
+  transform: translateY(calc(-50% - 25px));
+}
+
 .focused_label {
   top: -8px;
   padding: 0 5px;
@@ -62,6 +70,24 @@ $failed_regex_primary_color: #e62e00;
   padding: .3em 10px;
   border-radius: 8px;
   font-family: inherit;
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgb(38 ,169, 173);
+    border-radius: 5px;
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgb(38 ,169, 173);
+    background-color: #555;
+  }
 }
 
 .eye_svg {
@@ -81,11 +107,38 @@ $failed_regex_primary_color: #e62e00;
   border-color: $failed_regex_primary_color;
 }
 
+.tags_container {
+  display: flex;
+  margin: 0 10px;
+  padding: 10px 0;
+  overflow-x: scroll;
+}
+
+.scrollview {
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgb(38 ,169, 173);
+    border-radius: 5px;
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgb(38 ,169, 173);
+    background-color: #555;
+  }
+}
+
 .attachments {
   padding: 7px;
   display: flex;
+  overflow-x: scroll;
   flex-direction: row;
-  justify-content: flex-end;
 
   .new {
     cursor: pointer;
@@ -110,6 +163,11 @@ $failed_regex_primary_color: #e62e00;
       height: 20px;
       cursor: pointer;
       margin-left: 5px;
+      transition: all 0.2s;
+
+      &:hover {
+        filter: alpha(0.65);
+      }
 
       &:last-child {
         width: 16px;
@@ -124,7 +182,9 @@ $failed_regex_primary_color: #e62e00;
     .name {
       margin: 0;
       color: #ffffff;
+      overflow: hidden;
       user-select: none;
+      white-space: nowrap;
     }
   }
 }
