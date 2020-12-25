@@ -65,18 +65,21 @@ export default function Tickets() {
     return (
         <div>
             <div className={styles.top}>
-                <div className={styles.input}>
-                    <label className={styles.input_label}>شناسه</label>
-                    <input type="text" className={styles.input_box} onChange={() => {}}/>
+                <div className={styles.inner_top}>
+                    <div className={styles.input}>
+                        <label className={styles.input_label}>شناسه</label>
+                        <input type="text" className={styles.input_box} onChange={() => {}}/>
+                    </div>
+                    <div className={styles.input}>
+                        <label className={styles.input_label}>عنوان</label>
+                        <input type={"text"} className={styles.input_box} onChange={() => {}}/>
+                    </div>
+                    <Button type="primary" className={styles.search_button}>
+                        <img src={Assets.Images.Search} className={styles.search_image}/>
+                        جستجو
+                    </Button>
                 </div>
-                <div className={styles.input}>
-                    <label className={styles.input_label}>عنوان</label>
-                    <input type={"text"} className={styles.input_box} onChange={() => {}}/>
-                </div>
-                <Button type="primary" className={styles.search_button}>
-                    <img src={Assets.Images.Search} className={styles.search_image}/>
-                    جستجو
-                </Button>
+
             </div>
             <div>
                 <table className={styles.ticket_table}>
@@ -100,7 +103,7 @@ export default function Tickets() {
                                     <span className={styles.hour}>{listItem.startHour}</span>
                                 </td>
                                 <td className={styles.td_last}>
-                                    <span >{listItem.lastActivityDate}</span>
+                                    <span>{listItem.lastActivityDate}</span>
                                     <span className={styles.hour}>{listItem.lastActivityHour}</span>
                                 </td>
                             </tr>

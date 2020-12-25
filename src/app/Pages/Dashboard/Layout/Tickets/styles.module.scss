@@ -1,14 +1,19 @@
 .top {
-  display: flex;
-  flex-direction: row;
-  direction: rtl;
   background-color: #0088e3;
   height: 14vh;
   width: 92%;
-  align-items: center;
-  justify-content: space-evenly;
   margin: 5.5vh auto 7.9vh auto;
   border-radius: 5px;
+}
+.inner_top{
+  display: flex;
+  flex-direction: row;
+  direction: rtl;
+  align-items: flex-end;
+  justify-content: end;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .search_button{
@@ -20,6 +25,7 @@
   width: clamp(90px,7.8%,120px);
   height: 3.6vh;
   font-size: clamp(10px,0.9vw,16px);
+  margin-right: 5.6%;
 }
 
 .search_image {
@@ -31,6 +37,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-right: 1.6%;
+  margin-left: 1.1%;
 }
 
 .input_box{
