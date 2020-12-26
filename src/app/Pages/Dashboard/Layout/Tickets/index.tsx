@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { Button } from "antd";
 import Assets from "../../../../Assets";
 import SEInput from "../../../../Components/SEInput";
+import ClassNames from "../../../../Utilities/ClassNames";
 
 interface TicketListItems {
   id: string;
@@ -15,6 +16,8 @@ interface TicketListItems {
 }
 
 export default function Tickets() {
+  const [CurrentPage, setCurrentPage] = useState(3);
+
   let ticketList: TicketListItems[] = [
     {
       id: "11198",
@@ -79,42 +82,65 @@ export default function Tickets() {
           </Button>
         </div>
       </div>
-      <div>
-        <table className={styles.ticket_table}>
-          <th>شناسه</th>
-          <th>عنوان</th>
-          <th>وضعیت تیکت</th>
-          <th>تاریخ شروع</th>
-          <th>آخرین فعالیت</th>
-          {ticketList.map((listItem) => {
-            return (
-              <tr>
-                <td className={styles.td_id}>{listItem.id}</td>
-                <td className={styles.td_title}>{listItem.title}</td>
-                <td className={styles.td_condition}>
-                  <div
-                    className={styles.td_condition_container}
-                    style={{
-                      background: conditionClass(listItem.ticketCondition),
-                    }}
-                  >
-                    {listItem.ticketCondition}
-                  </div>
-                </td>
-                <td className={styles.td_start}>
-                  <span>{listItem.startDate}</span>
-                  <span className={styles.hour}>{listItem.startHour}</span>
-                </td>
-                <td className={styles.td_last}>
-                  <span>{listItem.lastActivityDate}</span>
-                  <span className={styles.hour}>
-                    {listItem.lastActivityHour}
-                  </span>
-                </td>
-              </tr>
-            );
-          })}
-        </table>
+      <table className={styles.ticket_table}>
+        <th>شناسه</th>
+        <th>عنوان</th>
+        <th>وضعیت تیکت</th>
+        <th>تاریخ شروع</th>
+        <th>آخرین فعالیت</th>
+        {ticketList.map((listItem) => {
+          return (
+            <tr>
+              <td className={styles.td_id}>{listItem.id}</td>
+              <td className={styles.td_title}>{listItem.title}</td>
+              <td className={styles.td_condition}>
+                <div
+                  className={styles.td_condition_container}
+                  style={{
+                    background: conditionClass(listItem.ticketCondition),
+                  }}
+                >
+                  {listItem.ticketCondition}
+                </div>
+              </td>
+              <td className={styles.td_start}>
+                <span>{listItem.startDate}</span>
+                <span className={styles.hour}>{listItem.startHour}</span>
+              </td>
+              <td className={styles.td_last}>
+                <span>{listItem.lastActivityDate}</span>
+                <span className={styles.hour}>{listItem.lastActivityHour}</span>
+              </td>
+            </tr>
+          );
+        })}
+      </table>
+      <div className={styles.pagination}>
+        <Assets.Svgs.LessThan
+          className={styles.move_button}
+          onClick={() => setCurrentPage(CurrentPage - 1)}
+        />
+        <div className={styles.divider} />
+        <div
+          className={styles.pagination_page}
+          onClick={() => setCurrentPage(CurrentPage - 1)}
+        >
+          {CurrentPage - 1}
+        </div>
+        <div className={ClassNames(styles.pagination_page, styles.active)}>
+          {CurrentPage}
+        </div>
+        <div
+          className={styles.pagination_page}
+          onClick={() => setCurrentPage(CurrentPage + 1)}
+        >
+          {CurrentPage + 1}
+        </div>
+        <div className={styles.divider} />
+        <Assets.Svgs.MoreThan
+          className={styles.move_button}
+          onClick={() => setCurrentPage(CurrentPage + 1)}
+        />
       </div>
     </div>
   );

@@ -117,3 +117,40 @@ td {
   padding: 2px 10px;
   font-size: clamp(13px, 0.8vw, 16px);
 }
+
+.pagination {
+  display: flex;
+  margin-top: 5%;
+  align-items: center;
+  justify-content: center;
+
+  .divider {
+    width: 3px;
+    height: 43px;
+    margin: 0 15px;
+    border-radius: 1px;
+    background-color: #e8e8e8;
+  }
+
+  .pagination_page {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    margin: 0 5px;
+    font-size: 17px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+
+    &.active {
+      color: white;
+      background-color: #44adf2;
+    }
+  }
+
+  .move_button {
+    cursor: pointer;
+  }
+}
