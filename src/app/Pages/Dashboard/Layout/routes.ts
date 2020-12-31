@@ -2,14 +2,15 @@ import Topics from "./Topics";
 import CreateTopic from "./CreateTopic";
 import Users from "./Users";
 import Tickets from "./Tickets";
+import Ticket from "./Ticket";
 
 export interface DashboardRoute {
   name?: string;
   path?: string;
   exact?: boolean;
   redirect?: string;
-  component?: () => JSX.Element;
   children?: DashboardRoute[];
+  component?: () => JSX.Element;
 }
 
 const routes: DashboardRoute[] = [
@@ -22,6 +23,13 @@ const routes: DashboardRoute[] = [
         path: "/tickets",
         name: "تیکت ها",
         component: Tickets,
+        children: [
+          {
+            path: "/tickets/:id",
+            name: "محتوای تیکت",
+            component: Ticket,
+          },
+        ],
       },
       {
         path: "/topics",

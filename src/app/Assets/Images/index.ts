@@ -14,6 +14,7 @@ import DotSquare2 from "./Files/dot_square_2.png";
 import GoogleImage from "./Files/google_images.png";
 import EditProperty from "./Files/edit_property.png";
 import ManTicket from "./Files/man_cinema_ticket.png";
+import ChatBackground from "./Files/chat_background.jpg";
 import TopicCard from "./Files/topic_card_background.png";
 
 const Images = {
@@ -34,5 +35,6 @@ const Images = {
   UserAvatar,
   GoogleImage,
   EditProperty,
+  ChatBackground,
 };
 export default Images;
