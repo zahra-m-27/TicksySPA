@@ -5,10 +5,12 @@ export function breadcrumbFindRoute(
   routes: DashboardRoute[],
   parents: DashboardRoute[]
 ) {
-  let resultRoute = routes.find(
-    (route) =>
-      "/dashboard" + route.path?.replace(/\/$/i, "") ===
-      path.replace(/\/$/i, "")
+  let resultRoute = routes.find((route) =>
+    new RegExp(
+      ("^/dashboard" + route.path)
+        .replace(/\/:(.*?)(\/|$)/g, "/(.*?)/")
+        .replace(/\/$/i, "") + "$"
+    ).test(path.replace(/\/$/i, ""))
   );
   if (resultRoute) {
     return { route: resultRoute, parents };
