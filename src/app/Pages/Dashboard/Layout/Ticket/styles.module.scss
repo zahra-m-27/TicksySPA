@@ -1,0 +1,131 @@
+.container {
+  display: flex;
+  margin-top: 5vh;
+  align-items: center;
+  flex-direction: column;
+
+  .ticket_info_container {
+    width: 93%;
+    color: #fff;
+    padding: 30px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    background-color: #0088e3;
+
+    p {
+      margin: 0;
+    }
+
+    .ticket_info_top {
+      font-size: 22px;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .ticket_info_bottom {
+      display: flex;
+      font-size: 22px;
+      justify-content: space-around;
+    }
+  }
+
+  .tags_container {
+    width: 83%;
+    display: flex;
+    padding: 27px;
+    margin-top: 30px;
+    border-radius: 10px;
+    justify-content: flex-end;
+    background-color: #e0f7ff;
+
+    p {
+      color: #9e9797;
+      font-size: 18px;
+      user-select: none;
+      margin: 5px 15px 0;
+    }
+
+    .hashtag_icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .chat_container {
+    width: 83%;
+    display: flex;
+    margin-top: 8vh;
+    min-height: 100vh;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    flex-direction: column;
+    box-shadow: 0 3px 8px 0 #76787d;
+    padding-top: clamp(13px, 4vh, 48px);
+    background-image: url("../../../../Assets/Images/Files/chat_background.jpg");
+
+    .message {
+      width: 50%;
+      color: white;
+      margin: clamp(13px, 4vh, 48px) 60px;
+      border-radius: 25px;
+      background-color: #2168bd;
+
+      p {
+        margin: 0
+      }
+
+      &_user {
+        display: flex;
+        align-items: center;
+
+        p {
+          margin: 0 4rem;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        &_avatar {
+          width: 75px;
+          height: 75px;
+        }
+      }
+
+      &_content {
+        margin: 20px !important;
+      }
+
+      &_time {
+        display: flex;
+        user-select: none;
+        margin: 0 20px 20px;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .send_message {
+    display: flex;
+    padding: 0 37px;
+    align-items: center;
+    background-color: white;
+
+    &_input {
+      margin: 10px 30px;
+
+      &_innerContainer {
+        border: hidden !important;
+        box-shadow: 0 0 0 0 !important;
+      }
+    }
+
+    &_icons {
+      cursor: pointer;
+    }
+
+    .attachment_input {
+      display: none;
+    }
+  }
+}
+

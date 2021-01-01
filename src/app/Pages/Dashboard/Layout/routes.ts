@@ -3,14 +3,16 @@ import Users from "./Users";
 import Topics from "./Topics";
 import CreateTopic from "./CreateTopic";
 import Tickets from "./Tickets";
+import Ticket from "./Ticket";
+import SubmitCertificate from "./SubmitCertificate";
 
 export interface DashboardRoute {
   name?: string;
   path?: string;
   exact?: boolean;
   redirect?: string;
-  component?: () => JSX.Element;
   children?: DashboardRoute[];
+  component?: () => JSX.Element;
 }
 
 const routes: DashboardRoute[] = [
@@ -20,19 +22,26 @@ const routes: DashboardRoute[] = [
     redirect: "/tickets",
     children: [
       {
-        path: "/tickets",
-        name: "تیکت ها",
-        component: Tickets,
-      },
-      {
         path: "/users",
-        name: "مدیریت حساب",
+        name: "مديريت حساب",
         component: Users,
         children: [
           {
             path: "/users/profile",
             name: "پروفايل",
             component: Profile,
+          },
+        ],
+      },
+      {
+        path: "/tickets",
+        name: "تیکت ها",
+        component: Tickets,
+        children: [
+          {
+            path: "/tickets/:id",
+            name: "محتوای تیکت",
+            component: Ticket,
           },
         ],
       },

@@ -1,8 +1,10 @@
 $header-background-color: #265ecd;
 .container {
+  height: 100%;
 }
 
 .rectangle {
+
   display: flex;
   margin: 5% auto 0;
   object-fit: contain;
@@ -35,7 +37,7 @@ $header-background-color: #265ecd;
 }
 .right {
   margin-right: 8%;
-  margin-top: 10%;
+  margin-top:-43%;
 }
 .big{
   object-fit: contain;
@@ -60,7 +62,7 @@ $header-background-color: #265ecd;
   opacity: .7;
 }
 .profile{
-  margin-top:-50%;
+  margin-top:10%;
   margin-right:60%;
 }
 .upload {
@@ -82,12 +84,50 @@ $header-background-color: #265ecd;
   display: none;
 }
 
-.enter_button {
+.change_button {
   width: 30%;
   opacity: .9;
   height: 32px;
   align-self: center;
-  margin-top:10%;
-  margin-bottom:2%;
+  margin-bottom:3%;
+  background-color: $header-background-color;
+}
+
+.change {
+  width: 40%;
+  text-align: right;
+ margin-left:52%;
+  margin-top:-45%;
+
+}
+
+.change label {
+  display: block;
+  margin: 5px;
+  text-align: right;
+  line-height: 2;
+  font-size: 15px;
+  color: #454647;
+  font-family: IRANMarker;
+}
+
+.change input {
+  width: 100%;
+  height: 30px;
+  border: none;
+  padding: 15px;
+  font-family: Shabnam;
+  border-radius: 5px;
+  direction:rtl;
+  font-size:10px;
+  opacity:.7;
+}
+.record_button{
+  width:30%;
+  opacity: .9;
+  height: 32px;
+  align-self: center;
+  margin-top: 10%;
+  margin-bottom:3%;
   background-color: $header-background-color;
 }

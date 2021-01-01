@@ -4,6 +4,7 @@ import { Button } from "antd";
 import Assets from "../../../../Assets";
 import SEInput from "../../../../Components/SEInput";
 import ClassNames from "../../../../Utilities/ClassNames";
+import { useHistory } from "react-router-dom";
 
 interface TicketListItems {
   id: string;
@@ -16,6 +17,7 @@ interface TicketListItems {
 }
 
 export default function Tickets() {
+  const history = useHistory();
   const [CurrentPage, setCurrentPage] = useState(3);
 
   let ticketList: TicketListItems[] = [
@@ -64,6 +66,10 @@ export default function Tickets() {
     else if (s == "در حال پردازش") return "#0088e3";
   };
 
+  const openTicket = (id: string) => {
+    history.push("/dashboard/tickets/" + id);
+  };
+
   return (
     <div>
       <div className={styles.top}>
@@ -88,28 +94,38 @@ export default function Tickets() {
         <th>وضعیت تیکت</th>
         <th>تاریخ شروع</th>
         <th>آخرین فعالیت</th>
-        {ticketList.map((listItem) => {
+        {ticketList.map((ticket) => {
           return (
             <tr>
-              <td className={styles.td_id}>{listItem.id}</td>
-              <td className={styles.td_title}>{listItem.title}</td>
+              <td
+                className={styles.td_id}
+                onClick={() => openTicket(ticket.id)}
+              >
+                {ticket.id}
+              </td>
+              <td
+                className={styles.td_title}
+                onClick={() => openTicket(ticket.id)}
+              >
+                {ticket.title}
+              </td>
               <td className={styles.td_condition}>
                 <div
                   className={styles.td_condition_container}
                   style={{
-                    background: conditionClass(listItem.ticketCondition),
+                    background: conditionClass(ticket.ticketCondition),
                   }}
                 >
-                  {listItem.ticketCondition}
+                  {ticket.ticketCondition}
                 </div>
               </td>
               <td className={styles.td_start}>
-                <span>{listItem.startDate}</span>
-                <span className={styles.hour}>{listItem.startHour}</span>
+                <span>{ticket.startDate}</span>
+                <span className={styles.hour}>{ticket.startHour}</span>
               </td>
               <td className={styles.td_last}>
-                <span>{listItem.lastActivityDate}</span>
-                <span className={styles.hour}>{listItem.lastActivityHour}</span>
+                <span>{ticket.lastActivityDate}</span>
+                <span className={styles.hour}>{ticket.lastActivityHour}</span>
               </td>
             </tr>
           );

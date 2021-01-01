@@ -55,6 +55,16 @@ export default function Dashboard() {
                 </div>
               </div>
             </li>
+            <li>
+              <div
+                className={styles.item}
+                onClick={() => history.push("/dashboard/submit-certificate")}
+              >
+                <div className={styles.item_label}>
+                  <p>احراز هویت</p>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
         <div
