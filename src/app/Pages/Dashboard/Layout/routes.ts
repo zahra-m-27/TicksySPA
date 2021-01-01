@@ -2,6 +2,7 @@ import Topics from "./Topics";
 import CreateTopic from "./CreateTopic";
 import Users from "./Users";
 import Tickets from "./Tickets";
+import SubmitCertificate from "./SubmitCertificate";
 
 export interface DashboardRoute {
   name?: string;
@@ -39,6 +40,11 @@ const routes: DashboardRoute[] = [
         path: "/users",
         name: "کاربران",
         component: Users,
+      },
+      {
+        path: "/submit-certificate",
+        name: "احراز هویت",
+        component: SubmitCertificate,
       },
     ],
   },
