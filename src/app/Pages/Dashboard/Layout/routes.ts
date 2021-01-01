@@ -1,6 +1,7 @@
+import Profile from "./Profile";
+import Users from "./Users";
 import Topics from "./Topics";
 import CreateTopic from "./CreateTopic";
-import Users from "./Users";
 import Tickets from "./Tickets";
 
 export interface DashboardRoute {
@@ -24,6 +25,18 @@ const routes: DashboardRoute[] = [
         component: Tickets,
       },
       {
+        path: "/users",
+        name: "مدیریت حساب",
+        component: Users,
+        children: [
+          {
+            path: "/users/profile",
+            name: "پروفايل",
+            component: Profile,
+          },
+        ],
+      },
+      {
         path: "/topics",
         name: "تاپیک ها",
         component: Topics,
@@ -34,11 +47,6 @@ const routes: DashboardRoute[] = [
             component: CreateTopic,
           },
         ],
-      },
-      {
-        path: "/users",
-        name: "کاربران",
-        component: Users,
       },
     ],
   },
