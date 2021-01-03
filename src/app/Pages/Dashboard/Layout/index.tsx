@@ -38,8 +38,8 @@ export default function DashboardLayout() {
             if (route.redirect) {
               return (
                 <Redirect
-                  path={"/dashboard" + route.path}
                   exact={route.exact}
+                  path={"/dashboard" + route.path}
                   to={"/dashboard" + route.redirect}
                 />
               );

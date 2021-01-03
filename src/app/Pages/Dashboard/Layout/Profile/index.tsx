@@ -8,14 +8,14 @@ import { Button } from "antd";
 
 export default function Profile() {
   const [Change, setChange] = useState<boolean>(true);
-  if (Change)
-    return (
-      <div className={styles.container}>
-        <div className={styles.rectangle}>
-          <div className={styles.header}>
-            پروفايل
-            <img src={maleuser} />
-          </div>
+  return (
+    <div className={styles.rectangle}>
+      <div className={styles.header}>
+        پروفايل
+        <img src={maleuser} />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.left}>
           <img src={profile} className={styles.profile} />
           <div className={styles.upload}>
             <label htmlFor="add">
@@ -23,67 +23,42 @@ export default function Profile() {
             </label>
             <input type="file" id="add" className={styles.upload_image} />
           </div>
-          <div className={styles.right}>
-            <p className={styles.big}>نام و خانوادگي</p>
-            <p className={styles.small}> سيد علي علوي</p>
-            <p className={styles.big}>ايميل</p>
-            <p className={styles.small}>alialavi@gmail.com</p>
-            <p className={styles.big}>تاريخ ثبت نام</p>
-            <p className={styles.small}>97/04/11</p>
-          </div>
-          <Button
-            type={"primary"}
-            className={styles.change_button}
-            onClick={() => {
-              setChange(!true);
-            }}
-          >
-            تغيير
-          </Button>
+        </div>
+        <div className={styles.right}>
+          {Change ? (
+            <div className={styles.change}>
+              <p className={styles.small}>نام و خانوادگي</p>
+              <SEInput onChangeText={() => {}} className={styles.input} />
+              <p className={styles.small}>ايميل</p>
+              <SEInput
+                onChangeText={() => {}}
+                regex={
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{3,}))$/
+                }
+                className={styles.input}
+              />
+              <p className={styles.small}>تاريخ ثبت نام</p>
+              <SEInput onChangeText={() => {}} className={styles.input} />
+            </div>
+          ) : (
+            <>
+              <p className={styles.big}>نام و خانوادگي</p>
+              <p className={styles.small}> سيد علي علوي</p>
+              <p className={styles.big}>ايميل</p>
+              <p className={styles.small}>alialavi@gmail.com</p>
+              <p className={styles.big}>تاريخ ثبت نام</p>
+              <p className={styles.small}>97/04/11</p>
+            </>
+          )}
         </div>
       </div>
-    );
-  else {
-    return (
-      <div className={styles.container}>
-        <div className={styles.rectangle}>
-          <div className={styles.header}>
-            پروفايل
-            <img src={maleuser} />
-          </div>
-          <img src={profile} className={styles.profile} />
-          <div className={styles.upload}>
-            <label htmlFor="add">
-              <img src={addprofile} className={styles.addprofile} />
-            </label>
-            <input type="file" id="add" className={styles.upload_image} />
-          </div>
-          <div className={styles.change}>
-            <label>:نام و نام خانوادگي</label>
-            <SEInput
-              onChangeText={() => {}}
-              innerContainerClassName={styles.input}
-            />
-            <label>:ايميل</label>
-            <SEInput
-              onChangeText={() => {}}
-              regex={
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{3,}))$/
-              }
-              inputClassName={styles.input}
-            />
-
-            <label>:تاريخ ثبت نام</label>
-            <SEInput
-              onChangeText={() => {}}
-              innerContainerClassName={styles.input}
-            />
-          </div>
-          <Button type={"primary"} className={styles.record_button}>
-            ثبت
-          </Button>
-        </div>
-      </div>
-    );
-  }
+      <Button
+        type="primary"
+        onClick={() => setChange(!Change)}
+        className={Change ? styles.change_button : styles.record_button}
+      >
+        {Change ? "ثبت" : "تغییر"}
+      </Button>
+    </div>
+  );
 }

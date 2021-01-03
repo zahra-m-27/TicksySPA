@@ -47,7 +47,7 @@ export default function Dashboard() {
             <li>
               <div
                 className={styles.item}
-                onClick={() => history.push("/dashboard/users")}
+                onClick={() => history.push("/dashboard/profile")}
               >
                 <img src={Assets.Images.User} />
                 <div className={styles.item_label}>

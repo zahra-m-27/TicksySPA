@@ -1,15 +1,11 @@
 $header-background-color: #265ecd;
-.container {
-  height: 100%;
-}
 
 .rectangle {
-
   display: flex;
+  overflow: hidden;
   margin: 5% auto 0;
-  object-fit: contain;
-  border-radius: 10% 3%;
   flex-direction: column;
+  border-radius: 50px 10px 0 0;
   width: clamp(450px, 39vw, 600px);
   box-shadow: 1px 2px 2px 1px #7070709c;
 }
@@ -35,47 +31,62 @@ $header-background-color: #265ecd;
     border-color: #fff;
   }
 }
-.right {
-  margin-right: 8%;
-  margin-top:-43%;
-}
-.big{
-  object-fit: contain;
-  font-family: Shabnam;
-  font-size: 24px;
-  font-weight: normal;
-  font-style: normal;
-  color: #454647;
-  direction: rtl;
-  line-height:1;
-  text-align: start;
-}
-.small{
-  object-fit: contain;
-  font-family: Shabnam;
-  font-size: 15px;
-  font-weight: normal;;
-  font-style: normal;
-  direction: rtl;
-  text-align: start;
-  color: #454647;
-  opacity: .7;
-}
-.profile{
-  margin-top:10%;
-  margin-right:60%;
-}
-.upload {
+
+.content {
   display: flex;
-  margin: 25px 0;
+  padding-top: 2rem;
+}
+
+.right {
+  flex: 1;
+  margin-right: 8%;
+}
+
+.left {
+  margin-left: 8%;
+  position: relative;
+}
+
+.big {
+  color: #454647;
+  direction: rtl;
+  line-height: 1;
+  font-size: 24px;
+  text-align: start;
+  font-style: normal;
+  font-weight: normal;
+  object-fit: contain;
+}
+
+.small {
+  opacity: .7;
+  direction: rtl;
+  color: #454647;
+  font-size: 15px;
+  text-align: start;
+  font-style: normal;
+  object-fit: contain;
+  font-weight: normal;
+}
+
+.profile {
+  margin-top: 10%;
+}
+
+.upload {
+  right: -50%;
+  bottom: 50%;
+  display: flex;
+  position: absolute;
   align-items: center;
   flex-direction: column;
+  width: clamp(60px, 7vw, 100px);
+  height: clamp(60px, 7vw, 100px);
+  transform: translate(-50%, 75%);
 }
 
 .addprofile {
   object-fit: none;
-  margin-top:-100%;
-  margin-left:-100%;
   width: clamp(60px, 7vw, 100px);
   height: clamp(60px, 7vw, 100px);
 }
@@ -88,17 +99,15 @@ $header-background-color: #265ecd;
   width: 30%;
   opacity: .9;
   height: 32px;
+  margin-top: 2rem;
+  margin-bottom: 3%;
   align-self: center;
-  margin-bottom:3%;
   background-color: $header-background-color;
 }
 
 .change {
-  width: 40%;
-  text-align: right;
- margin-left:52%;
-  margin-top:-45%;
-
+  width: 75%;
+  margin-left: auto;
 }
 
 .change label {
@@ -113,21 +122,25 @@ $header-background-color: #265ecd;
 
 .change input {
   width: 100%;
+  opacity: .7;
   height: 30px;
   border: none;
   padding: 15px;
-  font-family: Shabnam;
+  direction: rtl;
+  font-size: 10px;
   border-radius: 5px;
-  direction:rtl;
-  font-size:10px;
-  opacity:.7;
 }
-.record_button{
-  width:30%;
+
+.record_button {
+  width: 30%;
   opacity: .9;
   height: 32px;
+  margin-top: 2rem;
+  margin-bottom: 3%;
   align-self: center;
-  margin-top: 10%;
-  margin-bottom:3%;
   background-color: $header-background-color;
+}
+
+.input {
+  margin-bottom: 10px;
 }

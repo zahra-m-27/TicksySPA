@@ -88,15 +88,30 @@ export default function Ticket() {
         ))}
 
         <div className={styles.send_message}>
-          <label htmlFor="attach_input">
-            <Assets.Svgs.Attach className={styles.send_message_icons} />
-          </label>
-          <input
-            type="file"
-            id="attach_input"
-            onChange={(e) => e.target.files && setAttachment(e.target.files[0])}
-            className={styles.attachment_input}
-          />
+          {Attachment ? (
+            <div className={styles.attachment}>
+              <img
+                src={Assets.Images.Cancel}
+                className={styles.attachment_icon}
+                onClick={() => setAttachment(undefined)}
+              />
+              <p className={styles.name}>{Attachment?.name}</p>
+            </div>
+          ) : (
+            <>
+              <label htmlFor="attach_input">
+                <Assets.Svgs.Attach className={styles.send_message_icons} />
+              </label>
+              <input
+                type="file"
+                id="attach_input"
+                onChange={(e) =>
+                  e.target.files && setAttachment(e.target.files[0])
+                }
+                className={styles.attachment_input}
+              />
+            </>
+          )}
           <SEInput
             minLines={2}
             label="پیام شما..."

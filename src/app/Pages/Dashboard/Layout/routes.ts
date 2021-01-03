@@ -22,18 +22,6 @@ const routes: DashboardRoute[] = [
     redirect: "/tickets",
     children: [
       {
-        path: "/users",
-        name: "مديريت حساب",
-        component: Users,
-        children: [
-          {
-            path: "/users/profile",
-            name: "پروفايل",
-            component: Profile,
-          },
-        ],
-      },
-      {
         path: "/tickets",
         name: "تیکت ها",
         component: Tickets,
@@ -56,6 +44,16 @@ const routes: DashboardRoute[] = [
             component: CreateTopic,
           },
         ],
+      },
+      {
+        path: "/submit-certificate",
+        name: "احراز هویت",
+        component: SubmitCertificate,
+      },
+      {
+        path: "/profile",
+        name: "مديريت حساب",
+        component: Profile,
       },
     ],
   },
