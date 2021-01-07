@@ -10,6 +10,6 @@ deploy:
     - rm -rf /temp/*
     - cp -R ./build/* /temp
   tags:
-    - parsaarvaneh-kafka-frontend
+    - KHUserver
   only:
     - production
