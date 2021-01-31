@@ -24,7 +24,10 @@ export default function TopicCard({ username }: Props) {
           </div>
         </div>
         <div className={styles.card_content_footer}>
-          <div className={styles.card_content_footer_edit}>
+          <div
+            className={styles.card_content_footer_edit}
+            onClick={() => history.push("/dashboard/topics/edit/" + username)}
+          >
             <img src={Assets.Images.EditProperty} />
           </div>
           <span>عنوان اول</span>

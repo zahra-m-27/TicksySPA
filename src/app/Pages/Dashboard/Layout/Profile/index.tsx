@@ -5,9 +5,12 @@ import addprofile from "../../../../Assets/Svgs/components/AddProfile.svg";
 import profile from "../../../../Assets/Svgs/components/profile.svg";
 import SEInput from "../../../../Components/SEInput";
 import { Button } from "antd";
+import { useHistory } from "react-router-dom";
 
 export default function Profile() {
-  const [Change, setChange] = useState<boolean>(true);
+  const history = useHistory();
+  const [CanChange, setCanChange] = useState<boolean>(false);
+
   return (
     <div className={styles.rectangle}>
       <div className={styles.header}>
@@ -17,15 +20,17 @@ export default function Profile() {
       <div className={styles.content}>
         <div className={styles.left}>
           <img src={profile} className={styles.profile} />
-          <div className={styles.upload}>
-            <label htmlFor="add">
-              <img src={addprofile} className={styles.addprofile} />
-            </label>
-            <input type="file" id="add" className={styles.upload_image} />
-          </div>
+          {CanChange && (
+            <div className={styles.upload}>
+              <label htmlFor="add">
+                <img src={addprofile} className={styles.addprofile} />
+              </label>
+              <input type="file" id="add" className={styles.upload_image} />
+            </div>
+          )}
         </div>
         <div className={styles.right}>
-          {Change ? (
+          {CanChange ? (
             <div className={styles.change}>
               <p className={styles.small}>نام و خانوادگي</p>
               <SEInput onChangeText={() => {}} className={styles.input} />
@@ -52,13 +57,24 @@ export default function Profile() {
           )}
         </div>
       </div>
-      <Button
-        type="primary"
-        onClick={() => setChange(!Change)}
-        className={Change ? styles.change_button : styles.record_button}
-      >
-        {Change ? "ثبت" : "تغییر"}
-      </Button>
+      <div className={styles.actions}>
+        {!CanChange && (
+          <Button
+            type="primary"
+            onClick={() => history.push("/dashboard/submit-certificate")}
+            className={styles.change_button}
+          >
+            احراز هویت
+          </Button>
+        )}
+        <Button
+          type="primary"
+          onClick={() => setCanChange(!CanChange)}
+          className={CanChange ? styles.change_button : styles.record_button}
+        >
+          {CanChange ? "ثبت" : "تغییر"}
+        </Button>
+      </div>
     </div>
   );
 }

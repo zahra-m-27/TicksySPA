@@ -14,7 +14,9 @@
 
 .left_side {
   height: 100%;
+  display: flex;
   overflow-y: scroll;
+  flex-direction: column;
   background-color: #ffffff;
   border-radius: 0 40px 40px 0;
   width: calc(100% - clamp(200px, 25%, 462px));

@@ -1,9 +1,10 @@
 .top {
-  background-color: #0088e3;
-  height: 14vh;
   width: 92%;
-  margin: 5.5vh auto 7.9vh auto;
+  height: 14vh;
+  min-height: 100px;
   border-radius: 5px;
+  background-color: #0088e3;
+  margin: 5.5vh auto 7.9vh auto;
 }
 
 .inner_top {
@@ -19,6 +20,7 @@
 
 .search_button {
   height: 3.6vh;
+  min-height: 30px;
   display: flex;
   margin-right: 5.6%;
   margin-bottom: 10px;
@@ -68,14 +70,14 @@
 }
 
 th {
-  background-color: #2168bd;
   color: white;
-  height: 6.3vh;
+  height: 70px;
   vertical-align: middle;
+  background-color: #2168bd;
 }
 
 td {
-  height: 5.7vh;
+  height: 70px;
   font-size: 16px;
 }
 

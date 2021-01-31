@@ -2,7 +2,9 @@
   height: 14vh;
   display: flex;
   color: #103cb7;
+  flex-shrink: 0;
   font-size: 18px;
+  min-height: 100px;
   padding-right: 5%;
   font-weight: bold;
   align-items: center;

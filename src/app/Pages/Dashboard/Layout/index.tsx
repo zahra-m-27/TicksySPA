@@ -18,7 +18,7 @@ export default function DashboardLayout() {
         <img src={Assets.Images.Ticksy} />
       </div>
       <div className={styles.breadcrumb}>
-        {breadcrumb.route && (
+        {breadcrumb?.route && (
           <Breadcrumb style={{ direction: "rtl" }}>
             <Breadcrumb.Item>خانه</Breadcrumb.Item>
             {breadcrumb.parents.map((parent, index) => (
@@ -29,7 +29,7 @@ export default function DashboardLayout() {
             <Breadcrumb.Item>{breadcrumb.route.name}</Breadcrumb.Item>
           </Breadcrumb>
         )}
-        <span>{breadcrumb.route?.name}</span>
+        <span>{breadcrumb?.route?.name}</span>
       </div>
       <Switch>
         {getRoutes(routes)

@@ -1,4 +1,5 @@
 .container {
+  flex: 1;
 
   .add_topic {
     cursor: pointer;
@@ -29,7 +30,6 @@
   }
 
   .cards {
-    height: 65vh;
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;

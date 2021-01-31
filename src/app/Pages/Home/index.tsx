@@ -185,7 +185,7 @@ export default function HomePage() {
           </div>
           <div>
             <img src={Flags} /> تهران - خیابان شهید مفتح نرسیده به انقلاب پلاک
-            ۴۳{" "}
+            ۴۳
           </div>
           <div>
             <img src={Flags} />

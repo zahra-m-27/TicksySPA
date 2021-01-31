@@ -27,7 +27,7 @@ export function breadcrumbFindRoute(
       }
       return !!result;
     });
-    return { route: result?.route, parents: result?.parents ?? parents };
+    return result;
   }
 }
 

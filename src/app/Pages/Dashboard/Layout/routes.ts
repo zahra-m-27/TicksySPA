@@ -5,6 +5,7 @@ import CreateTopic from "./CreateTopic";
 import Tickets from "./Tickets";
 import Ticket from "./Ticket";
 import SubmitCertificate from "./SubmitCertificate";
+import EditTopic from "./EditTopic";
 
 export interface DashboardRoute {
   name?: string;
@@ -40,8 +41,13 @@ const routes: DashboardRoute[] = [
         children: [
           {
             path: "/topics/new",
-            name: " تاپیک جدید",
+            name: "تاپیک جدید",
             component: CreateTopic,
+          },
+          {
+            path: "/topics/edit/:id",
+            name: "ویرایش تاپیک",
+            component: EditTopic,
           },
         ],
       },

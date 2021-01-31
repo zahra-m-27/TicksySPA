@@ -1,8 +1,8 @@
 import React from "react";
 import { Button } from "antd";
+import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
 import SEInput from "../../../../Components/SEInput";
-import Topic from "../../../../Assets/Images/Files/topic.png";
 import Picture from "../../../../Assets/Svgs/components/camera.svg";
 
 export default function CreateTopic() {
@@ -11,7 +11,7 @@ export default function CreateTopic() {
       <div className={styles.rectangle}>
         <div className={styles.header}>
           تاپيک جدید
-          <img src={Topic} />
+          <img src={Assets.Svgs.Topic} />
         </div>
         <div className={styles.upload}>
           <label htmlFor="picture">

@@ -166,7 +166,7 @@ $failed_regex_primary_color: #e62e00;
       transition: all 0.2s;
 
       &:hover {
-        filter: alpha(0.65);
+        filter: alpha(opacity=0.65);
       }
 
       &:last-child {
