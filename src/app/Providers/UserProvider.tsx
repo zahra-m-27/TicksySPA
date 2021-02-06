@@ -3,33 +3,29 @@ import React, { useState } from "react";
 interface UserDto {
   id: number;
   userName: string;
-  firstName: string;
   lastName: string;
+  firstName: string;
 }
 
 interface IUserProvider {
-  login: (userDto: UserDto) => void;
   logout: () => void;
   isLogin: () => boolean;
   getUser: () => UserDto;
+  login: (userDto: UserDto) => void;
 }
 
 let UnauthorizedUser: UserDto = {
   id: 0,
-  firstName: "",
   lastName: "",
   userName: "",
+  firstName: "",
 };
 
 export const UserContext = React.createContext<IUserProvider>({
+  isLogin: () => false,
   login: () => undefined,
   logout: () => undefined,
-  getUser: () => {
-    return UnauthorizedUser;
-  },
-  isLogin: () => {
-    return false;
-  },
+  getUser: () => UnauthorizedUser,
 });
 
 const UserProvider: React.FC = ({ children }) => {
@@ -38,16 +34,10 @@ const UserProvider: React.FC = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
-        login: (userDto: UserDto) => {
-          setUser(userDto);
-        },
-        logout: () => {
-          setUser(UnauthorizedUser);
-        },
-        getUser: () => {
-          return User;
-        },
+        getUser: () => User,
         isLogin: () => User.id !== 0,
+        logout: () => setUser(UnauthorizedUser),
+        login: (userDto: UserDto) => setUser(userDto),
       }}
     >
       {children}

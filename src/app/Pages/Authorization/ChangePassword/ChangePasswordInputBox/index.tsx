@@ -1,7 +1,6 @@
-import React from "react";
 import { Button } from "antd";
-import SEInput from "../../../../../Components/SEInput";
 import styles from "./styles.module.scss";
+import SEInput from "../../../../Components/SEInput";
 
 interface Props {
   className?: string;
@@ -12,9 +11,9 @@ export default function ForgotPasswordInputBox({ className }: Props) {
     <div className={className}>
       <p className={styles.input_box_title}>تغيير رمز عبور!</p>
       <SEInput
+        hint=""
         type="password"
         label="گذرواژه"
-        hint=""
         onChangeText={() => {}}
         inputClassName={styles.input}
         className={styles.input_class}
@@ -22,9 +21,9 @@ export default function ForgotPasswordInputBox({ className }: Props) {
         innerContainerClassName={styles.inner_container}
       />
       <SEInput
+        hint=""
         type="password"
         label="تاييد گذرواژه"
-        hint=""
         onChangeText={() => {}}
         inputClassName={styles.input}
         className={styles.input_class}

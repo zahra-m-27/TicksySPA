@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "../NotFound/styles.module.scss";
 
 export default function NotFoundPage() {

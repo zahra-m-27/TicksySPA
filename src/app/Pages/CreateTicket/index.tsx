@@ -4,7 +4,6 @@ import Assets from "../../Assets";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import SEInput from "../../Components/SEInput";
-import Grid from "../../Assets/Images/Files/grid.svg";
 
 export default function CreateTicket() {
   const [Tags, setTags] = useState<string[]>([]);
@@ -18,11 +17,11 @@ export default function CreateTicket() {
         <Link to="/dashboard">داشبورد</Link>
         <Link to="/home">خانه</Link>
         <Link to="/">تیکسی</Link>
-        <img src={Grid} />
-        <img src={Assets.Images.Ticksy} />
+        <Assets.SVGs.GridSVG />
+        <img src={Assets.Images.Ticksy} alt="logo" />
       </div>
       <div className={styles.card_container}>
-        <img src={Assets.Images.GoogleImage} className={styles.avatar} />
+        <img src={Assets.Images.GoogleImage} className={styles.avatar} alt="" />
         <p className={styles.input_box_title}>اسم تاپیک</p>
         <p className={styles.input_box_description} dir="auto">
           لورم اپسیوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده

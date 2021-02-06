@@ -1,12 +1,8 @@
-import React, { useState } from "react";
 import { Tag } from "antd";
 import Assets from "../../Assets";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import ClassNames from "../../Utilities/ClassNames";
-import VisiblePassSvg from "../../Assets/Svgs/components/VisiblePassSvg";
-import InVisiblePassSvg from "../../Assets/Svgs/components/InvisiblePassSvg";
-
-//Software Engineering Evaluation(module) Input
 
 interface Props {
   hint?: string;
@@ -197,11 +193,11 @@ export default function SEInput({
             type === "password" &&
             (Type === "password" ? (
               <div onClick={() => setType("text")}>
-                <VisiblePassSvg className={styles.eye_svg} />
+                <Assets.SVGs.VisiblePassSvg className={styles.eye_svg} />
               </div>
             ) : (
               <div onClick={() => setType("password")}>
-                <InVisiblePassSvg className={styles.eye_svg} />
+                <Assets.SVGs.InvisiblePassSvg className={styles.eye_svg} />
               </div>
             ))}
           {icon && (
@@ -233,6 +229,7 @@ export default function SEInput({
             <label htmlFor="attachment_input">
               <div className={ClassNames(styles.attachment, styles.new)}>
                 <img
+                  alt=""
                   src={Assets.Images.Attach}
                   className={styles.attachment_icon}
                 />
@@ -253,6 +250,7 @@ export default function SEInput({
               attachments.map((attachment, i) => (
                 <div className={styles.attachment} key={i}>
                   <img
+                    alt=""
                     src={Assets.Images.Cancel}
                     className={styles.attachment_icon}
                     onClick={() => onRemoveAttachment && onRemoveAttachment(i)}

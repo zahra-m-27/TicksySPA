@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import styles from "./styles.module.scss";
 import { Button } from "antd";
+import { useState } from "react";
 import Assets from "../../../../Assets";
+import styles from "./styles.module.scss";
+import { useHistory } from "react-router-dom";
 import SEInput from "../../../../Components/SEInput";
 import ClassNames from "../../../../Utilities/ClassNames";
-import { useHistory } from "react-router-dom";
 
 interface TicketListItems {
   id: string;
@@ -60,10 +60,10 @@ export default function Tickets() {
   ];
 
   const conditionClass = (s: string) => {
-    if (s == "بسته") return "#295cc0";
-    else if (s == "پاسخ داده شده") return "#3d6cc9";
-    else if (s == "در انتظار پاسخ") return "#44adf2";
-    else if (s == "در حال پردازش") return "#0088e3";
+    if (s === "بسته") return "#295cc0";
+    else if (s === "پاسخ داده شده") return "#3d6cc9";
+    else if (s === "در انتظار پاسخ") return "#44adf2";
+    else if (s === "در حال پردازش") return "#0088e3";
   };
 
   const openTicket = (id: string) => {
@@ -83,7 +83,11 @@ export default function Tickets() {
             <SEInput onChangeText={() => {}} />
           </div>
           <Button type="primary" className={styles.search_button}>
-            <img src={Assets.Images.Search} className={styles.search_image} />
+            <img
+              alt=""
+              src={Assets.Images.Search}
+              className={styles.search_image}
+            />
             جستجو
           </Button>
         </div>
@@ -132,7 +136,7 @@ export default function Tickets() {
         })}
       </table>
       <div className={styles.pagination}>
-        <Assets.Svgs.LessThan
+        <Assets.SVGs.LessThan
           className={styles.move_button}
           onClick={() => setCurrentPage(CurrentPage - 1)}
         />
@@ -153,7 +157,7 @@ export default function Tickets() {
           {CurrentPage + 1}
         </div>
         <div className={styles.divider} />
-        <Assets.Svgs.MoreThan
+        <Assets.SVGs.MoreThan
           className={styles.move_button}
           onClick={() => setCurrentPage(CurrentPage + 1)}
         />

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "../styles.module.scss";
 import Assets from "../../../../../Assets";
 import { useHistory } from "react-router-dom";
@@ -12,15 +11,19 @@ export default function TopicCard({ username }: Props) {
 
   return (
     <div className={styles.card}>
-      <img src={Assets.Images.TopicCard} />
+      <img src={Assets.Images.TopicCard} alt="" />
       <div className={styles.card_content}>
         <div
           className={styles.card_content_header}
           onClick={() => history.push("/dashboard/tickets/" + username)}
         >
           <div className={styles.topic_avatar}>
-            <img src={Assets.Images.DotSquare2} />
-            <img src={Assets.Images.ManTicket} className={styles.avatar} />
+            <img src={Assets.Images.DotSquare2} alt="" />
+            <img
+              alt=""
+              className={styles.avatar}
+              src={Assets.Images.ManTicket}
+            />
           </div>
         </div>
         <div className={styles.card_content_footer}>
@@ -28,7 +31,7 @@ export default function TopicCard({ username }: Props) {
             className={styles.card_content_footer_edit}
             onClick={() => history.push("/dashboard/topics/edit/" + username)}
           >
-            <img src={Assets.Images.EditProperty} />
+            <img src={Assets.Images.EditProperty} alt="edit" />
           </div>
           <span>عنوان اول</span>
           <p>نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد</p>

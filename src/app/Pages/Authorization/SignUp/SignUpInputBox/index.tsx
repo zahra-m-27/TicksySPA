@@ -1,7 +1,6 @@
-import React from "react";
 import { Button } from "antd";
-import SEInput from "../../../../../Components/SEInput";
 import styles from "./styles.module.scss";
+import SEInput from "../../../../Components/SEInput";
 
 interface Props {
   className?: string;
@@ -26,13 +25,13 @@ export default function SignInInputBox({ className }: Props) {
         label="ايميل"
         hint="example@gmail.com"
         onChangeText={() => {}}
-        regex={
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{3,}))$/
-        }
         inputClassName={styles.input}
         className={styles.input_class}
         labelClassName={styles.input_label}
         innerContainerClassName={styles.inner_container}
+        regex={
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{3,}))$/
+        }
       />
       <SEInput
         type="password"

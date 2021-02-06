@@ -1,5 +1,4 @@
 import Profile from "./Profile";
-import Users from "./Users";
 import Topics from "./Topics";
 import CreateTopic from "./CreateTopic";
 import Tickets from "./Tickets";

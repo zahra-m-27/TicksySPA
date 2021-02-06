@@ -1,6 +1,5 @@
-import React from "react";
 import styles from "./styles.module.scss";
-import ChangePasswordInputBox from "./Components/ChangePasswordInputBox";
+import ChangePasswordInputBox from "./ChangePasswordInputBox";
 
 export default function ChangePasswordPage() {
   return (

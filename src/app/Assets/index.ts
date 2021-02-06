@@ -1,8 +1,8 @@
+import SVGs from "./SVGs";
 import Images from "./Images";
-import Svgs from "./Svgs";
 
 const Assets = {
+  SVGs: SVGs,
   Images: Images,
-  Svgs: Svgs,
 };
 export default Assets;

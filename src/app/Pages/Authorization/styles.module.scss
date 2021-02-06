@@ -2,15 +2,16 @@
   height: 100%;
   background-size: contain;
   background-repeat: repeat;
-  background-image: url("../../Assets/Svgs/components/seamless_backgroud.svg");
+  background-image: url("../../Assets/SVGs/components/seamless_backgroud.svg");
 }
 
-.header {top: 0;
+.header {
+  top: 0;
   width: 100%;
   height: 46%;
   position: fixed;
   background-size: inherit;
   background-repeat: repeat-x;
   background-position-x: center;
-  background-image: url("../../Assets/Svgs/components/wave.svg");
+  background-image: url("../../Assets/SVGs/components/wave.svg");
 }

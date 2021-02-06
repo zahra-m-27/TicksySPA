@@ -1,22 +1,19 @@
 import { message } from "antd";
 import BaseResponse from "./Common/BaseResponse";
 
-let BaseUrl = "http://Example.com";
-let apiPath = "/api";
+let BaseUrl = "https://api.ticksy.margay.ir";
 
 export function Post<T extends BaseResponse>(
   url: string,
   data: any,
-  showNotifier = true,
+  showNotifier = false,
   showLog = true
 ) {
   return new Promise<T>((resolve, reject) => {
     if (showLog) {
-      console.log(
-        BaseUrl + apiPath + url + ":  Request  : " + JSON.stringify(data)
-      );
+      console.log(BaseUrl + url + ":  Request  : " + JSON.stringify(data));
     }
-    fetch(BaseUrl + apiPath + url, {
+    fetch(BaseUrl + url, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -24,34 +21,24 @@ export function Post<T extends BaseResponse>(
       },
     })
       .then(async (response) => {
-        let content = await response.text();
-        if (!content) {
-          reject();
-          return <T>{};
-        }
-        return <T>JSON.parse(content);
-      })
-      .then((response) => {
-        if (!response.error) {
-          return;
-        }
         if (showLog) {
           console.debug("=".repeat(50));
           console.log(url, "Response:", response);
 
           console.debug("=".repeat(50));
         }
-        if (response.error.code === 0) {
-          resolve(response);
+        if (response.status === 200) {
+          resolve((await response.json()) as T);
         } else {
           if (showNotifier) {
-            message.success(response.error.message, 5);
+            message.success("انجام این عملیات ممکن نیست", 5);
           }
-          reject();
+          reject(response);
         }
       })
       .catch((error) => {
         console.log(error);
+        reject(error);
       });
   });
 }

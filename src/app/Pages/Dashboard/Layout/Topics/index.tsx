@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./styles.module.scss";
 import Assets from "../../../../Assets";
 import TopicCard from "./TopicCard";
@@ -13,7 +12,7 @@ export default function Topics() {
         onClick={() => history.push("/dashboard/topics/new")}
       >
         <p>افزودن</p>
-        <img src={Assets.Images.Add} />
+        <img src={Assets.Images.Add} alt="" />
       </div>
       <div className={styles.cards}>
         <TopicCard username="test" />

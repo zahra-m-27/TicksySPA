@@ -1,6 +1,5 @@
-import React from "react";
 import styles from "./styles.module.scss";
-import ForgotPasswordInputBox from "./Components/ForgotPasswordInputBox";
+import ForgotPasswordInputBox from "./ForgotPasswordInputBox";
 
 export default function ForgotPasswordPage() {
   return (

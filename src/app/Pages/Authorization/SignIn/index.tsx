@@ -1,6 +1,5 @@
-import React from "react";
 import styles from "./styles.module.scss";
-import SignInInputBox from "./Components/SignInInputBox";
+import SignInInputBox from "./SignInInputBox";
 
 export default function SignInPage() {
   return (

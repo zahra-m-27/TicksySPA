@@ -2,7 +2,7 @@ $input_primary_color: #0073ff;
 $failed_regex_primary_color: #e62e00;
 
 ::placeholder {
-  color: #B8B8B8;
+  color: #b8b8b8;
 }
 
 .input_container {
@@ -21,7 +21,7 @@ $failed_regex_primary_color: #e62e00;
 .focused_input_container {
   border-radius: 8px;
   border-color: $input_primary_color;
-  box-shadow: 0 0 8px 0 rgba($input_primary_color, .65);
+  box-shadow: 0 0 8px 0 rgba($input_primary_color, 0.65);
 }
 
 .inner_container {
@@ -39,7 +39,7 @@ $failed_regex_primary_color: #e62e00;
   color: #b8b8b8;
   margin: 0 10px;
   font-size: 20px;
-  transition: .2s;
+  transition: 0.2s;
   position: absolute;
   pointer-events: none;
   transform: translateY(-50%);
@@ -67,26 +67,26 @@ $failed_regex_primary_color: #e62e00;
   color: #606060;
   font-size: 20px;
   font-weight: 400;
-  padding: .3em 10px;
+  padding: 0.3em 10px;
   border-radius: 8px;
   font-family: inherit;
 
   &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgb(38 ,169, 173);
     border-radius: 5px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
+    box-shadow: inset 0 0 6px rgb(38, 169, 173);
   }
 
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    -webkit-box-shadow: inset 0 0 6px rgb(38 ,169, 173);
     background-color: #555;
+    box-shadow: inset 0 0 6px rgb(38, 169, 173);
   }
 }
 
@@ -99,7 +99,7 @@ $failed_regex_primary_color: #e62e00;
 
 .failed_regex_focused_input_container {
   border-color: $failed_regex_primary_color;
-  box-shadow: 0 0 8px 0 rgba($failed_regex_primary_color, .65);
+  box-shadow: 0 0 8px 0 rgba($failed_regex_primary_color, 0.65);
 }
 
 .failed_regex_focused_label_color {
@@ -116,20 +116,20 @@ $failed_regex_primary_color: #e62e00;
 
 .scrollview {
   &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgb(38 ,169, 173);
+    box-shadow: inset 0 0 6px rgb(38, 169, 173);
     border-radius: 5px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
   }
 
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    -webkit-box-shadow: inset 0 0 6px rgb(38 ,169, 173);
+    box-shadow: inset 0 0 6px rgb(38, 169, 173);
     background-color: #555;
   }
 }

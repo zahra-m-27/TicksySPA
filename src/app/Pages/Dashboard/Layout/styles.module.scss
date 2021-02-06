@@ -21,26 +21,32 @@
     height: 3.3rem;
     margin: 0 0 0 3vw;
   }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0 0 3vw;
+  }
 }
 
 .breadcrumb {
   display: flex;
   padding: 10px 5%;
+  border-left-width: 0;
   background: #f1f1f2;
+  border-right-width: 0;
   flex-direction: column;
   justify-content: center;
   border: 2px solid #a9aab078;
-  border-right-width: 0;
-  border-left-width: 0;
 
   span {
     font-size: 15px;
   }
 
   & > span {
-    color: #06239a;
     font-size: 25px;
     margin-top: 5px;
+    color: #06239a;
     font-weight: 600;
     align-self: flex-end;
   }

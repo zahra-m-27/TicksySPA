@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import styles from "./styles.module.scss";
-import Assets from "../../../../Assets";
 import { Button } from "antd";
+import React, { useState } from "react";
+import Assets from "../../../../Assets";
+import styles from "./styles.module.scss";
 
 interface Request {
   requestStatus: string;
@@ -29,8 +29,9 @@ export default function SubmitCertificate() {
         <div className={styles.top_part}>
           <div className={styles.title}>
             <img
-              src={Assets.Images.FingerPrint}
+              alt=""
               className={styles.title_image}
+              src={Assets.Images.FingerPrint}
             />
             احراز هویت
           </div>
@@ -42,7 +43,11 @@ export default function SubmitCertificate() {
 
           <label htmlFor="attachment" className={styles.attachment_box}>
             <div className={styles.input_box}>
-              <img src={Assets.Images.Upload} className={styles.upload_icon} />
+              <img
+                alt=""
+                src={Assets.Images.Upload}
+                className={styles.upload_icon}
+              />
               <p className={styles.file_name}>
                 {Attachment?.name ?? "انتخاب فایل"}
               </p>
@@ -76,6 +81,7 @@ export default function SubmitCertificate() {
       <div className={styles.top_part}>
         <div className={styles.title}>
           <img
+            alt=""
             src={Assets.Images.FingerPrint}
             className={styles.report_title_image}
           />

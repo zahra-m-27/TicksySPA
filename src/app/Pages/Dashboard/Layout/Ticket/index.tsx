@@ -45,7 +45,7 @@ export default function Ticket() {
       </div>
       <div className={styles.tags_container}>
         <p dir="auto">{ticket.tags.map((tag) => `#${tag}`).join(" ")}</p>
-        <Assets.Svgs.Hashtag className={styles.hashtag_icon} />
+        <Assets.SVGs.Hashtag className={styles.hashtag_icon} />
       </div>
 
       <div className={styles.chat_container}>
@@ -68,13 +68,13 @@ export default function Ticket() {
               }}
             >
               {message.type === "admin" && (
-                <Assets.Svgs.OldMaleUser
+                <Assets.SVGs.OldMaleUser
                   className={styles.message_user_avatar}
                 />
               )}
               <p>{message.username}</p>
               {message.type === "user" && (
-                <Assets.Svgs.MaleUser className={styles.message_user_avatar} />
+                <Assets.SVGs.MaleUser className={styles.message_user_avatar} />
               )}
             </div>
             <p dir="auto" className={styles.message_content}>
@@ -91,6 +91,7 @@ export default function Ticket() {
           {Attachment ? (
             <div className={styles.attachment}>
               <img
+                alt="cancel"
                 src={Assets.Images.Cancel}
                 className={styles.attachment_icon}
                 onClick={() => setAttachment(undefined)}
@@ -100,7 +101,7 @@ export default function Ticket() {
           ) : (
             <>
               <label htmlFor="attach_input">
-                <Assets.Svgs.Attach className={styles.send_message_icons} />
+                <Assets.SVGs.Attach className={styles.send_message_icons} />
               </label>
               <input
                 type="file"
@@ -119,7 +120,7 @@ export default function Ticket() {
             className={styles.send_message_input}
             innerContainerClassName={styles.send_message_input_innerContainer}
           />
-          <Assets.Svgs.PaperPlane className={styles.send_message_icons} />
+          <Assets.SVGs.PaperPlane className={styles.send_message_icons} />
         </div>
       </div>
     </div>

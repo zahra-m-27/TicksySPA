@@ -12,7 +12,7 @@ export default function EditTopic() {
     <div className={styles.container}>
       <TickCard
         title="اعضا"
-        icon={Assets.Svgs.People}
+        icon={Assets.SVGs.People}
         className={styles.member_card}
         contentClassName={styles.member_content}
       >
@@ -21,11 +21,12 @@ export default function EditTopic() {
             <SEInput
               onChangeText={() => {}}
               inputClassName={styles.search}
-              icon={<img src={Assets.Svgs.Search} />}
               className={styles.search_container}
+              icon={<img src={Assets.SVGs.Search} alt="" />}
             />
             <img
-              src={Assets.Svgs.Cancel}
+              alt="cancel"
+              src={Assets.SVGs.Cancel}
               className={styles.close_search}
               onClick={() => setStartSearch(false)}
             />
@@ -35,34 +36,34 @@ export default function EditTopic() {
             onClick={() => setStartSearch(true)}
             className={ClassNames(styles.member_container, styles.add_button)}
           >
-            <img src={Assets.Svgs.Plus} />
+            <img src={Assets.SVGs.Plus} alt="add member" />
             <p>افزودن عضو</p>
           </div>
         )}
         <div className={styles.member_container}>
-          <img src={Assets.Svgs.Minus} />
+          <img src={Assets.SVGs.Minus} alt="" />
           <p>alialavi@gmail.com</p>
         </div>
         <div className={styles.member_container}>
-          <img src={Assets.Svgs.Minus} />
+          <img src={Assets.SVGs.Minus} alt="" />
           <p>alialavi@gmail.com</p>
         </div>
         <div className={styles.member_container}>
-          <img src={Assets.Svgs.Minus} />
+          <img src={Assets.SVGs.Minus} alt="" />
           <p>alialavi@gmail.com</p>
         </div>
         <div className={styles.member_container}>
-          <img src={Assets.Svgs.Minus} />
+          <img src={Assets.SVGs.Minus} alt="" />
           <p>alialavi@gmail.com</p>
         </div>
         <div className={styles.member_container}>
-          <img src={Assets.Svgs.Minus} />
+          <img src={Assets.SVGs.Minus} alt="" />
           <p>alialavi@gmail.com</p>
         </div>
       </TickCard>
       <TickCard
         title="ویرایش تاپيک"
-        icon={Assets.Svgs.Topic}
+        icon={Assets.SVGs.Topic}
         className={styles.detail_card}
         buttons={[
           {
@@ -73,7 +74,11 @@ export default function EditTopic() {
       >
         <div className={styles.upload}>
           <label htmlFor="picture">
-            <img src={Assets.Svgs.Camera} className={styles.picture} />
+            <img
+              alt="avatar"
+              src={Assets.SVGs.Camera}
+              className={styles.picture}
+            />
           </label>
           <input type="file" id="picture" className={styles.upload_image} />
         </div>

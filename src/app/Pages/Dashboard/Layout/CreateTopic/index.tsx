@@ -1,9 +1,7 @@
-import React from "react";
 import { Button } from "antd";
 import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
 import SEInput from "../../../../Components/SEInput";
-import Picture from "../../../../Assets/Svgs/components/camera.svg";
 
 export default function CreateTopic() {
   return (
@@ -11,11 +9,11 @@ export default function CreateTopic() {
       <div className={styles.rectangle}>
         <div className={styles.header}>
           تاپيک جدید
-          <img src={Assets.Svgs.Topic} />
+          <img src={Assets.SVGs.Topic} alt="" />
         </div>
         <div className={styles.upload}>
           <label htmlFor="picture">
-            <img src={Picture} className={styles.picture} />
+            <img src={Assets.SVGs.Camera} className={styles.picture} alt="" />
           </label>
           <input type="file" id="picture" className={styles.upload_image} />
         </div>

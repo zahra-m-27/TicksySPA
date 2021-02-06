@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
 import Dashboard from "./Pages/Dashboard";

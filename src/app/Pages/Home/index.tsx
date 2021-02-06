@@ -1,58 +1,45 @@
+import Topic from "./Topic";
+import Assets from "../../Assets";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
-
-import Topic from "./Components/Topic";
-
-import Assets from "../../Assets";
-import LandingImage from "../../Assets/Images/Files/home.png";
-import Grid from "../../Assets/Images/Files/grid.svg";
-import TopicPic from "../../Assets/Images/Files/topic_pic.png";
-import TopicBadge from "../../Assets/Images/Files/topic_badge.png";
-import Facebook from "../../Assets/Images/Files/social/facebook.svg";
-import Instagram from "../../Assets/Images/Files/social/instagram.svg";
-import Linkedin from "../../Assets/Images/Files/social/linkedin.svg";
-import Twitter from "../../Assets/Images/Files/social/twitter.svg";
-import User from "../../Assets/Svgs/components/user.svg";
-import Flags from "../../Assets/Images/Files/flags.svg";
-import Ticksy from "../../Assets/Images/Files/ticksy.png";
 
 const topics = [
   {
     title: "لورم اپسیوم متن ساختگی",
     description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
-    pic: TopicPic,
-    badge: TopicBadge,
+    icon: Assets.Images.TopicIcon,
+    badge: Assets.Images.TopicBadge,
   },
   {
     title: "لورم اپسیوم متن ساختگی",
     description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
-    pic: TopicPic,
-    badge: TopicBadge,
+    icon: Assets.Images.TopicIcon,
+    badge: Assets.Images.TopicBadge,
   },
   {
     title: "لورم اپسیوم متن ساختگی",
     description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
-    pic: TopicPic,
-    badge: TopicBadge,
+    icon: Assets.Images.TopicIcon,
+    badge: Assets.Images.TopicBadge,
   },
   {
     title: "لورم اپسیوم متن ساختگی",
     description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
-    pic: TopicPic,
-    badge: TopicBadge,
+    icon: Assets.Images.TopicIcon,
+    badge: Assets.Images.TopicBadge,
   },
   {
     title: "لورم اپسیوم متن ساختگی",
     description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
-    pic: TopicPic,
-    badge: TopicBadge,
+    icon: Assets.Images.TopicIcon,
+    badge: Assets.Images.TopicBadge,
   },
   {
     title: "لورم اپسیوم متن ساختگی",
     description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
-    pic: TopicPic,
-    badge: TopicBadge,
+    icon: Assets.Images.TopicIcon,
+    badge: Assets.Images.TopicBadge,
   },
 ];
 
@@ -62,12 +49,12 @@ export default function HomePage() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <img className={styles.landing_image} src={LandingImage} />
+        <img className={styles.landing_image} src={Assets.Images.Home} alt="" />
         <div className={styles.content}>
           <nav className={styles.nav}>
             <ul>
               <li className={styles.nav_link}>
-                <a
+                <div
                   onClick={() => {
                     document.querySelector("#contact-us")?.scrollIntoView({
                       behavior: "smooth",
@@ -75,7 +62,7 @@ export default function HomePage() {
                   }}
                 >
                   ارتباط با ما
-                </a>
+                </div>
               </li>
               <li className={styles.nav_link}>
                 <Link to="/dashboard">داشبورد</Link>
@@ -84,12 +71,13 @@ export default function HomePage() {
                 <Link to="/sign-in">ورود</Link>/
                 <Link to="/sign-up">ثبت‌نام</Link>
               </li>
-              <li className={styles.nav_link}>
-                <Link style={{ color: "#103cb7", fontWeight: "bold" }} to="/">
-                  تیکسی
-                  <img src={Grid} />
-                  <img src={Ticksy} />
-                </Link>
+              <li
+                className={styles.nav_link}
+                style={{ color: "#103cb7", fontWeight: "bold" }}
+              >
+                تیکسی
+                <Assets.SVGs.GridSVG />
+                <img src={Assets.Images.Ticksy} alt="logo" />
               </li>
             </ul>
           </nav>
@@ -98,7 +86,7 @@ export default function HomePage() {
             data-active={ActiveMobileHeader}
           >
             <div className={styles.mobile_header_top_side}>
-              <Assets.Svgs.GridView
+              <Assets.SVGs.GridView
                 className={styles.mobile_header_grid_view}
               />
               <div className={styles.mobile_header_top_right_side}>
@@ -163,7 +151,7 @@ export default function HomePage() {
         <div className={styles.topic_container}>
           {topics.map((topic) => (
             <Topic
-              pic={topic.pic}
+              icon={topic.icon}
               title={topic.title}
               badge={topic.badge}
               description={topic.description}
@@ -175,35 +163,35 @@ export default function HomePage() {
       <footer className={styles.footer} id="contact-us">
         <div className={styles.footer_contact}>
           <p>
-            <img src={Ticksy} />
+            <img src={Assets.Images.Ticksy} alt="logo" />
             سامانه تیکتینگ
           </p>
 
           <div>
-            <img src={User} />
-            supourtickcy@khu.com
+            <Assets.SVGs.UserSVG />
+            <span>supourtickcy@khu.com</span>
           </div>
           <div>
-            <img src={Flags} /> تهران - خیابان شهید مفتح نرسیده به انقلاب پلاک
-            ۴۳
+            <Assets.SVGs.LocationPinSVG /> تهران - خیابان شهید مفتح نرسیده به
+            انقلاب پلاک ۴۳
           </div>
           <div>
-            <img src={Flags} />
+            <Assets.SVGs.LocationPinSVG />
             کرج - انتهای خیابان شهید بهشتی - میدان دانشگاه{" "}
           </div>
         </div>
         <div className={styles.footer_social}>
           <div>
-            <img src={Facebook} alt="facebook" />
+            <img src={Assets.SVGs.Facebook} alt="facebook" />
           </div>
           <div>
-            <img src={Instagram} alt="instagram" />
+            <img src={Assets.SVGs.Instagram} alt="instagram" />
           </div>
           <div>
-            <img src={Linkedin} alt="linkedin" />
+            <img src={Assets.SVGs.Linkedin} alt="linkedin" />
           </div>
           <div>
-            <img src={Twitter} alt="twitter" />
+            <img src={Assets.SVGs.Twitter} alt="twitter" />
           </div>
         </div>
       </footer>

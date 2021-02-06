@@ -1,6 +1,6 @@
-import Account from "./Domains/Account";
+import Users from "./Domains/Users";
 const API = {
-    Account,
+  Users,
 };
 
 export default API;

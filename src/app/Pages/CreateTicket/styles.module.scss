@@ -17,7 +17,7 @@
     justify-content: flex-end;
     height: clamp(90px, 9.7vh, 111px);
 
-    img:nth-child(2n+1) {
+    img:nth-child(2n + 1) {
       width: 2rem;
       height: 2rem;
       margin: 0 0 0 3vw;
@@ -28,6 +28,13 @@
       width: 3.6rem;
       height: 3rem;
       margin: 0 0 0 3vw;
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      margin: 0 0 0 3vw;
+      filter: brightness(0) invert(1);
     }
 
     a {
@@ -93,7 +100,6 @@
       display: flex;
       margin-top: 6%;
       align-items: center;
-
 
       .tag_input_class {
         width: 80%;

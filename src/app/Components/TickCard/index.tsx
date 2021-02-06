@@ -3,7 +3,7 @@ import { Button } from "antd";
 import styles from "./styles.module.scss";
 import ClassNames from "../../Utilities/ClassNames";
 
-interface Button {
+interface IButton {
   label: string;
   className?: string;
 }
@@ -11,7 +11,7 @@ interface Button {
 interface Props {
   icon?: string;
   title: string;
-  buttons?: Button[];
+  buttons?: IButton[];
   className?: string;
   headerClassName?: string;
   contentClassName?: string;
