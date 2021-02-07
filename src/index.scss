@@ -25,6 +25,18 @@ td {
     sans-serif !important;
 }
 
+input,
+textarea {
+  outline: none;
+  user-select: text;
+
+  // for password eye
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+  }
+}
+
 .ant-btn {
   padding-top: 0 !important;
   border-radius: 8px !important;

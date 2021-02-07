@@ -1,9 +1,9 @@
+import API from "../../../../API";
 import { Button, message } from "antd";
 import { useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import { useHistory } from "react-router-dom";
 import SEInput from "../../../../Components/SEInput";
-import API from "../../../../API";
 
 interface Props {
   className?: string;

@@ -1,4 +1,4 @@
-import BaseResponse from "../Common/BaseResponse";
+import BaseResponse from "../../Common/BaseResponse";
 
 namespace SignInViewModel {
   export interface Request {

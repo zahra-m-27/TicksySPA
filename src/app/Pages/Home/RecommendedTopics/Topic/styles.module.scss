@@ -32,8 +32,8 @@
   height: 3rem;
   position: absolute;
   border-radius: 50%;
-  background-color: #fff;
   padding: 0.5rem 0.35rem;
+  background-color: #fff;
   box-shadow: 2px 2px 6px 0 rgba(110, 57, 122, 0.4);
 }
 
@@ -59,12 +59,12 @@
 
 .topic:nth-child(2n) > .topic_content {
   background-position: center;
-  background-image: url("../../../Assets/Images/Files/card_cyan_background.png");
+  background-image: url("../../../../Assets/Images/Files/card_cyan_background.png");
 }
 
 .topic:nth-child(2n + 1) > .topic_content {
   background-position: center;
-  background-image: url("../../../Assets/Images/Files/card_blue_background.png");
+  background-image: url("../../../../Assets/Images/Files/card_blue_background.png");
 }
 
 .topic_content > h3 {

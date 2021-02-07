@@ -1,0 +1,30 @@
+.main {
+  direction: rtl;
+  min-height: 105vh;
+  scroll-snap-align: start;
+}
+
+.main_title {
+  color: #2d1e1e;
+  margin: 2rem 5rem;
+  font-weight: bold;
+  display: inline-block;
+  font-size: clamp(25px, 2vw, 35px);
+  border-bottom: solid 5px #26a9ad;
+}
+
+.topic_container {
+  display: flex;
+  margin: 2rem 5rem;
+  flex-flow: row wrap;
+  width: calc(100% - 10rem);
+  justify-content: space-between;
+}
+
+@media (max-width: 780px) {
+  .topic_container {
+    margin: 2rem 0;
+    width: calc(100%);
+    justify-content: center;
+  }
+}
