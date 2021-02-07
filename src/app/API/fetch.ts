@@ -1,20 +1,21 @@
 import { message } from "antd";
 import BaseResponse from "./Common/BaseResponse";
 
-let BaseUrl = "https://api.ticksy.margay.ir";
+let BaseUrl = "https://api.ticksy.margay.ir/";
 
 export function Post<T extends BaseResponse>(
   url: string,
   data: any,
-  showNotifier = false,
-  showLog = true
+  method: string = "POST",
+  showLog = true,
+  showNotifier = false
 ) {
   return new Promise<T>((resolve, reject) => {
     if (showLog) {
       console.log(BaseUrl + url + ":  Request  : " + JSON.stringify(data));
     }
     fetch(BaseUrl + url, {
-      method: "POST",
+      method: method,
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +28,7 @@ export function Post<T extends BaseResponse>(
 
           console.debug("=".repeat(50));
         }
-        if (response.status === 200) {
+        if (response.status === 200 || response.status === 201) {
           resolve((await response.json()) as T);
         } else {
           if (showNotifier) {

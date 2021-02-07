@@ -34,11 +34,9 @@ export default function Profile() {
               <SEInput onChangeText={() => {}} className={styles.input} />
               <p className={styles.small}>ايميل</p>
               <SEInput
+                regex={/^\S+@\S+$/}
                 onChangeText={() => {}}
                 className={styles.input}
-                regex={
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{3,}))$/
-                }
               />
               <p className={styles.small}>تاريخ ثبت نام</p>
               <SEInput onChangeText={() => {}} className={styles.input} />

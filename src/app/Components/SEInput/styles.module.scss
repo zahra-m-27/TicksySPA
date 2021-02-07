@@ -36,10 +36,10 @@ $failed_regex_primary_color: #e62e00;
 
 .label {
   top: 50%;
-  color: #b8b8b8;
   margin: 0 10px;
   font-size: 20px;
   transition: 0.2s;
+  color: #b8b8b8;
   position: absolute;
   pointer-events: none;
   transform: translateY(-50%);
@@ -64,11 +64,11 @@ $failed_regex_primary_color: #e62e00;
   width: 100%;
   outline: none;
   border: hidden;
-  color: #606060;
   font-size: 20px;
+  color: #606060;
   font-weight: 400;
-  padding: 0.3em 10px;
   border-radius: 8px;
+  padding: 0.3em 10px;
   font-family: inherit;
 
   &::-webkit-scrollbar-track {

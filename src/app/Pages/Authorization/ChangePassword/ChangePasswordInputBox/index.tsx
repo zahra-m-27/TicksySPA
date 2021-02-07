@@ -11,7 +11,6 @@ export default function ForgotPasswordInputBox({ className }: Props) {
     <div className={className}>
       <p className={styles.input_box_title}>تغيير رمز عبور!</p>
       <SEInput
-        hint=""
         type="password"
         label="گذرواژه"
         onChangeText={() => {}}
@@ -21,7 +20,6 @@ export default function ForgotPasswordInputBox({ className }: Props) {
         innerContainerClassName={styles.inner_container}
       />
       <SEInput
-        hint=""
         type="password"
         label="تاييد گذرواژه"
         onChangeText={() => {}}
