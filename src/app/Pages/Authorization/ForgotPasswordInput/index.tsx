@@ -1,12 +1,12 @@
 import { Button } from "antd";
 import styles from "./styles.module.scss";
-import SEInput from "../../../../Components/SEInput";
+import SEInput from "../../../Components/SEInput";
 
 interface Props {
   className?: string;
 }
 
-export default function ForgotPasswordInputBox({ className }: Props) {
+export default function ForgotPasswordInput({ className }: Props) {
   return (
     <div className={className}>
       <p className={styles.input_box_title}>فراموشي گذرواژه!</p>

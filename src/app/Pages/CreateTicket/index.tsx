@@ -41,12 +41,12 @@ export default function CreateTicket() {
           label="پيام شما..."
           onChangeText={() => {}}
           attachments={Attachments}
+          inputClassName={styles.input}
+          className={styles.input_class}
           onRemoveAttachment={(index) => {
             Attachments.splice(index, 1);
             setAttachments([...Attachments]);
           }}
-          inputClassName={styles.input}
-          className={styles.input_class}
           labelClassName={styles.input_label}
           onSelectFile={(file) => setAttachments([file, ...Attachments])}
         />
@@ -58,16 +58,17 @@ export default function CreateTicket() {
           <SEInput
             tags={Tags}
             label="تگ ها"
+            content={CurrentTag}
             onTagClose={(index) => {
               Tags.splice(index, 1);
               setTags([...Tags]);
             }}
             onChangeText={setCurrentTag}
+            inputClassName={styles.input}
             onEnter={() => {
               setTags([CurrentTag, ...Tags]);
               setCurrentTag("");
             }}
-            inputClassName={styles.input}
             className={styles.tag_input_class}
             labelClassName={styles.input_label}
           />

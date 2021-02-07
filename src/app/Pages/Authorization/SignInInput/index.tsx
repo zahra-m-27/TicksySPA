@@ -1,15 +1,15 @@
-import API from "../../../../API";
+import API from "../../../API";
 import { Button, message } from "antd";
 import { useRef, useState } from "react";
 import styles from "./styles.module.scss";
+import SEInput from "../../../Components/SEInput";
 import { Link, useHistory } from "react-router-dom";
-import SEInput from "../../../../Components/SEInput";
 
 interface Props {
   className?: string;
 }
 
-export default function SignInInputBox({ className }: Props) {
+export default function SignInInput({ className }: Props) {
   const history = useHistory();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");

@@ -13,6 +13,13 @@
   width: clamp(300px, 23%, 460px);
 }
 
+@media (max-width: 720px) {
+  .input_box_container {
+    right: 50%;
+    transform: translate(50%, -30%);
+  }
+}
+
 .message_box {
   top: 50%;
   width: 38%;
@@ -25,13 +32,19 @@
   transform: translateY(-30%);
 }
 
-.message1 {
+@media (max-width: 720px) {
+  .message_box {
+    display: none;
+  }
+}
+
+.message_header {
   font-weight: bold;
   margin: 0 0 15px 0;
   font-size: clamp(16px, 2vw, 48px);
 }
 
-.message2 {
+.message {
   margin: 0;
   position: fixed;
   text-align: center;

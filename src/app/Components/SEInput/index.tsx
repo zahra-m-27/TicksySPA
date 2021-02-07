@@ -10,6 +10,7 @@ interface Props {
   regex?: RegExp;
   tags?: string[];
   minLines?: number;
+  content?: string;
   className?: string;
   hasError?: boolean;
   icon?: JSX.Element;
@@ -35,6 +36,7 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
       tags,
       regex,
       label,
+      content,
       onEnter,
       minLines,
       className,
@@ -56,9 +58,13 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
     ref
   ) => {
     const [Type, setType] = useState(type);
-    const [Content, setContent] = useState("");
     const [HasError, setHasError] = useState(false);
     const [IsFocused, setIsFocused] = useState(false);
+    const [Content, setContent] = useState(content ?? "");
+
+    useEffect(() => {
+      setContent(content ?? "");
+    }, [content]);
 
     useEffect(() => {
       setHasError(hasError);

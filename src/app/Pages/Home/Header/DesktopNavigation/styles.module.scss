@@ -1,0 +1,43 @@
+.navigation {
+  display: flex;
+  padding-top: 8.5vh;
+  margin-left: 100px;
+  justify-content: space-between;
+  margin-right: clamp(26px, 7.2vw, 137px);
+
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+
+  img {
+    height: 3rem;
+    width: 3.6rem;
+    margin: 0 0 0 2vw;
+  }
+  svg {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0 0 3vw;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  font-size: clamp(14px, 2vw, 18px);
+}
+
+.link > span {
+  cursor: pointer;
+  color: #707070;
+  white-space: pre;
+  font-family: monospace;
+  font-size: clamp(15px, 1.1vw, 20px);
+}
+
+.link > a,
+.link > div {
+  cursor: pointer;
+  color: #707070;
+  font-size: clamp(15px, 1.1vw, 20px);
+}
