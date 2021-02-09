@@ -6,6 +6,8 @@ export default interface TicketDto {
   title: string;
   status: number;
   priority: number;
+  last_update: Date;
+  creation_date: Date;
   attachments: string[];
   creator: UserSerializerRestrictedDto;
 }

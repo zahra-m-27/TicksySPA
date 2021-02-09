@@ -1,77 +1,65 @@
-import { Button } from "antd";
-import { useEffect, useState } from "react";
+import API from "../../../../API";
+import moment from "jalali-moment";
+import { Button, message } from "antd";
 import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import SEInput from "../../../../Components/SEInput";
+import TicketDto from "../../../../API/DTOs/TicketDto";
 import ClassNames from "../../../../Utilities/ClassNames";
-import API from "../../../../API";
-
-interface TicketListItems {
-  id: string;
-  title: string;
-  startDate: string;
-  startHour: string;
-  ticketCondition: string;
-  lastActivityDate: string;
-  lastActivityHour: string;
-}
 
 export default function Tickets() {
   const history = useHistory();
-  const [CurrentPage, setCurrentPage] = useState(3);
+  const [Id, setId] = useState("");
+  const [Title, setTitle] = useState("");
+  const [Search, setSearch] = useState("");
+  const [LastPage, setLastPage] = useState(1);
+  const [CurrentPage, setCurrentPage] = useState(1);
+  const [Loading, setLoading] = useState<boolean>(false);
+  const [Tickets, setTickets] = useState<TicketDto[]>([]);
 
-  useEffect(() => {
-    // API.Topics.GetTickets()
-  }, []);
-
-  let ticketList: TicketListItems[] = [
-    {
-      id: "11198",
-      title: "تیکت اول",
-      ticketCondition: "در انتظار پاسخ",
-      lastActivityDate: "1399/11/11",
-      startDate: "1399/11/11",
-      lastActivityHour: "11:52:17",
-      startHour: "11:52:17",
-    },
-    {
-      id: "11198",
-      title: "تیکت اول",
-      ticketCondition: "در حال پردازش",
-      lastActivityDate: "1399/11/11",
-      startDate: "1399/11/11",
-      lastActivityHour: "11:52:17",
-      startHour: "11:52:17",
-    },
-    {
-      id: "11198",
-      title: "تیکت اول",
-      ticketCondition: "پاسخ داده شده",
-      lastActivityDate: "1399/11/11",
-      startDate: "1399/11/11",
-      lastActivityHour: "11:52:17",
-      startHour: "11:52:17",
-    },
-    {
-      id: "11198",
-      title: "تیکت اول",
-      ticketCondition: "بسته",
-      lastActivityDate: "1399/11/11",
-      startDate: "1399/11/11",
-      lastActivityHour: "11:52:17",
-      startHour: "11:52:17",
-    },
-  ];
-
-  const conditionClass = (s: string) => {
-    if (s === "بسته") return "#295cc0";
-    else if (s === "پاسخ داده شده") return "#3d6cc9";
-    else if (s === "در انتظار پاسخ") return "#44adf2";
-    else if (s === "در حال پردازش") return "#0088e3";
+  const onSearch = () => {
+    setSearch(Title ? Title : Id ? Id : "");
+    getTickets();
   };
 
-  const openTicket = (id: string) => {
+  const getTickets = () => {
+    setLoading(true);
+    API.Tickets.GetTickets({
+      status: 0,
+      search: Search,
+      page: CurrentPage,
+    })
+      .then((response) => {
+        setTickets(response.results);
+        setLastPage(response.count / 5);
+      })
+      .catch(() => {
+        message.error("خطایی در دریافت تیکت ها رخ داده است");
+      })
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    getTickets();
+  }, [CurrentPage]);
+
+  const statusClassName = (status: number) => {
+    if (status === 4) return "#295cc0";
+    else if (status === 3) return "#3d6cc9";
+    else if (status === 1) return "#44adf2";
+    else if (status === 2) return "#0088e3";
+  };
+
+  const statusLabel = (status: number) => {
+    if (status === 4) return "بسته شده";
+    else if (status === 3) return "پاسخ داده شده";
+    else if (status === 1) return "در انتظار پاسخ";
+    else if (status === 2) return "در حال بررسی";
+  };
+
+  const openTicket = (id: number) => {
     history.push("/dashboard/tickets/" + id);
   };
 
@@ -81,13 +69,18 @@ export default function Tickets() {
         <div className={styles.inner_top}>
           <div className={styles.input}>
             <label className={styles.input_label}>شناسه</label>
-            <SEInput onChangeText={() => {}} />
+            <SEInput onChangeText={setId} inputClassName={styles.inputs} />
           </div>
           <div className={styles.input}>
             <label className={styles.input_label}>عنوان</label>
-            <SEInput onChangeText={() => {}} />
+            <SEInput onChangeText={setTitle} inputClassName={styles.inputs} />
           </div>
-          <Button type="primary" className={styles.search_button}>
+          <Button
+            type="primary"
+            loading={Loading}
+            onClick={onSearch}
+            className={styles.search_button}
+          >
             <img
               alt=""
               src={Assets.Images.Search}
@@ -103,7 +96,7 @@ export default function Tickets() {
         <th>وضعیت تیکت</th>
         <th>تاریخ شروع</th>
         <th>آخرین فعالیت</th>
-        {ticketList.map((ticket, index) => {
+        {Tickets.map((ticket, index) => {
           return (
             <tr key={index}>
               <td
@@ -122,19 +115,43 @@ export default function Tickets() {
                 <div
                   className={styles.td_condition_container}
                   style={{
-                    background: conditionClass(ticket.ticketCondition),
+                    background: statusClassName(ticket.status),
                   }}
                 >
-                  {ticket.ticketCondition}
+                  {statusLabel(ticket.status)}
                 </div>
               </td>
               <td className={styles.td_start}>
-                <span>{ticket.startDate}</span>
-                <span className={styles.hour}>{ticket.startHour}</span>
+                <span>
+                  {moment
+                    .utc(ticket.creation_date)
+                    .local()
+                    .locale("fa")
+                    .format("YYYY/MM/D")}
+                </span>
+                <span className={styles.hour}>
+                  {moment
+                    .utc(ticket.creation_date)
+                    .local()
+                    .locale("fa")
+                    .format("HH:mm")}
+                </span>
               </td>
               <td className={styles.td_last}>
-                <span>{ticket.lastActivityDate}</span>
-                <span className={styles.hour}>{ticket.lastActivityHour}</span>
+                <span>
+                  {moment
+                    .utc(ticket.last_update)
+                    .local()
+                    .locale("fa")
+                    .format("YYYY/MM/D")}
+                </span>
+                <span className={styles.hour}>
+                  {moment
+                    .utc(ticket.creation_date)
+                    .local()
+                    .locale("fa")
+                    .format("HH:mm")}
+                </span>
               </td>
             </tr>
           );
@@ -143,28 +160,34 @@ export default function Tickets() {
       <div className={styles.pagination}>
         <Assets.SVGs.LessThan
           className={styles.move_button}
-          onClick={() => setCurrentPage(CurrentPage - 1)}
+          onClick={() => CurrentPage - 1 > 0 && setCurrentPage(CurrentPage - 1)}
         />
         <div className={styles.divider} />
-        <div
-          className={styles.pagination_page}
-          onClick={() => setCurrentPage(CurrentPage - 1)}
-        >
-          {CurrentPage - 1}
-        </div>
+        {CurrentPage - 1 > 0 && (
+          <div
+            className={styles.pagination_page}
+            onClick={() => setCurrentPage(CurrentPage - 1)}
+          >
+            {CurrentPage - 1}
+          </div>
+        )}
         <div className={ClassNames(styles.pagination_page, styles.active)}>
           {CurrentPage}
         </div>
-        <div
-          className={styles.pagination_page}
-          onClick={() => setCurrentPage(CurrentPage + 1)}
-        >
-          {CurrentPage + 1}
-        </div>
+        {CurrentPage + 1 < LastPage && (
+          <div
+            className={styles.pagination_page}
+            onClick={() => setCurrentPage(CurrentPage + 1)}
+          >
+            {CurrentPage + 1}
+          </div>
+        )}
         <div className={styles.divider} />
         <Assets.SVGs.MoreThan
           className={styles.move_button}
-          onClick={() => setCurrentPage(CurrentPage + 1)}
+          onClick={() =>
+            CurrentPage + 1 < LastPage && setCurrentPage(CurrentPage + 1)
+          }
         />
       </div>
     </div>

@@ -42,12 +42,18 @@
 }
 
 .input {
-  width: 22%;
+  width: 24%;
   display: flex;
   margin-left: 1.1%;
   margin-right: 1.6%;
+  margin-bottom: 10px;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.inputs {
+  height: 35px;
+  font-size: 18px;
 }
 
 .input_label {
@@ -61,8 +67,9 @@
   margin-right: auto;
 }
 
-
-.ticket_table, td, th {
+.ticket_table,
+td,
+th {
   direction: rtl;
   user-select: none;
   text-align: center;

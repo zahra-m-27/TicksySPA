@@ -6,4 +6,5 @@ export default interface UserDto {
   last_name: string;
   date_joined: Date;
   first_name: string;
+  is_identified: boolean;
 }

@@ -33,3 +33,12 @@ $input_background_color: #fff;
   height: 42px;
   align-self: center;
 }
+
+.switch {
+  margin-top: 15px;
+  color: #5994cf;
+  font-weight: bold;
+  align-self: center;
+  text-decoration: none;
+  font-size: clamp(16px, 1vw, 48px);
+}

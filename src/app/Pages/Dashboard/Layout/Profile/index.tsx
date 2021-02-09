@@ -11,9 +11,11 @@ import SEInput from "../../../../Components/SEInput";
 export default function Profile() {
   const history = useHistory();
   const { user, Login } = useUser();
+  const [Avatar, setAvatar] = useState<File>();
   const [Loading, setLoading] = useState(false);
   const [Email, setEmail] = useState(user.email);
   const emailRef = useRef<HTMLInputElement>(null);
+  const [AvatarUrl, setAvatarUrl] = useState<any>();
   const lastNameRef = useRef<HTMLInputElement>(null);
   const [LastName, setLastName] = useState(user.last_name);
   const [EmailHasError, setEmailHasError] = useState(false);
@@ -78,13 +80,31 @@ export default function Profile() {
       </div>
       <div className={styles.content}>
         <div className={styles.left}>
-          <img src={Assets.SVGs.UserAvatar} className={styles.profile} alt="" />
+          <img
+            src={user.avatar ?? Assets.SVGs.UserAvatar}
+            className={styles.profile}
+            alt=""
+          />
           {CanChange && (
             <div className={styles.upload}>
               <label htmlFor="add">
                 <Assets.SVGs.AddPhotoSVG className={styles.add_photo} />
               </label>
-              <input type="file" id="add" className={styles.upload_image} />
+              <input
+                id="add"
+                type="file"
+                className={styles.upload_image}
+                onChange={(e) => {
+                  if (e.target.files) {
+                    setAvatar(e.target.files[0]);
+                    var fr = new FileReader();
+                    fr.onload = function () {
+                      setAvatarUrl(fr.result);
+                    };
+                    fr.readAsDataURL(e.target.files[0]);
+                  }
+                }}
+              />
             </div>
           )}
         </div>

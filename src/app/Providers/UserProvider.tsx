@@ -1,7 +1,7 @@
 import API from "../API";
 import UserDto from "../API/DTOs/UserDto";
-import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 interface IUserProvider {
   user: UserDto;
@@ -17,6 +17,7 @@ let UnauthorizedUser: UserDto = {
   avatar: "",
   last_name: "",
   first_name: "",
+  is_identified: false,
   date_joined: new Date(),
 };
 

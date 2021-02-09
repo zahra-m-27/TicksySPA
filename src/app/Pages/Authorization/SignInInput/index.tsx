@@ -95,6 +95,9 @@ export default function SignInInput({ className }: Props) {
       >
         ورود
       </Button>
+      <Link className={styles.switch} to="/sign-up">
+        حساب کابری ندارم
+      </Link>
       <Link className={styles.forget_pass} to="/forgot-password">
         فراموشی گذرواژه
       </Link>

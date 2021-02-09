@@ -38,17 +38,19 @@ export default function Dashboard() {
                 </div>
               </div>
             </li>
-            <li>
-              <div
-                className={styles.item}
-                onClick={() => history.push("/dashboard/topics")}
-              >
-                <img src={Assets.Images.Topic} alt="" />
-                <div className={styles.item_label}>
-                  <p>مدیریت تاپیک ها</p>
+            {user.is_identified && (
+              <li>
+                <div
+                  className={styles.item}
+                  onClick={() => history.push("/dashboard/topics")}
+                >
+                  <img src={Assets.Images.Topic} alt="" />
+                  <div className={styles.item_label}>
+                    <p>مدیریت تاپیک ها</p>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            )}
             <li>
               <div
                 className={styles.item}

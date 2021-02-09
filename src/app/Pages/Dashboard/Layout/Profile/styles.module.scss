@@ -35,6 +35,7 @@ $header-background-color: #265ecd;
 .content {
   display: flex;
   padding-top: 2rem;
+  align-items: center;
 }
 
 .right {
@@ -43,6 +44,7 @@ $header-background-color: #265ecd;
 }
 
 .left {
+  display: table;
   margin-left: 8%;
   position: relative;
 }
@@ -71,18 +73,21 @@ $header-background-color: #265ecd;
 
 .profile {
   margin-top: 10%;
+  border-radius: 50%;
+  width: clamp(150px, 12vw, 230px);
+  height: clamp(150px, 12vw, 230px);
 }
 
 .upload {
+  bottom: 0;
   right: -50%;
-  bottom: 50%;
   display: flex;
   position: absolute;
   align-items: center;
   flex-direction: column;
   width: clamp(60px, 7vw, 100px);
   height: clamp(60px, 7vw, 100px);
-  transform: translate(-50%, 75%);
+  transform: translate(-100%, 25%);
 }
 
 .add_photo {

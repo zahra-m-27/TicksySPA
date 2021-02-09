@@ -2,7 +2,7 @@ import API from "../../../API";
 import { Button, message } from "antd";
 import { useRef, useState } from "react";
 import styles from "./styles.module.scss";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SEInput from "../../../Components/SEInput";
 
 interface Props {
@@ -172,6 +172,9 @@ export default function SignInInput({ className }: Props) {
       >
         ثبت نام
       </Button>
+      <Link className={styles.switch} to="/sign-in">
+        حساب کابری دارم
+      </Link>
     </div>
   );
 }
