@@ -9,14 +9,14 @@
   display: flex;
   position: absolute;
   flex-direction: column;
-  transform: translateY(-30%);
+  transform: translateY(-50%);
   width: clamp(300px, 23%, 460px);
 }
 
 @media (max-width: 750px) {
   .input_box_container {
     right: 50%;
-    transform: translate(50%, -30%);
+    transform: translate(50%, -50%);
   }
 }
 

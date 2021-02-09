@@ -49,6 +49,7 @@ export default function ForgotPasswordInput({ className }: Props) {
     })
       .then((response) => {
         localStorage.setItem("token", response.token);
+        message.success("رمز عبور با موفقیت تغییر کرد.");
         history.replace("/");
       })
       .catch((error) => {

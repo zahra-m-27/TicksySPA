@@ -3,6 +3,7 @@ import SignInViewModel from "../ViewModels/Users/SignInViewModel";
 import SignUpViewModel from "../ViewModels/Users/SignUpViewModel";
 import GetProfileViewModel from "../ViewModels/Users/GetProfileViewModel";
 import GetIdentityViewModel from "../ViewModels/Users/GetIdentityViewModel";
+import ConfirmSignUpViewModel from "../ViewModels/Users/ConfirmSignUpViewModel";
 import UpdateProfileViewModel from "../ViewModels/Users/UpdateProfileViewModel";
 import UpdateIdentityViewModel from "../ViewModels/Users/UpdateIdentityViewModel";
 import RequestResetPasswordViewModel from "../ViewModels/Users/RequestResetPasswordViewModel";
@@ -16,6 +17,13 @@ function SignUp(args: SignUpViewModel.Request) {
 }
 function SignIn(args: SignInViewModel.Request) {
   return Post<SignInViewModel.Response>(ControllerName + "/signin/", args);
+}
+function ConfirmSignUp(args: ConfirmSignUpViewModel.Request) {
+  return Post<ConfirmSignUpViewModel.Response>(
+    `${ControllerName}/signup/confirm-credential/${args.uib64}/${args.token}`,
+    undefined,
+    "GET"
+  );
 }
 function RequestResetPassword(args: RequestResetPasswordViewModel.Request) {
   return Post<RequestResetPasswordViewModel.Response>(
@@ -76,6 +84,7 @@ const Actions = {
   SignUp,
   GetProfile,
   GetIdentity,
+  ConfirmSignUp,
   UpdateProfile,
   UpdateIdentity,
   RequestResetPassword,

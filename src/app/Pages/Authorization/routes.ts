@@ -1,6 +1,6 @@
 import SignInInput from "./SignInInput";
 import SignUpInput from "./SignUpInput";
-import ConfirmEmailPage from "./ConfirmEmail";
+import ConfirmSignUp from "./ConfirmSignUp";
 import { Props as TemplateProps } from "./Template";
 import ForgotPasswordInput from "./ForgotPasswordInput";
 import ChangePasswordInput from "./ChangePasswordInput";
@@ -24,14 +24,14 @@ const routes: Route[] = [
     inputComponent: ForgotPasswordInput,
   },
   {
-    path: "/change-password",
     message: undefined,
     messageHeader: undefined,
+    path: "/confirm-reset-password",
     inputComponent: ChangePasswordInput,
   },
   {
     path: "/confirm-email",
-    component: ConfirmEmailPage,
+    component: ConfirmSignUp,
   },
   {
     path: "/",

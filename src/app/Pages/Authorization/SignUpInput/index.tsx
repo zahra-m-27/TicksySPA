@@ -11,14 +11,17 @@ interface Props {
 
 export default function SignInInput({ className }: Props) {
   const history = useHistory();
+  const [Code, setCode] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [LastName, setLastName] = useState("");
   const [Loading, setLoading] = useState(false);
   const [FirstName, setFirstName] = useState("");
+  const codeRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
+  const [CodeHasError, setCodeHasError] = useState(false);
   const [EmailHasError, setEmailHasError] = useState(false);
   const [PasswordHasError, setPasswordHasError] = useState(false);
   const [LastNameHasError, setLastNameHasError] = useState(false);
@@ -37,6 +40,12 @@ export default function SignInInput({ className }: Props) {
   };
 
   const onEmailEnter = () => {
+    if (codeRef && codeRef.current) {
+      codeRef.current.focus();
+    }
+  };
+
+  const onCodeEnter = () => {
     if (passwordRef && passwordRef.current) {
       passwordRef.current.focus();
     }
@@ -64,6 +73,7 @@ export default function SignInInput({ className }: Props) {
 
     setLoading(true);
     API.Users.SignUp({
+      code: Code,
       email: Email,
       password: Password,
       last_name: LastName,
@@ -128,6 +138,18 @@ export default function SignInInput({ className }: Props) {
         inputClassName={styles.input}
         className={styles.input_class}
         labelClassName={styles.input_label}
+        innerContainerClassName={styles.inner_container}
+      />
+      <SEInput
+        type="text"
+        ref={codeRef}
+        onEnter={onCodeEnter}
+        onChangeText={setCode}
+        hasError={CodeHasError}
+        inputClassName={styles.input}
+        className={styles.input_class}
+        labelClassName={styles.input_label}
+        label="شماره دانشجویی / کد پرسنلی"
         innerContainerClassName={styles.inner_container}
       />
       <SEInput

@@ -2,6 +2,7 @@ import BaseResponse from "../../Common/BaseResponse";
 
 namespace SignUpViewModel {
   export interface Request {
+    code: string;
     email: string;
     password: string;
     last_name: string;

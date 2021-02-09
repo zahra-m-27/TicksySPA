@@ -21,7 +21,7 @@ const routes: Route[] = [
       "/sign-up",
       "/confirm-email",
       "/forgot-password",
-      "/change-password",
+      "/confirm-reset-password",
     ],
     component: Authorization,
   },
