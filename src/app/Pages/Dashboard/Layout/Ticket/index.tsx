@@ -8,25 +8,60 @@ import React, { useEffect, useState } from "react";
 import SEInput from "../../../../Components/SEInput";
 import MessageDto from "../../../../API/DTOs/MessageDto";
 import TicketDto from "../../../../API/DTOs/TicketDto";
-import { Spin } from "antd";
+import { message, Spin } from "antd";
 
 export default function Ticket() {
   const { user } = useUser();
   const params = useParams<any>();
+  const [Message, setMessage] = useState("");
+  const [Loading, setLoading] = useState(false);
   const [Ticket, setTicket] = useState<TicketDto>();
   const [Attachment, setAttachment] = useState<File>();
   const [Messages, setMessages] = useState<MessageDto[]>([]);
+  const [MessageHasError, setMessageHasError] = useState(false);
 
-  useEffect(() => {
+  const getMessages = () => {
     API.Tickets.GetTicketMessages({
       id: params.id,
-    }).then((response) => {
-      setMessages(response);
-    });
+    })
+      .then((response) => {
+        setMessages(response);
+      })
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    getMessages();
     API.Tickets.GetTicketDetail({ id: params.id }).then((response) => {
       setTicket(response);
     });
   }, []);
+
+  const onSendMessage = () => {
+    if (!Message) {
+      setMessageHasError(true);
+      return;
+    }
+
+    let attachments = [];
+
+    if (Attachment) {
+      attachments.push(Attachment);
+    }
+
+    setLoading(true);
+    API.Tickets.CreateTicketMessage({
+      id: params.id,
+      text: Message,
+      attachments: attachments,
+    })
+      .then(() => {
+        getMessages();
+      })
+      .catch(() => {
+        message.error("ارسال پیام مقدور نیست");
+      });
+  };
 
   if (!Ticket) {
     return (
@@ -155,11 +190,18 @@ export default function Ticket() {
           <SEInput
             minLines={2}
             label="پیام شما..."
-            onChangeText={() => {}}
+            onChangeText={setMessage}
+            hasError={MessageHasError}
             className={styles.send_message_input}
             innerContainerClassName={styles.send_message_input_innerContainer}
           />
-          <Assets.SVGs.PaperPlane className={styles.send_message_icons} />
+          <div onClick={onSendMessage}>
+            {Loading ? (
+              <Spin size="large" />
+            ) : (
+              <Assets.SVGs.PaperPlane className={styles.send_message_icons} />
+            )}
+          </div>
         </div>
       </div>
     </div>
