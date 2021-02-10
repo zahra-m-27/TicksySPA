@@ -4,13 +4,14 @@ import { Button, message } from "antd";
 import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import SEInput from "../../../../Components/SEInput";
 import TicketDto from "../../../../API/DTOs/TicketDto";
 import ClassNames from "../../../../Utilities/ClassNames";
 
 export default function Tickets() {
   const history = useHistory();
+  const params = useParams<any>();
   const [Id, setId] = useState("");
   const [Title, setTitle] = useState("");
   const [Search, setSearch] = useState("");
@@ -26,19 +27,34 @@ export default function Tickets() {
 
   const getTickets = () => {
     setLoading(true);
-    API.Tickets.GetTickets({
-      status: 0,
-      search: Search,
-      page: CurrentPage,
-    })
-      .then((response) => {
-        setTickets(response.results);
-        setLastPage(response.count / 10);
+    if (params.id)
+      API.Tickets.GetTickets({
+        status: 0,
+        search: Search,
+        page: CurrentPage,
       })
-      .catch(() => {
-        message.error("خطایی در دریافت تیکت ها رخ داده است");
+        .then((response) => {
+          setTickets(response.results);
+          setLastPage(response.count / 10);
+        })
+        .catch(() => {
+          message.error("خطایی در دریافت تیکت ها رخ داده است");
+        })
+        .finally(() => setLoading(false));
+    else
+      API.Tickets.GetTickets({
+        status: 0,
+        search: Search,
+        page: CurrentPage,
       })
-      .finally(() => setLoading(false));
+        .then((response) => {
+          setTickets(response.results);
+          setLastPage(response.count / 10);
+        })
+        .catch(() => {
+          message.error("خطایی در دریافت تیکت ها رخ داده است");
+        })
+        .finally(() => setLoading(false));
   };
 
   useEffect(() => {

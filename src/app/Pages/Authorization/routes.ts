@@ -13,18 +13,19 @@ interface Route extends Partial<TemplateProps> {
 const routes: Route[] = [
   {
     path: "/sign-up",
-    message: undefined,
+    message:
+      "ما تلاش می‌کنیم مشکلات و درخواست‌ها، انتقادات و پیشنهادات دانشجویان رو به اطلاع مسئولین برسونیم. مسئولین هم همینجا مشغول بررسی درخواست‌ها هستند، پس همین حالا ثبت نام کنید!",
     messageHeader: undefined,
     inputComponent: SignUpInput,
   },
   {
     path: "/forgot-password",
-    message: undefined,
+    message: "",
     messageHeader: undefined,
     inputComponent: ForgotPasswordInput,
   },
   {
-    message: undefined,
+    message: "",
     messageHeader: undefined,
     path: "/confirm-reset-password",
     inputComponent: ChangePasswordInput,
@@ -35,7 +36,8 @@ const routes: Route[] = [
   },
   {
     path: "/",
-    message: undefined,
+    message:
+      "ما تلاش می‌کنیم مشکلات و درخواست‌ها، انتقادات و پیشنهادات دانشجویان رو به اطلاع مسئولین برسونیم. مسئولین هم همینجا مشغول بررسی درخواست‌ها هستند، پس همین حالا وارد شو!",
     messageHeader: undefined,
     inputComponent: SignInInput,
   },
