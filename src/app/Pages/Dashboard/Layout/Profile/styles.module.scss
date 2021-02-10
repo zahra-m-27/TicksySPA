@@ -115,17 +115,7 @@ $header-background-color: #265ecd;
   margin-left: auto;
 }
 
-.change label {
-  display: block;
-  margin: 5px;
-  text-align: right;
-  line-height: 2;
-  font-size: 15px;
-  color: #454647;
-  font-family: IRANMarker;
-}
-
-.change input {
+.change > input {
   width: 100%;
   opacity: 0.7;
   height: 30px;
@@ -148,4 +138,8 @@ $header-background-color: #265ecd;
 
 .input {
   margin-bottom: 10px;
+}
+
+.input_inner_container {
+  box-shadow: none;
 }

@@ -3,7 +3,7 @@ import TopicsDto from "../../DTOs/TopicsDto";
 
 namespace CreateTopicViewModel {
   export interface Request {
-    avatar: any;
+    avatar?: File;
     slug: string;
     title: string;
     description: string;

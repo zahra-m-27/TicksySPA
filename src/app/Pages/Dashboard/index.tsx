@@ -2,8 +2,10 @@ import Assets from "../../Assets";
 import DashboardLayout from "./Layout";
 import styles from "./styles.module.scss";
 import { useHistory } from "react-router-dom";
+import useUser from "../../Hooks/useUser";
 
 export default function Dashboard() {
+  const { user, Logout } = useUser();
   const history = useHistory();
 
   return (
@@ -18,10 +20,10 @@ export default function Dashboard() {
             <img
               alt=""
               className={styles.avatar}
-              src={Assets.Images.UserAvatar}
+              src={user.avatar ?? Assets.Images.UserAvatar}
             />
           </div>
-          <p>سید علی علوی</p>
+          <p>{user.first_name + " " + user.last_name}</p>
         </div>
         <div className={styles.nav}>
           <ul>
@@ -66,7 +68,7 @@ export default function Dashboard() {
         >
           <ul>
             <li className={styles.exit}>
-              <div className={styles.item} onClick={() => history.push("/")}>
+              <div className={styles.item} onClick={() => Logout()}>
                 <img src={Assets.Images.Exit} alt="" />
                 <div className={styles.item_label}>
                   <p>خروج</p>

@@ -3,7 +3,7 @@ import RecommendedTopicsDto from "../../DTOs/RecommendedTopicsDto";
 
 namespace GetRecommendedTopicsViewModel {
   export interface Request {
-    page: string;
+    page: number;
   }
 
   export interface Response extends BaseResponse {

@@ -6,14 +6,16 @@ interface InputComponentProps {
 export interface Props {
   message: string;
   messageHeader: string;
-  InputComponent: React.ComponentType<InputComponentProps>;
+  inputComponent: React.ComponentType<InputComponentProps>;
 }
 
 export default function Template({
   message,
   messageHeader,
-  InputComponent,
+  inputComponent,
 }: Props) {
+  const InputComponent = inputComponent;
+
   return (
     <div className={styles.container}>
       <div className={styles.message_box}>

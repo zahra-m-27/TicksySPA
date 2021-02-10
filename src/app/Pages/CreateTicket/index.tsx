@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import SEInput from "../../Components/SEInput";
 
-export default function CreateTicket() {
+export default function CreateTicketPage() {
   const [Tags, setTags] = useState<string[]>([]);
   const [CurrentTag, setCurrentTag] = useState<string>("");
   const [Attachments, setAttachments] = useState<File[]>([]);

@@ -12,32 +12,32 @@ interface Route extends Partial<TemplateProps> {
 
 const routes: Route[] = [
   {
-    path: "/sign-in",
-    message: undefined,
-    messageHeader: undefined,
-    InputComponent: SignInInput,
-  },
-  {
     path: "/sign-up",
     message: undefined,
     messageHeader: undefined,
-    InputComponent: SignUpInput,
+    inputComponent: SignUpInput,
   },
   {
     path: "/forgot-password",
     message: undefined,
     messageHeader: undefined,
-    InputComponent: ForgotPasswordInput,
+    inputComponent: ForgotPasswordInput,
   },
   {
     path: "/change-password",
     message: undefined,
     messageHeader: undefined,
-    InputComponent: ChangePasswordInput,
+    inputComponent: ChangePasswordInput,
   },
   {
     path: "/confirm-email",
     component: ConfirmEmailPage,
+  },
+  {
+    path: "/",
+    message: undefined,
+    messageHeader: undefined,
+    inputComponent: SignInInput,
   },
 ];
 

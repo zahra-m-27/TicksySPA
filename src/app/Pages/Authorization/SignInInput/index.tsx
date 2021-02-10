@@ -4,12 +4,14 @@ import { useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import SEInput from "../../../Components/SEInput";
 import { Link, useHistory } from "react-router-dom";
+import useUser from "../../../Hooks/useUser";
 
 interface Props {
   className?: string;
 }
 
 export default function SignInInput({ className }: Props) {
+  const { Login } = useUser();
   const history = useHistory();
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -34,6 +36,9 @@ export default function SignInInput({ className }: Props) {
     if (!Password || !/^\S+@\S+$/.test(Email)) {
       return;
     }
+    setEmailHasError(false);
+    setPasswordHasError(false);
+
     setLoading(true);
     API.Users.SignIn({
       username: Email,
@@ -41,6 +46,9 @@ export default function SignInInput({ className }: Props) {
     })
       .then((response) => {
         localStorage.setItem("token", response.token);
+        API.Users.GetProfile({}).then((response) => {
+          Login(response);
+        });
         history.replace("/");
       })
       .catch((error) => {

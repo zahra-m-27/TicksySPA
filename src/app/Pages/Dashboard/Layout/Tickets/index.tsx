@@ -1,10 +1,11 @@
 import { Button } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
 import { useHistory } from "react-router-dom";
 import SEInput from "../../../../Components/SEInput";
 import ClassNames from "../../../../Utilities/ClassNames";
+import API from "../../../../API";
 
 interface TicketListItems {
   id: string;
@@ -19,6 +20,10 @@ interface TicketListItems {
 export default function Tickets() {
   const history = useHistory();
   const [CurrentPage, setCurrentPage] = useState(3);
+
+  useEffect(() => {
+    // API.Topics.GetTickets()
+  }, []);
 
   let ticketList: TicketListItems[] = [
     {
@@ -98,9 +103,9 @@ export default function Tickets() {
         <th>وضعیت تیکت</th>
         <th>تاریخ شروع</th>
         <th>آخرین فعالیت</th>
-        {ticketList.map((ticket) => {
+        {ticketList.map((ticket, index) => {
           return (
-            <tr>
+            <tr key={index}>
               <td
                 className={styles.td_id}
                 onClick={() => openTicket(ticket.id)}

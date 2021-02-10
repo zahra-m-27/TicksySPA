@@ -58,6 +58,10 @@ export default function SignInInput({ className }: Props) {
     if (!Password || !/^\S+@\S+$/.test(Email) || !LastName || !FirstName) {
       return;
     }
+    setEmailHasError(false);
+    setLastNameHasError(false);
+    setFirstNameHasError(false);
+
     setLoading(true);
     API.Users.SignUp({
       email: Email,

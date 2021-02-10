@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
 import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
+import useUser from "../../../../Hooks/useUser";
 
 export default function DesktopNavigation() {
-  const isLogin = !!localStorage.getItem("token");
+  const { isLogin, Logout } = useUser();
 
   return (
     <div className={styles.navigation}>
+      {isLogin && (
+        <div className={styles.link}>
+          <div onClick={Logout}>خروج</div>
+        </div>
+      )}
       <div className={styles.link}>
         <div
           onClick={() =>

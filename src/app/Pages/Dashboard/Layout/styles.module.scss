@@ -10,15 +10,10 @@
   align-items: center;
   justify-content: flex-end;
 
-  img:nth-child(1) {
-    width: 2rem;
-    height: 2rem;
-    margin: 0 0 0 3vw;
-  }
-
   img:nth-child(2) {
     width: 4rem;
     height: 3.3rem;
+    cursor: pointer;
     margin: 0 0 0 3vw;
   }
 

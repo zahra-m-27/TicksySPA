@@ -1,43 +1,67 @@
-import React, { useState } from "react";
-
-interface UserDto {
-  id: number;
-  userName: string;
-  lastName: string;
-  firstName: string;
-}
+import API from "../API";
+import UserDto from "../API/DTOs/UserDto";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 interface IUserProvider {
-  logout: () => void;
-  isLogin: () => boolean;
-  getUser: () => UserDto;
-  login: (userDto: UserDto) => void;
+  user: UserDto;
+  isLogin: boolean;
+  Logout: () => void;
+  Login: (userDto: UserDto) => void;
 }
 
 let UnauthorizedUser: UserDto = {
   id: 0,
-  lastName: "",
-  userName: "",
-  firstName: "",
+  code: "",
+  email: "",
+  avatar: "",
+  last_name: "",
+  first_name: "",
+  date_joined: new Date(),
 };
 
 export const UserContext = React.createContext<IUserProvider>({
-  isLogin: () => false,
-  login: () => undefined,
-  logout: () => undefined,
-  getUser: () => UnauthorizedUser,
+  isLogin: false,
+  user: UnauthorizedUser,
+  Login: () => undefined,
+  Logout: () => undefined,
 });
 
 const UserProvider: React.FC = ({ children }) => {
-  const [User, setUser] = useState<UserDto>(UnauthorizedUser);
+  const history = useHistory();
+  const isLogin = !!localStorage.getItem("token");
+  const cachedUser = localStorage.getItem("user");
+  const [User, setUser] = useState<UserDto>(
+    cachedUser ? JSON.parse(cachedUser) : UnauthorizedUser
+  );
+
+  useEffect(() => {
+    if (User.id) {
+      localStorage.setItem("user", JSON.stringify(User));
+    }
+  }, [User.id]);
+
+  useEffect(() => {
+    if (isLogin) {
+      API.Users.GetProfile({}).then((response) => {
+        setUser(response);
+      });
+    } else {
+      setUser(UnauthorizedUser);
+    }
+  }, [isLogin]);
 
   return (
     <UserContext.Provider
       value={{
-        getUser: () => User,
-        isLogin: () => User.id !== 0,
-        logout: () => setUser(UnauthorizedUser),
-        login: (userDto: UserDto) => setUser(userDto),
+        user: User,
+        isLogin: isLogin,
+        Logout: () => {
+          setUser(UnauthorizedUser);
+          localStorage.removeItem("token");
+          history.push("/");
+        },
+        Login: (userDto: UserDto) => setUser(userDto),
       }}
     >
       {children}

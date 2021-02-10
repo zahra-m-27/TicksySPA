@@ -25,9 +25,9 @@ export default function Authorization() {
               key={key}
               path={item.path}
               component={() =>
-                item.InputComponent ? (
+                item.inputComponent ? (
                   <Template
-                    InputComponent={item.InputComponent}
+                    inputComponent={item.inputComponent}
                     message={item.message ?? defaultMessage}
                     messageHeader={item.messageHeader ?? defaultMessageHeader}
                   />

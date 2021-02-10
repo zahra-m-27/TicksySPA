@@ -1,4 +1,5 @@
 import BaseResponse from "../../Common/BaseResponse";
+import UserDto from "../../DTOs/UserDto";
 
 namespace UpdateProfileViewModel {
   export interface Request {
@@ -8,15 +9,7 @@ namespace UpdateProfileViewModel {
     first_name: string;
   }
 
-  export interface Response extends BaseResponse {
-    id: string;
-    code: string;
-    email: string;
-    avatar: string;
-    last_name: string;
-    first_name: string;
-    date_joined: string;
-  }
+  export interface Response extends UserDto {}
 }
 
 export default UpdateProfileViewModel;

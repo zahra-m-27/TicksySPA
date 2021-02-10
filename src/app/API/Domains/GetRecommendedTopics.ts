@@ -4,7 +4,7 @@ import GetRecommendedTopicsViewModel from "../ViewModels/GetRecommendedTopics/Ge
 const ControllerName = "get-recommended-topics";
 
 function GetRecommendedTopics(args: GetRecommendedTopicsViewModel.Request) {
-  return Post<GetRecommendedTopicsViewModel.Response[]>(
+  return Post<GetRecommendedTopicsViewModel.Response>(
     ControllerName + "/?page=" + args.page,
     undefined,
     "GET"

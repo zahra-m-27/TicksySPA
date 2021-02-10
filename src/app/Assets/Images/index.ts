@@ -19,6 +19,7 @@ import FingerPrint from "./Files/fingerprint.png";
 import GoogleImage from "./Files/google_images.png";
 import EditProperty from "./Files/edit_property.png";
 import ManTicket from "./Files/man_cinema_ticket.png";
+import GoogleImage2 from "./Files/google_images_2.png";
 import ChatBackground from "./Files/chat_background.jpg";
 import TopicCard from "./Files/topic_card_background.png";
 
@@ -45,6 +46,7 @@ const Images = {
   FingerPrint,
   GoogleImage,
   EditProperty,
+  GoogleImage2,
   ChatBackground,
 };
 export default Images;

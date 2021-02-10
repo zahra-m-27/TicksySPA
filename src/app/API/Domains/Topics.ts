@@ -18,7 +18,15 @@ function GetTopics(args: GetTopicsViewModel.Request) {
   );
 }
 function CreateTopic(args: CreateTopicViewModel.Request) {
-  return Post<CreateTopicViewModel.Response>(ControllerName + "/", args);
+  const formData = new FormData();
+  formData.append("slug", args.slug);
+  formData.append("title", args.title);
+  if (args.avatar) {
+    formData.append("avatar", args.avatar);
+  }
+  formData.append("description", args.description);
+  formData.append("supporters_ids", `[${args.supporters_ids.toString()}]`);
+  return Post<CreateTopicViewModel.Response>(ControllerName + "/", formData);
 }
 function GetTopic(args: GetTopicViewModel.Request) {
   return Post<GetTopicViewModel.Response>(

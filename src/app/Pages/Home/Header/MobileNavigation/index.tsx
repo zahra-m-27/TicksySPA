@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
+import useUser from "../../../../Hooks/useUser";
 
 export default function MobileNavigation() {
-  const isLogin = !!localStorage.getItem("token");
+  const { isLogin, Logout } = useUser();
   const [Active, setActive] = useState<boolean>(false);
 
   return (
@@ -55,6 +56,14 @@ export default function MobileNavigation() {
         <div className={styles.mobile_navigation_drop_down_item}>
           ارتباط با ما
         </div>
+        {isLogin && (
+          <div
+            onClick={Logout}
+            className={styles.mobile_navigation_drop_down_item}
+          >
+            خروج
+          </div>
+        )}
       </div>
     </div>
   );

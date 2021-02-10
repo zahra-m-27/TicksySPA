@@ -2,10 +2,11 @@ import routes from "./routes";
 import { Breadcrumb } from "antd";
 import Assets from "../../../Assets";
 import styles from "./styles.module.scss";
-import { Route, Switch, Redirect, Link } from "react-router-dom";
+import { Route, Switch, Redirect, Link, useHistory } from "react-router-dom";
 import { breadcrumbFindRoute, getRoutes } from "../../../Utilities";
 
 export default function DashboardLayout() {
+  const history = useHistory();
   let breadcrumb = breadcrumbFindRoute(window.location.pathname, routes, []);
 
   return (
@@ -13,7 +14,11 @@ export default function DashboardLayout() {
       <div className={styles.header}>
         تیکسی
         <Assets.SVGs.GridSVG />
-        <img src={Assets.Images.Ticksy} alt="logo" />
+        <img
+          alt="logo"
+          src={Assets.Images.Ticksy}
+          onClick={() => history.push("/")}
+        />
       </div>
       <div className={styles.breadcrumb}>
         {breadcrumb?.route && (
@@ -36,6 +41,7 @@ export default function DashboardLayout() {
             if (route.redirect) {
               return (
                 <Redirect
+                  key={index}
                   exact={route.exact}
                   path={"/dashboard" + route.path}
                   to={"/dashboard" + route.redirect}

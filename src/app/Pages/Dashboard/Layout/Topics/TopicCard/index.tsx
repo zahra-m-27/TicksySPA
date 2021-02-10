@@ -3,10 +3,12 @@ import Assets from "../../../../../Assets";
 import { useHistory } from "react-router-dom";
 
 interface Props {
+  title: string;
   username: string;
+  description: string;
 }
 
-export default function TopicCard({ username }: Props) {
+export default function TopicCard({ title, username, description }: Props) {
   const history = useHistory();
 
   return (
@@ -33,8 +35,8 @@ export default function TopicCard({ username }: Props) {
           >
             <img src={Assets.Images.EditProperty} alt="edit" />
           </div>
-          <span>عنوان اول</span>
-          <p>نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد</p>
+          <span>{title}</span>
+          <p>{description}</p>
         </div>
       </div>
     </div>
