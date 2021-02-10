@@ -1,8 +1,8 @@
 import Assets from "../../Assets";
 import DashboardLayout from "./Layout";
 import styles from "./styles.module.scss";
-import { useHistory } from "react-router-dom";
 import useUser from "../../Hooks/useUser";
+import { useHistory } from "react-router-dom";
 
 export default function Dashboard() {
   const { user, Logout } = useUser();
@@ -20,7 +20,7 @@ export default function Dashboard() {
             <img
               alt=""
               className={styles.avatar}
-              src={user.avatar ?? Assets.Images.UserAvatar}
+              src={user.avatar ?? Assets.SVGs.MaleUserSVG}
             />
           </div>
           <p>{user.first_name + " " + user.last_name}</p>

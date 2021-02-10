@@ -2,14 +2,16 @@ import { message, Spin } from "antd";
 import API from "../../../../API";
 import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
-import { useHistory, useParams } from "react-router-dom";
+import useUser from "../../../../Hooks/useUser";
 import { useEffect, useRef, useState } from "react";
 import SEInput from "../../../../Components/SEInput";
 import TickCard from "../../../../Components/TickCard";
+import { useHistory, useParams } from "react-router-dom";
 import ClassNames from "../../../../Utilities/ClassNames";
 import UserSerializerRestrictedDto from "../../../../API/DTOs/UserSerializerRestrictedDto";
 
 export default function EditTopic() {
+  const me = useUser();
   const history = useHistory();
   const params = useParams<any>();
   const [Title, setTitle] = useState("");
@@ -25,7 +27,7 @@ export default function EditTopic() {
   const [TitleHasError, setTitleHasError] = useState(false);
   const [SearchLoading, setSearchLoading] = useState(false);
   const [StartSearch, setStartSearch] = useState<boolean>(false);
-  const [SupportersId, setSupporterIds] = useState<number[]>([]);
+  const [SupporterIds, setSupporterIds] = useState<number[]>([]);
   const [UsernameHasError, setUsernameHasError] = useState(false);
   const [DescriptionHasError, setDescriptionHasError] = useState(false);
   const [Supporters, setSupporters] = useState<UserSerializerRestrictedDto[]>(
@@ -42,7 +44,7 @@ export default function EditTopic() {
     setSearchLoading(true);
     API.Email.SearchEmail({ search: SearchEmail })
       .then((response) => {
-        setSearchedEmails(response);
+        setSearchedEmails(response.filter((s) => s.id !== me.user.id));
       })
       .finally(() => setSearchLoading(false));
   };
@@ -91,7 +93,7 @@ export default function EditTopic() {
       avatar: Avatar,
       slug: Username,
       description: Description,
-      supporters_ids: SupportersId,
+      supporters_ids: SupporterIds,
     })
       .then(() => {
         message.success("تاپیک با بروز شد.");
@@ -164,7 +166,7 @@ export default function EditTopic() {
             <p>افزودن عضو</p>
           </div>
         )}
-        {(!SearchedEmails || SearchedEmails.length === 0) &&
+        {!StartSearch &&
           Supporters.map((supporter, index) => (
             <div key={index} className={styles.member_container}>
               <img
@@ -185,7 +187,11 @@ export default function EditTopic() {
         {SearchedEmails.map((user, index) => (
           <div key={index} className={styles.member_container}>
             <img
-              src={Assets.SVGs.Plus}
+              src={
+                SupporterIds.find((id) => id === user.id)
+                  ? Assets.SVGs.Minus
+                  : Assets.SVGs.Plus
+              }
               alt=""
               onClick={() => {
                 let supporters = Supporters.filter(

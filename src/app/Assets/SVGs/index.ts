@@ -19,6 +19,7 @@ import GridView from "./Components/GridView";
 import LessThan from "./Components/LessThan";
 import MoreThan from "./Components/MoreThan";
 import Instagram from "./Files/instagram.svg";
+import MaleUserSVG from "./Files/male_user.svg";
 import AddPhoto from "./Components/AddPhotoSVG";
 import AddPhotoSVG from "./Files/add_photo.svg";
 import UserAvatar from "./Files/user_avatar.svg";
@@ -58,6 +59,7 @@ const SVGs = {
   PaperPlane,
   ProfileSvg,
   UserAvatar,
+  MaleUserSVG,
   OldMaleUser,
   AddPhotoSVG,
   SuccessTick,

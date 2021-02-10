@@ -28,9 +28,10 @@ export default function Tickets() {
   const getTickets = () => {
     setLoading(true);
     if (params.id)
-      API.Tickets.GetTickets({
+      API.Topics.GetTopicTickets({
         status: 0,
         search: Search,
+        slug: params.id,
         page: CurrentPage,
       })
         .then((response) => {

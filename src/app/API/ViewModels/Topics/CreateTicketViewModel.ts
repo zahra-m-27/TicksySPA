@@ -5,6 +5,7 @@ namespace CreateTicketsViewModel {
   export interface Request {
     slug: string;
     text: string;
+    tags: string;
     title: string;
     priority: number;
     attachments: File[];

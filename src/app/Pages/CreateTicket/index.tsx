@@ -13,7 +13,6 @@ export default function CreateTicketPage() {
   const [Title, setTitle] = useState("");
   const [Message, setMessage] = useState("");
   const [Loading, setLoading] = useState(false);
-  const tagRef = useRef<HTMLInputElement>(null);
   const [Tags, setTags] = useState<string[]>([]);
   const [Topic, setTopic] = useState<TopicDto>();
   const messageRef = useRef<HTMLInputElement>(null);
@@ -42,6 +41,7 @@ export default function CreateTicketPage() {
       priority: 1,
       title: Title,
       text: Message,
+      tags: Tags.join(","),
       slug: params.username,
       attachments: Attachments,
     })
@@ -84,7 +84,11 @@ export default function CreateTicketPage() {
         <Link to="/">خانه</Link>
         <Link to="/">تیکسی</Link>
         <Assets.SVGs.GridSVG />
-        <img src={Assets.Images.Ticksy} alt="logo" />
+        <img
+          alt="logo"
+          src={Assets.Images.Ticksy}
+          onClick={() => history.push("/")}
+        />
       </div>
       <div className={styles.card_container}>
         <img

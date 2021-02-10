@@ -1,10 +1,25 @@
-import React, { useState } from "react";
-import styles from "./styles.module.scss";
+import API from "../../../../API";
 import Assets from "../../../../Assets";
+import styles from "./styles.module.scss";
+import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import SEInput from "../../../../Components/SEInput";
+import MessageDto from "../../../../API/DTOs/MessageDto";
 
 export default function Ticket() {
+  const params = useParams<any>();
+  const [LastPage, setLastPage] = useState(1);
   const [Attachment, setAttachment] = useState<File>();
+  const [Messages, setMessages] = useState<MessageDto[]>([]);
+
+  useEffect(() => {
+    API.Tickets.GetTicketMessages({
+      id: params.id,
+    }).then((response) => {
+      setMessages(response.results);
+      setLastPage(response.count / 10);
+    });
+  }, []);
 
   let ticket = {
     title: "تیکت اول",
