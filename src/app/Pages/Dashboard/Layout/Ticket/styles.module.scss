@@ -72,7 +72,7 @@
       background-color: #2168bd;
 
       p {
-        margin: 0
+        margin: 0;
       }
 
       &_user {
@@ -88,6 +88,7 @@
         &_avatar {
           width: 75px;
           height: 75px;
+          border-radius: 50%;
         }
       }
 
@@ -107,6 +108,7 @@
   .send_message {
     display: flex;
     padding: 0 37px;
+    margin-top: auto;
     align-items: center;
     background-color: white;
 
@@ -168,4 +170,3 @@
     }
   }
 }
-

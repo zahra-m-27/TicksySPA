@@ -1,14 +1,19 @@
 import API from "../../../../API";
+import moment from "jalali-moment";
 import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
 import { useParams } from "react-router-dom";
+import useUser from "../../../../Hooks/useUser";
 import React, { useEffect, useState } from "react";
 import SEInput from "../../../../Components/SEInput";
 import MessageDto from "../../../../API/DTOs/MessageDto";
+import TicketDto from "../../../../API/DTOs/TicketDto";
+import { Spin } from "antd";
 
 export default function Ticket() {
+  const { user } = useUser();
   const params = useParams<any>();
-  const [LastPage, setLastPage] = useState(1);
+  const [Ticket, setTicket] = useState<TicketDto>();
   const [Attachment, setAttachment] = useState<File>();
   const [Messages, setMessages] = useState<MessageDto[]>([]);
 
@@ -16,88 +21,107 @@ export default function Ticket() {
     API.Tickets.GetTicketMessages({
       id: params.id,
     }).then((response) => {
-      setMessages(response.results);
-      setLastPage(response.count / 10);
+      setMessages(response);
+    });
+    API.Tickets.GetTicketDetail({ id: params.id }).then((response) => {
+      setTicket(response);
     });
   }, []);
 
-  let ticket = {
-    title: "تیکت اول",
-    start_date: "1399/11/11",
-    end_date: "1399/11/11",
-    tags: ["هشتگ", "تست"],
-    messages: [
-      {
-        type: "user",
-        time: "00:00",
-        date: "1399/11/11",
-        username: "سید علی علوی (کاربر)",
-
-        content:
-          "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
-      },
-      {
-        type: "admin",
-        time: "00:00",
-        date: "1399/11/11",
-        username: "سید علی علوی (پشتیبان)",
-        content:
-          "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
-      },
-    ],
-  };
+  if (!Ticket) {
+    return (
+      <div className={styles.container}>
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.ticket_info_container}>
         <div className={styles.ticket_info_top}>
-          <p>عنوان: {ticket.title}</p>
+          <p>عنوان: {Ticket.title}</p>
         </div>
         <div className={styles.ticket_info_bottom}>
-          <p>تاریخ شروع: {ticket.start_date}</p>
-          <p>تاریخ پایان: {ticket.end_date}</p>
+          <p>
+            تاریخ شروع:{" "}
+            {moment
+              .utc(Ticket.creation_date)
+              .local()
+              .locale("fa")
+              .format("YYYY/MM/D HH:mm")}
+          </p>
+          <p>
+            آخرین آپدیت:
+            {moment
+              .utc(Ticket.last_update)
+              .local()
+              .locale("fa")
+              .format("YYYY/MM/D HH:mm")}
+          </p>
         </div>
       </div>
-      <div className={styles.tags_container}>
-        <p dir="auto">{ticket.tags.map((tag) => `#${tag}`).join(" ")}</p>
-        <Assets.SVGs.Hashtag className={styles.hashtag_icon} />
-      </div>
+      {Ticket.tags && Ticket.tags.length > 0 && (
+        <div className={styles.tags_container}>
+          <p dir="auto">
+            {Ticket.tags
+              .split(",")
+              .map((tag) => `#${tag}`)
+              .join(" ")}
+          </p>
+          <Assets.SVGs.Hashtag className={styles.hashtag_icon} />
+        </div>
+      )}
 
       <div className={styles.chat_container}>
-        {ticket.messages.map((message, index) => (
+        {Messages.map((message, index) => (
           <div
             key={index}
             className={styles.message}
             style={{
-              alignSelf: message.type === "admin" ? "flex-start" : "flex-end",
+              alignSelf: message.id !== user.id ? "flex-start" : "flex-end",
             }}
           >
             <div
               className={styles.message_user}
               style={{
                 justifyContent:
-                  message.type === "admin" ? "flex-start" : "flex-end",
+                  message.id !== user.id ? "flex-start" : "flex-end",
                 transform: `translate(${
-                  7 * (message.type === "admin" ? -1 : 1)
+                  7 * (message.id !== user.id ? -1 : 1)
                 }px, -7px)`,
               }}
             >
-              {message.type === "admin" && (
-                <Assets.SVGs.OldMaleUser
+              {message.id !== user.id && (
+                <img
+                  alt=""
+                  src={user.avatar ?? Assets.SVGs.MaleUserSVG}
                   className={styles.message_user_avatar}
                 />
               )}
-              <p>{message.username}</p>
-              {message.type === "user" && (
-                <Assets.SVGs.MaleUser className={styles.message_user_avatar} />
+              <p>{message.user.first_name + " " + message.user.last_name}</p>
+              {message.id === user.id && (
+                <img
+                  alt=""
+                  src={user.avatar ?? Assets.SVGs.OldMaleUserSVG}
+                  className={styles.message_user_avatar}
+                />
               )}
             </div>
             <p dir="auto" className={styles.message_content}>
-              {message.content}
+              {message.text}
             </p>
             <div className={styles.message_time}>
-              <p>{message.time}</p>
-              <p>{message.date}</p>
+              <p>
+                {moment
+                  .utc(message.date)
+                  .local()
+                  .locale("fa")
+                  .format("YYYY/MM/D")}
+              </p>
+              <p>
+                {moment.utc(message.date).local().locale("fa").format("HH:mm")}
+              </p>
             </div>
           </div>
         ))}

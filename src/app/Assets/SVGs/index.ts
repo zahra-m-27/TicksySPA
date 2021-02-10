@@ -28,6 +28,7 @@ import ProfileSvg from "./Components/ProfileSvg";
 import OldMaleUser from "./Components/OldMaleUser";
 import ReactLogoSvg from "./Components/ReactLogoSvg";
 import SuccessTick from "./Components/SuccessTickSVG";
+import OldMaleUserSVG from "./Files/old_male_user.svg";
 import LocationPinSVG from "./Components/LocationPinSVG";
 import ProfileIconSVG from "./Components/ProfileIconSVG";
 import VisiblePassSvg from "./Components/VisiblePassSvg";
@@ -64,6 +65,7 @@ const SVGs = {
   AddPhotoSVG,
   SuccessTick,
   ReactLogoSvg,
+  OldMaleUserSVG,
   ProfileIconSVG,
   VisiblePassSvg,
   LocationPinSVG,

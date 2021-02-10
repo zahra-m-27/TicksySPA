@@ -1,7 +1,7 @@
 interface Props {
   className?: string;
 }
-export default function OldMaleUser({ className }: Props) {
+export default function MaleUser({ className }: Props) {
   return (
     <svg
       viewBox="0 0 40 40"
