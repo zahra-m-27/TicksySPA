@@ -17,7 +17,7 @@ export default function TopicCard({ title, username, description }: Props) {
       <div className={styles.card_content}>
         <div
           className={styles.card_content_header}
-          onClick={() => history.push("/dashboard/tickets/" + username)}
+          onClick={() => history.push("/dashboard/topics/" + username)}
         >
           <div className={styles.topic_avatar}>
             <img src={Assets.Images.DotSquare2} alt="" />

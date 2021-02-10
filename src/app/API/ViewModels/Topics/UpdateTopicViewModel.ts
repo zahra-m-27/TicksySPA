@@ -5,6 +5,7 @@ namespace UpdateTopicViewModel {
   export interface Request {
     avatar: any;
     slug: string;
+    title: string;
     description: string;
     supporters_ids: number[];
   }

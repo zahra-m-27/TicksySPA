@@ -7,7 +7,6 @@ export default interface TopicDto {
   title: string;
   avatar: string;
   description: string;
-  supporters_ids: number[];
   creator: UserSerializerRestrictedDto;
   supporters: UserSerializerRestrictedDto[];
 }

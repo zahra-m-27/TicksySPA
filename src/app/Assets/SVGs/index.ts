@@ -19,10 +19,11 @@ import GridView from "./Components/GridView";
 import LessThan from "./Components/LessThan";
 import MoreThan from "./Components/MoreThan";
 import Instagram from "./Files/instagram.svg";
+import AddPhoto from "./Components/AddPhotoSVG";
+import AddPhotoSVG from "./Files/add_photo.svg";
 import UserAvatar from "./Files/user_avatar.svg";
 import PaperPlane from "./Components/PaperPlane";
 import ProfileSvg from "./Components/ProfileSvg";
-import AddPhotoSVG from "./Components/AddPhotoSVG";
 import OldMaleUser from "./Components/OldMaleUser";
 import ReactLogoSvg from "./Components/ReactLogoSvg";
 import SuccessTick from "./Components/SuccessTickSVG";
@@ -46,6 +47,7 @@ const SVGs = {
   GridSVG,
   Hashtag,
   UserSVG,
+  AddPhoto,
   Linkedin,
   GridView,
   LessThan,

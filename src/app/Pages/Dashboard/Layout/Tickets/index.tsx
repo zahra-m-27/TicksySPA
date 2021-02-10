@@ -33,7 +33,7 @@ export default function Tickets() {
     })
       .then((response) => {
         setTickets(response.results);
-        setLastPage(response.count / 5);
+        setLastPage(response.count / 10);
       })
       .catch(() => {
         message.error("خطایی در دریافت تیکت ها رخ داده است");
@@ -45,18 +45,18 @@ export default function Tickets() {
     getTickets();
   }, [CurrentPage]);
 
-  const statusClassName = (status: number) => {
-    if (status === 4) return "#295cc0";
-    else if (status === 3) return "#3d6cc9";
-    else if (status === 1) return "#44adf2";
-    else if (status === 2) return "#0088e3";
+  const statusClassName = (status: string) => {
+    if (status === "4") return "#295cc0";
+    else if (status === "3") return "#3d6cc9";
+    else if (status === "1") return "#44adf2";
+    else if (status === "2") return "#0088e3";
   };
 
-  const statusLabel = (status: number) => {
-    if (status === 4) return "بسته شده";
-    else if (status === 3) return "پاسخ داده شده";
-    else if (status === 1) return "در انتظار پاسخ";
-    else if (status === 2) return "در حال بررسی";
+  const statusLabel = (status: string) => {
+    if (status === "4") return "بسته شده";
+    else if (status === "3") return "پاسخ داده شده";
+    else if (status === "1") return "در انتظار پاسخ";
+    else if (status === "2") return "در حال بررسی";
   };
 
   const openTicket = (id: number) => {

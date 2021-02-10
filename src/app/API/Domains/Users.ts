@@ -51,9 +51,17 @@ function ConfirmCredentialResetPassword(
   );
 }
 function UpdateProfile(args: UpdateProfileViewModel.Request) {
+  const formData = new FormData();
+  formData.append("code", args.code);
+  formData.append("email", args.email);
+  if (args.avatar) {
+    formData.append("avatar", args.avatar);
+  }
+  formData.append("last_name", args.last_name);
+  formData.append("first_name", args.first_name);
   return Post<UpdateProfileViewModel.Response>(
     ControllerName + "/profile/",
-    args,
+    formData,
     "PATCH"
   );
 }
@@ -65,10 +73,14 @@ function GetProfile(args: GetProfileViewModel.Request) {
   );
 }
 function UpdateIdentity(args: UpdateIdentityViewModel.Request) {
+  let formData = new FormData();
+  if (args.identifier_image) {
+    formData.append("identifier_image", args.identifier_image);
+  }
   return Post<UpdateIdentityViewModel.Response>(
     ControllerName + "/identity/",
-    args,
-    "PUT"
+    formData,
+    "PATCH"
   );
 }
 function GetIdentity(args: GetIdentityViewModel.Request) {

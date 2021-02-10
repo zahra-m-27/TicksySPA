@@ -48,6 +48,11 @@ const routes: DashboardRoute[] = [
             name: "ویرایش تاپیک",
             component: EditTopic,
           },
+          {
+            path: "/topics/:id",
+            name: "تیکت های تاپیک",
+            component: Tickets,
+          },
         ],
       },
       {

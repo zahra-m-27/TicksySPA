@@ -6,8 +6,8 @@ namespace CreateTicketsViewModel {
     slug: string;
     text: string;
     title: string;
-    priority: string;
-    attachments: number[];
+    priority: number;
+    attachments: File[];
   }
 
   export interface Response extends BaseResponse, TicketDto {}

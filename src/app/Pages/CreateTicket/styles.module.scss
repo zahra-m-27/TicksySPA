@@ -55,6 +55,11 @@
     flex-direction: column;
     width: clamp(350px, 30%, 566px);
 
+    .loading {
+      top: 50%;
+      position: absolute;
+    }
+
     .avatar {
       margin-top: 3vh;
       border-radius: 50%;

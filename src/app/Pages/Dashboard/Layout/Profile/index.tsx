@@ -13,10 +13,13 @@ export default function Profile() {
   const { user, Login } = useUser();
   const [Avatar, setAvatar] = useState<File>();
   const [Loading, setLoading] = useState(false);
+  const [Code, setCode] = useState(user.code);
   const [Email, setEmail] = useState(user.email);
   const emailRef = useRef<HTMLInputElement>(null);
+  const codeRef = useRef<HTMLInputElement>(null);
   const [AvatarUrl, setAvatarUrl] = useState<any>();
   const lastNameRef = useRef<HTMLInputElement>(null);
+  const [CodeHasError, setCodeHasError] = useState(false);
   const [LastName, setLastName] = useState(user.last_name);
   const [EmailHasError, setEmailHasError] = useState(false);
   const [CanChange, setCanChange] = useState<boolean>(false);
@@ -31,6 +34,12 @@ export default function Profile() {
   };
 
   const onLastNameEnter = () => {
+    if (codeRef && codeRef.current) {
+      codeRef.current.focus();
+    }
+  };
+
+  const onCodeEnter = () => {
     if (emailRef && emailRef.current) {
       emailRef.current.focus();
     }
@@ -56,6 +65,7 @@ export default function Profile() {
     setLoading(true);
     API.Users.UpdateProfile({
       email: Email,
+      avatar: Avatar,
       code: user.code,
       last_name: LastName,
       first_name: FirstName,
@@ -81,14 +91,18 @@ export default function Profile() {
       <div className={styles.content}>
         <div className={styles.left}>
           <img
-            src={user.avatar ?? Assets.SVGs.UserAvatar}
+            src={AvatarUrl ? AvatarUrl : user.avatar ?? Assets.SVGs.UserAvatar}
             className={styles.profile}
             alt=""
           />
           {CanChange && (
             <div className={styles.upload}>
               <label htmlFor="add">
-                <Assets.SVGs.AddPhotoSVG className={styles.add_photo} />
+                <img
+                  alt=""
+                  className={styles.add_photo}
+                  src={Assets.SVGs.AddPhotoSVG}
+                />
               </label>
               <input
                 id="add"
@@ -130,6 +144,16 @@ export default function Profile() {
                 hasError={LastNameHasError}
                 innerContainerClassName={styles.input_inner_container}
               />
+              <p className={styles.small}>شماره دانشجویی / کد پرسنلی</p>
+              <SEInput
+                ref={codeRef}
+                content={Code}
+                onEnter={onCodeEnter}
+                onChangeText={setCode}
+                hasError={CodeHasError}
+                className={styles.input}
+                innerContainerClassName={styles.input_inner_container}
+              />
               <p className={styles.small}>ايميل</p>
               <SEInput
                 ref={emailRef}
@@ -150,6 +174,8 @@ export default function Profile() {
               </p>
               <p className={styles.big}>ايميل</p>
               <p className={styles.small}>{user.email}</p>
+              <p className={styles.big}>شماره دانشجویی / کد پرسنلی</p>
+              <p className={styles.small}>{user.code}</p>
               <p className={styles.big}>تاريخ ثبت نام</p>
               <p className={styles.small}>
                 {moment

@@ -25,7 +25,8 @@ function CreateTopic(args: CreateTopicViewModel.Request) {
     formData.append("avatar", args.avatar);
   }
   formData.append("description", args.description);
-  formData.append("supporters_ids", `[${args.supporters_ids.toString()}]`);
+  for (let supporters_id of args.supporters_ids)
+    formData.append("supporters_ids", `${supporters_id}`);
   return Post<CreateTopicViewModel.Response>(ControllerName + "/", formData);
 }
 function GetTopic(args: GetTopicViewModel.Request) {
@@ -36,10 +37,19 @@ function GetTopic(args: GetTopicViewModel.Request) {
   );
 }
 function UpdateTopic(args: UpdateTopicViewModel.Request) {
+  const formData = new FormData();
+  formData.append("slug", args.slug);
+  formData.append("title", args.title);
+  if (args.avatar) {
+    formData.append("avatar", args.avatar);
+  }
+  formData.append("description", args.description);
+  for (let supporters_id of args.supporters_ids)
+    formData.append("supporters_ids", `${supporters_id}`);
   return Post<UpdateTopicViewModel.Response>(
     ControllerName + `/${args.slug}/`,
     args,
-    "PUT"
+    "PATCH"
   );
 }
 function DeleteTopic(args: DeleteTopicViewModel.Request) {
@@ -59,9 +69,16 @@ function GetTopicTickets(args: GetTopicTicketsViewModel.Request) {
   );
 }
 function CreateTicket(args: CreateTicketViewModel.Request) {
+  const formData = new FormData();
+  formData.append("slug", args.slug);
+  formData.append("text", args.text);
+  formData.append("title", args.title);
+  for (let attachment of args.attachments)
+    formData.append("attachments", attachment);
+  formData.append("priority", `${args.priority}`);
   return Post<CreateTicketViewModel.Response>(
     ControllerName + `/${args.slug}/tickets/`,
-    args,
+    formData,
     "POST"
   );
 }

@@ -5,7 +5,9 @@ import ClassNames from "../../Utilities/ClassNames";
 
 interface IButton {
   label: string;
+  loading?: boolean;
   className?: string;
+  onClick?: () => void;
 }
 
 interface Props {
@@ -35,8 +37,14 @@ const TickCard: React.FC<Props> = ({
       <div className={ClassNames(styles.content, contentClassName)}>
         {children}
       </div>
-      {buttons.map((button) => (
-        <Button type="primary" className={button.className}>
+      {buttons.map((button, index) => (
+        <Button
+          key={index}
+          type="primary"
+          onClick={button.onClick}
+          loading={button.loading}
+          className={button.className}
+        >
           {button.label}
         </Button>
       ))}
