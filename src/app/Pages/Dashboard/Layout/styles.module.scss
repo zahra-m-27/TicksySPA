@@ -10,26 +10,47 @@
   align-items: center;
   justify-content: flex-end;
 
-  img:nth-child(2) {
+  img:nth-child(3) {
     width: 4rem;
     height: 3.3rem;
     cursor: pointer;
     margin: 0 0 0 3vw;
   }
 
-  svg {
+  .grid {
     width: 2rem;
     height: 2rem;
     margin: 0 0 0 3vw;
   }
 }
 
+.dashboard_menu {
+  width: 40px;
+  height: 40px;
+  display: none;
+  margin-left: 20px;
+  border-radius: 50%;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  background-color: #2168bd;
+
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .dashboard_menu {
+    display: flex;
+  }
+}
+
 .breadcrumb {
   display: flex;
   padding: 10px 5%;
-  border-left-width: 0;
   background: #f1f1f2;
-  border-right-width: 0;
   flex-direction: column;
   justify-content: center;
   border: 2px solid #a9aab078;

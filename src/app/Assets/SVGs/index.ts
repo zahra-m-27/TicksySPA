@@ -1,6 +1,7 @@
 import Plus from "./Files/plus.svg";
 import Minus from "./Files/minus.svg";
 import Topic from "./Files/topic.svg";
+import Menu from "./Components/MenuSVG";
 import Home from "./Components/HomeSVG";
 import Cancel from "./Files/cancel.svg";
 import Search from "./Files/search.svg";
@@ -37,6 +38,7 @@ import InvisiblePassSvg from "./Components/InvisiblePassSvg";
 const SVGs = {
   Home,
   Plus,
+  Menu,
   Minus,
   Topic,
   Failed,
