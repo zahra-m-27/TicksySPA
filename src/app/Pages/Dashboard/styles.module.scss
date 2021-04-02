@@ -21,21 +21,22 @@
 
 @media (max-width: 1080px) {
   .right_side_content {
-    margin-left: auto;
-    width: clamp(275px, 50vw, clamp(200px, 25%, 462px));
+    // margin-left: auto;
+    // width: clamp(275px, 50vw, clamp(200px, 25%, 462px));
   }
 }
 
 @media (max-width: 1080px) {
   .right_side {
-    width: 200vw;
-    right: -100vw;
-    position: absolute;
+    // width: 200vw;
+    // right: -100vw;
+    // position: absolute;
   }
 
   .right_side[data-expand="true"] {
-    right: 0vw;
-    background: #ffffff30;
+    // right: 0vw;
+    // visibility: unset;
+    // background: #ffffff30;
   }
 }
 
@@ -67,8 +68,8 @@
 
 @media (max-width: 1080px) {
   .left_side {
-    width: 100%;
-    border-radius: 0;
+    // width: 100%;
+    // border-radius: 0;
   }
 }
 

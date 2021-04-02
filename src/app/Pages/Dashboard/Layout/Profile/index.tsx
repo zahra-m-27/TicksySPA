@@ -64,9 +64,9 @@ export default function Profile() {
 
     setLoading(true);
     API.Users.UpdateProfile({
+      code: Code,
       email: Email,
       avatar: Avatar,
-      code: user.code,
       last_name: LastName,
       first_name: FirstName,
     })

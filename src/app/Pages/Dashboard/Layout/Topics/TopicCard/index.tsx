@@ -4,11 +4,17 @@ import { useHistory } from "react-router-dom";
 
 interface Props {
   title: string;
+  avatar: string;
   username: string;
   description: string;
 }
 
-export default function TopicCard({ title, username, description }: Props) {
+export default function TopicCard({
+  title,
+  avatar,
+  username,
+  description,
+}: Props) {
   const history = useHistory();
 
   return (
@@ -24,7 +30,7 @@ export default function TopicCard({ title, username, description }: Props) {
             <img
               alt=""
               className={styles.avatar}
-              src={Assets.Images.ManTicket}
+              src={avatar ?? Assets.Images.ManTicket}
             />
           </div>
         </div>

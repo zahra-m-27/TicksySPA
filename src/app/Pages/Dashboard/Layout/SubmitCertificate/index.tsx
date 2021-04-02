@@ -4,7 +4,6 @@ import Assets from "../../../../Assets";
 import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
 import { Button, message, Spin } from "antd";
-import useUser from "../../../../Hooks/useUser";
 import UserIdentityDto from "../../../../API/DTOs/UserIdentityDto";
 
 export default function SubmitCertificate() {
@@ -160,7 +159,7 @@ export default function SubmitCertificate() {
               <span className={styles.request}>تاریخ درخواست:</span>
               <div className={styles.request_data_container}>
                 {moment
-                  .utc(Identity.request_time)
+                  .utc(Identity.request_time ?? new Date())
                   .local()
                   .locale("fa")
                   .format("YYYY/MM/D")}
@@ -171,7 +170,7 @@ export default function SubmitCertificate() {
                 <span className={styles.request}>تاریخ انقضا:</span>
                 <div className={styles.request_data_container}>
                   {moment
-                    .utc(Identity.request_time)
+                    .utc(Identity.request_time ?? new Date())
                     .add(1, "week")
                     .local()
                     .locale("fa")

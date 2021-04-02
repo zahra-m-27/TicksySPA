@@ -45,6 +45,7 @@ export default function Topics() {
           <TopicCard
             key={index}
             title={item.title}
+            avatar={item.avatar}
             username={item.slug}
             description={item.description}
           />

@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  ticksy-front:
+    image: node:latest
+    container_name: ticksy-front
+    volumes:
+      - /cache/ticksy-front:/cache
+      - /srv/ticksy-front:/app
+    entrypoint: "sh -c"
+    working_dir: /cache
+    command:
+      [
+        "yarn && yarn run build && find ./build -name '*.map' -delete && rm -rf /app/* && cp -a ./build/. /app",
+      ]

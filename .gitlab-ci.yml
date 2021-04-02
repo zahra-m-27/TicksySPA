@@ -1,15 +1,16 @@
+image: docker/compose:latest
+
 stages:
   - build
 
 deploy:
   stage: build
   script:
-    - npm install
-    - CI='' npm run build
-    - find ./build -name "*.map" -delete
-    - rm -rf /temp/*
-    - cp -R ./build/* /temp
+    - mkdir -p /cache/ticksy-front
+    - rm -rf /cache/ticksy-front/*
+    - cp -a ./. /cache/ticksy-front
+    - docker-compose up --force-recreate
   tags:
-    - KHUserver
+    - KhuServer
   only:
     - production

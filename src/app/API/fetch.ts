@@ -1,7 +1,7 @@
 import { message } from "antd";
 import BaseResponse from "./Common/BaseResponse";
 
-let BaseUrl = "https://api.ticksy.margay.ir/";
+let BaseUrl = "https://api.ticksy.markop.ir/";
 
 export function Post<T extends BaseResponse>(
   url: string,
