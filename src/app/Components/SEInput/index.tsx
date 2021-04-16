@@ -26,7 +26,7 @@ interface Props {
   onSelectFile?: (file: File) => void;
   onTagClose?: (index: number) => void;
   onRemoveAttachment?: (index: number) => void;
-  onChangeText: (text: string, HasError: boolean) => void;
+  onChangeText?: (text: string, HasError: boolean) => void;
 }
 
 const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
@@ -101,7 +101,7 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
       }
 
       setContent(event.target.value);
-      onChangeText(event.target.value, HasError);
+      onChangeText && onChangeText(event.target.value, HasError);
     };
 
     let inputContainerStyle = ClassNames(styles.input_container, className);
@@ -214,17 +214,19 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
                 onKeyDown={(e) => e.key === 'Enter' && onEnter && onEnter()}
               />
             )}
-            {passwordCanBeVisible &&
-              type === 'password' &&
-              (Type === 'password' ? (
-                <div onClick={() => setType('text')}>
+            {type === 'password' && (
+              <div
+                data-testid="password-visibility"
+                onClick={() =>
+                  setType(Type === 'password' ? 'text' : 'password')
+                }>
+                {Type === 'password' ? (
                   <Assets.SVGs.VisiblePassSvg className={styles.eye_svg} />
-                </div>
-              ) : (
-                <div onClick={() => setType('password')}>
+                ) : (
                   <Assets.SVGs.InvisiblePassSvg className={styles.eye_svg} />
-                </div>
-              ))}
+                )}
+              </div>
+            )}
             {icon && (
               <div
                 onClick={onIconPressed}
