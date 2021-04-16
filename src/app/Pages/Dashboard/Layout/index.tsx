@@ -5,9 +5,7 @@ import styles from './styles.module.scss';
 import {Route, Switch, Redirect, Link, useHistory} from 'react-router-dom';
 import {breadcrumbFindRoute, getRoutes} from '../../../Utilities';
 
-interface Props {}
-
-export default function DashboardLayout({}: Props) {
+export default function DashboardLayout() {
   const history = useHistory();
   const breadcrumb = breadcrumbFindRoute(window.location.pathname, routes, []);
 
