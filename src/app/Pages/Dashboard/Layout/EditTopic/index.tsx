@@ -5,9 +5,9 @@ import styles from './styles.module.scss';
 import useUser from '../../../../Hooks/useUser';
 import {useEffect, useRef, useState} from 'react';
 import SEInput from '../../../../Components/SEInput';
-import TickCard from '../../../../Components/TickCard';
 import {useHistory, useParams} from 'react-router-dom';
 import ClassNames from '../../../../Utilities/ClassNames';
+import EditTopicCard from '../../../../Components/EditTopicCard';
 import UserSerializerRestrictedDto from '../../../../API/DTOs/UserSerializerRestrictedDto';
 
 export default function EditTopic() {
@@ -131,7 +131,7 @@ export default function EditTopic() {
 
   return (
     <div className={styles.container}>
-      <TickCard
+      <EditTopicCard
         title="اعضا"
         icon={Assets.SVGs.People}
         className={styles.member_card}
@@ -202,8 +202,8 @@ export default function EditTopic() {
             <p>{user.email}</p>
           </div>
         ))}
-      </TickCard>
-      <TickCard
+      </EditTopicCard>
+      <EditTopicCard
         title="ویرایش تاپيک"
         icon={Assets.SVGs.Topic}
         className={styles.detail_card}
@@ -272,7 +272,7 @@ export default function EditTopic() {
             />
           </div>
         </div>
-      </TickCard>
+      </EditTopicCard>
     </div>
   );
 }

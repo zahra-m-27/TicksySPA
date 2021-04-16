@@ -19,7 +19,7 @@ interface Props {
   contentClassName?: string;
 }
 
-const TickCard: React.FC<Props> = ({
+const EditTopicCard: React.FC<Props> = ({
   icon,
   title,
   className,
@@ -50,4 +50,4 @@ const TickCard: React.FC<Props> = ({
     </div>
   );
 };
-export default TickCard;
+export default EditTopicCard;
