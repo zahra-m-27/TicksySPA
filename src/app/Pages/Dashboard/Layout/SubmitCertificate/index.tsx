@@ -1,10 +1,10 @@
-import API from "../../../../API";
-import moment from "jalali-moment";
-import Assets from "../../../../Assets";
-import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
-import { Button, message, Spin } from "antd";
-import UserIdentityDto from "../../../../API/DTOs/UserIdentityDto";
+import API from '../../../../API';
+import moment from 'jalali-moment';
+import Assets from '../../../../Assets';
+import styles from './styles.module.scss';
+import {useEffect, useState} from 'react';
+import {Button, message, Spin} from 'antd';
+import UserIdentityDto from '../../../../API/DTOs/UserIdentityDto';
 
 export default function SubmitCertificate() {
   const [Loading, setLoading] = useState(false);
@@ -36,7 +36,7 @@ export default function SubmitCertificate() {
       })
       .catch(() => {
         setLoading(false);
-        message.error("مشکلی در ارسال مدرک احراز هویت رخ داده است.");
+        message.error('مشکلی در ارسال مدرک احراز هویت رخ داده است.');
       });
   };
 
@@ -62,7 +62,7 @@ export default function SubmitCertificate() {
     return LoadingComponent;
   }
 
-  if (Identity.status === "3") {
+  if (Identity.status === '3') {
     return (
       <div className={styles.container_upload}>
         <div className={styles.top_part}>
@@ -88,13 +88,13 @@ export default function SubmitCertificate() {
                 className={styles.upload_icon}
               />
               <p className={styles.file_name}>
-                {Attachment?.name ?? "انتخاب فایل"}
+                {Attachment?.name ?? 'انتخاب فایل'}
               </p>
             </div>
           </label>
           <input
-            type={"file"}
-            id={"attachment"}
+            type={'file'}
+            id={'attachment'}
             className={styles.input_file}
             onChange={(e) => {
               e.target.files && onSelectFile && onSelectFile(e.target.files[0]);
@@ -102,11 +102,10 @@ export default function SubmitCertificate() {
           />
 
           <Button
-            type={"primary"}
+            type={'primary'}
             loading={Loading}
             onClick={onUploadCertificate}
-            className={styles.submit_button}
-          >
+            className={styles.submit_button}>
             ثبت
           </Button>
         </div>
@@ -131,7 +130,7 @@ export default function SubmitCertificate() {
         </div>
       </div>
       <div className={styles.report_body}>
-        {Identity.status === "1" ? (
+        {Identity.status === '1' ? (
           <p className={styles.right_side}>
             <span>سند شما ثبت شد</span>
             <span>لطفا منتظر پاسخ ما باشین</span>
@@ -152,7 +151,7 @@ export default function SubmitCertificate() {
             <div className={styles.request_container}>
               <span className={styles.request}>وضعیت درخواست:</span>
               <div className={styles.request_data_container}>
-                {Identity.status === "1" ? "در حال بررسی" : "تایید شده"}
+                {Identity.status === '1' ? 'در حال بررسی' : 'تایید شده'}
               </div>
             </div>
             <div className={styles.request_container}>
@@ -161,20 +160,20 @@ export default function SubmitCertificate() {
                 {moment
                   .utc(Identity.request_time ?? new Date())
                   .local()
-                  .locale("fa")
-                  .format("YYYY/MM/D")}
+                  .locale('fa')
+                  .format('YYYY/MM/D')}
               </div>
             </div>
-            {Identity.status === "1" && (
+            {Identity.status === '1' && (
               <div className={styles.request_container}>
                 <span className={styles.request}>تاریخ انقضا:</span>
                 <div className={styles.request_data_container}>
                   {moment
                     .utc(Identity.request_time ?? new Date())
-                    .add(1, "week")
+                    .add(1, 'week')
                     .local()
-                    .locale("fa")
-                    .format("YYYY/MM/D")}
+                    .locale('fa')
+                    .format('YYYY/MM/D')}
                 </div>
               </div>
             )}

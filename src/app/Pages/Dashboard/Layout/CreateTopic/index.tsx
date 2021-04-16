@@ -1,20 +1,20 @@
-import API from "../../../../API";
-import { Button, message } from "antd";
-import Assets from "../../../../Assets";
-import { useRef, useState } from "react";
-import styles from "./styles.module.scss";
-import { useHistory } from "react-router-dom";
-import SEInput from "../../../../Components/SEInput";
+import API from '../../../../API';
+import {Button, message} from 'antd';
+import Assets from '../../../../Assets';
+import {useRef, useState} from 'react';
+import styles from './styles.module.scss';
+import {useHistory} from 'react-router-dom';
+import SEInput from '../../../../Components/SEInput';
 
 export default function CreateTopic() {
   const history = useHistory();
-  const [Title, setTitle] = useState("");
-  const [Username, setUsername] = useState("");
+  const [Title, setTitle] = useState('');
+  const [Username, setUsername] = useState('');
   const [Avatar, setAvatar] = useState<File>();
   const [Loading, setLoading] = useState(false);
   const [AvatarUrl, setAvatarUrl] = useState<any>();
   const usernameRef = useRef<HTMLInputElement>(null);
-  const [Description, setDescription] = useState("");
+  const [Description, setDescription] = useState('');
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const [TitleHasError, setTitleHasError] = useState(false);
   const [UsernameHasError, setUsernameHasError] = useState(false);
@@ -42,7 +42,7 @@ export default function CreateTopic() {
       setDescriptionHasError(true);
     }
     if (!Avatar) {
-      message.error("برای تاپیک خود یک آواتار انتخاب کنید");
+      message.error('برای تاپیک خود یک آواتار انتخاب کنید');
     }
     if (!Title || !Username || !Description || !Avatar) {
       return;
@@ -60,14 +60,14 @@ export default function CreateTopic() {
       description: Description,
     })
       .then(() => {
-        message.success("تاپیک با موفقیت ایجاد شد.");
-        history.push("/dashboard/topics");
+        message.success('تاپیک با موفقیت ایجاد شد.');
+        history.push('/dashboard/topics');
       })
       .catch((error) => {
         if (error.status === 403) {
-          message.error("برای این عملیات نیاز هست تا احراز هویت کرده باشید");
+          message.error('برای این عملیات نیاز هست تا احراز هویت کرده باشید');
         } else {
-          message.error("انجام این عملیات ممکن نیست");
+          message.error('انجام این عملیات ممکن نیست');
         }
       })
       .finally(() => setLoading(false));
@@ -95,7 +95,7 @@ export default function CreateTopic() {
             onChange={(e) => {
               if (e.target.files) {
                 setAvatar(e.target.files[0]);
-                var fr = new FileReader();
+                const fr = new FileReader();
                 fr.onload = function () {
                   setAvatarUrl(fr.result);
                 };
@@ -138,8 +138,7 @@ export default function CreateTopic() {
           loading={Loading}
           type="primary"
           className={styles.enter_button}
-          onClick={onCreateTopic}
-        >
+          onClick={onCreateTopic}>
           ثبت
         </Button>
       </div>

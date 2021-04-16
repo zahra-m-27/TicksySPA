@@ -1,9 +1,9 @@
-import { Spin } from "antd";
-import API from "../../../API";
-import Assets from "../../../Assets";
-import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import {Spin} from 'antd';
+import API from '../../../API';
+import Assets from '../../../Assets';
+import styles from './styles.module.scss';
+import {useEffect, useState} from 'react';
+import {Link, useHistory, useLocation} from 'react-router-dom';
 
 export default function ConfirmSignUpPage() {
   const history = useHistory();
@@ -12,8 +12,8 @@ export default function ConfirmSignUpPage() {
 
   useEffect(() => {
     API.Users.ConfirmSignUp({
-      token: new URLSearchParams(location.search).get("token") ?? "",
-      uib64: new URLSearchParams(location.search).get("uib64") ?? "",
+      token: new URLSearchParams(location.search).get('token') ?? '',
+      uib64: new URLSearchParams(location.search).get('uib64') ?? '',
     })
       .then(() => setResult(true))
       .catch(() => setResult(false));
@@ -39,7 +39,7 @@ export default function ConfirmSignUpPage() {
             <br />
             از سایت خودتون لذت ببرید
           </p>
-          <div className={styles.home} onClick={() => history.push("/")}>
+          <div className={styles.home} onClick={() => history.push('/')}>
             <Link to="/">صفحه اصلی</Link>
             <Assets.SVGs.Home />
           </div>
@@ -56,7 +56,7 @@ export default function ConfirmSignUpPage() {
           <br />
           لطفا دوباره تلاش کنید
         </p>
-        <div className={styles.home} onClick={() => history.push("/")}>
+        <div className={styles.home} onClick={() => history.push('/')}>
           <Link to="/">صفحه اصلی</Link>
           <Assets.SVGs.Home />
         </div>

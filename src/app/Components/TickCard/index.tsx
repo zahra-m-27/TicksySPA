@@ -1,7 +1,7 @@
-import React from "react";
-import { Button } from "antd";
-import styles from "./styles.module.scss";
-import ClassNames from "../../Utilities/ClassNames";
+import React from 'react';
+import {Button} from 'antd';
+import styles from './styles.module.scss';
+import ClassNames from '../../Utilities/ClassNames';
 
 interface IButton {
   label: string;
@@ -43,8 +43,7 @@ const TickCard: React.FC<Props> = ({
           type="primary"
           onClick={button.onClick}
           loading={button.loading}
-          className={button.className}
-        >
+          className={button.className}>
           {button.label}
         </Button>
       ))}

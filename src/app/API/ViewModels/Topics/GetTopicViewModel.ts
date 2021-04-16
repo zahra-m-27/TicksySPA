@@ -1,5 +1,5 @@
-import TopicDto from "../../DTOs/TopicDto";
-import BaseResponse from "../../Common/BaseResponse";
+import TopicDto from '../../DTOs/TopicDto';
+import BaseResponse from '../../Common/BaseResponse';
 
 namespace GetTopicViewModel {
   export interface Request {

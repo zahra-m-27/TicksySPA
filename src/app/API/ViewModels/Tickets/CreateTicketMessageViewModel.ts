@@ -1,4 +1,4 @@
-import BaseResponse from "../../Common/BaseResponse";
+import BaseResponse from '../../Common/BaseResponse';
 
 namespace CreateTicketMessageViewModel {
   export interface Request {
@@ -7,7 +7,7 @@ namespace CreateTicketMessageViewModel {
     attachments: File[];
   }
 
-  export interface Response extends BaseResponse {}
+  export type Response = BaseResponse;
 }
 
 export default CreateTicketMessageViewModel;

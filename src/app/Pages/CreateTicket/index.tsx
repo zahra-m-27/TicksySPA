@@ -1,22 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button, message, Spin } from "antd";
-import Assets from "../../Assets";
-import { Link, useHistory, useParams } from "react-router-dom";
-import styles from "./styles.module.scss";
-import SEInput from "../../Components/SEInput";
-import API from "../../API";
-import TopicDto from "../../API/DTOs/TopicDto";
+import React, {useEffect, useRef, useState} from 'react';
+import {Button, message, Spin} from 'antd';
+import Assets from '../../Assets';
+import {Link, useHistory, useParams} from 'react-router-dom';
+import styles from './styles.module.scss';
+import SEInput from '../../Components/SEInput';
+import API from '../../API';
+import TopicDto from '../../API/DTOs/TopicDto';
 
 export default function CreateTicketPage() {
   const history = useHistory();
   const params = useParams<any>();
-  const [Title, setTitle] = useState("");
-  const [Message, setMessage] = useState("");
+  const [Title, setTitle] = useState('');
+  const [Message, setMessage] = useState('');
   const [Loading, setLoading] = useState(false);
   const [Tags, setTags] = useState<string[]>([]);
   const [Topic, setTopic] = useState<TopicDto>();
   const messageRef = useRef<HTMLInputElement>(null);
-  const [CurrentTag, setCurrentTag] = useState<string>("");
+  const [CurrentTag, setCurrentTag] = useState<string>('');
   const [TitleHasError, setTitleHasError] = useState(false);
   const [Attachments, setAttachments] = useState<File[]>([]);
   const [MessageHasError, setMessageHasError] = useState(false);
@@ -28,9 +28,9 @@ export default function CreateTicketPage() {
       .then((response) => setTopic(response))
       .catch((error) => {
         if (error.status === 404) {
-          message.error("تاپیک موردنظر یافت نشد.");
+          message.error('تاپیک موردنظر یافت نشد.');
         } else {
-          message.error("اشکالی در دریافت اطلاعات تایپک رخ داده.");
+          message.error('اشکالی در دریافت اطلاعات تایپک رخ داده.');
         }
       });
   }, []);
@@ -41,13 +41,13 @@ export default function CreateTicketPage() {
       priority: 1,
       title: Title,
       text: Message,
-      tags: Tags.join(","),
+      tags: Tags.join(','),
       slug: params.username,
       attachments: Attachments,
     })
-      .then(() => history.replace("/dashboard/tickets"))
+      .then(() => history.replace('/dashboard/tickets'))
       .catch(() => {
-        message.error("انجام این عملیات ممکن نیست");
+        message.error('انجام این عملیات ممکن نیست');
       })
       .finally(() => setLoading(false));
   };
@@ -87,7 +87,7 @@ export default function CreateTicketPage() {
         <img
           alt="logo"
           src={Assets.Images.Ticksy}
-          onClick={() => history.push("/")}
+          onClick={() => history.push('/')}
         />
       </div>
       <div className={styles.card_container}>
@@ -134,8 +134,7 @@ export default function CreateTicketPage() {
             loading={Loading}
             type="primary"
             className={styles.enter_button}
-            onClick={onCreateTicket}
-          >
+            onClick={onCreateTicket}>
             ثبت
           </Button>
           <SEInput
@@ -150,7 +149,7 @@ export default function CreateTicketPage() {
             inputClassName={styles.input}
             onEnter={() => {
               setTags([CurrentTag, ...Tags]);
-              setCurrentTag("");
+              setCurrentTag('');
             }}
             className={styles.tag_input_class}
             labelClassName={styles.input_label}

@@ -1,5 +1,5 @@
-import BaseResponse from "../../Common/BaseResponse";
-import MessageDto from "../../DTOs/MessageDto";
+import BaseResponse from '../../Common/BaseResponse';
+import MessageDto from '../../DTOs/MessageDto';
 
 namespace GetTicketViewModel {
   export interface Request {
@@ -7,7 +7,7 @@ namespace GetTicketViewModel {
     slug: string;
   }
 
-  export interface Response extends MessageDto {}
+  export type Response = MessageDto;
 }
 
 export default GetTicketViewModel;

@@ -1,7 +1,7 @@
 interface Props {
   className?: string;
 }
-export default function UserSVG({ className }: Props) {
+export default function UserSVG({className}: Props) {
   return (
     <svg
       className={className}
@@ -10,8 +10,7 @@ export default function UserSVG({ className }: Props) {
       x="0px"
       y="0px"
       viewBox="0 0 460.8 460.8"
-      fill="#26a9ad"
-    >
+      fill="#26a9ad">
       <g>
         <g>
           <path

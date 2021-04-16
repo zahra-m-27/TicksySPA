@@ -1,5 +1,5 @@
-import AttachmentDto from "./AttachmentDto";
-import UserSerializerRestrictedDto from "./UserSerializerRestrictedDto";
+import AttachmentDto from './AttachmentDto';
+import UserSerializerRestrictedDto from './UserSerializerRestrictedDto';
 
 export default interface MessageDto {
   id: number;

@@ -1,12 +1,12 @@
-import Assets from "../../Assets";
-import DashboardLayout from "./Layout";
-import styles from "./styles.module.scss";
-import useUser from "../../Hooks/useUser";
-import { useHistory } from "react-router-dom";
+import Assets from '../../Assets';
+import DashboardLayout from './Layout';
+import styles from './styles.module.scss';
+import useUser from '../../Hooks/useUser';
+import {useHistory} from 'react-router-dom';
 
 export default function Dashboard() {
   const history = useHistory();
-  const { user, Logout } = useUser();
+  const {user, Logout} = useUser();
   return (
     <div className={styles.container}>
       <div className={styles.left_side}>
@@ -15,8 +15,7 @@ export default function Dashboard() {
       <div className={styles.right_side}>
         <div
           className={styles.right_side_content}
-          onClick={(e) => e.stopPropagation()}
-        >
+          onClick={(e) => e.stopPropagation()}>
           <div className={styles.info}>
             <div className={styles.info_avatar}>
               <img src={Assets.Images.DotSquare} alt="" />
@@ -26,15 +25,14 @@ export default function Dashboard() {
                 src={user.avatar ?? Assets.SVGs.MaleUserSVG}
               />
             </div>
-            <p>{user.first_name + " " + user.last_name}</p>
+            <p>{user.first_name + ' ' + user.last_name}</p>
           </div>
           <div className={styles.nav}>
             <ul>
               <li>
                 <div
                   className={styles.item}
-                  onClick={() => history.push("/dashboard/tickets")}
-                >
+                  onClick={() => history.push('/dashboard/tickets')}>
                   <img src={Assets.Images.Ticket} alt="" />
                   <div className={styles.item_label}>
                     <p>مدیریت تیکت ها</p>
@@ -45,8 +43,7 @@ export default function Dashboard() {
                 <li>
                   <div
                     className={styles.item}
-                    onClick={() => history.push("/dashboard/topics")}
-                  >
+                    onClick={() => history.push('/dashboard/topics')}>
                     <img src={Assets.Images.Topic} alt="" />
                     <div className={styles.item_label}>
                       <p>مدیریت تاپیک ها</p>
@@ -57,8 +54,7 @@ export default function Dashboard() {
               <li>
                 <div
                   className={styles.item}
-                  onClick={() => history.push("/dashboard/profile")}
-                >
+                  onClick={() => history.push('/dashboard/profile')}>
                   <img src={Assets.Images.User} alt="" />
                   <div className={styles.item_label}>
                     <p>مدیریت حساب</p>
@@ -69,8 +65,7 @@ export default function Dashboard() {
           </div>
           <div
             className={styles.nav}
-            style={{ marginTop: "auto", marginBottom: "10%" }}
-          >
+            style={{marginTop: 'auto', marginBottom: '10%'}}>
             <ul>
               <li className={styles.exit}>
                 <div className={styles.item} onClick={() => Logout()}>

@@ -1,27 +1,27 @@
-import API from "../../../../API";
-import moment from "jalali-moment";
-import { Button, message } from "antd";
-import Assets from "../../../../Assets";
-import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import SEInput from "../../../../Components/SEInput";
-import TicketDto from "../../../../API/DTOs/TicketDto";
-import ClassNames from "../../../../Utilities/ClassNames";
+import API from '../../../../API';
+import moment from 'jalali-moment';
+import {Button, message} from 'antd';
+import Assets from '../../../../Assets';
+import styles from './styles.module.scss';
+import {useEffect, useState} from 'react';
+import {useHistory, useParams} from 'react-router-dom';
+import SEInput from '../../../../Components/SEInput';
+import TicketDto from '../../../../API/DTOs/TicketDto';
+import ClassNames from '../../../../Utilities/ClassNames';
 
 export default function Tickets() {
   const history = useHistory();
   const params = useParams<any>();
-  const [Id, setId] = useState("");
-  const [Title, setTitle] = useState("");
-  const [Search, setSearch] = useState("");
+  const [Id, setId] = useState('');
+  const [Title, setTitle] = useState('');
+  const [Search, setSearch] = useState('');
   const [LastPage, setLastPage] = useState(1);
   const [CurrentPage, setCurrentPage] = useState(1);
   const [Loading, setLoading] = useState<boolean>(false);
   const [Tickets, setTickets] = useState<TicketDto[]>([]);
 
   const onSearch = () => {
-    setSearch(Title ? Title : Id ? Id : "");
+    setSearch(Title ? Title : Id ? Id : '');
     getTickets();
   };
 
@@ -39,7 +39,7 @@ export default function Tickets() {
           setLastPage(response.count / 10);
         })
         .catch(() => {
-          message.error("خطایی در دریافت تیکت ها رخ داده است");
+          message.error('خطایی در دریافت تیکت ها رخ داده است');
         })
         .finally(() => setLoading(false));
     else
@@ -53,7 +53,7 @@ export default function Tickets() {
           setLastPage(response.count / 10);
         })
         .catch(() => {
-          message.error("خطایی در دریافت تیکت ها رخ داده است");
+          message.error('خطایی در دریافت تیکت ها رخ داده است');
         })
         .finally(() => setLoading(false));
   };
@@ -63,21 +63,21 @@ export default function Tickets() {
   }, [CurrentPage]);
 
   const statusClassName = (status: string) => {
-    if (status === "4") return "#295cc0";
-    else if (status === "3") return "#3d6cc9";
-    else if (status === "1") return "#44adf2";
-    else if (status === "2") return "#0088e3";
+    if (status === '4') return '#295cc0';
+    else if (status === '3') return '#3d6cc9';
+    else if (status === '1') return '#44adf2';
+    else if (status === '2') return '#0088e3';
   };
 
   const statusLabel = (status: string) => {
-    if (status === "4") return "بسته شده";
-    else if (status === "3") return "پاسخ داده شده";
-    else if (status === "1") return "در انتظار پاسخ";
-    else if (status === "2") return "در حال بررسی";
+    if (status === '4') return 'بسته شده';
+    else if (status === '3') return 'پاسخ داده شده';
+    else if (status === '1') return 'در انتظار پاسخ';
+    else if (status === '2') return 'در حال بررسی';
   };
 
   const openTicket = (id: number) => {
-    history.push("/dashboard/tickets/" + id);
+    history.push('/dashboard/tickets/' + id);
   };
 
   return (
@@ -96,8 +96,7 @@ export default function Tickets() {
             type="primary"
             loading={Loading}
             onClick={onSearch}
-            className={styles.search_button}
-          >
+            className={styles.search_button}>
             <img
               alt=""
               src={Assets.Images.Search}
@@ -118,14 +117,12 @@ export default function Tickets() {
             <tr key={index}>
               <td
                 className={styles.td_id}
-                onClick={() => openTicket(ticket.id)}
-              >
+                onClick={() => openTicket(ticket.id)}>
                 {ticket.id}
               </td>
               <td
                 className={styles.td_title}
-                onClick={() => openTicket(ticket.id)}
-              >
+                onClick={() => openTicket(ticket.id)}>
                 {ticket.title}
               </td>
               <td className={styles.td_condition}>
@@ -133,8 +130,7 @@ export default function Tickets() {
                   className={styles.td_condition_container}
                   style={{
                     background: statusClassName(ticket.status),
-                  }}
-                >
+                  }}>
                   {statusLabel(ticket.status)}
                 </div>
               </td>
@@ -143,15 +139,15 @@ export default function Tickets() {
                   {moment
                     .utc(ticket.creation_date)
                     .local()
-                    .locale("fa")
-                    .format("YYYY/MM/D")}
+                    .locale('fa')
+                    .format('YYYY/MM/D')}
                 </span>
                 <span className={styles.hour}>
                   {moment
                     .utc(ticket.creation_date)
                     .local()
-                    .locale("fa")
-                    .format("HH:mm")}
+                    .locale('fa')
+                    .format('HH:mm')}
                 </span>
               </td>
               <td className={styles.td_last}>
@@ -159,15 +155,15 @@ export default function Tickets() {
                   {moment
                     .utc(ticket.last_update)
                     .local()
-                    .locale("fa")
-                    .format("YYYY/MM/D")}
+                    .locale('fa')
+                    .format('YYYY/MM/D')}
                 </span>
                 <span className={styles.hour}>
                   {moment
                     .utc(ticket.creation_date)
                     .local()
-                    .locale("fa")
-                    .format("HH:mm")}
+                    .locale('fa')
+                    .format('HH:mm')}
                 </span>
               </td>
             </tr>
@@ -183,8 +179,7 @@ export default function Tickets() {
         {CurrentPage - 1 > 0 && (
           <div
             className={styles.pagination_page}
-            onClick={() => setCurrentPage(CurrentPage - 1)}
-          >
+            onClick={() => setCurrentPage(CurrentPage - 1)}>
             {CurrentPage - 1}
           </div>
         )}
@@ -194,8 +189,7 @@ export default function Tickets() {
         {CurrentPage + 1 < LastPage && (
           <div
             className={styles.pagination_page}
-            onClick={() => setCurrentPage(CurrentPage + 1)}
-          >
+            onClick={() => setCurrentPage(CurrentPage + 1)}>
             {CurrentPage + 1}
           </div>
         )}

@@ -62,7 +62,7 @@
     flex-direction: column;
     box-shadow: 0 3px 8px 0 #76787d;
     padding-top: clamp(13px, 4vh, 48px);
-    background-image: url("../../../../Assets/Images/Files/chat_background.jpg");
+    background-image: url('../../../../Assets/Images/Files/chat_background.jpg');
 
     .message {
       width: 50%;

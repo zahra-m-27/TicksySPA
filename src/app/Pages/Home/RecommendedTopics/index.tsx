@@ -1,16 +1,16 @@
-import Topic from "./Topic";
-import API from "../../../API";
-import { message } from "antd";
-import Assets from "../../../Assets";
-import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
-import RecommendedTopicsDto from "../../../API/DTOs/RecommendedTopicsDto";
+import Topic from './Topic';
+import API from '../../../API';
+import {message} from 'antd';
+import Assets from '../../../Assets';
+import styles from './styles.module.scss';
+import {useEffect, useState} from 'react';
+import RecommendedTopicsDto from '../../../API/DTOs/RecommendedTopicsDto';
 
 const initialTopics: RecommendedTopicsDto[] = new Array(6).fill({
-  slug: "test",
+  slug: 'test',
   avatar: Assets.Images.TopicIcon,
-  title: "لورم اپسیوم متن ساختگی",
-  description: "نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد",
+  title: 'لورم اپسیوم متن ساختگی',
+  description: 'نیاز و کاربردهای متنوع با هدف بهبود ابزار کاربردی میباشد',
 });
 
 export default function RecommendedTopics() {
@@ -24,11 +24,11 @@ export default function RecommendedTopics() {
         if (response.results.length) {
           setTopics(response.results);
         } else {
-          message.error("متاسفانه هنوز تاپیک پیشنهادی ای وجود ندارد");
+          message.error('متاسفانه هنوز تاپیک پیشنهادی ای وجود ندارد');
         }
       })
       .catch((error) => {
-        message.error("خطایی در دریافت تاپیک های پیشنهادی به وجود آمده.");
+        message.error('خطایی در دریافت تاپیک های پیشنهادی به وجود آمده.');
       });
   }, []);
 

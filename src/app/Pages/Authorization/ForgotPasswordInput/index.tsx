@@ -1,17 +1,17 @@
-import API from "../../../API";
-import { useState } from "react";
-import { Button, message } from "antd";
-import styles from "./styles.module.scss";
-import { useHistory } from "react-router-dom";
-import SEInput from "../../../Components/SEInput";
+import API from '../../../API';
+import {useState} from 'react';
+import {Button, message} from 'antd';
+import styles from './styles.module.scss';
+import {useHistory} from 'react-router-dom';
+import SEInput from '../../../Components/SEInput';
 
 interface Props {
   className?: string;
 }
 
-export default function ForgotPasswordInput({ className }: Props) {
+export default function ForgotPasswordInput({className}: Props) {
   const history = useHistory();
-  const [Email, setEmail] = useState("");
+  const [Email, setEmail] = useState('');
   const [Loading, setLoading] = useState(false);
   const [EmailHasError, setEmailHasError] = useState(false);
 
@@ -27,12 +27,12 @@ export default function ForgotPasswordInput({ className }: Props) {
       email: Email,
     })
       .then(() => {
-        message.success("ایمیل تغییر رمزعبور براتان ارسال شده است", 15);
-        history.replace("/");
+        message.success('ایمیل تغییر رمزعبور براتان ارسال شده است', 15);
+        history.replace('/');
       })
       .catch((error) => {
         if (error.status === 400) {
-          message.error("ایمیل یا رمزعبور اشتباه است");
+          message.error('ایمیل یا رمزعبور اشتباه است');
         }
       })
       .finally(() => setLoading(false));
@@ -60,8 +60,7 @@ export default function ForgotPasswordInput({ className }: Props) {
         type="primary"
         loading={Loading}
         onClick={onForgotPassword}
-        className={styles.enter_button}
-      >
+        className={styles.enter_button}>
         ثبت
       </Button>
     </div>

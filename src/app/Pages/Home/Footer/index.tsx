@@ -1,5 +1,5 @@
-import Assets from "../../../Assets";
-import styles from "./styles.module.scss";
+import Assets from '../../../Assets';
+import styles from './styles.module.scss';
 
 export default function Footer() {
   return (
@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
         <div>
           <Assets.SVGs.LocationPinSVG />
-          کرج - انتهای خیابان شهید بهشتی - میدان دانشگاه{" "}
+          کرج - انتهای خیابان شهید بهشتی - میدان دانشگاه{' '}
         </div>
       </div>
       <div className={styles.footer_social}>

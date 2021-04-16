@@ -1,19 +1,19 @@
-import { DashboardRoute } from "../Pages/Dashboard/Layout/routes";
+import {DashboardRoute} from '../Pages/Dashboard/Layout/routes';
 
 export function breadcrumbFindRoute(
   path: string,
   routes: DashboardRoute[],
   parents: DashboardRoute[]
 ) {
-  let resultRoute = routes.find((route) =>
+  const resultRoute = routes.find((route) =>
     new RegExp(
-      ("^/dashboard" + route.path)
-        .replace(/\/:(.*?)(\/|$)/g, "/(.*?)/")
-        .replace(/\/$/i, "") + "$"
-    ).test(path.replace(/\/$/i, ""))
+      ('^/dashboard' + route.path)
+        .replace(/\/:(.*?)(\/|$)/g, '/(.*?)/')
+        .replace(/\/$/i, '') + '$'
+    ).test(path.replace(/\/$/i, ''))
   );
   if (resultRoute) {
-    return { route: resultRoute, parents };
+    return {route: resultRoute, parents};
   } else {
     let result:
       | {

@@ -59,12 +59,12 @@
 
 .topic:nth-child(2n) > .topic_content {
   background-position: center;
-  background-image: url("../../../../Assets/Images/Files/card_cyan_background.png");
+  background-image: url('../../../../Assets/Images/Files/card_cyan_background.png');
 }
 
 .topic:nth-child(2n + 1) > .topic_content {
   background-position: center;
-  background-image: url("../../../../Assets/Images/Files/card_blue_background.png");
+  background-image: url('../../../../Assets/Images/Files/card_blue_background.png');
 }
 
 .topic_content > h3 {

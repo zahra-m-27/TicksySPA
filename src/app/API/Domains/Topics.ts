@@ -1,62 +1,62 @@
-import { Post } from "../fetch";
-import GetTopicViewModel from "../ViewModels/Topics/GetTopicViewModel";
-import GetTopicsViewModel from "../ViewModels/Topics/GetTopicsViewModel";
-import GetTicketViewModel from "../ViewModels/Topics/GetTicketViewModel";
-import CreateTopicViewModel from "../ViewModels/Topics/CreateTopicViewModel";
-import UpdateTopicViewModel from "../ViewModels/Topics/UpdateTopicViewModel";
-import DeleteTopicViewModel from "../ViewModels/Topics/DeleteTopicViewModel";
-import CreateTicketViewModel from "../ViewModels/Topics/CreateTicketViewModel";
-import GetTopicTicketsViewModel from "../ViewModels/Topics/GetTopicTicketsViewModel";
+import {Post} from '../fetch';
+import GetTopicViewModel from '../ViewModels/Topics/GetTopicViewModel';
+import GetTopicsViewModel from '../ViewModels/Topics/GetTopicsViewModel';
+import GetTicketViewModel from '../ViewModels/Topics/GetTicketViewModel';
+import CreateTopicViewModel from '../ViewModels/Topics/CreateTopicViewModel';
+import UpdateTopicViewModel from '../ViewModels/Topics/UpdateTopicViewModel';
+import DeleteTopicViewModel from '../ViewModels/Topics/DeleteTopicViewModel';
+import CreateTicketViewModel from '../ViewModels/Topics/CreateTicketViewModel';
+import GetTopicTicketsViewModel from '../ViewModels/Topics/GetTopicTicketsViewModel';
 
-const ControllerName = "topics";
+const ControllerName = 'topics';
 
 function GetTopics(args: GetTopicsViewModel.Request) {
   return Post<GetTopicsViewModel.Response>(
-    ControllerName + "/?page=" + args.page,
+    ControllerName + '/?page=' + args.page,
     undefined,
-    "GET"
+    'GET'
   );
 }
 function CreateTopic(args: CreateTopicViewModel.Request) {
   const formData = new FormData();
-  formData.append("slug", args.slug);
-  formData.append("title", args.title);
+  formData.append('slug', args.slug);
+  formData.append('title', args.title);
   if (args.avatar) {
-    formData.append("avatar", args.avatar);
+    formData.append('avatar', args.avatar);
   }
-  formData.append("description", args.description);
-  for (let supporters_id of args.supporters_ids)
-    formData.append("supporters_ids", `${supporters_id}`);
-  return Post<CreateTopicViewModel.Response>(ControllerName + "/", formData);
+  formData.append('description', args.description);
+  for (const supporters_id of args.supporters_ids)
+    formData.append('supporters_ids', `${supporters_id}`);
+  return Post<CreateTopicViewModel.Response>(ControllerName + '/', formData);
 }
 function GetTopic(args: GetTopicViewModel.Request) {
   return Post<GetTopicViewModel.Response>(
     ControllerName + `/${args.slug}/`,
     undefined,
-    "GET"
+    'GET'
   );
 }
 function UpdateTopic(args: UpdateTopicViewModel.Request) {
   const formData = new FormData();
-  formData.append("slug", args.slug);
-  formData.append("title", args.title);
+  formData.append('slug', args.slug);
+  formData.append('title', args.title);
   if (args.avatar) {
-    formData.append("avatar", args.avatar);
+    formData.append('avatar', args.avatar);
   }
-  formData.append("description", args.description);
-  for (let supporters_id of args.supporters_ids)
-    formData.append("supporters_ids", `${supporters_id}`);
+  formData.append('description', args.description);
+  for (const supporters_id of args.supporters_ids)
+    formData.append('supporters_ids', `${supporters_id}`);
   return Post<UpdateTopicViewModel.Response>(
     ControllerName + `/${args.slug}/`,
     args,
-    "PATCH"
+    'PATCH'
   );
 }
 function DeleteTopic(args: DeleteTopicViewModel.Request) {
   return Post<DeleteTopicViewModel.Response>(
     ControllerName + `/${args.slug}/`,
     undefined,
-    "DELETE"
+    'DELETE'
   );
 }
 function GetTopicTickets(args: GetTopicTicketsViewModel.Request) {
@@ -65,28 +65,28 @@ function GetTopicTickets(args: GetTopicTicketsViewModel.Request) {
       `/${args.slug}/tickets/?` +
       new URLSearchParams(args as any).toString(),
     undefined,
-    "GET"
+    'GET'
   );
 }
 function CreateTicket(args: CreateTicketViewModel.Request) {
   const formData = new FormData();
-  formData.append("slug", args.slug);
-  formData.append("text", args.text);
-  formData.append("title", args.title);
-  for (let attachment of args.attachments)
-    formData.append("attachments", attachment);
-  formData.append("priority", `${args.priority}`);
+  formData.append('slug', args.slug);
+  formData.append('text', args.text);
+  formData.append('title', args.title);
+  for (const attachment of args.attachments)
+    formData.append('attachments', attachment);
+  formData.append('priority', `${args.priority}`);
   return Post<CreateTicketViewModel.Response>(
     ControllerName + `/${args.slug}/tickets/`,
     formData,
-    "POST"
+    'POST'
   );
 }
 function GetTicket(args: GetTicketViewModel.Request) {
   return Post<GetTicketViewModel.Response[]>(
     ControllerName + `/topics/${args.slug}/tickets/${args.id}/`,
     undefined,
-    "GET"
+    'GET'
   );
 }
 

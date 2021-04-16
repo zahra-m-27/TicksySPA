@@ -2,15 +2,14 @@ interface Props {
   className?: string;
 }
 
-export default function GridView({ className }: Props) {
+export default function GridView({className}: Props) {
   return (
     <svg
       className={className}
       width="32"
       height="32"
       viewBox="0 0 32 32"
-      style={{ width: "auto", height: "1em", verticalAlign: "middle" }}
-    >
+      style={{width: 'auto', height: '1em', verticalAlign: 'middle'}}>
       <path
         id="grid_ic"
         className="cls-1"

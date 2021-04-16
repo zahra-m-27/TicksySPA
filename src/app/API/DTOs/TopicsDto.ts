@@ -1,4 +1,4 @@
-import UserSerializerRestrictedDto from "./UserSerializerRestrictedDto";
+import UserSerializerRestrictedDto from './UserSerializerRestrictedDto';
 
 export default interface TopicsDto {
   id: number;

@@ -1,7 +1,7 @@
-import routes from "./routes";
-import UserProvider from "./Providers/UserProvider";
-import AuthorizedRoute from "./Components/AuthorizedRoute";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import routes from './routes';
+import UserProvider from './Providers/UserProvider';
+import AuthorizedRoute from './Components/AuthorizedRoute';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 export default function App() {
   return (

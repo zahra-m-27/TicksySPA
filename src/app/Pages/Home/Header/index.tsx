@@ -1,7 +1,7 @@
-import Assets from "../../../Assets";
-import styles from "./styles.module.scss";
-import MobileNavigation from "./MobileNavigation";
-import DesktopNavigation from "./DesktopNavigation";
+import Assets from '../../../Assets';
+import styles from './styles.module.scss';
+import MobileNavigation from './MobileNavigation';
+import DesktopNavigation from './DesktopNavigation';
 
 export default function Header() {
   return (

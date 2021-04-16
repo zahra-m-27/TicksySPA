@@ -1,22 +1,22 @@
-import API from "../../../API";
-import { Button, message } from "antd";
-import { useRef, useState } from "react";
-import styles from "./styles.module.scss";
-import { Link, useHistory } from "react-router-dom";
-import SEInput from "../../../Components/SEInput";
+import API from '../../../API';
+import {Button, message} from 'antd';
+import {useRef, useState} from 'react';
+import styles from './styles.module.scss';
+import {Link, useHistory} from 'react-router-dom';
+import SEInput from '../../../Components/SEInput';
 
 interface Props {
   className?: string;
 }
 
-export default function SignInInput({ className }: Props) {
+export default function SignInInput({className}: Props) {
   const history = useHistory();
-  const [Code, setCode] = useState("");
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
-  const [LastName, setLastName] = useState("");
+  const [Code, setCode] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
+  const [LastName, setLastName] = useState('');
   const [Loading, setLoading] = useState(false);
-  const [FirstName, setFirstName] = useState("");
+  const [FirstName, setFirstName] = useState('');
   const codeRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -80,20 +80,20 @@ export default function SignInInput({ className }: Props) {
       first_name: FirstName,
     })
       .then(() => {
-        history.replace("/");
-        message.success("ایمیل تاییدیه براتان ارسال شده است", 15);
+        history.replace('/');
+        message.success('ایمیل تاییدیه براتان ارسال شده است', 15);
       })
       .catch(async (error) => {
         if (error.status === 400) {
-          let non_field_errors = (await error.json())?.non_field_errors;
+          const non_field_errors = (await error.json())?.non_field_errors;
           if (
             non_field_errors &&
             non_field_errors.length &&
-            non_field_errors[0] === "email address has been taken befor"
+            non_field_errors[0] === 'email address has been taken befor'
           ) {
-            message.error("این ایمیل قبلا در سامانه ثبت شده است");
+            message.error('این ایمیل قبلا در سامانه ثبت شده است');
           } else {
-            message.error("ایمیل یا رمزعبور اشتباه است");
+            message.error('ایمیل یا رمزعبور اشتباه است');
           }
         }
       })
@@ -168,8 +168,7 @@ export default function SignInInput({ className }: Props) {
         type="primary"
         loading={Loading}
         onClick={onSignUp}
-        className={styles.enter_button}
-      >
+        className={styles.enter_button}>
         ثبت نام
       </Button>
       <Link className={styles.switch} to="/sign-in">

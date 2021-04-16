@@ -1,26 +1,26 @@
-import { message, Spin } from "antd";
-import API from "../../../../API";
-import Assets from "../../../../Assets";
-import styles from "./styles.module.scss";
-import useUser from "../../../../Hooks/useUser";
-import { useEffect, useRef, useState } from "react";
-import SEInput from "../../../../Components/SEInput";
-import TickCard from "../../../../Components/TickCard";
-import { useHistory, useParams } from "react-router-dom";
-import ClassNames from "../../../../Utilities/ClassNames";
-import UserSerializerRestrictedDto from "../../../../API/DTOs/UserSerializerRestrictedDto";
+import {message, Spin} from 'antd';
+import API from '../../../../API';
+import Assets from '../../../../Assets';
+import styles from './styles.module.scss';
+import useUser from '../../../../Hooks/useUser';
+import {useEffect, useRef, useState} from 'react';
+import SEInput from '../../../../Components/SEInput';
+import TickCard from '../../../../Components/TickCard';
+import {useHistory, useParams} from 'react-router-dom';
+import ClassNames from '../../../../Utilities/ClassNames';
+import UserSerializerRestrictedDto from '../../../../API/DTOs/UserSerializerRestrictedDto';
 
 export default function EditTopic() {
   const me = useUser();
   const history = useHistory();
   const params = useParams<any>();
-  const [Title, setTitle] = useState("");
+  const [Title, setTitle] = useState('');
   const [Avatar, setAvatar] = useState<File>();
   const [Loading, setLoading] = useState(true);
   const [AvatarUrl, setAvatarUrl] = useState<any>();
-  const [SearchEmail, setSearchEmail] = useState("");
+  const [SearchEmail, setSearchEmail] = useState('');
   const usernameRef = useRef<HTMLInputElement>(null);
-  const [Description, setDescription] = useState("");
+  const [Description, setDescription] = useState('');
   const [Username, setUsername] = useState(params.id);
   const [SaveLoading, setSaveLoading] = useState(false);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
@@ -42,7 +42,7 @@ export default function EditTopic() {
       return;
     }
     setSearchLoading(true);
-    API.Email.SearchEmail({ search: SearchEmail })
+    API.Email.SearchEmail({search: SearchEmail})
       .then((response) => {
         setSearchedEmails(response.filter((s) => s.id !== me.user.id));
       })
@@ -63,7 +63,7 @@ export default function EditTopic() {
         setDescription(response.description);
         setSupporterIds(response.supporters.map((s) => s.id));
       })
-      .catch(() => message.error("اشکالی در دریافت اطلاعات تایپک رخ داده."))
+      .catch(() => message.error('اشکالی در دریافت اطلاعات تایپک رخ داده.'))
       .finally(() => setLoading(false));
   }, []);
 
@@ -78,7 +78,7 @@ export default function EditTopic() {
       setDescriptionHasError(true);
     }
     if (!Avatar && !AvatarUrl) {
-      message.error("برای تاپیک خود یک آواتار انتخاب کنید");
+      message.error('برای تاپیک خود یک آواتار انتخاب کنید');
     }
     if (!Title || !Username || !Description || (!Avatar && !AvatarUrl)) {
       return;
@@ -96,14 +96,14 @@ export default function EditTopic() {
       supporters_ids: SupporterIds,
     })
       .then(() => {
-        message.success("تاپیک با بروز شد.");
-        history.push("/dashboard/topics");
+        message.success('تاپیک با بروز شد.');
+        history.push('/dashboard/topics');
       })
       .catch((error) => {
         if (error.status === 403) {
-          message.error("برای این عملیات نیاز هست تا احراز هویت کرده باشید");
+          message.error('برای این عملیات نیاز هست تا احراز هویت کرده باشید');
         } else {
-          message.error("انجام این عملیات ممکن نیست");
+          message.error('انجام این عملیات ممکن نیست');
         }
       })
       .finally(() => setSaveLoading(false));
@@ -135,8 +135,7 @@ export default function EditTopic() {
         title="اعضا"
         icon={Assets.SVGs.People}
         className={styles.member_card}
-        contentClassName={styles.member_content}
-      >
+        contentClassName={styles.member_content}>
         {StartSearch ? (
           <div className={styles.search_box}>
             <SEInput
@@ -150,7 +149,7 @@ export default function EditTopic() {
               src={Assets.SVGs.Cancel}
               className={styles.close_search}
               onClick={() => {
-                setSearchEmail("");
+                setSearchEmail('');
                 setSearchedEmails([]);
                 setStartSearch(false);
                 setSearchLoading(false);
@@ -160,8 +159,7 @@ export default function EditTopic() {
         ) : (
           <div
             onClick={() => setStartSearch(true)}
-            className={ClassNames(styles.member_container, styles.add_button)}
-          >
+            className={ClassNames(styles.member_container, styles.add_button)}>
             <img src={Assets.SVGs.Plus} alt="add member" />
             <p>افزودن عضو</p>
           </div>
@@ -173,7 +171,7 @@ export default function EditTopic() {
                 src={Assets.SVGs.Minus}
                 alt=""
                 onClick={() => {
-                  let supporters = Supporters.filter(
+                  const supporters = Supporters.filter(
                     (s) => s.id !== supporter.id
                   );
                   setSupporters(supporters);
@@ -194,7 +192,7 @@ export default function EditTopic() {
               }
               alt=""
               onClick={() => {
-                let supporters = Supporters.filter(
+                const supporters = Supporters.filter(
                   (s) => s.id !== user.id
                 ).concat([user]);
                 setSupporters(supporters);
@@ -211,13 +209,12 @@ export default function EditTopic() {
         className={styles.detail_card}
         buttons={[
           {
-            label: "ثبت",
+            label: 'ثبت',
             onClick: onEditTopic,
             loading: SaveLoading,
             className: styles.enter_button,
           },
-        ]}
-      >
+        ]}>
         <div className={styles.upload}>
           <label htmlFor="picture">
             <img
@@ -233,7 +230,7 @@ export default function EditTopic() {
             onChange={(e) => {
               if (e.target.files) {
                 setAvatar(e.target.files[0]);
-                var fr = new FileReader();
+                const fr = new FileReader();
                 fr.onload = function () {
                   setAvatarUrl(fr.result);
                 };

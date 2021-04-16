@@ -1,20 +1,20 @@
-import API from "../../../API";
-import { Button, message } from "antd";
-import { useRef, useState } from "react";
-import styles from "./styles.module.scss";
-import SEInput from "../../../Components/SEInput";
-import { Link, useHistory } from "react-router-dom";
-import useUser from "../../../Hooks/useUser";
+import API from '../../../API';
+import {Button, message} from 'antd';
+import {useRef, useState} from 'react';
+import styles from './styles.module.scss';
+import SEInput from '../../../Components/SEInput';
+import {Link, useHistory} from 'react-router-dom';
+import useUser from '../../../Hooks/useUser';
 
 interface Props {
   className?: string;
 }
 
-export default function SignInInput({ className }: Props) {
-  const { Login } = useUser();
+export default function SignInInput({className}: Props) {
+  const {Login} = useUser();
   const history = useHistory();
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
   const [Loading, setLoading] = useState(false);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [EmailHasError, setEmailHasError] = useState(false);
@@ -45,15 +45,15 @@ export default function SignInInput({ className }: Props) {
       password: Password,
     })
       .then((response) => {
-        localStorage.setItem("token", response.token);
+        localStorage.setItem('token', response.token);
         API.Users.GetProfile({}).then((response) => {
           Login(response);
         });
-        history.replace("/");
+        history.replace('/');
       })
       .catch((error) => {
         if (error.status === 400) {
-          message.error("ایمیل یا رمزعبور اشتباه است");
+          message.error('ایمیل یا رمزعبور اشتباه است');
         }
       })
       .finally(() => setLoading(false));
@@ -91,8 +91,7 @@ export default function SignInInput({ className }: Props) {
         type="primary"
         loading={Loading}
         onClick={onSignIn}
-        className={styles.enter_button}
-      >
+        className={styles.enter_button}>
         ورود
       </Button>
       <Link className={styles.switch} to="/sign-up">

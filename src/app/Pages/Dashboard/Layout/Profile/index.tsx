@@ -1,16 +1,16 @@
-import API from "../../../../API";
-import moment from "jalali-moment";
-import { Button, message } from "antd";
-import Assets from "../../../../Assets";
-import styles from "./styles.module.scss";
-import { useHistory } from "react-router-dom";
-import React, { useRef, useState } from "react";
-import useUser from "../../../../Hooks/useUser";
-import SEInput from "../../../../Components/SEInput";
+import API from '../../../../API';
+import moment from 'jalali-moment';
+import {Button, message} from 'antd';
+import Assets from '../../../../Assets';
+import styles from './styles.module.scss';
+import {useHistory} from 'react-router-dom';
+import React, {useRef, useState} from 'react';
+import useUser from '../../../../Hooks/useUser';
+import SEInput from '../../../../Components/SEInput';
 
 export default function Profile() {
   const history = useHistory();
-  const { user, Login } = useUser();
+  const {user, Login} = useUser();
   const [Avatar, setAvatar] = useState<File>();
   const [Loading, setLoading] = useState(false);
   const [Code, setCode] = useState(user.code);
@@ -74,7 +74,7 @@ export default function Profile() {
         Login(response);
       })
       .catch(() => {
-        message.error("اشکالی در بروزرسانی پروفایل رخ داده است.");
+        message.error('اشکالی در بروزرسانی پروفایل رخ داده است.');
       })
       .finally(() => {
         setLoading(false);
@@ -111,7 +111,7 @@ export default function Profile() {
                 onChange={(e) => {
                   if (e.target.files) {
                     setAvatar(e.target.files[0]);
-                    var fr = new FileReader();
+                    const fr = new FileReader();
                     fr.onload = function () {
                       setAvatarUrl(fr.result);
                     };
@@ -170,7 +170,7 @@ export default function Profile() {
             <>
               <p className={styles.big}>نام و خانوادگي</p>
               <p className={styles.small}>
-                {user.first_name + " " + user.last_name}
+                {user.first_name + ' ' + user.last_name}
               </p>
               <p className={styles.big}>ايميل</p>
               <p className={styles.small}>{user.email}</p>
@@ -181,8 +181,8 @@ export default function Profile() {
                 {moment
                   .utc(user.date_joined)
                   .local()
-                  .locale("fa")
-                  .format("YYYY/MM/D")}
+                  .locale('fa')
+                  .format('YYYY/MM/D')}
               </p>
             </>
           )}
@@ -192,9 +192,8 @@ export default function Profile() {
         {!CanChange && (
           <Button
             type="primary"
-            onClick={() => history.push("/dashboard/submit-certificate")}
-            className={styles.change_button}
-          >
+            onClick={() => history.push('/dashboard/submit-certificate')}
+            className={styles.change_button}>
             احراز هویت
           </Button>
         )}
@@ -208,9 +207,8 @@ export default function Profile() {
               setCanChange(!CanChange);
             }
           }}
-          className={CanChange ? styles.change_button : styles.record_button}
-        >
-          {CanChange ? "ثبت" : "تغییر"}
+          className={CanChange ? styles.change_button : styles.record_button}>
+          {CanChange ? 'ثبت' : 'تغییر'}
         </Button>
       </div>
     </div>

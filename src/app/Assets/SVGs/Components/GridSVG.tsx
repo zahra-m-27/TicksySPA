@@ -1,7 +1,7 @@
 interface Props {
   className?: string;
 }
-export default function GridSVG({ className }: Props) {
+export default function GridSVG({className}: Props) {
   return (
     <svg
       className={className}
@@ -13,8 +13,7 @@ export default function GridSVG({ className }: Props) {
       width={36}
       height={36}
       viewBox="0 0 360.49 360.49"
-      fill="#0f67cb"
-    >
+      fill="#0f67cb">
       <g>
         <g>
           <g>

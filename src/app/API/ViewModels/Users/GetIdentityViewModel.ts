@@ -1,5 +1,5 @@
-import BaseResponse from "../../Common/BaseResponse";
-import UserIdentityDto from "../../DTOs/UserIdentityDto";
+import BaseResponse from '../../Common/BaseResponse';
+import UserIdentityDto from '../../DTOs/UserIdentityDto';
 
 namespace GetIdentityViewModel {
   export interface Request {}

@@ -1,6 +1,6 @@
-import styles from "../styles.module.scss";
-import Assets from "../../../../../Assets";
-import { useHistory } from "react-router-dom";
+import styles from '../styles.module.scss';
+import Assets from '../../../../../Assets';
+import {useHistory} from 'react-router-dom';
 
 interface Props {
   title: string;
@@ -23,8 +23,7 @@ export default function TopicCard({
       <div className={styles.card_content}>
         <div
           className={styles.card_content_header}
-          onClick={() => history.push("/dashboard/topics/" + username)}
-        >
+          onClick={() => history.push('/dashboard/topics/' + username)}>
           <div className={styles.topic_avatar}>
             <img src={Assets.Images.DotSquare2} alt="" />
             <img
@@ -37,8 +36,7 @@ export default function TopicCard({
         <div className={styles.card_content_footer}>
           <div
             className={styles.card_content_footer_edit}
-            onClick={() => history.push("/dashboard/topics/edit/" + username)}
-          >
+            onClick={() => history.push('/dashboard/topics/edit/' + username)}>
             <img src={Assets.Images.EditProperty} alt="edit" />
           </div>
           <span>{title}</span>

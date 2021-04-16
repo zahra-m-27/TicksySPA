@@ -1,7 +1,7 @@
 interface Props {
   className?: string;
 }
-export default function LocationPinSVG({ className }: Props) {
+export default function LocationPinSVG({className}: Props) {
   return (
     <svg
       className={className}
@@ -11,8 +11,7 @@ export default function LocationPinSVG({ className }: Props) {
       x="0px"
       y="0px"
       viewBox="0 0 512 512"
-      fill="#26a9ad"
-    >
+      fill="#26a9ad">
       <g>
         <g>
           <path

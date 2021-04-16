@@ -16,7 +16,7 @@ $mobile-navigation: #1743bf;
     display: flex;
   }
 
-  &[data-active="true"] {
+  &[data-active='true'] {
     box-shadow: unset;
 
     .mobile_navigation_activator_top_line {
@@ -31,13 +31,13 @@ $mobile-navigation: #1743bf;
       transform: translateY(-0.35em) rotate(45deg);
     }
 
-    &[data-is-login="false"] {
+    &[data-is-login='false'] {
       .mobile_navigation_drop_down {
         height: 155px;
       }
     }
 
-    &[data-is-login="true"] {
+    &[data-is-login='true'] {
       .mobile_navigation_drop_down {
         height: 155px;
       }

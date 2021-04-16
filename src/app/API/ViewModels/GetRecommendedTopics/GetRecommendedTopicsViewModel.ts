@@ -1,5 +1,5 @@
-import BaseResponse from "../../Common/BaseResponse";
-import RecommendedTopicsDto from "../../DTOs/RecommendedTopicsDto";
+import BaseResponse from '../../Common/BaseResponse';
+import RecommendedTopicsDto from '../../DTOs/RecommendedTopicsDto';
 
 namespace GetRecommendedTopicsViewModel {
   export interface Request {

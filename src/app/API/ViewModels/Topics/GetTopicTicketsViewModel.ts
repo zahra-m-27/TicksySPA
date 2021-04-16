@@ -1,5 +1,5 @@
-import TicketDto from "../../DTOs/TicketDto";
-import BaseResponse from "../../Common/BaseResponse";
+import TicketDto from '../../DTOs/TicketDto';
+import BaseResponse from '../../Common/BaseResponse';
 
 namespace GetTopicTicketsViewModel {
   export interface Request {

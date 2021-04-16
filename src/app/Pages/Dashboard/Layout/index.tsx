@@ -1,15 +1,15 @@
-import routes from "./routes";
-import { Breadcrumb } from "antd";
-import Assets from "../../../Assets";
-import styles from "./styles.module.scss";
-import { Route, Switch, Redirect, Link, useHistory } from "react-router-dom";
-import { breadcrumbFindRoute, getRoutes } from "../../../Utilities";
+import routes from './routes';
+import {Breadcrumb} from 'antd';
+import Assets from '../../../Assets';
+import styles from './styles.module.scss';
+import {Route, Switch, Redirect, Link, useHistory} from 'react-router-dom';
+import {breadcrumbFindRoute, getRoutes} from '../../../Utilities';
 
 interface Props {}
 
 export default function DashboardLayout({}: Props) {
   const history = useHistory();
-  let breadcrumb = breadcrumbFindRoute(window.location.pathname, routes, []);
+  const breadcrumb = breadcrumbFindRoute(window.location.pathname, routes, []);
 
   return (
     <>
@@ -22,16 +22,16 @@ export default function DashboardLayout({}: Props) {
         <img
           alt="logo"
           src={Assets.Images.Ticksy}
-          onClick={() => history.push("/")}
+          onClick={() => history.push('/')}
         />
       </div>
       <div className={styles.breadcrumb}>
         {breadcrumb?.route && (
-          <Breadcrumb style={{ direction: "rtl" }}>
+          <Breadcrumb style={{direction: 'rtl'}}>
             <Breadcrumb.Item>خانه</Breadcrumb.Item>
             {breadcrumb.parents.map((parent, index) => (
               <Breadcrumb.Item key={index}>
-                <Link to={"/dashboard" + parent.path}>{parent.name}</Link>
+                <Link to={'/dashboard' + parent.path}>{parent.name}</Link>
               </Breadcrumb.Item>
             ))}
             <Breadcrumb.Item>{breadcrumb.route.name}</Breadcrumb.Item>
@@ -48,15 +48,15 @@ export default function DashboardLayout({}: Props) {
                 <Redirect
                   key={index}
                   exact={route.exact}
-                  path={"/dashboard" + route.path}
-                  to={"/dashboard" + route.redirect}
+                  path={'/dashboard' + route.path}
+                  to={'/dashboard' + route.redirect}
                 />
               );
             }
             return (
               <Route
                 key={index}
-                path={"/dashboard" + route.path}
+                path={'/dashboard' + route.path}
                 component={route.component}
                 exact={route.exact}
               />

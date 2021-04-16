@@ -1,5 +1,5 @@
-import styles from "./styles.module.scss";
-import { useHistory } from "react-router-dom";
+import styles from './styles.module.scss';
+import {useHistory} from 'react-router-dom';
 
 interface Props {
   slug: string;
@@ -9,19 +9,12 @@ interface Props {
   description: string;
 }
 
-export default function Topic({
-  slug,
-  icon,
-  title,
-  badge,
-  description,
-}: Props) {
+export default function Topic({slug, icon, title, badge, description}: Props) {
   const history = useHistory();
   return (
     <div
       className={styles.topic}
-      onClick={() => history.push("/ticket/" + slug)}
-    >
+      onClick={() => history.push('/ticket/' + slug)}>
       <div className={styles.topic_badge}>
         <img src={badge} alt="" />
       </div>

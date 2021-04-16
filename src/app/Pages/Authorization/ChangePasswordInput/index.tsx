@@ -1,21 +1,21 @@
-import API from "../../../API";
-import { Button, message } from "antd";
-import { useRef, useState } from "react";
-import styles from "./styles.module.scss";
-import SEInput from "../../../Components/SEInput";
-import { useHistory, useLocation } from "react-router-dom";
+import API from '../../../API';
+import {Button, message} from 'antd';
+import {useRef, useState} from 'react';
+import styles from './styles.module.scss';
+import SEInput from '../../../Components/SEInput';
+import {useHistory, useLocation} from 'react-router-dom';
 
 interface Props {
   className?: string;
 }
 
-export default function ForgotPasswordInput({ className }: Props) {
+export default function ForgotPasswordInput({className}: Props) {
   const history = useHistory();
   const location = useLocation();
-  const [Password, setPassword] = useState("");
+  const [Password, setPassword] = useState('');
   const [Loading, setLoading] = useState(false);
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
-  const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [ConfirmPassword, setConfirmPassword] = useState('');
   const [PasswordHasError, setPasswordHasError] = useState(false);
   const [ConfirmPasswordHasError, setConfirmPasswordHasError] = useState(false);
 
@@ -44,17 +44,17 @@ export default function ForgotPasswordInput({ className }: Props) {
     setLoading(true);
     API.Users.NewPasswordResetPassword({
       password: Password,
-      token: new URLSearchParams(location.search).get("token") ?? "",
-      uib64: new URLSearchParams(location.search).get("uib64") ?? "",
+      token: new URLSearchParams(location.search).get('token') ?? '',
+      uib64: new URLSearchParams(location.search).get('uib64') ?? '',
     })
       .then((response) => {
-        localStorage.setItem("token", response.token);
-        message.success("رمز عبور با موفقیت تغییر کرد.");
-        history.replace("/");
+        localStorage.setItem('token', response.token);
+        message.success('رمز عبور با موفقیت تغییر کرد.');
+        history.replace('/');
       })
       .catch((error) => {
         if (error.status === 400) {
-          message.error("ایمیل یا رمزعبور اشتباه است");
+          message.error('ایمیل یا رمزعبور اشتباه است');
         }
       })
       .finally(() => setLoading(false));
@@ -90,8 +90,7 @@ export default function ForgotPasswordInput({ className }: Props) {
         type="primary"
         loading={Loading}
         onClick={onResetPassword}
-        className={styles.enter_button}
-      >
+        className={styles.enter_button}>
         ثبت
       </Button>
     </div>

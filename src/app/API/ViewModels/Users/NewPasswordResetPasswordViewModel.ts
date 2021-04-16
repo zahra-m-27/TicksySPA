@@ -1,4 +1,4 @@
-import BaseResponse from "../../Common/BaseResponse";
+import BaseResponse from '../../Common/BaseResponse';
 
 namespace NewPasswordResetPasswordViewModel {
   export interface Request {

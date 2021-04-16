@@ -1,15 +1,14 @@
 interface Props {
   className?: string;
 }
-export default function Attach({ className }: Props) {
+export default function Attach({className}: Props) {
   return (
     <svg
       height="41"
       width="35.637"
       className={className}
       viewBox="0 0 35.637 41"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+      xmlns="http://www.w3.org/2000/svg">
       <path
         fill="#76787d"
         transform="translate(-5.583 -4)"

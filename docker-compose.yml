@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   ticksy-front:
@@ -7,7 +7,7 @@ services:
     volumes:
       - /cache/ticksy-front:/cache
       - /srv/ticksy-front:/app
-    entrypoint: "sh -c"
+    entrypoint: 'sh -c'
     working_dir: /cache
     command:
       [

@@ -1,20 +1,20 @@
-import API from "../../../../API";
-import moment from "jalali-moment";
-import { message, Spin } from "antd";
-import Assets from "../../../../Assets";
-import styles from "./styles.module.scss";
-import { useParams } from "react-router-dom";
-import useUser from "../../../../Hooks/useUser";
-import React, { useEffect, useState } from "react";
-import SEInput from "../../../../Components/SEInput";
-import TicketDto from "../../../../API/DTOs/TicketDto";
-import MessageDto from "../../../../API/DTOs/MessageDto";
+import API from '../../../../API';
+import moment from 'jalali-moment';
+import {message, Spin} from 'antd';
+import Assets from '../../../../Assets';
+import styles from './styles.module.scss';
+import {useParams} from 'react-router-dom';
+import useUser from '../../../../Hooks/useUser';
+import React, {useEffect, useState} from 'react';
+import SEInput from '../../../../Components/SEInput';
+import TicketDto from '../../../../API/DTOs/TicketDto';
+import MessageDto from '../../../../API/DTOs/MessageDto';
 
 export default function Ticket() {
-  const { user } = useUser();
+  const {user} = useUser();
   const params = useParams<any>();
   const [Ticket, setTicket] = useState<TicketDto>();
-  const [Message, setMessage] = useState("");
+  const [Message, setMessage] = useState('');
   const [Attachment, setAttachment] = useState<File>();
   const [Loading, setLoading] = useState(false);
   const [Messages, setMessages] = useState<MessageDto[]>([]);
@@ -32,7 +32,7 @@ export default function Ticket() {
 
   useEffect(() => {
     getMessages();
-    API.Tickets.GetTicketDetail({ id: params.id }).then((response) =>
+    API.Tickets.GetTicketDetail({id: params.id}).then((response) =>
       setTicket(response)
     );
   }, []);
@@ -43,7 +43,7 @@ export default function Ticket() {
       return;
     }
 
-    let attachments = [];
+    const attachments = [];
 
     if (Attachment) {
       attachments.push(Attachment);
@@ -57,10 +57,10 @@ export default function Ticket() {
     })
       .then(() => {
         getMessages();
-        setMessage("");
+        setMessage('');
         setAttachment(undefined);
       })
-      .catch(() => message.error("ارسال پیام مقدور نیست"));
+      .catch(() => message.error('ارسال پیام مقدور نیست'));
   };
 
   if (!Ticket) {
@@ -79,20 +79,20 @@ export default function Ticket() {
         </div>
         <div className={styles.ticket_info_bottom}>
           <p>
-            تاریخ شروع:{" "}
+            تاریخ شروع:{' '}
             {moment
               .utc(Ticket.creation_date)
               .local()
-              .locale("fa")
-              .format("YYYY/MM/D HH:mm")}
+              .locale('fa')
+              .format('YYYY/MM/D HH:mm')}
           </p>
           <p>
             آخرین آپدیت:
             {moment
               .utc(Ticket.last_update)
               .local()
-              .locale("fa")
-              .format("YYYY/MM/D HH:mm")}
+              .locale('fa')
+              .format('YYYY/MM/D HH:mm')}
           </p>
         </div>
       </div>
@@ -100,9 +100,9 @@ export default function Ticket() {
         <div className={styles.tags_container}>
           <p dir="auto">
             {Ticket.tags
-              .split(",")
+              .split(',')
               .map((tag) => `#${tag}`)
-              .join(" ")}
+              .join(' ')}
           </p>
           <Assets.SVGs.Hashtag className={styles.hashtag_icon} />
         </div>
@@ -110,7 +110,7 @@ export default function Ticket() {
 
       <div className={styles.chat_container}>
         {Messages.map((message, index) => {
-          let unknownAvatar =
+          const unknownAvatar =
             message.user.id === user.id
               ? Assets.SVGs.MaleUserSVG
               : Assets.SVGs.OldMaleUserSVG;
@@ -120,19 +120,17 @@ export default function Ticket() {
               className={styles.message}
               style={{
                 alignSelf:
-                  message.user.id !== user.id ? "flex-start" : "flex-end",
-              }}
-            >
+                  message.user.id !== user.id ? 'flex-start' : 'flex-end',
+              }}>
               <div
                 className={styles.message_user}
                 style={{
                   justifyContent:
-                    message.user.id !== user.id ? "flex-start" : "flex-end",
+                    message.user.id !== user.id ? 'flex-start' : 'flex-end',
                   transform: `translate(${
                     7 * (message.user.id !== user.id ? -1 : 1)
                   }px, -7px)`,
-                }}
-              >
+                }}>
                 {message.user.id !== user.id && (
                   <img
                     alt=""
@@ -140,7 +138,7 @@ export default function Ticket() {
                     src={message.user.avatar ?? unknownAvatar}
                   />
                 )}
-                <p>{message.user.first_name + " " + message.user.last_name}</p>
+                <p>{message.user.first_name + ' ' + message.user.last_name}</p>
                 {message.user.id === user.id && (
                   <img
                     alt=""
@@ -150,7 +148,7 @@ export default function Ticket() {
                 )}
               </div>
               <p dir="auto" className={styles.message_content}>
-                {message.text.split("\n").map((line) => (
+                {message.text.split('\n').map((line) => (
                   <>
                     {line}
                     <br />
@@ -162,15 +160,15 @@ export default function Ticket() {
                   {moment
                     .utc(message.date)
                     .local()
-                    .locale("fa")
-                    .format("YYYY/MM/D")}
+                    .locale('fa')
+                    .format('YYYY/MM/D')}
                 </p>
                 <p>
                   {moment
                     .utc(message.date)
                     .local()
-                    .locale("fa")
-                    .format("HH:mm")}
+                    .locale('fa')
+                    .format('HH:mm')}
                 </p>
               </div>
             </div>

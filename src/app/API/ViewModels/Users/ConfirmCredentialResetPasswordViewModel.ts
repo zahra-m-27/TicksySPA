@@ -1,4 +1,4 @@
-import BaseResponse from "../../Common/BaseResponse";
+import BaseResponse from '../../Common/BaseResponse';
 
 namespace ConfirmCredentialResetPasswordViewModel {
   export interface Request {
@@ -6,7 +6,7 @@ namespace ConfirmCredentialResetPasswordViewModel {
     uib64: string;
   }
 
-  export interface Response extends BaseResponse {}
+  export type Response = BaseResponse;
 }
 
 export default ConfirmCredentialResetPasswordViewModel;

@@ -1,8 +1,8 @@
-import { Tag } from "antd";
-import Assets from "../../Assets";
-import styles from "./styles.module.scss";
-import React, { useEffect, useState } from "react";
-import ClassNames from "../../Utilities/ClassNames";
+import {Tag} from 'antd';
+import Assets from '../../Assets';
+import styles from './styles.module.scss';
+import React, {useEffect, useState} from 'react';
+import ClassNames from '../../Utilities/ClassNames';
 
 interface Props {
   hint?: string;
@@ -19,7 +19,7 @@ interface Props {
   attachments?: File[];
   inputClassName?: string;
   labelClassName?: string;
-  type?: "password" | "text";
+  type?: 'password' | 'text';
   onIconPressed?: () => void;
   passwordCanBeVisible?: boolean;
   innerContainerClassName?: string;
@@ -40,12 +40,12 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
       onEnter,
       minLines,
       className,
-      hint = "",
+      hint = '',
       onTagClose,
       attachments,
       onSelectFile,
       onChangeText,
-      type = "text",
+      type = 'text',
       onIconPressed,
       labelClassName,
       inputClassName,
@@ -60,10 +60,10 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
     const [Type, setType] = useState(type);
     const [HasError, setHasError] = useState(false);
     const [IsFocused, setIsFocused] = useState(false);
-    const [Content, setContent] = useState(content ?? "");
+    const [Content, setContent] = useState(content ?? '');
 
     useEffect(() => {
-      setContent(content ?? "");
+      setContent(content ?? '');
     }, [content]);
 
     useEffect(() => {
@@ -88,7 +88,7 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
       if (isNumeric && !/^\d*$/.test(event.target.value)) {
         setContent(event.target.value);
         setTimeout(() => {
-          setContent("");
+          setContent('');
           setHasError(true);
         }, 150);
         return;
@@ -163,17 +163,17 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
     }
 
     const tagColors = [
-      "red",
-      "gold",
-      "lime",
-      "cyan",
-      "blue",
-      "green",
-      "purple",
-      "orange",
-      "magenta",
-      "volcano",
-      "geekblue",
+      'red',
+      'gold',
+      'lime',
+      'cyan',
+      'blue',
+      'green',
+      'purple',
+      'orange',
+      'magenta',
+      'volcano',
+      'geekblue',
     ];
 
     return (
@@ -188,7 +188,7 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
                 onBlur={onBlur}
                 onFocus={onFocus}
                 onChange={onChange}
-                placeholder={IsFocused ? hint : ""}
+                placeholder={IsFocused ? hint : ''}
                 className={ClassNames(
                   styles.input,
                   inputClassName,
@@ -204,24 +204,24 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
                 onBlur={onBlur}
                 onFocus={onFocus}
                 onChange={onChange}
-                placeholder={IsFocused ? hint : ""}
+                placeholder={IsFocused ? hint : ''}
                 className={ClassNames(
                   styles.input,
                   inputClassName,
                   labelClassName
                 )}
                 ref={ref as React.RefObject<HTMLInputElement>}
-                onKeyDown={(e) => e.key === "Enter" && onEnter && onEnter()}
+                onKeyDown={(e) => e.key === 'Enter' && onEnter && onEnter()}
               />
             )}
             {passwordCanBeVisible &&
-              type === "password" &&
-              (Type === "password" ? (
-                <div onClick={() => setType("text")}>
+              type === 'password' &&
+              (Type === 'password' ? (
+                <div onClick={() => setType('text')}>
                   <Assets.SVGs.VisiblePassSvg className={styles.eye_svg} />
                 </div>
               ) : (
-                <div onClick={() => setType("password")}>
+                <div onClick={() => setType('password')}>
                   <Assets.SVGs.InvisiblePassSvg className={styles.eye_svg} />
                 </div>
               ))}
@@ -229,23 +229,20 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
               <div
                 onClick={onIconPressed}
                 className={styles.eye_svg}
-                style={onIconPressed ? { cursor: "pointer" } : {}}
-              >
+                style={onIconPressed ? {cursor: 'pointer'} : {}}>
                 {icon}
               </div>
             )}
           </div>
           {tags && tags.length > 0 && (
             <div
-              className={ClassNames(styles.tags_container, styles.scrollview)}
-            >
+              className={ClassNames(styles.tags_container, styles.scrollview)}>
               {tags.map((tag, i) => (
                 <Tag
                   key={tag}
                   closable
                   color={tagColors[i % tagColors.length]}
-                  onClose={() => onTagClose && onTagClose(i)}
-                >
+                  onClose={() => onTagClose && onTagClose(i)}>
                   #{tag}
                 </Tag>
               ))}
