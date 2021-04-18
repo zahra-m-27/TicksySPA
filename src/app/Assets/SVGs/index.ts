@@ -1,6 +1,7 @@
 import Plus from './Files/plus.svg';
 import Minus from './Files/minus.svg';
 import Topic from './Files/topic.svg';
+import Close from './Files/close.svg';
 import Menu from './Components/MenuSVG';
 import Home from './Components/HomeSVG';
 import Cancel from './Files/cancel.svg';
@@ -41,6 +42,7 @@ const SVGs = {
   Menu,
   Minus,
   Topic,
+  Close,
   Failed,
   Camera,
   Attach,

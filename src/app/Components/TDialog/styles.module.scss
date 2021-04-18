@@ -1,0 +1,82 @@
+$dialog-background: #030202;
+
+.t_dialog {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  position: fixed;
+  overflow-y: scroll;
+  animation: t_dialog_bg_a 0.2s ease-out;
+  background-color: rgba($dialog-background, 0.6);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes t_dialog_bg_a {
+    0% {
+      background-color: rgba($dialog-background, 0);
+    }
+    100% {
+      background-color: rgba($dialog-background, 0.6);
+    }
+  }
+}
+
+.t_dialog_container {
+  margin: auto;
+  display: flex;
+  position: relative;
+  border-radius: 5px;
+  flex-direction: column;
+  max-width: min(75%, 850px);
+  background-color: #e1e5e9;
+  padding: clamp(40px, 3.5vw, 50px);
+  animation: t_dialog_container_a 0.2s ease-out;
+
+  @keyframes t_dialog_container_a {
+    0% {
+      transform: scale(0.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @media (width <= 720px) and (height >= 600px) {
+    transform: translateY(-10vh);
+    animation: t_dialog_container_a 0.2s ease-out;
+
+    @keyframes t_dialog_container_a {
+      0% {
+        transform: scale(0.5) translateY(-10vh);
+      }
+      100% {
+        transform: scale(1) translateY(-10vh);
+      }
+    }
+  }
+}
+
+.t_dialog_multiply_box {
+  display: flex;
+  cursor: pointer;
+  position: absolute;
+  top: clamp(1rem, 1vw, 2rem);
+  left: clamp(1rem, 1vw, 2rem);
+  font-size: clamp(2.5rem, 2.5vw, 5rem);
+
+  &:hover {
+    .t_dialog_multiply {
+      fill: #000000;
+    }
+  }
+}
+
+.t_dialog_multiply {
+  fill: #666666;
+  transition: all 0.2s ease-out;
+}
