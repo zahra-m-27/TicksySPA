@@ -19,29 +19,26 @@ export default function TopicCard({
 
   return (
     <div className={styles.card}>
-      <img src={Assets.Images.TopicCard} alt="" />
-      <div className={styles.card_content}>
+      <div className={styles.card_header}>
+        <img
+          src={avatar ?? Assets.Images.TopicCardAvatar}
+          className={styles.card_avatar}
+          alt=""
+          onClick={() => history.push('/dashboard/topics/' + username)}
+        />
         <div
-          className={styles.card_content_header}
-          onClick={() => history.push('/dashboard/topics/' + username)}>
-          <div className={styles.topic_avatar}>
-            <img src={Assets.Images.DotSquare2} alt="" />
-            <img
-              alt=""
-              className={styles.avatar}
-              src={avatar ?? Assets.Images.ManTicket}
-            />
-          </div>
+          className={styles.card_edit}
+          onClick={() => history.push('/dashboard/topics/edit/' + username)}>
+          <img
+            src={Assets.Images.Edit}
+            className={styles.card_edit_image}
+            alt="edit"
+          />
         </div>
-        <div className={styles.card_content_footer}>
-          <div
-            className={styles.card_content_footer_edit}
-            onClick={() => history.push('/dashboard/topics/edit/' + username)}>
-            <img src={Assets.Images.EditProperty} alt="edit" />
-          </div>
-          <span>{title}</span>
-          <p>{description}</p>
-        </div>
+      </div>
+      <div className={styles.card_footer}>
+        <span>{title}</span>
+        <p>{description}</p>
       </div>
     </div>
   );

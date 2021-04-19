@@ -22,6 +22,8 @@ import ManTicket from './Files/man_cinema_ticket.png';
 import GoogleImage2 from './Files/google_images_2.png';
 import ChatBackground from './Files/chat_background.jpg';
 import TopicCard from './Files/topic_card_background.png';
+import TopicCardAvatar from './Files/topic_card_avatar.png';
+import Edit from './Files/edit.png';
 
 const Images = {
   Add,
@@ -48,5 +50,7 @@ const Images = {
   EditProperty,
   GoogleImage2,
   ChatBackground,
+  TopicCardAvatar,
+  Edit,
 };
 export default Images;
