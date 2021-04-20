@@ -20,6 +20,7 @@ import GridView from './Components/GridView';
 import LessThan from './Components/LessThan';
 import MoreThan from './Components/MoreThan';
 import Instagram from './Files/instagram.svg';
+import Copyright from './Files/copyright.svg';
 import MaleUserSVG from './Files/male_user.svg';
 import AddPhoto from './Components/AddPhotoSVG';
 import AddPhotoSVG from './Files/add_photo.svg';
@@ -29,6 +30,7 @@ import ProfileSvg from './Components/ProfileSvg';
 import OldMaleUser from './Components/OldMaleUser';
 import ReactLogoSvg from './Components/ReactLogoSvg';
 import SuccessTick from './Components/SuccessTickSVG';
+import DefaultAvatar from './Files/default_avatar.svg';
 import OldMaleUserSVG from './Files/old_male_user.svg';
 import LocationPinSVG from './Components/LocationPinSVG';
 import ProfileIconSVG from './Components/ProfileIconSVG';
@@ -58,6 +60,7 @@ const SVGs = {
   Facebook,
   MoreThan,
   MaleUser,
+  Copyright,
   Instagram,
   PaperPlane,
   ProfileSvg,
@@ -67,6 +70,7 @@ const SVGs = {
   AddPhotoSVG,
   SuccessTick,
   ReactLogoSvg,
+  DefaultAvatar,
   OldMaleUserSVG,
   ProfileIconSVG,
   VisiblePassSvg,

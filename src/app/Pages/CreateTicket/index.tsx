@@ -6,8 +6,10 @@ import styles from './styles.module.scss';
 import SEInput from '../../Components/SEInput';
 import API from '../../API';
 import TopicDto from '../../API/DTOs/TopicDto';
+import useUser from '../../Hooks/useUser';
 
 export default function CreateTicketPage() {
+  const {user} = useUser();
   const history = useHistory();
   const params = useParams<any>();
   const [Title, setTitle] = useState('');
@@ -58,43 +60,15 @@ export default function CreateTicketPage() {
     }
   };
 
-  if (!Topic) {
-    return (
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <Link to="/contact-us">ارتباط با ما</Link>
-          <Link to="/dashboard">داشبورد</Link>
-          <Link to="/">خانه</Link>
-          <Link to="/">تیکسی</Link>
-          <Assets.SVGs.GridSVG />
-          <img src={Assets.Images.Ticksy} alt="logo" />
-        </div>
-        <div className={styles.card_container}>
-          <Spin size="large" className={styles.loading} />
-        </div>
-      </div>
-    );
-  }
+  let content = <Spin size="large" className={styles.loading} />;
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <Link to="/contact-us">ارتباط با ما</Link>
-        <Link to="/dashboard">داشبورد</Link>
-        <Link to="/">خانه</Link>
-        <Link to="/">تیکسی</Link>
-        <Assets.SVGs.GridSVG />
-        <img
-          alt="logo"
-          src={Assets.Images.Ticksy}
-          onClick={() => history.push('/')}
-        />
-      </div>
-      <div className={styles.card_container}>
+  if (Topic) {
+    content = (
+      <>
         <img
           alt=""
           className={styles.avatar}
-          src={Topic.avatar ?? Assets.Images.GoogleImage}
+          src={Topic.avatar ?? Assets.SVGs.DefaultAvatar}
         />
         <p className={styles.input_box_title}>{Topic.title}</p>
         <p className={styles.input_box_description} dir="auto">
@@ -155,7 +129,38 @@ export default function CreateTicketPage() {
             labelClassName={styles.input_label}
           />
         </div>
+      </>
+    );
+  }
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <Link to="/contact-us">ارتباط با ما</Link>
+        <Link to="/dashboard">داشبورد</Link>
+        <Link to="/">خانه</Link>
+        <Link to="/">تیکسی</Link>
+        <Assets.SVGs.GridSVG />
+        <img
+          alt="logo"
+          src={Assets.Images.Ticksy}
+          onClick={() => history.push('/')}
+        />
       </div>
+      <div className={styles.welcome}>
+        <p dir="auto">
+          {user.first_name + ' ' + user.last_name} عزیز خوش آمدید.
+        </p>
+      </div>
+      <div className={styles.card_container}>{content}</div>
+      {Topic && (
+        <div className={styles.footer}>
+          <p dir="auto">
+            کلیه حقوق این وب سایت متعلق به دانشگاه خوارزمی میباشد.
+          </p>
+          <img src={Assets.SVGs.Copyright} />
+        </div>
+      )}
     </div>
   );
 }
