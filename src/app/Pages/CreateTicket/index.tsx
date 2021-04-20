@@ -6,6 +6,7 @@ import styles from './styles.module.scss';
 import SEInput from '../../Components/SEInput';
 import API from '../../API';
 import TopicDto from '../../API/DTOs/TopicDto';
+import TInput from '../../Components/TInput';
 
 export default function CreateTicketPage() {
   const history = useHistory();
@@ -100,16 +101,13 @@ export default function CreateTicketPage() {
         <p className={styles.input_box_description} dir="auto">
           {Topic.description}
         </p>
-
-        <SEInput
-          label="موضوع"
+        <TInput
+          label="عنوان تیکت"
           content={Title}
           onEnter={onTitleEnter}
           onChangeText={setTitle}
           hasError={TitleHasError}
-          inputClassName={styles.input}
-          className={styles.input_class}
-          labelClassName={styles.input_label}
+          inputClassName={styles.input_class}
         />
         <SEInput
           minLines={5}
@@ -137,7 +135,7 @@ export default function CreateTicketPage() {
             onClick={onCreateTicket}>
             ثبت
           </Button>
-          <SEInput
+          <TInput
             tags={Tags}
             label="تگ ها"
             content={CurrentTag}
@@ -146,13 +144,11 @@ export default function CreateTicketPage() {
               setTags([...Tags]);
             }}
             onChangeText={setCurrentTag}
-            inputClassName={styles.input}
             onEnter={() => {
               setTags([CurrentTag, ...Tags]);
               setCurrentTag('');
             }}
-            className={styles.tag_input_class}
-            labelClassName={styles.input_label}
+            inputClassName={styles.tag_input_class}
           />
         </div>
       </div>
