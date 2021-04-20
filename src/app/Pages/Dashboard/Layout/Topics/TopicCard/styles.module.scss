@@ -1,0 +1,57 @@
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: clamp(200px, 20vw, 370px);
+  height: clamp(260px, 25vw, 475px);
+
+  &_avatar {
+    z-index: 1;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 2px 40px 0 0;
+    width: clamp(160px, 15vw, 275px);
+    height: clamp(160px, 15vw, 275px);
+  }
+
+  &_edit {
+    cursor: pointer;
+    height: fit-content;
+  }
+
+  &_footer {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &_detail {
+    flex: 1;
+    z-index: 2;
+    display: flex;
+    cursor: pointer;
+    margin-top: -20px;
+    margin-left: -2px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px 10px 5px 30px;
+    background-image: linear-gradient(to bottom, #0088e3, #2d1e1e 139%);
+
+    span {
+      color: white;
+      font-weight: 600;
+      user-select: none;
+      font-size: clamp(18px, 1.4vw, 27px);
+      margin-bottom: clamp(5%, 10%, 23px);
+    }
+
+    p {
+      width: 77.4%;
+      color: #f9f1f1;
+      user-select: none;
+      text-align: center;
+      font-size: clamp(12px, 1vw, 19px);
+    }
+  }
+}

@@ -1,6 +1,7 @@
-import styles from '../styles.module.scss';
+import styles from './styles.module.scss';
 import Assets from '../../../../../Assets';
 import {useHistory} from 'react-router-dom';
+import {useLayoutEffect, useRef} from 'react';
 
 interface Props {
   title: string;
@@ -19,26 +20,25 @@ export default function TopicCard({
 
   return (
     <div className={styles.card}>
-      <div className={styles.card_header}>
+      <img
+        alt="Topic Avatar"
+        className={styles.card_avatar}
+        src={avatar ?? Assets.Images.TopicCardAvatar}
+        onClick={() => history.push('/dashboard/topics/' + username)}
+      />
+      <div className={styles.card_footer}>
         <img
-          src={avatar ?? Assets.Images.TopicCardAvatar}
-          className={styles.card_avatar}
-          alt=""
-          onClick={() => history.push('/dashboard/topics/' + username)}
+          alt="edit"
+          src={Assets.Images.Edit}
+          className={styles.card_edit}
+          onClick={() => history.push('/dashboard/topics/edit/' + username)}
         />
         <div
-          className={styles.card_edit}
-          onClick={() => history.push('/dashboard/topics/edit/' + username)}>
-          <img
-            src={Assets.Images.Edit}
-            className={styles.card_edit_image}
-            alt="edit"
-          />
+          className={styles.card_detail}
+          onClick={() => history.push('/dashboard/topics/' + username)}>
+          <span>{title}</span>
+          <p>{description}</p>
         </div>
-      </div>
-      <div className={styles.card_footer}>
-        <span>{title}</span>
-        <p>{description}</p>
       </div>
     </div>
   );
