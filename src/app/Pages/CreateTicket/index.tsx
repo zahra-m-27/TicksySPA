@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {Button, message, Spin} from 'antd';
 import Assets from '../../Assets';
 import {Link, useHistory, useParams} from 'react-router-dom';
@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 import SEInput from '../../Components/SEInput';
 import API from '../../API';
 import TopicDto from '../../API/DTOs/TopicDto';
-
+import DropDown from '../../Components/DropDown';
 export default function CreateTicketPage() {
   const history = useHistory();
   const params = useParams<any>();
@@ -78,6 +78,7 @@ export default function CreateTicketPage() {
 
   return (
     <div className={styles.container}>
+      <DropDown />
       <div className={styles.header}>
         <Link to="/contact-us">ارتباط با ما</Link>
         <Link to="/dashboard">داشبورد</Link>
@@ -96,65 +97,6 @@ export default function CreateTicketPage() {
           className={styles.avatar}
           src={Topic.avatar ?? Assets.Images.GoogleImage}
         />
-        <p className={styles.input_box_title}>{Topic.title}</p>
-        <p className={styles.input_box_description} dir="auto">
-          {Topic.description}
-        </p>
-
-        <SEInput
-          label="موضوع"
-          content={Title}
-          onEnter={onTitleEnter}
-          onChangeText={setTitle}
-          hasError={TitleHasError}
-          inputClassName={styles.input}
-          className={styles.input_class}
-          labelClassName={styles.input_label}
-        />
-        <SEInput
-          minLines={5}
-          content={Message}
-          ref={messageRef}
-          label="پيام شما..."
-          onChangeText={setMessage}
-          attachments={Attachments}
-          hasError={MessageHasError}
-          inputClassName={styles.input}
-          className={styles.input_class}
-          onRemoveAttachment={(index) => {
-            Attachments.splice(index, 1);
-            setAttachments([...Attachments]);
-          }}
-          labelClassName={styles.input_label}
-          onSelectFile={(file) => setAttachments([file, ...Attachments])}
-        />
-
-        <div className={styles.submit_container}>
-          <Button
-            loading={Loading}
-            type="primary"
-            className={styles.enter_button}
-            onClick={onCreateTicket}>
-            ثبت
-          </Button>
-          <SEInput
-            tags={Tags}
-            label="تگ ها"
-            content={CurrentTag}
-            onTagClose={(index) => {
-              Tags.splice(index, 1);
-              setTags([...Tags]);
-            }}
-            onChangeText={setCurrentTag}
-            inputClassName={styles.input}
-            onEnter={() => {
-              setTags([CurrentTag, ...Tags]);
-              setCurrentTag('');
-            }}
-            className={styles.tag_input_class}
-            labelClassName={styles.input_label}
-          />
-        </div>
       </div>
     </div>
   );
