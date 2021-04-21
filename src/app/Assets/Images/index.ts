@@ -10,6 +10,7 @@ import Attach from './Files/attach.png';
 import Cancel from './Files/cancel.png';
 import Search from './Files/search.png';
 import Upload from './Files/Upload.png';
+import Checked from './Files/checked.png';
 import TopicIcon from './Files/topic_icon.png';
 import DotSquare from './Files/dot_square.png';
 import TopicBadge from './Files/topic_badge.png';
@@ -38,6 +39,7 @@ const Images = {
   Cancel,
   Search,
   Upload,
+  Checked,
   TopicIcon,
   DotSquare,
   ManTicket,

@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  p {
+    margin: 0;
+    direction: rtl;
+    user-select: none;
+  }
+}
+
+.icon {
+}
+
+.title {
+  margin-top: 25px !important;
+  font-size: clamp(13px, 1.7vw, 25px);
+}
+
+.message {
+  margin: 25px 0 !important;
+  font-size: clamp(15px, 1.3vw, 20px);
+}
+
+.id_container {
+  display: flex;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #103cb7;
+  flex-direction: row-reverse;
+
+  p {
+    font-size: clamp(15px, 1.3vw, 20px);
+  }
+}
+
+.id {
+  margin-right: 5px !important;
+  user-select: text !important;
+}
