@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import styles from './styles.module.scss';
-import ClassNames from '../../Utilities/ClassNames';
 import {Tag} from 'antd';
+import styles from './styles.module.scss';
+import {useEffect, useState} from 'react';
+import ClassNames from '../../Utilities/ClassNames';
 
 interface Props {
   label?: string;
@@ -9,38 +9,30 @@ interface Props {
   tags?: string[];
   content?: string;
   hasError?: boolean;
+  className?: string;
   isNumeric?: boolean;
   onEnter?: () => void;
   inputClassName?: string;
+  labelClassName?: string;
   onTagClose?: (index: number) => void;
-  onChangeText: (text: string, HasError: boolean) => void;
+  onChangeText?: (text: string, HasError: boolean) => void;
 }
 
 export default function TInput({
+  tags,
   label,
+  regex,
   content,
   onEnter,
-  onChangeText,
-  hasError = false,
-  inputClassName,
+  className,
   onTagClose,
+  onChangeText,
+  inputClassName,
+  labelClassName,
+  hasError = false,
   isNumeric = false,
-  regex,
-  tags,
 }: Props) {
-  const tagColors = [
-    'red',
-    'gold',
-    'lime',
-    'cyan',
-    'blue',
-    'green',
-    'purple',
-    'orange',
-    'magenta',
-    'volcano',
-    'geekblue',
-  ];
+  const tagColors = ['#9fa8b1'];
   const [Content, setContent] = useState(content ?? '');
   const [HasError, setHasError] = useState(false);
 
@@ -69,25 +61,29 @@ export default function TInput({
     }
 
     setContent(event.target.value);
-    onChangeText(event.target.value, HasError);
+    onChangeText && onChangeText(event.target.value, HasError);
   };
 
-  let input_container_style = ClassNames(styles.input_class, inputClassName);
+  let input_style = ClassNames(styles.input_class, inputClassName);
   if (HasError) {
-    input_container_style = ClassNames(
+    input_style = ClassNames(
       styles.input_class,
       inputClassName,
       styles.failed_regex_focused_input_container
     );
   }
+
+  const label_style = ClassNames(styles.label, labelClassName);
+  const input_container_style = ClassNames(styles.container, className);
+
   return (
-    <div className={styles.container}>
-      <label className={styles.label}>{label}</label>
+    <div className={input_container_style}>
+      <label className={label_style}>{label}</label>
       <input
         dir="auto"
         value={Content}
-        className={input_container_style}
         onChange={onChange}
+        className={input_style}
         onKeyDown={(e) => e.key === 'Enter' && onEnter && onEnter()}
       />
       {tags && tags.length > 0 && (

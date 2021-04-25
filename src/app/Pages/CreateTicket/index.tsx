@@ -7,6 +7,8 @@ import SEInput from '../../Components/SEInput';
 import API from '../../API';
 import TopicDto from '../../API/DTOs/TopicDto';
 import useUser from '../../Hooks/useUser';
+import TInput from '../../Components/TInput';
+import TTextArea from '../../Components/TTextArea';
 
 export default function CreateTicketPage() {
   const {user} = useUser();
@@ -75,32 +77,51 @@ export default function CreateTicketPage() {
           {Topic.description}
         </p>
 
-        <SEInput
+        <TInput
           label="موضوع"
           content={Title}
           onEnter={onTitleEnter}
           onChangeText={setTitle}
           hasError={TitleHasError}
           inputClassName={styles.input}
-          className={styles.input_class}
+          className={styles.input_container}
           labelClassName={styles.input_label}
         />
-        <SEInput
-          minLines={5}
-          content={Message}
-          ref={messageRef}
-          label="پيام شما..."
-          onChangeText={setMessage}
-          attachments={Attachments}
-          hasError={MessageHasError}
-          inputClassName={styles.input}
-          className={styles.input_class}
-          onRemoveAttachment={(index) => {
-            Attachments.splice(index, 1);
-            setAttachments([...Attachments]);
+
+        <TTextArea content={Message} onChange={setMessage} />
+
+        {/*<SEInput*/}
+        {/*  minLines={5}*/}
+        {/*  content={Message}*/}
+        {/*  ref={messageRef}*/}
+        {/*  label="پيام شما..."*/}
+        {/*  onChangeText={setMessage}*/}
+        {/*  attachments={Attachments}*/}
+        {/*  hasError={MessageHasError}*/}
+        {/*  inputClassName={styles.input}*/}
+        {/*  className={styles.input_class}*/}
+        {/*  onRemoveAttachment={(index) => {*/}
+        {/*    Attachments.splice(index, 1);*/}
+        {/*    setAttachments([...Attachments]);*/}
+        {/*  }}*/}
+        {/*  labelClassName={styles.input_label}*/}
+        {/*  onSelectFile={(file) => setAttachments([file, ...Attachments])}*/}
+        {/*/>*/}
+
+        <TInput
+          tags={Tags}
+          label="تگ ها"
+          content={CurrentTag}
+          onChangeText={setCurrentTag}
+          className={styles.tag_input_class}
+          onTagClose={(index) => {
+            Tags.splice(index, 1);
+            setTags([...Tags]);
           }}
-          labelClassName={styles.input_label}
-          onSelectFile={(file) => setAttachments([file, ...Attachments])}
+          onEnter={() => {
+            setTags([CurrentTag, ...Tags]);
+            setCurrentTag('');
+          }}
         />
 
         <div className={styles.submit_container}>
@@ -111,23 +132,6 @@ export default function CreateTicketPage() {
             onClick={onCreateTicket}>
             ثبت
           </Button>
-          <SEInput
-            tags={Tags}
-            label="تگ ها"
-            content={CurrentTag}
-            onTagClose={(index) => {
-              Tags.splice(index, 1);
-              setTags([...Tags]);
-            }}
-            onChangeText={setCurrentTag}
-            inputClassName={styles.input}
-            onEnter={() => {
-              setTags([CurrentTag, ...Tags]);
-              setCurrentTag('');
-            }}
-            className={styles.tag_input_class}
-            labelClassName={styles.input_label}
-          />
         </div>
       </>
     );

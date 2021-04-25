@@ -1,27 +1,22 @@
 .container {
-  display: flex;
   width: 100%;
-  flex-direction: column;
+  display: flex;
   align-items: flex-end;
+  flex-direction: column;
+  font-size: clamp(14px, 1.1vw, 20px);
 }
 
 .input_class {
-  background-color: #dadde0;
-  height: 5.5vh;
-  border: 1px solid #e3e3e3;
+  width: 100%;
+  padding: 10px;
   border-radius: 5px;
-
-  &:focus {
-    border-radius: 5px;
-    border-color: #212f84;
-    box-shadow: 0 0 5px 0 #212f84;
-  }
+  background: #dadde0;
+  border: 1px solid #e3e3e3;
 }
 
 .label {
   color: #333333;
-  font-size: clamp(14px, 1vw, 20px);
-  margin-bottom: 2%;
+  margin-bottom: 10px;
 }
 
 .failed_regex_focused_input_container {
@@ -30,8 +25,9 @@
 }
 
 .tags_container {
+  width: 100%;
   display: flex;
   margin: 0 10px;
   padding: 10px 0;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
