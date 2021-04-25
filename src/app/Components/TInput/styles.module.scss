@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.input_class {
+  background-color: #dadde0;
+  height: 5.5vh;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+
+  &:focus {
+    border-radius: 5px;
+    border-color: #212f84;
+    box-shadow: 0 0 5px 0 #212f84;
+  }
+}
+
+.label {
+  color: #333333;
+  font-size: clamp(14px, 1vw, 20px);
+  margin-bottom: 2%;
+}
+
+.failed_regex_focused_input_container {
+  border-color: #e62e00;
+  box-shadow: 0 0 8px 0 #e62e00;
+}
+
+.tags_container {
+  display: flex;
+  margin: 0 10px;
+  padding: 10px 0;
+  overflow-x: scroll;
+}
