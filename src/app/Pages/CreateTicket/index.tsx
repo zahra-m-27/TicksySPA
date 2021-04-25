@@ -9,6 +9,7 @@ import TopicDto from '../../API/DTOs/TopicDto';
 import useUser from '../../Hooks/useUser';
 import TInput from '../../Components/TInput';
 import TTextArea from '../../Components/TTextArea';
+import SelectFile from '../../Components/SelectFile';
 
 export default function CreateTicketPage() {
   const {user} = useUser();
@@ -108,21 +109,25 @@ export default function CreateTicketPage() {
         {/*  onSelectFile={(file) => setAttachments([file, ...Attachments])}*/}
         {/*/>*/}
 
-        <TInput
-          tags={Tags}
-          label="تگ ها"
-          content={CurrentTag}
-          onChangeText={setCurrentTag}
-          className={styles.tag_input_class}
-          onTagClose={(index) => {
-            Tags.splice(index, 1);
-            setTags([...Tags]);
-          }}
-          onEnter={() => {
-            setTags([CurrentTag, ...Tags]);
-            setCurrentTag('');
-          }}
-        />
+        <div className={styles.tag_and_file_container}>
+          <TInput
+            tags={Tags}
+            label="تگ ها"
+            content={CurrentTag}
+            onChangeText={setCurrentTag}
+            className={styles.tag_input_container}
+            onTagClose={(index) => {
+              Tags.splice(index, 1);
+              setTags([...Tags]);
+            }}
+            onEnter={() => {
+              setTags([CurrentTag, ...Tags]);
+              setCurrentTag('');
+            }}
+          />
+
+          <SelectFile className={styles.tag_input_container} />
+        </div>
 
         <div className={styles.submit_container}>
           <Button

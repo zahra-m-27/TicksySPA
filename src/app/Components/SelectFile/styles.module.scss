@@ -1,61 +1,26 @@
 .container {
-  width: 25%;
-  height: 22%;
-  position: fixed;
-  top: 75%;
-  left: 22%;
+  font-size: clamp(14px, 1.1vw, 18px);
 
-  .header{
-    width: 100%;
-    font-size: 15px;
+  .label {
     color: #333333;
-   margin-left:365px;
+    text-align: end;
+    margin-bottom: 10px;
   }
 
-  .middle {
-    width: 440px;
-    height: 45px;
-    padding: 10px 10px 1px 30px;
+  .select_file {
+    padding: 9px;
+    display: flex;
     border-radius: 5px;
-    border: solid 1px #cccccc;
     background-color: #dadde0;
 
     .delete {
-     margin-top:-50px;
-      margin-left:-15px;
       cursor: pointer;
     }
 
-    .choosen{
+    .file {
       direction: rtl;
+      margin-left: auto;
       color: rgba(51, 51, 51, 0.7);
-      border-radius: 3px;
-      padding-left: 185px;
-      padding-top:.5vm;
-    }
-  }
-
-  .footer {
-
-    font-size: 5px;
-    border-radius: 3px;
-    font-weight: 100;
-
-    .button1 {
-      width: 110px;
-      height: 35px;
-      margin: 20px 20px 0 0;
-      background-color: #0088e3;
-      color: #ffffff;
-    }
-
-    .button2 {
-      width: 110px;
-      height: 35px;
-      margin: 20px 20px 0 0;
-
-      background-color: #606f7b;
-      color: #ffffff;
     }
   }
 }

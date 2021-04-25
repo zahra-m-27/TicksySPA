@@ -1,9 +1,13 @@
+import Assets from '../../Assets';
 import React, {useState} from 'react';
 import styles from './styles.module.scss';
-import Assets from '../../Assets';
-import {Button} from 'antd';
+import ClassNames from '../../Utilities/ClassNames';
 
-export default function SelectFile() {
+interface Props {
+  className: string;
+}
+
+export default function SelectFile({className}: Props) {
   const [selectFile, setSelectFile] = useState<File[]>([]);
 
   const Change = (event: any) => {
@@ -16,22 +20,18 @@ export default function SelectFile() {
     setSelectFile(deleted);
   };
 
+  const input_container_style = ClassNames(styles.container, className);
+
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <p>پيوست فايل</p>
-      </div>
-      <div className={styles.middle}>
-        <input type="file" className={styles.choosen} onChange={Change} />
+    <div className={input_container_style}>
+      <p className={styles.label}>پيوست فايل</p>
+      <div className={styles.select_file}>
         <img
           src={Assets.SVGs.Delete}
           className={styles.delete}
           onClick={() => removeFile}
         />
-      </div>
-      <div className={styles.footer}>
-        <Button className={styles.button1}> ثبت تيكت</Button>
-        <Button className={styles.button2}>انصراف</Button>
+        <input type="file" className={styles.file} onChange={Change} />
       </div>
     </div>
   );

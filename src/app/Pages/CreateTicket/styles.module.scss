@@ -102,8 +102,19 @@
       margin-bottom: 50px;
     }
 
-    .tag_input_class {
+    .tag_and_file_container {
+      width: 100%;
+      display: flex;
       margin-top: 20px;
+      justify-content: space-between;
+
+      .tag_input_container {
+        width: 45%;
+      }
+
+      .select_file_container {
+        width: 45%;
+      }
     }
 
     .submit_container {
