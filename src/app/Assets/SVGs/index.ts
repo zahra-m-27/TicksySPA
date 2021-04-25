@@ -37,7 +37,7 @@ import LocationPinSVG from './Components/LocationPinSVG';
 import ProfileIconSVG from './Components/ProfileIconSVG';
 import VisiblePassSvg from './Components/VisiblePassSvg';
 import InvisiblePassSvg from './Components/InvisiblePassSvg';
-
+import Delete from './Files/delete.svg';
 const SVGs = {
   Home,
   Plus,
@@ -48,6 +48,7 @@ const SVGs = {
   Failed,
   Camera,
   Attach,
+  Delete,
   Cancel,
   People,
   Search,
