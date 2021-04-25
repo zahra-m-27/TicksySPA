@@ -7,6 +7,7 @@ import SEInput from '../../Components/SEInput';
 import API from '../../API';
 import TopicDto from '../../API/DTOs/TopicDto';
 import DropDown from '../../Components/DropDown';
+import SelectFile from '../../Components/SelectFile';
 export default function CreateTicketPage() {
   const history = useHistory();
   const params = useParams<any>();
@@ -79,6 +80,7 @@ export default function CreateTicketPage() {
   return (
     <div className={styles.container}>
       <DropDown />
+      <SelectFile />
       <div className={styles.header}>
         <Link to="/contact-us">ارتباط با ما</Link>
         <Link to="/dashboard">داشبورد</Link>
