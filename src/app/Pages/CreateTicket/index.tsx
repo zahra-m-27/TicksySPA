@@ -9,22 +9,22 @@ import TopicDto from '../../API/DTOs/TopicDto';
 import useUser from '../../Hooks/useUser';
 import TInput from '../../Components/TInput';
 import TTextArea from '../../Components/TTextArea';
-import SelectFile from '../../Components/SelectFile';
+import TSelectFile from '../../Components/TSelectFile';
+import TDropDown from '../../Components/TDropDown';
 
 export default function CreateTicketPage() {
   const {user} = useUser();
   const history = useHistory();
   const params = useParams<any>();
+  const [Topic, setTopic] = useState<TopicDto>();
   const [Title, setTitle] = useState('');
   const [Message, setMessage] = useState('');
+  const [Attachment, setAttachment] = useState<File>();
   const [Loading, setLoading] = useState(false);
   const [Tags, setTags] = useState<string[]>([]);
-  const [Topic, setTopic] = useState<TopicDto>();
   const messageRef = useRef<HTMLInputElement>(null);
   const [CurrentTag, setCurrentTag] = useState<string>('');
-  const [TitleHasError, setTitleHasError] = useState(false);
-  const [Attachments, setAttachments] = useState<File[]>([]);
-  const [MessageHasError, setMessageHasError] = useState(false);
+  const [SelectedCategory, setSelectedCategory] = useState<string>();
 
   useEffect(() => {
     API.Topics.GetTopic({
@@ -48,7 +48,7 @@ export default function CreateTicketPage() {
       text: Message,
       tags: Tags.join(','),
       slug: params.username,
-      attachments: Attachments,
+      attachments: Attachment ? [Attachment] : [],
     })
       .then(() => history.replace('/dashboard/tickets'))
       .catch(() => {
@@ -78,36 +78,38 @@ export default function CreateTicketPage() {
           {Topic.description}
         </p>
 
+        <TDropDown
+          className={styles.topic_type_container}
+          label="دسته بندی تیکت"
+          items={[
+            {
+              label: '1 تست',
+              value: '1',
+            },
+            {
+              label: '2 تست',
+              value: '2',
+            },
+            {
+              label: '3 تست',
+              value: '3',
+            },
+          ]}
+          onSelect={setSelectedCategory}
+          selectedItem={SelectedCategory}
+        />
+
         <TInput
           label="موضوع"
           content={Title}
           onEnter={onTitleEnter}
           onChangeText={setTitle}
-          hasError={TitleHasError}
           inputClassName={styles.input}
           className={styles.input_container}
           labelClassName={styles.input_label}
         />
 
         <TTextArea content={Message} onChange={setMessage} />
-
-        {/*<SEInput*/}
-        {/*  minLines={5}*/}
-        {/*  content={Message}*/}
-        {/*  ref={messageRef}*/}
-        {/*  label="پيام شما..."*/}
-        {/*  onChangeText={setMessage}*/}
-        {/*  attachments={Attachments}*/}
-        {/*  hasError={MessageHasError}*/}
-        {/*  inputClassName={styles.input}*/}
-        {/*  className={styles.input_class}*/}
-        {/*  onRemoveAttachment={(index) => {*/}
-        {/*    Attachments.splice(index, 1);*/}
-        {/*    setAttachments([...Attachments]);*/}
-        {/*  }}*/}
-        {/*  labelClassName={styles.input_label}*/}
-        {/*  onSelectFile={(file) => setAttachments([file, ...Attachments])}*/}
-        {/*/>*/}
 
         <div className={styles.tag_and_file_container}>
           <TInput
@@ -126,17 +128,17 @@ export default function CreateTicketPage() {
             }}
           />
 
-          <SelectFile className={styles.tag_input_container} />
+          <TSelectFile
+            className={styles.tag_input_container}
+            onSelectFile={(file) => setAttachment(file)}
+            onRemoveAttachment={() => setAttachment(undefined)}
+          />
         </div>
 
         <div className={styles.submit_container}>
-          <Button
-            loading={Loading}
-            type="primary"
-            className={styles.enter_button}
-            onClick={onCreateTicket}>
+          <div className={styles.enter_button} onClick={onCreateTicket}>
             ثبت
-          </Button>
+          </div>
         </div>
       </>
     );
