@@ -25,6 +25,8 @@ import ChatBackground from './Files/chat_background.jpg';
 import TopicCard from './Files/topic_card_background.png';
 import TopicCardAvatar from './Files/topic_card_avatar.png';
 import Edit from './Files/edit.png';
+import EditUsers from './Files/edit_users.png';
+import Delete from './Files/delete.png';
 
 const Images = {
   Add,
@@ -54,5 +56,7 @@ const Images = {
   ChatBackground,
   TopicCardAvatar,
   Edit,
+  EditUsers,
+  Delete,
 };
 export default Images;
