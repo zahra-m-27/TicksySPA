@@ -1,0 +1,38 @@
+.container {
+  width: clamp(350px, 30vw, 580px);
+}
+
+.header {
+  padding: 15px;
+  color: white;
+  text-align: end;
+  background: #1975bb;
+
+  span {
+    margin-right: 10px;
+  }
+}
+
+.avatar {
+  width: 30%;
+  margin: 20px auto;
+}
+
+.email_icon {
+  filter: brightness(0.4);
+}
+
+.content {
+  display: flex;
+  padding: 0 15px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  margin: 60px 0 20px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
