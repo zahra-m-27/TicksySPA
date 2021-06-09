@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import ClassNames from '../../Utilities/ClassNames';
 
 interface Props {
+  icon?: string;
   label?: string;
   regex?: RegExp;
   tags?: string[];
@@ -12,13 +13,16 @@ interface Props {
   className?: string;
   isNumeric?: boolean;
   onEnter?: () => void;
+  iconClassName?: string;
   inputClassName?: string;
   labelClassName?: string;
+  inputContainerClassName?: string;
   onTagClose?: (index: number) => void;
   onChangeText?: (text: string, HasError: boolean) => void;
 }
 
 export default function TInput({
+  icon,
   tags,
   label,
   regex,
@@ -29,8 +33,10 @@ export default function TInput({
   onChangeText,
   inputClassName,
   labelClassName,
+  iconClassName,
   hasError = false,
   isNumeric = false,
+  inputContainerClassName,
 }: Props) {
   const tagColors = ['#9fa8b1'];
   const [Content, setContent] = useState(content ?? '');
@@ -66,26 +72,39 @@ export default function TInput({
 
   let input_style = ClassNames(styles.input_class, inputClassName);
   if (HasError) {
-    input_style = ClassNames(
-      styles.input_class,
-      inputClassName,
+    input_style = ClassNames(styles.input_class, inputClassName);
+  }
+
+  let input_container_style = ClassNames(
+    styles.input_container,
+    inputContainerClassName
+  );
+  if (HasError) {
+    input_container_style = ClassNames(
+      styles.input_container,
+      inputContainerClassName,
       styles.failed_regex_focused_input_container
     );
   }
 
   const label_style = ClassNames(styles.label, labelClassName);
-  const input_container_style = ClassNames(styles.container, className);
+  const container_style = ClassNames(styles.container, className);
 
   return (
-    <div className={input_container_style}>
+    <div className={container_style}>
       <label className={label_style}>{label}</label>
-      <input
-        dir="auto"
-        value={Content}
-        onChange={onChange}
-        className={input_style}
-        onKeyDown={(e) => e.key === 'Enter' && onEnter && onEnter()}
-      />
+      <div className={input_container_style}>
+        {icon && (
+          <img src={icon} className={[styles.icon, iconClassName].join(' ')} />
+        )}
+        <input
+          dir="auto"
+          value={Content}
+          onChange={onChange}
+          className={input_style}
+          onKeyDown={(e) => e.key === 'Enter' && onEnter && onEnter()}
+        />
+      </div>
       {tags && tags.length > 0 && (
         <div className={styles.tags_container}>
           {tags.map((tag, i) => (

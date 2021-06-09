@@ -1,17 +1,31 @@
 .container {
   width: 100%;
   display: flex;
+  margin-top: 10px;
   align-items: flex-end;
   flex-direction: column;
   font-size: clamp(14px, 1.1vw, 18px);
 }
 
 .input_class {
+  border: 0;
+  width: 100%;
+  background: #dadde0;
+}
+
+.input_container {
   width: 100%;
   padding: 10px;
+  display: flex;
   border-radius: 5px;
   background: #dadde0;
   border: 1px solid #e3e3e3;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
 }
 
 .label {
