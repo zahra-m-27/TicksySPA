@@ -2,6 +2,7 @@
   width: 100%;
   cursor: pointer;
   text-align: end;
+  margin-top: 10px;
   position: relative;
 
   .label {
@@ -49,11 +50,10 @@
 
     .item {
       color: #000;
-      margin: .5px;
+      margin: 0.5px;
       display: block;
       text-align: end;
       padding: 8px 20px;
-
 
       &:hover {
         overflow: hidden;
@@ -64,4 +64,3 @@
     }
   }
 }
-
