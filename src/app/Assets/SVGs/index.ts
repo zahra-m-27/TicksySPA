@@ -11,6 +11,7 @@ import Camera from './Files/camera.svg';
 import Delete from './Files/delete.svg';
 import Attach from './Components/Attach';
 import Twitter from './Files/twitter.svg';
+import AddUser from './Files/add_user.svg';
 import Hashtag from './Components/Hashtag';
 import GridSVG from './Components/GridSVG';
 import UserSVG from './Components/UserSVG';
@@ -28,11 +29,13 @@ import ArrowDown from './Files/arrow_down.svg';
 import MaleUserSVG from './Files/male_user.svg';
 import AddPhoto from './Components/AddPhotoSVG';
 import AddPhotoSVG from './Files/add_photo.svg';
+import TicksyLogo from './Files/ticksy_logo.svg';
 import UserAvatar from './Files/user_avatar.svg';
 import PaperPlane from './Components/PaperPlane';
 import ProfileSvg from './Components/ProfileSvg';
 import OldMaleUser from './Components/OldMaleUser';
 import ReactLogoSvg from './Components/ReactLogoSvg';
+import AddUserMenu from './Files/add_user_menu.svg';
 import SuccessTick from './Components/SuccessTickSVG';
 import DefaultAvatar from './Files/default_avatar.svg';
 import OldMaleUserSVG from './Files/old_male_user.svg';
@@ -57,6 +60,7 @@ const SVGs = {
   Search,
   ArrowUp,
   Twitter,
+  AddUser,
   GridSVG,
   Hashtag,
   UserSVG,
@@ -70,9 +74,11 @@ const SVGs = {
   Copyright,
   ArrowDown,
   Instagram,
+  TicksyLogo,
   PaperPlane,
   ProfileSvg,
   UserAvatar,
+  AddUserMenu,
   MaleUserSVG,
   OldMaleUser,
   AddPhotoSVG,

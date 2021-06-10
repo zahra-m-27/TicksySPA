@@ -22,8 +22,7 @@ const TTextArea = React.forwardRef<FroalaEditor, Props>(
           imageUpload: false,
           quickInsertEnabled: false,
           placeholderText: placeholder,
-          key:
-            'yDJ6hT5jU7QUv4Xy4OZh4ABVJRDRNGGUO3ITru7M5a6a21j11e13l12l7w10h7==',
+          key: 'yDJ6hT5jU7QUv4Xy4OZh4ABVJRDRNGGUO3ITru7M5a6a21j11e13l12l7w10h7==',
         }}
         model={content}
         onModelChange={onChange}
