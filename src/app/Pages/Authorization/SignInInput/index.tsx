@@ -49,7 +49,6 @@ export default function SignInInput({className}: Props) {
         API.Users.GetProfile({}).then((response) => {
           Login(response);
         });
-        history.replace('/');
       })
       .catch((error) => {
         if (error.status === 400) {
