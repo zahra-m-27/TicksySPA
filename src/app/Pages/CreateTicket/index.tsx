@@ -1,9 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Button, message, Spin} from 'antd';
+import {message, Spin} from 'antd';
 import Assets from '../../Assets';
 import {Link, useHistory, useParams} from 'react-router-dom';
 import styles from './styles.module.scss';
-import SEInput from '../../Components/SEInput';
 import API from '../../API';
 import TopicDto from '../../API/DTOs/TopicDto';
 import useUser from '../../Hooks/useUser';
@@ -11,6 +10,10 @@ import TInput from '../../Components/TInput';
 import TTextArea from '../../Components/TTextArea';
 import TSelectFile from '../../Components/TSelectFile';
 import TDropDown from '../../Components/TDropDown';
+import TButton from '../../Components/TButton';
+import showDialog from '../../Components/TDialog';
+import AddRoleDialog from '../../Dialogs/AddRole';
+import AddUserDialog from '../../Dialogs/AddUser';
 
 export default function CreateTicketPage() {
   const {user} = useUser();
@@ -27,6 +30,16 @@ export default function CreateTicketPage() {
   const [SelectedCategory, setSelectedCategory] = useState<string>();
 
   useEffect(() => {
+    showDialog({
+      content: <AddUserDialog />,
+      style: {
+        padding: 0,
+        borderRadius: 20,
+        overflow: 'hidden',
+        background: '#ffffff',
+      },
+    });
+
     API.Topics.GetTopic({
       slug: params.username,
     })
@@ -136,9 +149,7 @@ export default function CreateTicketPage() {
         </div>
 
         <div className={styles.submit_container}>
-          <div className={styles.enter_button} onClick={onCreateTicket}>
-            ثبت
-          </div>
+          <TButton onClick={onCreateTicket} label="ثبت" />
         </div>
       </>
     );
