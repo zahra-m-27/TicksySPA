@@ -1,9 +1,9 @@
 import {Tag} from 'antd';
 import styles from './styles.module.scss';
-import {useEffect, useState} from 'react';
+import {InputHTMLAttributes, useEffect, useState} from 'react';
 import ClassNames from '../../Utilities/ClassNames';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   icon?: string;
   label?: string;
   regex?: RegExp;
@@ -37,6 +37,7 @@ export default function TInput({
   hasError = false,
   isNumeric = false,
   inputContainerClassName,
+  ...props
 }: Props) {
   const tagColors = ['#9fa8b1'];
   const [Content, setContent] = useState(content ?? '');
@@ -103,6 +104,7 @@ export default function TInput({
           onChange={onChange}
           className={input_style}
           onKeyDown={(e) => e.key === 'Enter' && onEnter && onEnter()}
+          {...props}
         />
       </div>
       {tags && tags.length > 0 && (

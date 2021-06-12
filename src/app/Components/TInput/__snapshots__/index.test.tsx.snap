@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot Input 1`] = `
+<div
+  className="container"
+>
+  <label
+    className="label"
+  >
+    Test Label
+  </label>
+  <div
+    className="input_container"
+  >
+    <input
+      className="input_class"
+      dir="auto"
+      name="email"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      value="Test Content"
+    />
+  </div>
+</div>
+`;
