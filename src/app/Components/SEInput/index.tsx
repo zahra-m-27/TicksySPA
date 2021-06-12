@@ -1,10 +1,10 @@
 import {Tag} from 'antd';
 import Assets from '../../Assets';
 import styles from './styles.module.scss';
-import React, {useEffect, useState} from 'react';
+import React, {InputHTMLAttributes, useEffect, useState} from 'react';
 import ClassNames from '../../Utilities/ClassNames';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   hint?: string;
   label?: string;
   regex?: RegExp;
@@ -54,6 +54,7 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
       onRemoveAttachment,
       innerContainerClassName,
       passwordCanBeVisible = true,
+      ...props
     }: Props,
     ref
   ) => {
@@ -212,6 +213,7 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
                 )}
                 ref={ref as React.RefObject<HTMLInputElement>}
                 onKeyDown={(e) => e.key === 'Enter' && onEnter && onEnter()}
+                {...props}
               />
             )}
             {type === 'password' && (

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot Input 1`] = `
+<div
+  className="input_container"
+>
+  <div
+    className="inner_container"
+  >
+    <div
+      className="content"
+    >
+      <p
+        className="label"
+      >
+        Test Label
+      </p>
+      <input
+        className="input"
+        dir="auto"
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        placeholder=""
+        type="text"
+        value="Test Content"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`snapshot TextArea 1`] = `
+<div
+  className="input_container"
+>
+  <div
+    className="inner_container"
+  >
+    <div
+      className="content"
+    >
+      <p
+        className="label"
+      >
+        Test Label
+      </p>
+      <textarea
+        className="input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder=""
+        rows={5}
+        value="Test Content"
+      />
+    </div>
+  </div>
+</div>
+`;
