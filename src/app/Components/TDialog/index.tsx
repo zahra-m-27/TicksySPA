@@ -62,7 +62,7 @@ function TDialog({
     <div className={styles.t_dialog} onClick={() => onDismiss && onDismiss()}>
       <div className={styles.t_dialog_bg} />
       <div
-        style={style}
+        style={{...style, ...(showDismiss ? {} : {padding: 0})}}
         className={ClassNames(styles.t_dialog_container, className)}
         onClick={(e) => e.stopPropagation()}>
         {showDismiss && (
