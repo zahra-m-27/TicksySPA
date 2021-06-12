@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container"
+  data-open={false}
+>
+  <p
+    className="label"
+  >
+    Test Label
+  </p>
+  <div
+    className="content"
+    onClick={[Function]}
+  >
+    <img
+      alt="arrow down"
+      className="arrow_down"
+      src="arrow_down.svg"
+    />
+    <p
+      className="selected_item_label"
+    >
+      انتخاب كنيد
+    </p>
+  </div>
+  <div
+    className="items"
+  >
+    <p
+      className="item"
+      onClick={[Function]}
+    >
+      تست1
+    </p>
+    <p
+      className="item"
+      onClick={[Function]}
+    >
+      تست2
+    </p>
+    <p
+      className="item"
+      onClick={[Function]}
+    >
+      تست3
+    </p>
+  </div>
+</div>
+`;
