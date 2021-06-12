@@ -1,7 +1,8 @@
 import EditTopicCard from '.';
 import ReactDOM from 'react-dom';
 import Assets from '../../Assets';
-import {render} from '@testing-library/react';
+import {getAllByText, render} from '@testing-library/react';
+import renderer from 'react-test-renderer';
 
 const sample = (
   <EditTopicCard
@@ -22,7 +23,7 @@ const sample = (
   />
 );
 
-test('renders in ReactDOM', () => {
+test('render in ReactDOM', () => {
   const div = document.createElement('div');
   ReactDOM.render(sample, div);
 });
@@ -33,7 +34,13 @@ test('renders title', () => {
   getByText(/Test Title/i);
 });
 
-test('renders buttons and loading', () => {
+test('renders buttons', () => {
+  const {getAllByText} = render(sample);
+
+  expect(getAllByText(/Test Button/i).length === 2).toBeTruthy();
+});
+
+test('renders buttons and no loading', () => {
   const {getByText} = render(sample);
 
   const button1Element = getByText(/Test Button 1/i);
@@ -41,10 +48,19 @@ test('renders buttons and loading', () => {
     '.ant-btn-loading-icon'
   );
   expect(button1Loading).toBeFalsy();
+});
+
+test('renders buttons and loading', () => {
+  const {getByText} = render(sample);
 
   const button2Element = getByText(/Test Button 2/i);
   const button2Loading = button2Element.parentElement?.querySelector(
     '.ant-btn-loading-icon'
   );
   expect(button2Loading).toBeTruthy();
+});
+
+it('snapshot', () => {
+  const snapshot = renderer.create(sample).toJSON();
+  expect(snapshot).toMatchSnapshot();
 });

@@ -31,8 +31,8 @@ const EditTopicCard: React.FC<Props> = ({
   return (
     <div className={ClassNames(styles.card, className)}>
       <div className={ClassNames(styles.header, headerClassName)}>
-        {title}
         <img src={icon} />
+        {title}
       </div>
       <div className={ClassNames(styles.content, contentClassName)}>
         {children}
