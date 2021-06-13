@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="header"
+  >
+    <span>
+      افزودن کاربر
+    </span>
+    <img
+      src="add_user_menu.svg"
+    />
+  </div>
+  <div
+    className="content"
+  >
+    <img
+      className="avatar"
+      src="add_user.svg"
+    />
+    <div
+      className="container"
+    >
+      <label
+        className="label"
+      >
+        نام و نام خانوادگی
+      </label>
+      <div
+        className="input_container"
+      >
+        <input
+          className="input_class"
+          dir="auto"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <label
+        className="label"
+      >
+        ایمیل
+      </label>
+      <div
+        className="input_container"
+      >
+        <img
+          className="icon email_icon"
+          src="search.png"
+        />
+        <input
+          className="input_class"
+          dir="auto"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="container"
+      data-open={false}
+    >
+      <p
+        className="label"
+      >
+        عنوان نقش
+      </p>
+      <div
+        className="content"
+        onClick={[Function]}
+      >
+        <img
+          alt="arrow down"
+          className="arrow_down"
+          src="arrow_down.svg"
+        />
+        <p
+          className="selected_item_label"
+        >
+          انتخاب كنيد
+        </p>
+      </div>
+      <div
+        className="items"
+      >
+        <p
+          className="item"
+          onClick={[Function]}
+        >
+          نقش 1
+        </p>
+        <p
+          className="item"
+          onClick={[Function]}
+        >
+          نقش 2
+        </p>
+      </div>
+    </div>
+    <div
+      className="buttons"
+    >
+      <div
+        className="button"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": undefined,
+          }
+        }
+      >
+        کاربر جدید
+      </div>
+      <div
+        className="button"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#1354ac",
+          }
+        }
+      >
+        ثبت کاربر
+      </div>
+    </div>
+  </div>
+</div>
+`;

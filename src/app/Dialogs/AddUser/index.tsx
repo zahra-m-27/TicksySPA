@@ -3,9 +3,15 @@ import Assets from '../../Assets';
 import TInput from '../../Components/TInput';
 import TButton from '../../Components/TButton';
 import TDropDown from '../../Components/TDropDown';
-import {useState} from 'react';
+import {MutableRefObject, useRef, useState} from 'react';
+import showDialog from '../../Components/TDialog';
 
-export default function AddUserDialog() {
+interface Props {
+  onDismissRef?: MutableRefObject<(() => void) | undefined>;
+}
+
+export default function AddUserDialog({onDismissRef}: Props) {
+  const dismissDialog = useRef<() => void>();
   const [SelectedRole, setSelectedRole] = useState<string>();
 
   return (
@@ -23,7 +29,7 @@ export default function AddUserDialog() {
           iconClassName={styles.email_icon}
         />
         <TDropDown
-          label=" عنوان نقش"
+          label="عنوان نقش"
           items={[
             {
               label: 'نقش 1',
@@ -39,7 +45,15 @@ export default function AddUserDialog() {
         />
 
         <div className={styles.buttons}>
-          <TButton onClick={() => undefined} label="کاربر جدید" />
+          <TButton
+            onClick={() => {
+              onDismissRef && onDismissRef.current && onDismissRef.current();
+              dismissDialog.current = showDialog({
+                content: <AddUserDialog onDismissRef={dismissDialog} />,
+              });
+            }}
+            label="کاربر جدید"
+          />
           <TButton
             label="ثبت کاربر"
             onClick={() => undefined}
