@@ -9,7 +9,7 @@ interface Props {
   className?: string;
 }
 
-export default function ForgotPasswordInput({className}: Props) {
+export default function ChangePasswordInput({className}: Props) {
   const history = useHistory();
   const location = useLocation();
   const [Password, setPassword] = useState('');
@@ -64,6 +64,7 @@ export default function ForgotPasswordInput({className}: Props) {
     <div className={className}>
       <p className={styles.input_box_title}>تغيير رمز عبور!</p>
       <SEInput
+        name="password"
         type="password"
         label="گذرواژه"
         onEnter={onPasswordEnter}
@@ -75,6 +76,7 @@ export default function ForgotPasswordInput({className}: Props) {
         innerContainerClassName={styles.inner_container}
       />
       <SEInput
+        name="password"
         type="password"
         label="تاييد گذرواژه"
         ref={confirmPasswordRef}
