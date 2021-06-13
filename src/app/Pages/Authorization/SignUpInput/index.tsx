@@ -9,7 +9,7 @@ interface Props {
   className?: string;
 }
 
-export default function SignInInput({className}: Props) {
+export default function SignUpInput({className}: Props) {
   const history = useHistory();
   const [Code, setCode] = useState('');
   const [Email, setEmail] = useState('');
@@ -106,6 +106,7 @@ export default function SignInInput({className}: Props) {
       <SEInput
         type="text"
         label="نام"
+        name="email"
         onEnter={onFirstNameEnter}
         onChangeText={setFirstName}
         hasError={FirstNameHasError}
@@ -116,6 +117,7 @@ export default function SignInInput({className}: Props) {
       />
       <SEInput
         type="text"
+        name="password"
         ref={lastNameRef}
         label="نام خانوادگی"
         onEnter={onLastNameEnter}
