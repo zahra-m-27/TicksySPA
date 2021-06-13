@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container"
+>
+  <img
+    alt="success"
+    className="icon"
+    src="checked.png"
+  />
+  <p
+    className="title"
+    dir="auto"
+  >
+    درخواست شما با موفقیت ارسال شد.
+  </p>
+  <p
+    className="message"
+    dir="auto"
+  >
+    درخواست شما ارسال شد و در کوتاه ترین زمان پاسخ آن به شما ارائه خواهد شد. نتیجه درخواست خود را می توانید از داشبورد ببینید هم چنین نتیجه درخواست برایتان ایمیل خواهد شد
+  </p>
+  <div
+    className="id_container"
+  >
+    <p
+      dir="auto"
+    >
+      شناسه درخواست:
+    </p>
+    <p
+      className="id"
+      dir="auto"
+    >
+      Test Identifier
+    </p>
+  </div>
+</div>
+`;

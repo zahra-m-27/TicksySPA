@@ -1,7 +1,11 @@
 import Assets from '../../Assets';
 import styles from './styles.module.scss';
 
-export default function TicketSubmittedDialog() {
+interface Props {
+  identifier: string;
+}
+
+export default function TicketSubmittedDialog({identifier}: Props) {
   return (
     <div className={styles.container}>
       <img alt="success" src={Assets.Images.Checked} className={styles.icon} />
@@ -17,7 +21,7 @@ export default function TicketSubmittedDialog() {
       <div className={styles.id_container}>
         <p dir="auto">شناسه درخواست:</p>
         <p dir="auto" className={styles.id}>
-          #1191
+          {identifier}
         </p>
       </div>
     </div>
