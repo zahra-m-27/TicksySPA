@@ -2,8 +2,16 @@ import styles from './styles.module.scss';
 import Assets from '../../Assets';
 import TInput from '../../Components/TInput';
 import TButton from '../../Components/TButton';
+import showDialog from '../../Components/TDialog';
+import {MutableRefObject, useRef} from 'react';
 
-export default function AddRoleDialog() {
+interface Props {
+  onDismissRef?: MutableRefObject<(() => void) | undefined>;
+}
+
+export default function AddRoleDialog({onDismissRef}: Props) {
+  const dismissDialog = useRef<() => void>();
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -15,7 +23,15 @@ export default function AddRoleDialog() {
         <TInput label="عنوان نقش" />
 
         <div className={styles.buttons}>
-          <TButton onClick={() => undefined} label="نقش جدید" />
+          <TButton
+            onClick={() => {
+              onDismissRef && onDismissRef.current && onDismissRef.current();
+              dismissDialog.current = showDialog({
+                content: <AddRoleDialog onDismissRef={dismissDialog} />,
+              });
+            }}
+            label="نقش جدید"
+          />
           <TButton
             label="ثبت نقش"
             onClick={() => undefined}
