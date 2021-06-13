@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container"
+>
+  <img
+    alt="success"
+    className="icon"
+    src="checked.png"
+  />
+  <p
+    className="title"
+    dir="auto"
+  >
+    Test Title
+  </p>
+  <p
+    className="message"
+    dir="auto"
+  >
+    Test Message
+  </p>
+  <div
+    className="id_container"
+  >
+    <p
+      dir="auto"
+    >
+      Test Label Identifier
+    </p>
+    <p
+      className="id"
+      dir="auto"
+    >
+      Test Identifier
+    </p>
+  </div>
+</div>
+`;
