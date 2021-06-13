@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container"
+>
+  <p
+    className="label"
+  >
+    پيوست فايل
+  </p>
+  <div
+    className="select_file"
+  >
+    <img
+      alt="delete"
+      className="delete"
+      data-testid="remove-file"
+      onClick={[Function]}
+      src="delete.svg"
+    />
+    <input
+      className="file"
+      data-testid="file-input"
+      onChange={[Function]}
+      type="file"
+    />
+  </div>
+</div>
+`;

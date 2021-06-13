@@ -1,9 +1,10 @@
 import Assets from '../../Assets';
 import styles from './styles.module.scss';
 import ClassNames from '../../Utilities/ClassNames';
+import {useRef} from 'react';
 
 interface Props {
-  className: string;
+  className?: string;
   onRemoveAttachment?: () => void;
   onSelectFile?: (file: File) => void;
 }
@@ -13,6 +14,8 @@ export default function TSelectFile({
   onSelectFile,
   onRemoveAttachment,
 }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const onChange = (e: any) => {
     if (e.target.files && onSelectFile) {
       onSelectFile(e.target.files[0]);
@@ -20,6 +23,10 @@ export default function TSelectFile({
   };
 
   const onRemoveFile = () => {
+    if (inputRef.current) {
+      inputRef.current.value = '';
+      inputRef.current.files = null;
+    }
     if (onRemoveAttachment) {
       onRemoveAttachment();
     }
@@ -33,11 +40,18 @@ export default function TSelectFile({
       <div className={styles.select_file}>
         <img
           alt="delete"
+          data-testid="remove-file"
           onClick={onRemoveFile}
           src={Assets.SVGs.Delete}
           className={styles.delete}
         />
-        <input type="file" className={styles.file} onChange={onChange} />
+        <input
+          ref={inputRef}
+          type="file"
+          data-testid="file-input"
+          className={styles.file}
+          onChange={onChange}
+        />
       </div>
     </div>
   );
