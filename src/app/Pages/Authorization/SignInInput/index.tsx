@@ -2,9 +2,9 @@ import API from '../../../API';
 import {Button, message} from 'antd';
 import {useRef, useState} from 'react';
 import styles from './styles.module.scss';
+import useUser from '../../../Hooks/useUser';
 import SEInput from '../../../Components/SEInput';
 import {Link, useHistory} from 'react-router-dom';
-import useUser from '../../../Hooks/useUser';
 
 interface Props {
   className?: string;
@@ -48,39 +48,47 @@ export default function SignInInput({className}: Props) {
         localStorage.setItem('token', response.token);
         API.Users.GetProfile({}).then((response) => {
           Login(response);
+          setLoading(false);
+          if (location.pathname === '/sign-in') {
+            history.push('/');
+          }
         });
       })
       .catch((error) => {
         if (error.status === 400) {
           message.error('ایمیل یا رمزعبور اشتباه است');
         }
-      })
-      .finally(() => setLoading(false));
+        setLoading(false);
+      });
   };
 
   return (
-    <div className={className}>
+    <form className={className}>
       <p className={styles.input_box_title}>وارد شوید!</p>
       <SEInput
         type="text"
         label="ايميل"
+        name="email"
         regex={/^\S+@\S+$/}
         onEnter={onEmailEnter}
         onChangeText={setEmail}
         hasError={EmailHasError}
         hint="example@gmail.com"
+        data-testid="email-input"
         inputClassName={styles.input}
         className={styles.input_class}
         labelClassName={styles.input_label}
         innerContainerClassName={styles.inner_container}
       />
       <SEInput
+        name="password"
         type="password"
         label="گذرواژه"
         ref={passwordRef}
         onEnter={onSignIn}
         onChangeText={setPassword}
         hasError={PasswordHasError}
+        data-testid="password-input"
         inputClassName={styles.input}
         className={styles.input_class}
         labelClassName={styles.input_label}
@@ -90,6 +98,7 @@ export default function SignInInput({className}: Props) {
         type="primary"
         loading={Loading}
         onClick={onSignIn}
+        data-testid="submit-button"
         className={styles.enter_button}>
         ورود
       </Button>
@@ -99,6 +108,6 @@ export default function SignInInput({className}: Props) {
       <Link className={styles.forget_pass} to="/forgot-password">
         فراموشی گذرواژه
       </Link>
-    </div>
+    </form>
   );
 }
