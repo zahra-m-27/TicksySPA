@@ -5,7 +5,6 @@ import Tickets from './Tickets';
 import Ticket from './Ticket';
 import SubmitCertificate from './SubmitCertificate';
 import EditTopic from './EditTopic';
-import UserManagement from './Users';
 
 export interface DashboardRoute {
   name?: string;
@@ -48,12 +47,6 @@ const routes: DashboardRoute[] = [
             path: '/topics/edit/:id',
             name: 'ویرایش تاپیک',
             component: EditTopic,
-            children: [
-              {
-                path: '/topics/edit/:id/users',
-                component: UserManagement,
-              },
-            ],
           },
           {
             path: '/topics/:id',
