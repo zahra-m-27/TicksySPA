@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="rectangle"
+  >
+    <div
+      className="header"
+    >
+      تاپيک جدید
+      <img
+        alt=""
+        src="topic.svg"
+      />
+    </div>
+    <div
+      className="upload"
+    >
+      <label
+        htmlFor="picture"
+      >
+        <img
+          alt=""
+          className="picture"
+          src="google_images_2.png"
+        />
+      </label>
+      <input
+        className="upload_image"
+        id="picture"
+        onChange={[Function]}
+        type="file"
+      />
+    </div>
+    <div
+      className="middle"
+    >
+      <label>
+        :عنوان
+      </label>
+      <div
+        className="input_container"
+      >
+        <div
+          className="inner_container input"
+        >
+          <div
+            className="content"
+          >
+            <input
+              className="input"
+              dir="auto"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder=""
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <label>
+        :شناسه
+      </label>
+      <div
+        className="input_container"
+      >
+        <div
+          className="inner_container input"
+        >
+          <div
+            className="content"
+          >
+            <input
+              className="input"
+              dir="auto"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder=""
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="below"
+    >
+      <label>
+        :توضيح
+      </label>
+      <div
+        className="input_container"
+      >
+        <div
+          className="inner_container input"
+        >
+          <div
+            className="content"
+          >
+            <textarea
+              className="input"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder=""
+              rows={5}
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      className="ant-btn ant-btn-primary enter_button"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        ثبت
+      </span>
+    </button>
+  </div>
+</div>
+`;
