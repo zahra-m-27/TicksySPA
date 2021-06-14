@@ -5,16 +5,15 @@ $border_color: #cccccc;
   align-items: center;
 }
 .header {
+  width: 98%;
   display: flex;
+  padding: 15px 10px;
   flex-direction: row;
+  border-radius: 15px;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid $border_color;
-  border-radius: 3px;
-  box-shadow: 0 1px 1px 0 $border_color, 0 0 4px 0 $border_color;
-  width: 90%;
-  height: 7.4vh;
-  margin-top: 9.3vh;
+  border: 1px solid #cccccc;
+  box-shadow: 0 1px 1px 0 #cccccc, 0 0 4px 0 #cccccc2e;
 }
 .mode_box {
   background-color: #e5e9ef;
@@ -47,12 +46,13 @@ $border_color: #cccccc;
   margin-left: 3.2%;
 
   span {
+    margin: 6px;
     font-size: clamp(12px, 1vw, 20px);
   }
 }
 
 .table_class {
-  width: 90%;
+  width: 98%;
   border-collapse: separate;
   border-spacing: 0 1.8vh;
 
@@ -73,11 +73,11 @@ $border_color: #cccccc;
     border-left: 0;
     border-right: 0;
 
-    &:last-child {
+    &:first-child {
       border-right: 1px solid $border_color;
     }
 
-    &:first-child {
+    &:last-child {
       border-left: 1px solid $border_color;
     }
   }
