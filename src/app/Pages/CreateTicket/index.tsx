@@ -11,9 +11,6 @@ import TTextArea from '../../Components/TTextArea';
 import TSelectFile from '../../Components/TSelectFile';
 import TDropDown from '../../Components/TDropDown';
 import TButton from '../../Components/TButton';
-import showDialog from '../../Components/TDialog';
-import AddRoleDialog from '../../Dialogs/AddRole';
-import AddUserDialog from '../../Dialogs/AddUser';
 
 export default function CreateTicketPage() {
   const {user} = useUser();
@@ -30,16 +27,6 @@ export default function CreateTicketPage() {
   const [SelectedCategory, setSelectedCategory] = useState<string>();
 
   useEffect(() => {
-    showDialog({
-      content: <AddUserDialog />,
-      style: {
-        padding: 0,
-        borderRadius: 20,
-        overflow: 'hidden',
-        background: '#ffffff',
-      },
-    });
-
     API.Topics.GetTopic({
       slug: params.username,
     })
