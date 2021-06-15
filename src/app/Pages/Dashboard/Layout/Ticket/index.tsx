@@ -75,7 +75,8 @@ export default function Ticket() {
     <div className={styles.container}>
       <div className={styles.ticket_info_container}>
         <div className={styles.ticket_info_top}>
-          <p>عنوان: {Ticket.title}</p>
+          <p dir="auto">عنوان تاپیک: </p>
+          <p dir="auto">عنوان تیکت: {Ticket.title}</p>
         </div>
         <div className={styles.ticket_info_bottom}>
           <p>
@@ -109,6 +110,19 @@ export default function Ticket() {
       )}
 
       <div className={styles.chat_container}>
+        <div className={styles.chat_container_header}>
+          <div className={styles.items}>
+            <img src={Assets.SVGs.Close2} />
+          </div>
+          <div className={styles.items}>
+            <img src={Assets.SVGs.History} />
+          </div>
+          <div className={styles.items}>
+            <img src={Assets.SVGs.ArrowRight} />
+          </div>
+
+          <p dir="auto">مسئول رسیدگی به درخواست شما: </p>
+        </div>
         {Messages.map((message, index) => {
           const unknownAvatar =
             message.user.id === user.id
