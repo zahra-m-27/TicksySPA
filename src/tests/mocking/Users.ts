@@ -16,7 +16,7 @@ function mockSignIn() {
   jest.spyOn(Users, 'SignIn');
   const mocked = Users.SignIn as jest.MockedFunction<typeof Users.SignIn>;
   mocked.mockImplementation(({username, password}) => {
-    if (username === 'TestUser' && password === 'TestPassword')
+    if (password === 'TestPassword')
       return noError<SignInViewModel.Response>({
         username: 'TestUser',
         password: '12345678',

@@ -1,6 +1,6 @@
 import API from '../../../API';
 import {Button, message} from 'antd';
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import styles from './styles.module.scss';
 import {Link, useHistory} from 'react-router-dom';
 import SEInput from '../../../Components/SEInput';
@@ -11,6 +11,7 @@ interface Props {
 
 export default function SignUpInput({className}: Props) {
   const history = useHistory();
+  const IsMount = useRef(true);
   const [Code, setCode] = useState('');
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
@@ -26,6 +27,13 @@ export default function SignUpInput({className}: Props) {
   const [PasswordHasError, setPasswordHasError] = useState(false);
   const [LastNameHasError, setLastNameHasError] = useState(false);
   const [FirstNameHasError, setFirstNameHasError] = useState(false);
+
+  useEffect(
+    () => () => {
+      IsMount.current = false;
+    },
+    []
+  );
 
   const onFirstNameEnter = () => {
     if (lastNameRef && lastNameRef.current) {
@@ -84,7 +92,7 @@ export default function SignUpInput({className}: Props) {
         message.success('ایمیل تاییدیه براتان ارسال شده است', 15);
       })
       .catch(async (error) => {
-        if (error.status === 400) {
+        if (error.status === 400 && error.json) {
           const non_field_errors = (await error.json())?.non_field_errors;
           if (
             non_field_errors &&
@@ -97,7 +105,11 @@ export default function SignUpInput({className}: Props) {
           }
         }
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        if (IsMount.current) {
+          setLoading(false);
+        }
+      });
   };
 
   return (
@@ -106,11 +118,11 @@ export default function SignUpInput({className}: Props) {
       <SEInput
         type="text"
         label="نام"
-        name="email"
         onEnter={onFirstNameEnter}
         onChangeText={setFirstName}
         hasError={FirstNameHasError}
         inputClassName={styles.input}
+        data-testid="first-name-input"
         className={styles.input_class}
         labelClassName={styles.input_label}
         innerContainerClassName={styles.inner_container}
@@ -123,6 +135,7 @@ export default function SignUpInput({className}: Props) {
         onEnter={onLastNameEnter}
         onChangeText={setLastName}
         hasError={LastNameHasError}
+        data-testid="last-name-input"
         inputClassName={styles.input}
         className={styles.input_class}
         labelClassName={styles.input_label}
@@ -130,6 +143,7 @@ export default function SignUpInput({className}: Props) {
       />
       <SEInput
         type="text"
+        name="email"
         label="ايميل"
         ref={emailRef}
         regex={/^\S+@\S+$/}
@@ -137,6 +151,7 @@ export default function SignUpInput({className}: Props) {
         onChangeText={setEmail}
         hasError={EmailHasError}
         hint="example@gmail.com"
+        data-testid="email-input"
         inputClassName={styles.input}
         className={styles.input_class}
         labelClassName={styles.input_label}
@@ -150,8 +165,9 @@ export default function SignUpInput({className}: Props) {
         hasError={CodeHasError}
         inputClassName={styles.input}
         className={styles.input_class}
-        labelClassName={styles.input_label}
         label="شماره دانشجویی / کد پرسنلی"
+        labelClassName={styles.input_label}
+        data-testid="personal-identity-input"
         innerContainerClassName={styles.inner_container}
       />
       <SEInput
@@ -161,6 +177,7 @@ export default function SignUpInput({className}: Props) {
         onEnter={onSignUp}
         onChangeText={setPassword}
         hasError={PasswordHasError}
+        data-testid="password-input"
         inputClassName={styles.input}
         className={styles.input_class}
         labelClassName={styles.input_label}
@@ -170,6 +187,7 @@ export default function SignUpInput({className}: Props) {
         type="primary"
         loading={Loading}
         onClick={onSignUp}
+        data-testid="submit-button"
         className={styles.enter_button}>
         ثبت نام
       </Button>

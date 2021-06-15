@@ -16,34 +16,48 @@ it('renders in ReactDOM', () => {
   ReactDOM.render(sample, div);
 });
 
-it('sign in correctly', async () => {
+it('sign up correctly', async () => {
   mockAllAPI();
 
   expect(window.location.pathname).toEqual('/');
 
   const {getByTestId} = render(sample);
 
-  const signInButton = getByTestId('sign-in-button');
+  const signUpButton = getByTestId('sign-up-button');
 
-  user.click(signInButton);
+  user.click(signUpButton);
 
-  expect(window.location.pathname).toEqual('/sign-in');
+  expect(window.location.pathname).toEqual('/sign-up');
 
   const email = getByTestId('email-input');
   const submit = getByTestId('submit-button');
   const password = getByTestId('password-input');
+  const lastName = getByTestId('last-name-input');
+  const firstName = getByTestId('first-name-input');
+  const personalIdentity = getByTestId('personal-identity-input');
 
+  user.type(lastName, 'User2');
+  user.type(firstName, 'Test1');
+  user.type(password, 'TestPassword');
   user.type(email, 'TestUser@gmail.com');
-  user.type(password, 'TestPassword222');
+  user.type(personalIdentity, '972023005');
+
   user.click(submit);
 
-  await waitFor(() => expect(window.location.pathname).toEqual('/sign-in'));
+  await waitFor(() => expect(window.location.pathname).toEqual('/sign-up'));
 
   user.clear(email);
   user.clear(password);
+  user.clear(lastName);
+  user.clear(firstName);
+  user.clear(personalIdentity);
 
-  user.type(email, 'TestUser@gmail.com');
+  user.type(lastName, 'User');
+  user.type(firstName, 'Test');
   user.type(password, 'TestPassword');
+  user.type(email, 'TestUser@gmail.com');
+  user.type(personalIdentity, '972023005');
+
   user.click(submit);
 
   await waitFor(() => expect(window.location.pathname).toEqual('/'));
