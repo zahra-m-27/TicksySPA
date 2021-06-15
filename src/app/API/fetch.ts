@@ -7,7 +7,7 @@ export function Post<T extends BaseResponse>(
   url: string,
   data: any,
   method = 'POST',
-  showLog = true,
+  showLog = !process.env.JEST_WORKER_ID,
   showNotifier = false
 ) {
   return new Promise<T>((resolve, reject) => {
