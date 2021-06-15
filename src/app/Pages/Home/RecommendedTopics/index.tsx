@@ -3,7 +3,7 @@ import API from '../../../API';
 import {message} from 'antd';
 import Assets from '../../../Assets';
 import styles from './styles.module.scss';
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import RecommendedTopicsDto from '../../../API/DTOs/RecommendedTopicsDto';
 
 const initialTopics: RecommendedTopicsDto[] = new Array(6).fill({
@@ -14,6 +14,7 @@ const initialTopics: RecommendedTopicsDto[] = new Array(6).fill({
 });
 
 export default function RecommendedTopics() {
+  const IsMount = useRef(true);
   const [Topics, setTopics] = useState<RecommendedTopicsDto[]>(initialTopics);
 
   useEffect(() => {
@@ -21,15 +22,19 @@ export default function RecommendedTopics() {
       page: 1,
     })
       .then((response) => {
-        if (response.results.length) {
-          setTopics(response.results);
-        } else {
-          message.error('متاسفانه هنوز تاپیک پیشنهادی ای وجود ندارد');
-        }
+        if (IsMount.current)
+          if (response.results.length) {
+            setTopics(response.results);
+          } else {
+            message.error('متاسفانه هنوز تاپیک پیشنهادی ای وجود ندارد');
+          }
       })
       .catch((error) => {
         message.error('خطایی در دریافت تاپیک های پیشنهادی به وجود آمده.');
       });
+    return () => {
+      IsMount.current = false;
+    };
   }, []);
 
   return (
