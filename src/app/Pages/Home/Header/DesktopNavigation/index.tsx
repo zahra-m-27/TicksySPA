@@ -30,9 +30,13 @@ export default function DesktopNavigation() {
       )}
       {!isLogin && (
         <div className={styles.link}>
-          <Link to="/sign-in">ورود</Link>
+          <Link to="/sign-in" data-testid="sign-in-button">
+            ورود
+          </Link>
           <span>/</span>
-          <Link to="/sign-up">ثبت‌نام</Link>
+          <Link to="/sign-up" data-testid="sign-up-button">
+            ثبت‌نام
+          </Link>
         </div>
       )}
       <div
