@@ -78,6 +78,7 @@ export default function Ticket() {
     dismissDialog.current = showDialog({
       content: <ForwardTicketDialog onDismissRef={dismissDialog} />,
       style: {
+        maxWidth: 'unset',
         overflow: 'hidden',
         borderRadius: 15,
       },

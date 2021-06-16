@@ -10,10 +10,10 @@ exports[`snapshot 1`] = `
     <div
       className="header"
     >
-      اعضا
       <img
         src="people.svg"
       />
+      اعضا
     </div>
     <div
       className="content member_content"
@@ -38,10 +38,10 @@ exports[`snapshot 1`] = `
     <div
       className="header"
     >
-      ویرایش تاپيک
       <img
         src="topic.svg"
       />
+      ویرایش تاپيک
     </div>
     <div
       className="content"

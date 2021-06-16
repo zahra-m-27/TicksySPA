@@ -27,26 +27,6 @@ exports[`snapshot 1`] = `
       <label
         className="label"
       >
-        نام و نام خانوادگی
-      </label>
-      <div
-        className="input_container"
-      >
-        <input
-          className="input_class"
-          dir="auto"
-          onChange={[Function]}
-          onKeyDown={[Function]}
-          value=""
-        />
-      </div>
-    </div>
-    <div
-      className="container"
-    >
-      <label
-        className="label"
-      >
         ایمیل
       </label>
       <div

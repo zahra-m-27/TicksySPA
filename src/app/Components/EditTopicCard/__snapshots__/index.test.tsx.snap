@@ -7,10 +7,10 @@ exports[`snapshot 1`] = `
   <div
     className="header"
   >
-    Test Title
     <img
       src="topic.svg"
     />
+    Test Title
   </div>
   <div
     className="content"

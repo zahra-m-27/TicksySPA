@@ -131,78 +131,78 @@ export default function EditTopicDetail() {
 
   return (
     <div className={styles.container}>
-      <EditTopicCard
-        title="اعضا"
-        icon={Assets.SVGs.People}
-        className={styles.member_card}
-        contentClassName={styles.member_content}>
-        {StartSearch ? (
-          <div className={styles.search_box}>
-            <SEInput
-              onChangeText={setSearchEmail}
-              inputClassName={styles.search}
-              className={styles.search_container}
-              icon={<img src={Assets.SVGs.Search} alt="" />}
-            />
-            <img
-              alt="cancel"
-              src={Assets.SVGs.Cancel}
-              className={styles.close_search}
-              onClick={() => {
-                setSearchEmail('');
-                setSearchedEmails([]);
-                setStartSearch(false);
-                setSearchLoading(false);
-              }}
-            />
-          </div>
-        ) : (
-          <div
-            onClick={() => setStartSearch(true)}
-            className={ClassNames(styles.member_container, styles.add_button)}>
-            <img src={Assets.SVGs.Plus} alt="add member" />
-            <p>افزودن عضو</p>
-          </div>
-        )}
-        {!StartSearch &&
-          Supporters.map((supporter, index) => (
-            <div key={index} className={styles.member_container}>
-              <img
-                src={Assets.SVGs.Minus}
-                alt=""
-                onClick={() => {
-                  const supporters = Supporters.filter(
-                    (s) => s.id !== supporter.id
-                  );
-                  setSupporters(supporters);
-                  setSupporterIds(supporters.map((s) => s.id));
-                }}
-              />
-              <p>{supporter.email}</p>
-            </div>
-          ))}
-        {SearchLoading && <Spin size="large" />}
-        {SearchedEmails.map((user, index) => (
-          <div key={index} className={styles.member_container}>
-            <img
-              src={
-                SupporterIds.find((id) => id === user.id)
-                  ? Assets.SVGs.Minus
-                  : Assets.SVGs.Plus
-              }
-              alt=""
-              onClick={() => {
-                const supporters = Supporters.filter(
-                  (s) => s.id !== user.id
-                ).concat([user]);
-                setSupporters(supporters);
-                setSupporterIds(supporters.map((s) => s.id));
-              }}
-            />
-            <p>{user.email}</p>
-          </div>
-        ))}
-      </EditTopicCard>
+      {/*<EditTopicCard*/}
+      {/*  title="اعضا"*/}
+      {/*  icon={Assets.SVGs.People}*/}
+      {/*  className={styles.member_card}*/}
+      {/*  contentClassName={styles.member_content}>*/}
+      {/*  {StartSearch ? (*/}
+      {/*    <div className={styles.search_box}>*/}
+      {/*      <SEInput*/}
+      {/*        onChangeText={setSearchEmail}*/}
+      {/*        inputClassName={styles.search}*/}
+      {/*        className={styles.search_container}*/}
+      {/*        icon={<img src={Assets.SVGs.Search} alt="" />}*/}
+      {/*      />*/}
+      {/*      <img*/}
+      {/*        alt="cancel"*/}
+      {/*        src={Assets.SVGs.Cancel}*/}
+      {/*        className={styles.close_search}*/}
+      {/*        onClick={() => {*/}
+      {/*          setSearchEmail('');*/}
+      {/*          setSearchedEmails([]);*/}
+      {/*          setStartSearch(false);*/}
+      {/*          setSearchLoading(false);*/}
+      {/*        }}*/}
+      {/*      />*/}
+      {/*    </div>*/}
+      {/*  ) : (*/}
+      {/*    <div*/}
+      {/*      onClick={() => setStartSearch(true)}*/}
+      {/*      className={ClassNames(styles.member_container, styles.add_button)}>*/}
+      {/*      <img src={Assets.SVGs.Plus} alt="add member" />*/}
+      {/*      <p>افزودن عضو</p>*/}
+      {/*    </div>*/}
+      {/*  )}*/}
+      {/*  {!StartSearch &&*/}
+      {/*    Supporters.map((supporter, index) => (*/}
+      {/*      <div key={index} className={styles.member_container}>*/}
+      {/*        <img*/}
+      {/*          src={Assets.SVGs.Minus}*/}
+      {/*          alt=""*/}
+      {/*          onClick={() => {*/}
+      {/*            const supporters = Supporters.filter(*/}
+      {/*              (s) => s.id !== supporter.id*/}
+      {/*            );*/}
+      {/*            setSupporters(supporters);*/}
+      {/*            setSupporterIds(supporters.map((s) => s.id));*/}
+      {/*          }}*/}
+      {/*        />*/}
+      {/*        <p>{supporter.email}</p>*/}
+      {/*      </div>*/}
+      {/*    ))}*/}
+      {/*  {SearchLoading && <Spin size="large" />}*/}
+      {/*  {SearchedEmails.map((user, index) => (*/}
+      {/*    <div key={index} className={styles.member_container}>*/}
+      {/*      <img*/}
+      {/*        src={*/}
+      {/*          SupporterIds.find((id) => id === user.id)*/}
+      {/*            ? Assets.SVGs.Minus*/}
+      {/*            : Assets.SVGs.Plus*/}
+      {/*        }*/}
+      {/*        alt=""*/}
+      {/*        onClick={() => {*/}
+      {/*          const supporters = Supporters.filter(*/}
+      {/*            (s) => s.id !== user.id*/}
+      {/*          ).concat([user]);*/}
+      {/*          setSupporters(supporters);*/}
+      {/*          setSupporterIds(supporters.map((s) => s.id));*/}
+      {/*        }}*/}
+      {/*      />*/}
+      {/*      <p>{user.email}</p>*/}
+      {/*    </div>*/}
+      {/*  ))}*/}
+      {/*</EditTopicCard>*/}
       <EditTopicCard
         title="ویرایش تاپيک"
         icon={Assets.SVGs.Topic}

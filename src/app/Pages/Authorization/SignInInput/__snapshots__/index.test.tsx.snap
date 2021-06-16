@@ -23,6 +23,7 @@ exports[`snapshot 1`] = `
         </p>
         <input
           className="input input input_label"
+          data-testid="email-input"
           dir="auto"
           name="email"
           onBlur={[Function]}
@@ -52,6 +53,7 @@ exports[`snapshot 1`] = `
         </p>
         <input
           className="input input input_label"
+          data-testid="password-input"
           dir="auto"
           name="password"
           onBlur={[Function]}
@@ -83,6 +85,7 @@ exports[`snapshot 1`] = `
   </div>
   <button
     className="ant-btn ant-btn-primary enter_button"
+    data-testid="submit-button"
     onClick={[Function]}
     type="button"
   >
