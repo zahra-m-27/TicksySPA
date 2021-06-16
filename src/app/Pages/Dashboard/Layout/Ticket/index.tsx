@@ -5,14 +5,17 @@ import Assets from '../../../../Assets';
 import styles from './styles.module.scss';
 import {useParams} from 'react-router-dom';
 import useUser from '../../../../Hooks/useUser';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import SEInput from '../../../../Components/SEInput';
 import TicketDto from '../../../../API/DTOs/TicketDto';
 import MessageDto from '../../../../API/DTOs/MessageDto';
+import showDialog from '../../../../Components/TDialog';
+import ForwardTicketDialog from '../../../../Dialogs/ForwardTicket';
 
 export default function Ticket() {
   const {user} = useUser();
   const params = useParams<any>();
+  const dismissDialog = useRef<() => void>();
   const [Ticket, setTicket] = useState<TicketDto>();
   const [Message, setMessage] = useState('');
   const [Attachment, setAttachment] = useState<File>();
@@ -71,6 +74,16 @@ export default function Ticket() {
     );
   }
 
+  const onForwardingTicket = () => {
+    dismissDialog.current = showDialog({
+      content: <ForwardTicketDialog onDismissRef={dismissDialog} />,
+      style: {
+        overflow: 'hidden',
+        borderRadius: 15,
+      },
+    });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.ticket_info_container}>
@@ -114,7 +127,7 @@ export default function Ticket() {
           <div className={styles.items}>
             <img src={Assets.SVGs.Close2} />
           </div>
-          <div className={styles.items}>
+          <div className={styles.items} onClick={onForwardingTicket}>
             <img src={Assets.SVGs.History} />
           </div>
           <div className={styles.items}>
