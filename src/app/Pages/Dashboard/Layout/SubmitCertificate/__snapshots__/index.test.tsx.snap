@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container_report"
+>
+  <div
+    className="top_part"
+  >
+    <div
+      className="title"
+    >
+      <img
+        alt=""
+        className="report_title_image"
+        src="fingerprint.png"
+      />
+      احراز هویت
+    </div>
+  </div>
+  <div
+    className="report_body"
+  >
+    <div
+      className="ant-spin ant-spin-lg ant-spin-spinning"
+    >
+      <span
+        className="ant-spin-dot ant-spin-dot-spin"
+      >
+        <i
+          className="ant-spin-dot-item"
+        />
+        <i
+          className="ant-spin-dot-item"
+        />
+        <i
+          className="ant-spin-dot-item"
+        />
+        <i
+          className="ant-spin-dot-item"
+        />
+      </span>
+    </div>
+  </div>
+</div>
+`;

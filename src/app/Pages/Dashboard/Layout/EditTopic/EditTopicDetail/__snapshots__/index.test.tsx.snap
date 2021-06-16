@@ -5,34 +5,6 @@ exports[`snapshot 1`] = `
   className="container"
 >
   <div
-    className="card member_card"
-  >
-    <div
-      className="header"
-    >
-      <img
-        src="people.svg"
-      />
-      اعضا
-    </div>
-    <div
-      className="content member_content"
-    >
-      <div
-        className="member_container add_button"
-        onClick={[Function]}
-      >
-        <img
-          alt="add member"
-          src="plus.svg"
-        />
-        <p>
-          افزودن عضو
-        </p>
-      </div>
-    </div>
-  </div>
-  <div
     className="card detail_card"
   >
     <div

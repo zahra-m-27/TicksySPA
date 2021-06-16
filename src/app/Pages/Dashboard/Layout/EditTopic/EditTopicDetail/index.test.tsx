@@ -16,19 +16,9 @@ test('render in ReactDOM', () => {
   ReactDOM.render(sample, div);
 });
 
-it('render member header', () => {
-  const {getByText} = render(sample);
-  getByText(/اعضا/i);
-});
-
 it('render detail header', () => {
   const {getByText} = render(sample);
   getByText(/ویرایش تاپيک/i);
-});
-
-it('render add member', () => {
-  const {getByText} = render(sample);
-  getByText(/افزودن عضو/i);
 });
 
 it('render subject', () => {

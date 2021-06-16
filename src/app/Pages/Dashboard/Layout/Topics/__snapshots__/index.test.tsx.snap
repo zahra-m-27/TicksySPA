@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="add_topic"
+    onClick={[Function]}
+  >
+    <p>
+      افزودن
+    </p>
+    <img
+      alt=""
+      src="add.png"
+    />
+  </div>
+  <div
+    className="cards"
+  />
+</div>
+`;
