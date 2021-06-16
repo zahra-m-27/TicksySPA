@@ -16,11 +16,6 @@ it('render header', () => {
   getByText(/افزودن کاربر/i);
 });
 
-it('render name label', () => {
-  const {getByText} = render(sample);
-  getByText(/نام و نام خانوادگی/i);
-});
-
 it('render email label', () => {
   const {getByText} = render(sample);
   getByText(/ایمیل/i);

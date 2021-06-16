@@ -22,7 +22,6 @@ export default function AddUserDialog({onDismissRef}: Props) {
       </div>
       <div className={styles.content}>
         <img src={Assets.SVGs.AddUser} className={styles.avatar} />
-        <TInput label="نام و نام خانوادگی" />
         <TInput
           icon={Assets.Images.Search}
           label="ایمیل"
