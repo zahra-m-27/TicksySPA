@@ -128,10 +128,10 @@ export default function Ticket() {
           <div className={styles.items}>
             <img src={Assets.SVGs.Close2} />
           </div>
-          <div className={styles.items} onClick={onForwardingTicket}>
+          <div className={styles.items}>
             <img src={Assets.SVGs.History} />
           </div>
-          <div className={styles.items}>
+          <div className={styles.items} onClick={onForwardingTicket}>
             <img src={Assets.SVGs.ArrowRight} />
           </div>
 
