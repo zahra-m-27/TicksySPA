@@ -1,4 +1,4 @@
-import {Post} from '../fetch';
+import {Get, Post} from '../fetch';
 import SignInViewModel from '../ViewModels/Users/SignInViewModel';
 import SignUpViewModel from '../ViewModels/Users/SignUpViewModel';
 import GetProfileViewModel from '../ViewModels/Users/GetProfileViewModel';
@@ -9,6 +9,7 @@ import UpdateIdentityViewModel from '../ViewModels/Users/UpdateIdentityViewModel
 import RequestResetPasswordViewModel from '../ViewModels/Users/RequestResetPasswordViewModel';
 import NewPasswordResetPasswordViewModel from '../ViewModels/Users/NewPasswordResetPasswordViewModel';
 import ConfirmCredentialResetPasswordViewModel from '../ViewModels/Users/ConfirmCredentialResetPasswordViewModel';
+import SearchEmailViewModel from '../ViewModels/Users/SearchEmailViewModel';
 
 const ControllerName = 'users/api';
 
@@ -19,10 +20,9 @@ function SignIn(args: SignInViewModel.Request) {
   return Post<SignInViewModel.Response>(ControllerName + '/signin/', args);
 }
 function ConfirmSignUp(args: ConfirmSignUpViewModel.Request) {
-  return Post<ConfirmSignUpViewModel.Response>(
+  return Get<ConfirmSignUpViewModel.Response>(
     `${ControllerName}/signup/confirm-credential/${args.uib64}/${args.token}`,
-    undefined,
-    'GET'
+    {}
   );
 }
 function RequestResetPassword(args: RequestResetPasswordViewModel.Request) {
@@ -90,12 +90,16 @@ function GetIdentity(args: GetIdentityViewModel.Request) {
     'GET'
   );
 }
+function SearchEmail(args: SearchEmailViewModel.Request) {
+  return Get<SearchEmailViewModel.Response[]>('email', args);
+}
 
 const Actions = {
   SignIn,
   SignUp,
   GetProfile,
   GetIdentity,
+  SearchEmail,
   ConfirmSignUp,
   UpdateProfile,
   UpdateIdentity,
