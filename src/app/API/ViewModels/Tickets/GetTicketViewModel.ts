@@ -1,7 +1,7 @@
 import TicketDto from '../../DTOs/TicketDto';
 import BaseResponse from '../../Common/BaseResponse';
 
-namespace GetTicketDetailViewModel {
+namespace GetTicketViewModel {
   export interface Request {
     id: number;
   }
@@ -9,4 +9,4 @@ namespace GetTicketDetailViewModel {
   export interface Response extends BaseResponse, TicketDto {}
 }
 
-export default GetTicketDetailViewModel;
+export default GetTicketViewModel;

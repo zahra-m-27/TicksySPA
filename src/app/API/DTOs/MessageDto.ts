@@ -6,7 +6,7 @@ export default interface MessageDto {
   url: string;
   rate: number;
   text: string;
-  date: string;
+  date: Date;
   attachments: string[];
   attachment_set: AttachmentDto[];
   user: UserSerializerRestrictedDto;

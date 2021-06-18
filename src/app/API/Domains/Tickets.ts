@@ -1,21 +1,21 @@
 import {Post} from '../fetch';
 import GetTicketsViewModel from '../ViewModels/Tickets/GetTicketsViewModel';
-import GetTicketDetailViewModel from '../ViewModels/Tickets/GetTicketDetailViewModel';
-import GetTicketMessagesViewModel from '../ViewModels/Tickets/GetTicketMessagesViewModel';
+import GetTicketDetailViewModel from '../ViewModels/Tickets/GetTicketViewModel';
 import CreateTicketMessageViewModel from '../ViewModels/Tickets/CreateTicketMessageViewModel';
 
 const ControllerName = 'tickets';
 
-function GetTickets(args: GetTicketsViewModel.Request) {
-  return Post<GetTicketsViewModel.Response>(
-    ControllerName + '/?' + new URLSearchParams(args as any).toString(),
+function GetTicket(args: GetTicketDetailViewModel.Request) {
+  return Post<GetTicketDetailViewModel.Response>(
+    ControllerName + `/${args.id}/`,
     undefined,
     'GET'
   );
 }
-function GetTicketDetail(args: GetTicketDetailViewModel.Request) {
-  return Post<GetTicketDetailViewModel.Response>(
-    ControllerName + `/${args.id}/get-detail/`,
+
+function GetTickets(args: GetTicketsViewModel.Request) {
+  return Post<GetTicketsViewModel.Response>(
+    ControllerName + '/?' + new URLSearchParams(args as any).toString(),
     undefined,
     'GET'
   );
@@ -32,18 +32,9 @@ function CreateTicketMessage(args: CreateTicketMessageViewModel.Request) {
   );
 }
 
-function GetTicketMessages(args: GetTicketMessagesViewModel.Request) {
-  return Post<GetTicketMessagesViewModel.Response[]>(
-    ControllerName + `/${args.id}/`,
-    undefined,
-    'GET'
-  );
-}
-
 const Actions = {
+  GetTicket,
   GetTickets,
-  GetTicketDetail,
-  GetTicketMessages,
   CreateTicketMessage,
 };
 

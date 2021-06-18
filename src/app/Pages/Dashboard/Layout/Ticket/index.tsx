@@ -8,7 +8,6 @@ import useUser from '../../../../Hooks/useUser';
 import React, {useEffect, useRef, useState} from 'react';
 import SEInput from '../../../../Components/SEInput';
 import TicketDto from '../../../../API/DTOs/TicketDto';
-import MessageDto from '../../../../API/DTOs/MessageDto';
 import showDialog from '../../../../Components/TDialog';
 import ForwardTicketDialog from '../../../../Dialogs/ForwardTicket';
 
@@ -20,24 +19,16 @@ export default function Ticket() {
   const [Message, setMessage] = useState('');
   const [Attachment, setAttachment] = useState<File>();
   const [Loading, setLoading] = useState(false);
-  const [Messages, setMessages] = useState<MessageDto[]>([]);
   const [MessageHasError, setMessageHasError] = useState(false);
 
-  const getMessages = () => {
-    API.Tickets.GetTicketMessages({
-      id: params.id,
-    })
-      .then((response) => {
-        setMessages(response);
-      })
-      .finally(() => setLoading(false));
+  const getData = () => {
+    API.Tickets.GetTicket({id: params.id}).then((response) => {
+      setTicket(response);
+    });
   };
 
   useEffect(() => {
-    getMessages();
-    API.Tickets.GetTicketDetail({id: params.id}).then((response) =>
-      setTicket(response)
-    );
+    getData();
   }, []);
 
   const onSendMessage = () => {
@@ -59,7 +50,7 @@ export default function Ticket() {
       attachments: attachments,
     })
       .then(() => {
-        getMessages();
+        getData();
         setMessage('');
         setAttachment(undefined);
       })
@@ -126,18 +117,21 @@ export default function Ticket() {
       <div className={styles.chat_container}>
         <div className={styles.chat_container_header}>
           <div className={styles.items}>
-            <img src={Assets.SVGs.Close2} />
+            <img src={Assets.SVGs.Close2} alt="close" />
           </div>
           <div className={styles.items}>
-            <img src={Assets.SVGs.History} />
+            <img src={Assets.SVGs.History} alt="history" />
           </div>
-          <div className={styles.items} onClick={onForwardingTicket}>
-            <img src={Assets.SVGs.ArrowRight} />
+          <div
+            className={styles.items}
+            onClick={onForwardingTicket}
+            data-testid="forward-button">
+            <img src={Assets.SVGs.ArrowRight} alt="forward" />
           </div>
 
           <p dir="auto">مسئول رسیدگی به درخواست شما: </p>
         </div>
-        {Messages.map((message, index) => {
+        {Ticket.message_set.map((message, index) => {
           const unknownAvatar =
             message.user.id === user.id
               ? Assets.SVGs.MaleUserSVG

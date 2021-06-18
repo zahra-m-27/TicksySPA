@@ -1,7 +1,7 @@
 import UserSerializerRestrictedDto from './UserSerializerRestrictedDto';
 import MessageDto from './MessageDto';
 
-export default interface TicketDto {
+export default interface TicketListItemDto {
   id: number;
   text: string;
   tags: string;
@@ -10,6 +10,5 @@ export default interface TicketDto {
   priority: number;
   last_update: Date;
   creation_date: Date;
-  message_set: MessageDto[];
   creator: UserSerializerRestrictedDto;
 }

@@ -6,8 +6,8 @@ import styles from './styles.module.scss';
 import {useEffect, useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import SEInput from '../../../../Components/SEInput';
-import TicketDto from '../../../../API/DTOs/TicketDto';
 import ClassNames from '../../../../Utilities/ClassNames';
+import TicketListItemDto from '../../../../API/DTOs/TicketListItemDto';
 
 export default function Tickets() {
   const history = useHistory();
@@ -18,7 +18,7 @@ export default function Tickets() {
   const [LastPage, setLastPage] = useState(1);
   const [CurrentPage, setCurrentPage] = useState(1);
   const [Loading, setLoading] = useState<boolean>(false);
-  const [Tickets, setTickets] = useState<TicketDto[]>([]);
+  const [Tickets, setTickets] = useState<TicketListItemDto[]>([]);
 
   const onSearch = () => {
     setSearch(Title ? Title : Id ? Id : '');
