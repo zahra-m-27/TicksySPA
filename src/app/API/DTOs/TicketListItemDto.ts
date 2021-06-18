@@ -1,5 +1,4 @@
 import UserSerializerRestrictedDto from './UserSerializerRestrictedDto';
-import MessageDto from './MessageDto';
 
 export default interface TicketListItemDto {
   id: number;
