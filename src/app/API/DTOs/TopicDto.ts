@@ -1,4 +1,5 @@
 import UserSerializerRestrictedDto from './UserSerializerRestrictedDto';
+import AdminsFieldDto from './AdminsFieldDto';
 
 export default interface TopicDto {
   id: number;
@@ -7,6 +8,6 @@ export default interface TopicDto {
   title: string;
   avatar: string;
   description: string;
+  admins: AdminsFieldDto[];
   creator: UserSerializerRestrictedDto;
-  supporters: UserSerializerRestrictedDto[];
 }

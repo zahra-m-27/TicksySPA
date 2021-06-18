@@ -1,6 +1,6 @@
 export default interface RecommendedTopicsDto {
+  id: number;
   url: string;
-  slug: string;
   title: string;
   avatar: string;
   description: string;
