@@ -1,12 +1,8 @@
 .button {
-  width: 10%;
-  height: 36px;
   display: flex;
   color: #ffffff;
   cursor: pointer;
-  min-width: 110px;
-  margin-right: 10px;
-  align-self: center;
+  padding: 10px 20px;
   border-radius: 6px;
   align-items: center;
   transition: all 0.5s;
@@ -15,5 +11,9 @@
 
   &:hover {
     opacity: 0.8;
+  }
+
+  .label {
+    user-select: none;
   }
 }

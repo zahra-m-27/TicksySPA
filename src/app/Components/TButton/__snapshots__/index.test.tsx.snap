@@ -10,6 +10,8 @@ exports[`snapshot 1`] = `
     }
   }
 >
-  Test Label
+  <span>
+    Test Label
+  </span>
 </div>
 `;
