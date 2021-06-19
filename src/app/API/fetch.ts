@@ -39,6 +39,98 @@ export function Post<T extends BaseResponse>(
           console.debug('='.repeat(50));
         }
         if (response.status === 401) {
+          reject(response);
+          localStorage.removeItem('token');
+          message.error('برای دسترسی به این عملیات وارد حساب خود بشوید');
+        } else if (response.status === 200 || response.status === 201) {
+          resolve((await response.json()) as T);
+        } else {
+          if (showNotifier) {
+            message.error('انجام این عملیات ممکن نیست', 5);
+          }
+          reject(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        reject(error);
+      });
+  });
+}
+export function Delete<T extends BaseResponse>(
+  url: string,
+  showLog = !process.env.JEST_WORKER_ID,
+  showNotifier = false
+) {
+  return new Promise<T>((resolve, reject) => {
+    const headers: Record<string, string> = {};
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      headers['Authorization'] = `Token ${token}`;
+    }
+
+    fetch(BaseUrl + url, {
+      method: 'DELETE',
+      headers: headers,
+    })
+      .then(async (response) => {
+        if (showLog) {
+          console.debug('='.repeat(50));
+          console.log(url, 'Response:', response);
+
+          console.debug('='.repeat(50));
+        }
+        if (response.status === 401) {
+          reject(response);
+          localStorage.removeItem('token');
+          message.error('برای دسترسی به این عملیات وارد حساب خود بشوید');
+        } else if (response.status === 204) {
+          resolve({} as any);
+        } else {
+          if (showNotifier) {
+            message.error('انجام این عملیات ممکن نیست', 5);
+          }
+          reject(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        reject(error);
+      });
+  });
+}
+export function Get<T extends BaseResponse>(
+  url: string,
+  data: any,
+  showLog = !process.env.JEST_WORKER_ID,
+  showNotifier = false
+) {
+  return new Promise<T>((resolve, reject) => {
+    if (showLog) {
+      console.log(BaseUrl + url + ':  Request  : ' + JSON.stringify(data));
+    }
+
+    const headers: Record<string, string> = {};
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      headers['Authorization'] = `Token ${token}`;
+    }
+
+    fetch(BaseUrl + url + '?' + new URLSearchParams(data), {
+      method: 'GET',
+      headers: headers,
+    })
+      .then(async (response) => {
+        if (showLog) {
+          console.debug('='.repeat(50));
+          console.log(url, 'Response:', response);
+
+          console.debug('='.repeat(50));
+        }
+        if (response.status === 401) {
+          reject(response);
           localStorage.removeItem('token');
           message.error('برای دسترسی به این عملیات وارد حساب خود بشوید');
         } else if (response.status === 200 || response.status === 201) {
