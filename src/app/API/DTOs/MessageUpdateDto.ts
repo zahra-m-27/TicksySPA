@@ -1,9 +1,8 @@
 import AttachmentDto from './AttachmentDto';
 import UserSerializerRestrictedDto from './UserSerializerRestrictedDto';
 
-export default interface MessageDto {
+export default interface MessageUpdateDto {
   id: number;
-  url: string;
   rate: number;
   text: string;
   date: Date;
