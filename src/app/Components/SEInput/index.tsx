@@ -178,7 +178,7 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
     ];
 
     return (
-      <div className={inputContainerStyle}>
+      <div className={inputContainerStyle} data-testid="input-container">
         <div className={innerContainer}>
           <div className={styles.content}>
             {label && <p className={labelStyle}>{label}</p>}
@@ -266,6 +266,7 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
               </label>
               <input
                 type="file"
+                data-testid="file-input"
                 id="attachment_input"
                 onChange={(e) =>
                   e.target.files &&
@@ -281,6 +282,7 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
                       alt=""
                       src={Assets.Images.Cancel}
                       className={styles.attachment_icon}
+                      data-testid="remove-file"
                       onClick={() =>
                         onRemoveAttachment && onRemoveAttachment(i)
                       }
