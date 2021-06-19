@@ -3,7 +3,7 @@ import BaseResponse from '../../Common/BaseResponse';
 
 namespace GetTopicViewModel {
   export interface Request {
-    slug: string;
+    topicId: number;
   }
 
   export interface Response extends BaseResponse, TopicDto {}

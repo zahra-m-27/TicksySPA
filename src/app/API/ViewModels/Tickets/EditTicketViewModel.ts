@@ -1,17 +1,16 @@
 import TicketDto from '../../DTOs/TicketDto';
 import BaseResponse from '../../Common/BaseResponse';
 
-namespace CreateTicketsViewModel {
+namespace EditTicketViewModel {
   export interface Request {
-    slug: string;
-    text: string;
-    tags: string;
+    ticketId: number;
     title: string;
-    priority: number;
-    attachments: File[];
+    status: string;
+    priority: string;
+    tags: string;
   }
 
   export interface Response extends BaseResponse, TicketDto {}
 }
 
-export default CreateTicketsViewModel;
+export default EditTicketViewModel;

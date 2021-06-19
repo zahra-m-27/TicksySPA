@@ -1,16 +1,15 @@
 import BaseResponse from '../../Common/BaseResponse';
-import TopicListItemDto from '../../DTOs/TopicListItemDto';
+import TopicAllDetail from '../../DTOs/TopicAllDetailDto';
 
-namespace GetTopicsViewModel {
+namespace TopicAllDetailViewModel {
   export interface Request {
     limit: number;
     offset: number;
   }
 
   export interface Response extends BaseResponse {
-    count: number;
-    results: TopicListItemDto[];
+    results: TopicAllDetail[];
   }
 }
 
-export default GetTopicsViewModel;
+export default TopicAllDetailViewModel;

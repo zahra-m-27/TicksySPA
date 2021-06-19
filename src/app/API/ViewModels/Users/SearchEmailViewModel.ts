@@ -1,4 +1,3 @@
-import BaseResponse from '../../Common/BaseResponse';
 import UserSerializerRestrictedDto from '../../DTOs/UserSerializerRestrictedDto';
 
 namespace SearchEmailViewModel {

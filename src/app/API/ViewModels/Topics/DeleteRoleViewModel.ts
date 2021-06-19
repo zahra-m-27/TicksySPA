@@ -1,11 +1,12 @@
 import BaseResponse from '../../Common/BaseResponse';
 
-namespace DeleteTopicViewModel {
+namespace DeleteRoleViewModel {
   export interface Request {
     topicId: number;
+    roleId: number;
   }
 
   export type Response = BaseResponse;
 }
 
-export default DeleteTopicViewModel;
+export default DeleteRoleViewModel;
