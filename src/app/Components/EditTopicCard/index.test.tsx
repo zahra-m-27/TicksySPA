@@ -22,10 +22,16 @@ const sample = (
     ]}
   />
 );
+const sample2 = <EditTopicCard icon={Assets.SVGs.Topic} title="Test Title" />;
 
 test('render in ReactDOM', () => {
   const div = document.createElement('div');
   ReactDOM.render(sample, div);
+});
+
+test('render in ReactDOM without button', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(sample2, div);
 });
 
 test('renders title', () => {
