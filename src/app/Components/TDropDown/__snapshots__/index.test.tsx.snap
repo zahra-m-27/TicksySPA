@@ -12,6 +12,7 @@ exports[`snapshot 1`] = `
   </p>
   <div
     className="content"
+    data-testid="dropdown-container"
     onClick={[Function]}
   >
     <img

@@ -45,6 +45,12 @@ test('render label', () => {
   getByText(/Test Label/i);
 });
 
+test('render label', () => {
+  const {getByTestId} = render(sample);
+  const dropdown = getByTestId('dropdown-container');
+  user.click(dropdown);
+});
+
 test('onSelect drop down', () => {
   const {getByText} = render(sample);
   const item1 = getByText(/تست1/i);
