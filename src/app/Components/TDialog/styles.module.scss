@@ -29,6 +29,7 @@ $dialog-background: #030202;
 .t_dialog_container {
   margin: auto;
   display: flex;
+  overflow: hidden;
   position: relative;
   border-radius: 5px;
   flex-direction: column;

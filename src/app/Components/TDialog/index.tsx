@@ -23,15 +23,27 @@ export default function showDialog({
     container = document.createElement('div');
     container.id = 'TDialog';
     container.setAttribute('style', 'display: contents');
-    document.getElementById('root')?.appendChild(container);
+    const root = document.getElementById('root');
+    if (root) {
+      root.appendChild(container);
+    } else {
+      const body = document.getElementsByTagName('body');
+      if (body) {
+        body.item(0)?.appendChild(container);
+      }
+    }
   }
 
   const element = document.createElement('div');
 
   const onClose = () => {
     if (element && container) {
-      ReactDOM.unmountComponentAtNode(element);
-      container.removeChild(element);
+      try {
+        ReactDOM.unmountComponentAtNode(element);
+        container.removeChild(element);
+      } catch {
+        //
+      }
       onDismiss && onDismiss();
     }
   };
@@ -59,7 +71,10 @@ function TDialog({
   showDismiss,
 }: ITDialog & {showDismiss: boolean}) {
   return (
-    <div className={styles.t_dialog} onClick={() => onDismiss && onDismiss()}>
+    <div
+      className={styles.t_dialog}
+      data-testid="dialog-container"
+      onClick={() => onDismiss && onDismiss()}>
       <div className={styles.t_dialog_bg} />
       <div
         style={{...style, ...(showDismiss ? {} : {padding: 0})}}
@@ -67,6 +82,7 @@ function TDialog({
         onClick={(e) => e.stopPropagation()}>
         {showDismiss && (
           <span
+            data-testid="dialog-close"
             className={styles.t_dialog_multiply_box}
             onClick={() => onDismiss && onDismiss()}>
             <img src={Assets.SVGs.Close} className={styles.t_dialog_multiply} />
