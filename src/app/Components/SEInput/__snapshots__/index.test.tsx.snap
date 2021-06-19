@@ -3,6 +3,7 @@
 exports[`snapshot Input 1`] = `
 <div
   className="input_container"
+  data-testid="input-container"
 >
   <div
     className="inner_container"
@@ -35,6 +36,7 @@ exports[`snapshot Input 1`] = `
 exports[`snapshot TextArea 1`] = `
 <div
   className="input_container"
+  data-testid="input-container"
 >
   <div
     className="inner_container"
