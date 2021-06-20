@@ -11,6 +11,7 @@ exports[`snapshot Input 1`] = `
   </label>
   <div
     className="input_container"
+    data-testid="input-container"
   >
     <input
       className="input_class"
