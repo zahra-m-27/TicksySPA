@@ -11,13 +11,20 @@ exports[`snapshot 1`] = `
       افزودن نقش
     </span>
     <img
+      alt="add"
       src="add_user_menu.svg"
     />
   </div>
   <div
     className="content"
+    style={
+      Object {
+        "visibility": undefined,
+      }
+    }
   >
     <img
+      alt="add"
       className="avatar"
       src="add_user.svg"
     />
@@ -31,6 +38,7 @@ exports[`snapshot 1`] = `
       </label>
       <div
         className="input_container"
+        data-testid="input-container"
       >
         <input
           className="input_class"
@@ -53,7 +61,9 @@ exports[`snapshot 1`] = `
           }
         }
       >
-        نقش جدید
+        <span>
+          نقش جدید
+        </span>
       </div>
       <div
         className="button"
@@ -64,9 +74,36 @@ exports[`snapshot 1`] = `
           }
         }
       >
-        ثبت نقش
+        <span>
+          ثبت نقش
+        </span>
       </div>
     </div>
+  </div>
+  <div
+    className="ant-spin ant-spin-lg ant-spin-spinning loading"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  >
+    <span
+      className="ant-spin-dot ant-spin-dot-spin"
+    >
+      <i
+        className="ant-spin-dot-item"
+      />
+      <i
+        className="ant-spin-dot-item"
+      />
+      <i
+        className="ant-spin-dot-item"
+      />
+      <i
+        className="ant-spin-dot-item"
+      />
+    </span>
   </div>
 </div>
 `;

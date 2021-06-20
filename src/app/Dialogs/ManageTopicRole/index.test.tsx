@@ -1,10 +1,16 @@
 import ReactDOM from 'react-dom';
-import React from 'react';
+import React, {useRef} from 'react';
 import {render} from '@testing-library/react';
 import renderer from 'react-test-renderer';
-import AddRoleDialog from './index';
+import ManageTopicRoleDialog from './index';
+import user from '@testing-library/user-event';
 
-const sample = <AddRoleDialog />;
+const Sample: React.FC = ({}) => {
+  const ref = useRef(() => {});
+  return <ManageTopicRoleDialog topicId={0} onDismissRef={ref} />;
+};
+
+const sample = <Sample />;
 
 test('render in ReactDOM', () => {
   const div = document.createElement('div');
@@ -25,6 +31,17 @@ it('render buttons', () => {
   const {getByText} = render(sample);
   getByText(/نقش جدید/i);
   getByText(/ثبت نقش/i);
+});
+
+it('open new dialog', async () => {
+  const {getByText, findByTestId} = render(sample);
+  const newRoleButton = getByText(/نقش جدید/i);
+  user.click(newRoleButton);
+  const closeButton = await findByTestId('dialog-close');
+  user.click(closeButton);
+  user.click(newRoleButton);
+  const dialogContainer = await findByTestId('dialog-container');
+  user.click(dialogContainer);
 });
 
 it('snapshot', () => {
