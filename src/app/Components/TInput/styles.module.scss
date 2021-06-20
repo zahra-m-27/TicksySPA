@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   margin-top: 10px;
+  position: relative;
   align-items: flex-end;
   flex-direction: column;
   font-size: clamp(14px, 1.1vw, 18px);
@@ -10,7 +11,7 @@
 .input_class {
   border: 0;
   width: 100%;
-  background: #dadde0;
+  background: inherit;
 }
 
 .input_container {
@@ -45,4 +46,51 @@
   margin: 0 10px;
   padding: 10px 0;
   overflow-x: auto;
+}
+
+.auto_complete_items {
+  top: 100%;
+  z-index: 2;
+  width: 100%;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+  border-radius: 8px;
+  visibility: hidden;
+  background-color: #eeeff1;
+  transform: translateY(-10px);
+  box-shadow: 0 0 0 0 #0000002e;
+
+  &[data-active='true'] {
+    opacity: 1;
+    visibility: unset;
+    transform: translateY(2px);
+    box-shadow: 0 0 7px 1px #0000002e;
+  }
+
+  .auto_complete_item {
+    color: #000;
+    margin: 0.5px;
+    display: flex;
+    text-align: end;
+    transition: all 0.3s;
+    padding: 15px 20px 15px 10px;
+
+    &:hover {
+      overflow: hidden;
+      position: relative;
+      border-radius: 5px;
+      background-color: #e8ebec;
+    }
+
+    p {
+      flex: 1;
+      margin: 0;
+    }
+
+    .checkmark {
+      width: 20px;
+    }
+  }
 }

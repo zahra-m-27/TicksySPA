@@ -1,7 +1,12 @@
 import {Tag} from 'antd';
 import styles from './styles.module.scss';
-import {InputHTMLAttributes, useEffect, useState} from 'react';
+import React, {InputHTMLAttributes, useEffect, useState} from 'react';
 import ClassNames from '../../Utilities/ClassNames';
+
+interface Item {
+  value: any;
+  label: string;
+}
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   icon?: string;
@@ -9,6 +14,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   regex?: RegExp;
   tags?: string[];
   content?: string;
+  minLines?: number;
   hasError?: boolean;
   className?: string;
   isNumeric?: boolean;
@@ -16,8 +22,12 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   iconClassName?: string;
   inputClassName?: string;
   labelClassName?: string;
+  autoCompleteData?: Item[];
+  autoCompleteClassName?: string;
   inputContainerClassName?: string;
+  autoCompleteItemClassName?: string;
   onTagClose?: (index: number) => void;
+  onAutoCompleteSelect?: (value: any) => void;
   onChangeText?: (text: string, HasError: boolean) => void;
 }
 
@@ -28,20 +38,25 @@ export default function TInput({
   regex,
   content,
   onEnter,
+  minLines,
   className,
   onTagClose,
   onChangeText,
+  iconClassName,
   inputClassName,
   labelClassName,
-  iconClassName,
+  autoCompleteData,
   hasError = false,
   isNumeric = false,
+  onAutoCompleteSelect,
+  autoCompleteClassName,
+  autoCompleteItemClassName,
   inputContainerClassName,
   ...props
 }: Props) {
   const tagColors = ['#9fa8b1'];
-  const [Content, setContent] = useState(content ?? '');
   const [HasError, setHasError] = useState(false);
+  const [Content, setContent] = useState(content ?? '');
 
   useEffect(() => {
     setContent(content ?? '');
@@ -94,19 +109,57 @@ export default function TInput({
   return (
     <div className={container_style}>
       <label className={label_style}>{label}</label>
-      <div className={input_container_style}>
+      <div className={input_container_style} data-testid="input-container">
         {icon && (
-          <img src={icon} className={[styles.icon, iconClassName].join(' ')} />
+          <img
+            src={icon}
+            className={[styles.icon, iconClassName].join(' ')}
+            alt="icon"
+          />
         )}
-        <input
-          dir="auto"
-          value={Content}
-          onChange={onChange}
-          className={input_style}
-          onKeyDown={(e) => e.key === 'Enter' && onEnter && onEnter()}
-          {...props}
-        />
+        {minLines ? (
+          <textarea
+            dir="auto"
+            rows={minLines}
+            value={Content}
+            onChange={onChange as any}
+            className={input_style}
+            {...(props as any)}
+          />
+        ) : (
+          <input
+            dir="auto"
+            value={Content}
+            onChange={onChange}
+            className={input_style}
+            onKeyDown={(e) => e.key === 'Enter' && onEnter && onEnter()}
+            {...props}
+          />
+        )}
       </div>
+
+      <div
+        className={ClassNames(
+          styles.auto_complete_items,
+          autoCompleteClassName
+        )}
+        data-active={!!autoCompleteData && !!autoCompleteData.length}>
+        {autoCompleteData &&
+          autoCompleteData.map((item) => (
+            <div
+              key={`${item.value}`}
+              className={ClassNames(
+                styles.auto_complete_item,
+                autoCompleteItemClassName
+              )}
+              onClick={() =>
+                onAutoCompleteSelect && onAutoCompleteSelect(item.value)
+              }>
+              <p>{item.label}</p>
+            </div>
+          ))}
+      </div>
+
       {tags && tags.length > 0 && (
         <div className={styles.tags_container}>
           {tags.map((tag, i) => (
