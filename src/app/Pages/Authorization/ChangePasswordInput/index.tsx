@@ -3,7 +3,7 @@ import {Button, message} from 'antd';
 import {useRef, useState} from 'react';
 import styles from './styles.module.scss';
 import SEInput from '../../../Components/SEInput';
-import {useHistory, useLocation} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 interface Props {
   className?: string;
@@ -11,7 +11,6 @@ interface Props {
 
 export default function ChangePasswordInput({className}: Props) {
   const history = useHistory();
-  const location = useLocation();
   const [Password, setPassword] = useState('');
   const [Loading, setLoading] = useState(false);
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
@@ -44,8 +43,8 @@ export default function ChangePasswordInput({className}: Props) {
     setLoading(true);
     API.Users.NewPasswordResetPassword({
       password: Password,
-      token: new URLSearchParams(location.search).get('token') ?? '',
-      uib64: new URLSearchParams(location.search).get('uib64') ?? '',
+      token: new URLSearchParams(history.location.search).get('token') ?? '',
+      uib64: new URLSearchParams(history.location.search).get('uib64') ?? '',
     })
       .then((response) => {
         localStorage.setItem('token', response.token);
@@ -70,6 +69,7 @@ export default function ChangePasswordInput({className}: Props) {
         onEnter={onPasswordEnter}
         onChangeText={setPassword}
         hasError={PasswordHasError}
+        data-testid="password-input"
         inputClassName={styles.input}
         className={styles.input_class}
         labelClassName={styles.input_label}
@@ -85,6 +85,7 @@ export default function ChangePasswordInput({className}: Props) {
         className={styles.input_class}
         onChangeText={setConfirmPassword}
         hasError={ConfirmPasswordHasError}
+        data-testid="repeat-password-input"
         labelClassName={styles.input_label}
         innerContainerClassName={styles.inner_container}
       />
@@ -92,6 +93,7 @@ export default function ChangePasswordInput({className}: Props) {
         type="primary"
         loading={Loading}
         onClick={onResetPassword}
+        data-testid="submit-button"
         className={styles.enter_button}>
         ثبت
       </Button>
