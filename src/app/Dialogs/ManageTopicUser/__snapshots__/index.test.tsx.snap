@@ -31,6 +31,7 @@ exports[`snapshot 1`] = `
       </label>
       <div
         className="input_container"
+        data-testid="input-container"
       >
         <img
           className="icon email_icon"
@@ -56,6 +57,7 @@ exports[`snapshot 1`] = `
       </p>
       <div
         className="content"
+        data-testid="dropdown-container"
         onClick={[Function]}
       >
         <img
@@ -98,7 +100,9 @@ exports[`snapshot 1`] = `
           }
         }
       >
-        کاربر جدید
+        <span>
+          کاربر جدید
+        </span>
       </div>
       <div
         className="button"
@@ -109,7 +113,9 @@ exports[`snapshot 1`] = `
           }
         }
       >
-        ثبت کاربر
+        <span>
+          ثبت کاربر
+        </span>
       </div>
     </div>
   </div>
