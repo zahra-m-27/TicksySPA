@@ -1,10 +1,15 @@
 import ReactDOM from 'react-dom';
-import React from 'react';
+import React, {useRef} from 'react';
 import {render} from '@testing-library/react';
 import renderer from 'react-test-renderer';
-import AddUserDialog from './index';
+import ForwardTicketDialog from './index';
 
-const sample = <AddUserDialog />;
+const Sample: React.FC = ({}) => {
+  const ref = useRef(() => {});
+  return <ForwardTicketDialog onDismissRef={ref} />;
+};
+
+const sample = <Sample />;
 
 test('render in ReactDOM', () => {
   const div = document.createElement('div');
@@ -13,23 +18,18 @@ test('render in ReactDOM', () => {
 
 it('render header', () => {
   const {getByText} = render(sample);
-  getByText(/افزودن کاربر/i);
+  getByText(/From:/i);
 });
 
-it('render email label', () => {
+it('render topic label', () => {
   const {getByText} = render(sample);
-  getByText(/ایمیل/i);
-});
-
-it('render role label', () => {
-  const {getByText} = render(sample);
-  getByText(/عنوان نقش/i);
+  getByText(/:عنوان تاپیک/i);
 });
 
 it('render buttons', () => {
   const {getByText} = render(sample);
-  getByText(/کاربر جدید/i);
-  getByText(/ثبت کاربر/i);
+  getByText(/ارسال/i);
+  getByText(/انصراف/i);
 });
 
 it('snapshot', () => {

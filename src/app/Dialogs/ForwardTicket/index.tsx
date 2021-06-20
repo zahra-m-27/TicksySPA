@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 import Assets from '../../Assets';
-import {MutableRefObject, useState} from 'react';
+import {MutableRefObject, useRef, useState} from 'react';
 import TDropDown from '../../Components/TDropDown';
 import TButton from '../../Components/TButton';
 import CategoryItem from './CategoryItem';
@@ -11,6 +11,7 @@ interface Props {
 
 export default function ForwardTicketDialog({onDismissRef}: Props) {
   const [Topic, setTopic] = useState<string>();
+
   const categories = [
     {
       label: 'نقش پیش فرض',
@@ -48,6 +49,7 @@ export default function ForwardTicketDialog({onDismissRef}: Props) {
         <span> سید علی علوی مسئول خدمات آموزش مجازی</span>
         <div className={styles.close_container}>
           <img
+            data-testid="close-button"
             src={Assets.SVGs.Close2}
             className={styles.close}
             onClick={() =>
@@ -70,8 +72,8 @@ export default function ForwardTicketDialog({onDismissRef}: Props) {
               label: 'تست 2',
             },
           ]}
-          onSelect={setTopic}
-          selectedItem={Topic}
+          onSelect={(values) => setTopic(values[0])}
+          selectedItem={[Topic]}
         />
         <span className={styles.label}>:دسته بندی</span>
         {!Topic && (
