@@ -49,7 +49,7 @@ export default function SignInInput({className}: Props) {
         API.Users.GetProfile({}).then((response) => {
           Login(response);
           setLoading(false);
-          if (location.pathname === '/sign-in') {
+          if (history.location.pathname === '/sign-in') {
             history.push('/');
           }
         });
@@ -105,7 +105,10 @@ export default function SignInInput({className}: Props) {
       <Link className={styles.switch} to="/sign-up">
         حساب کابری ندارم
       </Link>
-      <Link className={styles.forget_pass} to="/forgot-password">
+      <Link
+        className={styles.forget_pass}
+        to="/forgot-password"
+        data-testid="forgot-button">
         فراموشی گذرواژه
       </Link>
     </form>

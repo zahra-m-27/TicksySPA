@@ -9,6 +9,7 @@ exports[`snapshot 1`] = `
   </p>
   <div
     className="input_container input_class"
+    data-testid="input-container"
   >
     <div
       className="inner_container inner_container"
@@ -39,6 +40,7 @@ exports[`snapshot 1`] = `
   </div>
   <div
     className="input_container input_class"
+    data-testid="input-container"
   >
     <div
       className="inner_container inner_container"
@@ -102,6 +104,7 @@ exports[`snapshot 1`] = `
   </a>
   <a
     className="forget_pass"
+    data-testid="forgot-button"
     href="/forgot-password"
     onClick={[Function]}
   >
