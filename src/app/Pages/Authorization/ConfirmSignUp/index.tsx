@@ -3,21 +3,20 @@ import API from '../../../API';
 import Assets from '../../../Assets';
 import styles from './styles.module.scss';
 import {useEffect, useState} from 'react';
-import {Link, useHistory, useLocation} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 export default function ConfirmSignUpPage() {
   const history = useHistory();
-  const location = useLocation();
   const [Result, setResult] = useState<boolean>();
 
   useEffect(() => {
     API.Users.ConfirmSignUp({
-      token: new URLSearchParams(location.search).get('token') ?? '',
-      uib64: new URLSearchParams(location.search).get('uib64') ?? '',
+      token: new URLSearchParams(history.location.search).get('token') ?? '',
+      uib64: new URLSearchParams(history.location.search).get('uib64') ?? '',
     })
       .then(() => setResult(true))
       .catch(() => setResult(false));
-  }, []);
+  }, [history.location.search]);
 
   if (Result === undefined) {
     return (
@@ -31,7 +30,7 @@ export default function ConfirmSignUpPage() {
 
   if (Result)
     return (
-      <div className={styles.container}>
+      <div className={styles.container} data-testid="confirm-successful">
         <div className={styles.message_box}>
           <Assets.SVGs.SuccessTick className={styles.success} />
           <p className={styles.message}>
@@ -48,7 +47,7 @@ export default function ConfirmSignUpPage() {
     );
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="confirm-failed">
       <div className={styles.message_box}>
         <Assets.SVGs.Failed className={styles.success} />
         <p className={styles.message}>
