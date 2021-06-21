@@ -48,6 +48,7 @@ export default function ForgotPasswordInput({className}: Props) {
         regex={/^\S+@\S+$/}
         onChangeText={setEmail}
         hint="example@gmail.com"
+        data-testid="email-input"
         hasError={EmailHasError}
         onEnter={onForgotPassword}
         inputClassName={styles.input}
@@ -59,6 +60,7 @@ export default function ForgotPasswordInput({className}: Props) {
       <Button
         type="primary"
         loading={Loading}
+        data-testid="submit-button"
         onClick={onForgotPassword}
         className={styles.enter_button}>
         ثبت

@@ -9,6 +9,7 @@ exports[`snapshot 1`] = `
   </p>
   <div
     className="input_container input_class"
+    data-testid="input-container"
   >
     <div
       className="inner_container inner_container"
@@ -23,6 +24,7 @@ exports[`snapshot 1`] = `
         </p>
         <input
           className="input input input_label"
+          data-testid="email-input"
           dir="auto"
           onBlur={[Function]}
           onChange={[Function]}
@@ -37,6 +39,7 @@ exports[`snapshot 1`] = `
   </div>
   <button
     className="ant-btn ant-btn-primary enter_button"
+    data-testid="submit-button"
     onClick={[Function]}
     type="button"
   >
