@@ -1,10 +1,10 @@
-import API from '../../../../API';
+import API from '../../../../../API';
 import moment from 'jalali-moment';
-import Assets from '../../../../Assets';
+import Assets from '../../../../../Assets';
 import styles from './styles.module.scss';
 import {useEffect, useState} from 'react';
 import {Button, message, Spin} from 'antd';
-import UserIdentityDto from '../../../../API/DTOs/UserIdentityDto';
+import UserIdentityDto from '../../../../../API/DTOs/UserIdentityDto';
 
 export default function SubmitCertificate() {
   const [Loading, setLoading] = useState(false);
