@@ -1,25 +1,21 @@
-import ReactDOM from 'react-dom';
-import {render, waitFor} from '@testing-library/react';
+import {fireEvent, render, waitFor} from '@testing-library/react';
 import user from '@testing-library/user-event';
-import {MemoryRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import mockAllAPI from '../mocking';
 import App from '../../app/App';
+import {createMemoryHistory} from 'history';
 
+const history = createMemoryHistory();
 const sample = (
-  <MemoryRouter>
+  <Router history={history}>
     <App />
-  </MemoryRouter>
+  </Router>
 );
-
-it('renders in ReactDOM', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(sample, div);
-});
 
 it('sign up correctly', async () => {
   mockAllAPI();
 
-  expect(window.location.pathname).toEqual('/');
+  expect(history.location.pathname).toEqual('/');
 
   const {getByTestId} = render(sample);
 
@@ -27,7 +23,7 @@ it('sign up correctly', async () => {
 
   user.click(signUpButton);
 
-  expect(window.location.pathname).toEqual('/sign-up');
+  expect(history.location.pathname).toEqual('/sign-up');
 
   const email = getByTestId('email-input');
   const submit = getByTestId('submit-button');
@@ -36,15 +32,21 @@ it('sign up correctly', async () => {
   const firstName = getByTestId('first-name-input');
   const personalIdentity = getByTestId('personal-identity-input');
 
+  user.click(submit);
   user.type(lastName, 'User2');
-  user.type(firstName, 'Test1');
+  user.click(submit);
+  user.type(firstName, 'Test');
+  user.click(submit);
   user.type(password, 'TestPassword');
+  user.click(submit);
+  user.type(email, 'TestUse');
+  user.clear(email);
   user.type(email, 'TestUser@gmail.com');
+  user.click(submit);
   user.type(personalIdentity, '972023005');
-
   user.click(submit);
 
-  await waitFor(() => expect(window.location.pathname).toEqual('/sign-up'));
+  await waitFor(() => expect(history.location.pathname).toEqual('/sign-up'));
 
   user.clear(email);
   user.clear(password);
@@ -52,13 +54,47 @@ it('sign up correctly', async () => {
   user.clear(firstName);
   user.clear(personalIdentity);
 
-  user.type(lastName, 'User');
+  user.type(lastName, 'User2');
   user.type(firstName, 'Test');
   user.type(password, 'TestPassword');
-  user.type(email, 'TestUser@gmail.com');
   user.type(personalIdentity, '972023005');
+  user.type(email, 'duplicate@ticksy.ir');
+  user.click(submit);
+
+  await waitFor(() => expect(history.location.pathname).toEqual('/sign-up'));
+
+  user.clear(email);
+  user.clear(password);
+  user.clear(lastName);
+  user.clear(firstName);
+  user.clear(personalIdentity);
+
+  user.type(firstName, 'Test');
+
+  fireEvent.focus(firstName);
+  fireEvent.keyDown(firstName, {key: 'Enter', code: 13, charCode: 13});
+
+  user.type(lastName, 'User');
+
+  fireEvent.focus(lastName);
+  fireEvent.keyDown(lastName, {key: 'Enter', code: 13, charCode: 13});
+
+  user.type(email, 'TestUser@gmail.com');
+
+  fireEvent.focus(email);
+  fireEvent.keyDown(email, {key: 'Enter', code: 13, charCode: 13});
+
+  user.type(personalIdentity, '972023005');
+
+  fireEvent.focus(personalIdentity);
+  fireEvent.keyDown(personalIdentity, {key: 'Enter', code: 13, charCode: 13});
+
+  user.type(password, 'TestPassword');
+
+  fireEvent.focus(password);
+  fireEvent.keyDown(password, {key: 'Enter', code: 13, charCode: 13});
 
   user.click(submit);
 
-  await waitFor(() => expect(window.location.pathname).toEqual('/'));
+  await waitFor(() => expect(history.location.pathname).toEqual('/'));
 });
