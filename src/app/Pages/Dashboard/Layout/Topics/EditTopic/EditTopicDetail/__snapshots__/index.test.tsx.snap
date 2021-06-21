@@ -48,32 +48,7 @@ exports[`snapshot 1`] = `
           </label>
           <div
             className="input_container"
-          >
-            <div
-              className="inner_container input_container"
-            >
-              <div
-                className="content"
-              >
-                <input
-                  className="input"
-                  dir="auto"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  placeholder=""
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-          <label>
-            :شناسه
-          </label>
-          <div
-            className="input_container"
+            data-testid="input-container"
           >
             <div
               className="inner_container input_container"
@@ -104,6 +79,7 @@ exports[`snapshot 1`] = `
           </label>
           <div
             className="input_container"
+            data-testid="input-container"
           >
             <div
               className="inner_container input_container"
