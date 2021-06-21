@@ -11,24 +11,26 @@ import TTextArea from '../../Components/TTextArea';
 import TSelectFile from '../../Components/TSelectFile';
 import TDropDown from '../../Components/TDropDown';
 import TButton from '../../Components/TButton';
+import CategoryDto from '../../API/DTOs/CategoryDto';
 
 export default function CreateTicketPage() {
   const {user} = useUser();
   const history = useHistory();
-  const params = useParams<any>();
+  const params = useParams<{topicId: string}>();
   const [Topic, setTopic] = useState<TopicDto>();
   const [Title, setTitle] = useState('');
   const [Message, setMessage] = useState('');
   const [Attachment, setAttachment] = useState<File>();
   const [Loading, setLoading] = useState(false);
   const [Tags, setTags] = useState<string[]>([]);
+  const [Categories, setCategories] = useState<CategoryDto[]>([]);
   const messageRef = useRef<HTMLInputElement>(null);
   const [CurrentTag, setCurrentTag] = useState<string>('');
-  const [SelectedCategory, setSelectedCategory] = useState<string>();
+  const [SelectedCategory, setSelectedCategory] = useState<number>();
 
   useEffect(() => {
     API.Topics.GetTopic({
-      slug: params.username,
+      topicId: parseInt(params.topicId),
     })
       .then((response) => setTopic(response))
       .catch((error) => {
@@ -38,16 +40,23 @@ export default function CreateTicketPage() {
           message.error('اشکالی در دریافت اطلاعات تایپک رخ داده.');
         }
       });
+    API.Topics.GetTopicCategories({
+      topicId: parseInt(params.topicId),
+      limit: 100,
+      offset: 0,
+    }).then((response) => {
+      setCategories(response.results);
+    });
   }, []);
 
   const onCreateTicket = () => {
     setLoading(true);
-    API.Topics.CreateTicket({
+    API.Tickets.CreateTicket({
       priority: 1,
       title: Title,
       text: Message,
       tags: Tags.join(','),
-      slug: params.username,
+      section: SelectedCategory ?? 0,
       attachments: Attachment ? [Attachment] : [],
     })
       .then(() => history.replace('/dashboard/tickets'))
@@ -65,7 +74,7 @@ export default function CreateTicketPage() {
 
   let content = <Spin size="large" className={styles.loading} />;
 
-  if (Topic) {
+  if (Topic && Categories && Categories.length) {
     content = (
       <>
         <img
@@ -78,25 +87,17 @@ export default function CreateTicketPage() {
           {Topic.description}
         </p>
 
-        <TDropDown
-          className={styles.topic_type_container}
+        <TDropDown<number>
           label="دسته بندی تیکت"
-          items={[
-            {
-              label: '1 تست',
-              value: '1',
-            },
-            {
-              label: '2 تست',
-              value: '2',
-            },
-            {
-              label: '3 تست',
-              value: '3',
-            },
-          ]}
-          onSelect={setSelectedCategory}
-          selectedItem={SelectedCategory}
+          className={styles.topic_type_container}
+          items={Categories.map((item) => {
+            return {
+              label: item.title,
+              value: item.id,
+            };
+          })}
+          onSelect={(values) => setSelectedCategory(values[0])}
+          selectedItem={SelectedCategory ? [SelectedCategory] : []}
         />
 
         <TInput
