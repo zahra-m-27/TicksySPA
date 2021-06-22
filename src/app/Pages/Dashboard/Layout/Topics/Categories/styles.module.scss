@@ -1,0 +1,69 @@
+.container {
+  flex: 1;
+  display: flex;
+  padding: 15px 3vw;
+  background: #4c4c4c12;
+  flex-direction: column;
+
+  .topic {
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+    }
+
+    span {
+      margin: 0 15px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+  }
+
+  .not_data {
+    flex: 1;
+    display: flex;
+    margin-bottom: 20%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    svg {
+      width: 85px;
+      height: 85px;
+      fill: #5ea3d0;
+    }
+    .not_data_text {
+      font-size: 20px;
+      margin-top: 30px;
+      font-weight: 600;
+    }
+  }
+
+  .create {
+    &_no_data {
+      margin-top: 20px;
+
+      &_label {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+  }
+
+  .pagination {
+    margin-top: auto;
+    margin-bottom: 4rem;
+  }
+}
