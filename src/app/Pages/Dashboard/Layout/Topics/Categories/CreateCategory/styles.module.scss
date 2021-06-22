@@ -1,0 +1,28 @@
+.container {
+  flex: 1;
+  display: flex;
+  padding: 15px 3vw;
+  align-items: flex-end;
+  flex-direction: column;
+
+  .input_container {
+    background: #e6e9ec;
+  }
+
+  .input_icon {
+    filter: brightness(0.4);
+  }
+
+  .auto_complete {
+    background-color: #f4f5f6;
+  }
+
+  .auto_complete_item:hover {
+    background-color: #ebedee;
+  }
+
+  .submit {
+    margin-top: 15px;
+    align-self: flex-start;
+  }
+}
