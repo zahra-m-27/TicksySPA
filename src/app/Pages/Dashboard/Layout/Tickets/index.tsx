@@ -3,64 +3,52 @@ import moment from 'jalali-moment';
 import {Button, message} from 'antd';
 import Assets from '../../../../Assets';
 import styles from './styles.module.scss';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import SEInput from '../../../../Components/SEInput';
 import ClassNames from '../../../../Utilities/ClassNames';
 import TicketListItemDto from '../../../../API/DTOs/TicketListItemDto';
+import TPagination from '../../../../Components/TPagination';
 
 export default function Tickets() {
   const history = useHistory();
-  const params = useParams<any>();
+  const params = useParams<{sectionId?: string}>();
+
   const [Id, setId] = useState('');
+  const [Total, setTotal] = useState(1);
   const [Title, setTitle] = useState('');
   const [Search, setSearch] = useState('');
-  const [LastPage, setLastPage] = useState(1);
-  const [CurrentPage, setCurrentPage] = useState(1);
+  const [PageSize, setPageSize] = useState(5);
+  const [PageNumber, setPageNumber] = useState(0);
   const [Loading, setLoading] = useState<boolean>(false);
   const [Tickets, setTickets] = useState<TicketListItemDto[]>([]);
 
   const onSearch = () => {
     setSearch(Title ? Title : Id ? Id : '');
-    getTickets();
   };
 
   const getTickets = () => {
     setLoading(true);
-    if (params.id)
-      API.Topics.GetTopicTickets({
-        status: 0,
-        search: Search,
-        slug: params.id,
-        page: CurrentPage,
+    API.Tickets.GetTickets({
+      limit: PageSize,
+      search: Search,
+      offset: PageNumber * PageSize,
+      type: params.sectionId ? 2 : 1,
+      section__topic: params.sectionId ? parseInt(params.sectionId) : undefined,
+    })
+      .then((response) => {
+        setTickets(response.results);
+        setTotal(response.count);
       })
-        .then((response) => {
-          setTickets(response.results);
-          setLastPage(response.count / 10);
-        })
-        .catch(() => {
-          message.error('خطایی در دریافت تیکت ها رخ داده است');
-        })
-        .finally(() => setLoading(false));
-    else
-      API.Tickets.GetTickets({
-        status: 0,
-        search: Search,
-        page: CurrentPage,
+      .catch(() => {
+        message.error('خطایی در دریافت تیکت ها رخ داده است');
       })
-        .then((response) => {
-          setTickets(response.results);
-          setLastPage(response.count / 10);
-        })
-        .catch(() => {
-          message.error('خطایی در دریافت تیکت ها رخ داده است');
-        })
-        .finally(() => setLoading(false));
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
     getTickets();
-  }, [CurrentPage]);
+  }, [PageNumber, Search]);
 
   const statusClassName = (status: string) => {
     if (status === '4') return '#295cc0';
@@ -77,11 +65,11 @@ export default function Tickets() {
   };
 
   const openTicket = (id: number) => {
-    history.push('/dashboard/tickets/' + id);
+    history.push('/dashboard/ticket/' + id);
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.inner_top}>
           <div className={styles.input}>
@@ -106,101 +94,74 @@ export default function Tickets() {
           </Button>
         </div>
       </div>
-      <table className={styles.ticket_table}>
-        <th>شناسه</th>
-        <th>عنوان</th>
-        <th>وضعیت تیکت</th>
-        <th>تاریخ شروع</th>
-        <th>آخرین فعالیت</th>
-        {Tickets.map((ticket, index) => {
-          return (
-            <tr key={index}>
-              <td
-                className={styles.td_id}
-                onClick={() => openTicket(ticket.id)}>
-                {ticket.id}
-              </td>
-              <td
-                className={styles.td_title}
-                onClick={() => openTicket(ticket.id)}>
-                {ticket.title}
-              </td>
-              <td className={styles.td_condition}>
-                <div
-                  className={styles.td_condition_container}
-                  style={{
-                    background: statusClassName(ticket.status),
-                  }}>
-                  {statusLabel(ticket.status)}
-                </div>
-              </td>
-              <td className={styles.td_start}>
-                <span>
-                  {moment
-                    .utc(ticket.creation_date)
-                    .local()
-                    .locale('fa')
-                    .format('YYYY/MM/D')}
-                </span>
-                <span className={styles.hour}>
-                  {moment
-                    .utc(ticket.creation_date)
-                    .local()
-                    .locale('fa')
-                    .format('HH:mm')}
-                </span>
-              </td>
-              <td className={styles.td_last}>
-                <span>
-                  {moment
-                    .utc(ticket.last_update)
-                    .local()
-                    .locale('fa')
-                    .format('YYYY/MM/D')}
-                </span>
-                <span className={styles.hour}>
-                  {moment
-                    .utc(ticket.creation_date)
-                    .local()
-                    .locale('fa')
-                    .format('HH:mm')}
-                </span>
-              </td>
-            </tr>
-          );
-        })}
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>شناسه</th>
+            <th>عنوان</th>
+            <th>وضعیت تیکت</th>
+            <th>تاریخ شروع</th>
+            <th>آخرین فعالیت</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Tickets.map((ticket, index) => {
+            return (
+              <tr key={index} onClick={() => openTicket(ticket.id)}>
+                <td>{ticket.id}</td>
+                <td>{ticket.title}</td>
+                <td>
+                  <div
+                    className={styles.td_condition_container}
+                    style={{
+                      background: statusClassName(ticket.status),
+                    }}>
+                    {statusLabel(ticket.status)}
+                  </div>
+                </td>
+                <td>
+                  <span>
+                    {moment
+                      .utc(ticket.creation_date)
+                      .local()
+                      .locale('fa')
+                      .format('YYYY/MM/D')}
+                  </span>
+                  <span>
+                    {moment
+                      .utc(ticket.creation_date)
+                      .local()
+                      .locale('fa')
+                      .format('HH:mm')}
+                  </span>
+                </td>
+                <td>
+                  <span>
+                    {moment
+                      .utc(ticket.last_update)
+                      .local()
+                      .locale('fa')
+                      .format('YYYY/MM/D')}
+                  </span>
+                  <span>
+                    {moment
+                      .utc(ticket.creation_date)
+                      .local()
+                      .locale('fa')
+                      .format('HH:mm')}
+                  </span>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
-      <div className={styles.pagination}>
-        <Assets.SVGs.LessThan
-          className={styles.move_button}
-          onClick={() => CurrentPage - 1 > 0 && setCurrentPage(CurrentPage - 1)}
-        />
-        <div className={styles.divider} />
-        {CurrentPage - 1 > 0 && (
-          <div
-            className={styles.pagination_page}
-            onClick={() => setCurrentPage(CurrentPage - 1)}>
-            {CurrentPage - 1}
-          </div>
-        )}
-        <div className={ClassNames(styles.pagination_page, styles.active)}>
-          {CurrentPage}
-        </div>
-        {CurrentPage + 1 < LastPage && (
-          <div
-            className={styles.pagination_page}
-            onClick={() => setCurrentPage(CurrentPage + 1)}>
-            {CurrentPage + 1}
-          </div>
-        )}
-        <div className={styles.divider} />
-        <Assets.SVGs.MoreThan
-          className={styles.move_button}
-          onClick={() =>
-            CurrentPage + 1 < LastPage && setCurrentPage(CurrentPage + 1)
-          }
-        />
-      </div>
+      <TPagination
+        total={Total}
+        pageSize={PageSize}
+        pageNumber={PageNumber + 1}
+        onChange={(value) => setPageNumber(value - 1)}
+      />
     </div>
   );
 }

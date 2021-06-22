@@ -1,19 +1,19 @@
-import API from '../../../../API';
+import API from '../../../../../API';
 import moment from 'jalali-moment';
 import {message, Spin} from 'antd';
-import Assets from '../../../../Assets';
+import Assets from '../../../../../Assets';
 import styles from './styles.module.scss';
 import {useParams} from 'react-router-dom';
-import useUser from '../../../../Hooks/useUser';
+import useUser from '../../../../../Hooks/useUser';
 import React, {useEffect, useRef, useState} from 'react';
-import SEInput from '../../../../Components/SEInput';
-import TicketDto from '../../../../API/DTOs/TicketDto';
-import showDialog from '../../../../Components/TDialog';
-import ForwardTicketDialog from '../../../../Dialogs/ForwardTicket';
+import SEInput from '../../../../../Components/SEInput';
+import TicketDto from '../../../../../API/DTOs/TicketDto';
+import showDialog from '../../../../../Components/TDialog';
+import ForwardTicketDialog from '../../../../../Dialogs/ForwardTicket';
 
 export default function Ticket() {
   const {user} = useUser();
-  const params = useParams<any>();
+  const params = useParams<{ticketId: string}>();
   const dismissDialog = useRef<() => void>();
   const [Ticket, setTicket] = useState<TicketDto>();
   const [Message, setMessage] = useState('');
@@ -22,7 +22,7 @@ export default function Ticket() {
   const [MessageHasError, setMessageHasError] = useState(false);
 
   const getData = () => {
-    API.Tickets.GetTicket({id: params.id}).then((response) => {
+    API.Tickets.GetTicket({id: parseInt(params.ticketId)}).then((response) => {
       setTicket(response);
     });
   };
@@ -45,7 +45,7 @@ export default function Ticket() {
 
     setLoading(true);
     API.Tickets.CreateTicketMessage({
-      id: params.id,
+      id: parseInt(params.ticketId),
       text: Message,
       attachments: attachments,
     })
@@ -170,11 +170,11 @@ export default function Ticket() {
                 )}
               </div>
               <p dir="auto" className={styles.message_content}>
-                {message.text.split('\n').map((line) => (
-                  <>
+                {message.text.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
                     {line}
                     <br />
-                  </>
+                  </React.Fragment>
                 ))}
               </p>
               <div className={styles.message_time}>
