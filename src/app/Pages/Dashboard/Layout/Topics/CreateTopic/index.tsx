@@ -1,15 +1,14 @@
-import API from '../../../../API';
+import API from '../../../../../API';
 import {Button, message} from 'antd';
-import Assets from '../../../../Assets';
+import Assets from '../../../../../Assets';
 import {useRef, useState} from 'react';
 import styles from './styles.module.scss';
 import {useHistory} from 'react-router-dom';
-import SEInput from '../../../../Components/SEInput';
+import SEInput from '../../../../../Components/SEInput';
 
 export default function CreateTopic() {
   const history = useHistory();
   const [Title, setTitle] = useState('');
-  const [Username, setUsername] = useState('');
   const [Avatar, setAvatar] = useState<File>();
   const [Loading, setLoading] = useState(false);
   const [AvatarUrl, setAvatarUrl] = useState<any>();
@@ -17,7 +16,6 @@ export default function CreateTopic() {
   const [Description, setDescription] = useState('');
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const [TitleHasError, setTitleHasError] = useState(false);
-  const [UsernameHasError, setUsernameHasError] = useState(false);
   const [DescriptionHasError, setDescriptionHasError] = useState(false);
 
   const onTitleEnter = () => {
@@ -35,28 +33,22 @@ export default function CreateTopic() {
     if (!Title) {
       setTitleHasError(true);
     }
-    if (!Username) {
-      setUsernameHasError(true);
-    }
     if (!Description) {
       setDescriptionHasError(true);
     }
     if (!Avatar) {
       message.error('برای تاپیک خود یک آواتار انتخاب کنید');
     }
-    if (!Title || !Username || !Description || !Avatar) {
+    if (!Title || !Description || !Avatar) {
       return;
     }
     setTitleHasError(false);
-    setUsernameHasError(false);
     setDescriptionHasError(false);
 
     setLoading(true);
     API.Topics.CreateTopic({
       title: Title,
       avatar: Avatar,
-      slug: Username,
-      supporters_ids: [],
       description: Description,
     })
       .then(() => {
@@ -111,15 +103,6 @@ export default function CreateTopic() {
             onEnter={onTitleEnter}
             onChangeText={setTitle}
             hasError={TitleHasError}
-            innerContainerClassName={styles.input}
-          />
-          <label>:شناسه</label>
-          <SEInput
-            ref={usernameRef}
-            content={Username}
-            onEnter={onUsernameEnter}
-            onChangeText={setUsername}
-            hasError={UsernameHasError}
             innerContainerClassName={styles.input}
           />
         </div>
