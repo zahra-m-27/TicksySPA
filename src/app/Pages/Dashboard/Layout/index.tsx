@@ -7,7 +7,7 @@ import {breadcrumbFindRoute, getRoutes} from '../../../Utilities';
 
 export default function DashboardLayout() {
   const history = useHistory();
-  const breadcrumb = breadcrumbFindRoute(window.location.pathname, routes, []);
+  const breadcrumb = breadcrumbFindRoute(history.location.pathname, routes, []);
 
   return (
     <>

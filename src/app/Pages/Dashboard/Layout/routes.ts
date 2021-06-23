@@ -1,10 +1,12 @@
 import Profile from './Profile';
 import Topics from './Topics';
-import CreateTopic from './CreateTopic';
 import Tickets from './Tickets';
-import Ticket from './Ticket';
-import SubmitCertificate from './SubmitCertificate';
-import EditTopic from './EditTopic';
+import Ticket from './Tickets/Ticket';
+import SubmitCertificate from './Profile/SubmitCertificate';
+import EditTopic from './Topics/EditTopic';
+import CreateTopic from './Topics/CreateTopic';
+import Categories from './Topics/Categories';
+import CreateCategory from './Topics/Categories/CreateCategory';
 
 export interface DashboardRoute {
   name?: string;
@@ -22,16 +24,14 @@ const routes: DashboardRoute[] = [
     redirect: '/tickets',
     children: [
       {
-        path: '/tickets',
-        name: 'تیکت ها',
+        path: '/tickets/:sectionId',
+        name: 'تیکت های بخش',
         component: Tickets,
-        children: [
-          {
-            path: '/tickets/:id',
-            name: 'محتوای تیکت',
-            component: Ticket,
-          },
-        ],
+      },
+      {
+        path: '/tickets',
+        name: 'تیکت های من',
+        component: Tickets,
       },
       {
         path: '/topics',
@@ -44,16 +44,28 @@ const routes: DashboardRoute[] = [
             component: CreateTopic,
           },
           {
-            path: '/topics/edit/:id',
+            path: '/topics/edit/:topicId',
             name: 'ویرایش تاپیک',
             component: EditTopic,
           },
           {
-            path: '/topics/:id',
-            name: 'تیکت های تاپیک',
-            component: Tickets,
+            path: '/topics/:topicId',
+            name: 'دسته بندی های تاپیک',
+            component: Categories,
+            children: [
+              {
+                name: 'ایجاد دسته بندی',
+                component: CreateCategory,
+                path: '/topics/:topicId/new',
+              },
+            ],
           },
         ],
+      },
+      {
+        path: '/ticket/:sectionId',
+        name: 'محتوای تیکت',
+        component: Ticket,
       },
       {
         path: '/submit-certificate',
