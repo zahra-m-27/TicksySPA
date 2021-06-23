@@ -1,19 +1,20 @@
 import API from '../../../../API';
-import TopicCard from './TopicCard';
+import TopicCard from '../../../../Components/TopicCard';
 import Assets from '../../../../Assets';
 import styles from './styles.module.scss';
 import {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import TopicsDto from '../../../../API/DTOs/TopicsDto';
+import TopicListItemDto from '../../../../API/DTOs/TopicListItemDto';
 import {message} from 'antd';
 
 export default function Topics() {
   const history = useHistory();
-  const [Topics, setTopics] = useState<TopicsDto[]>([]);
+  const [Topics, setTopics] = useState<TopicListItemDto[]>([]);
 
   useEffect(() => {
     API.Topics.GetTopics({
-      page: 1,
+      limit: 100,
+      offset: 0,
     })
       .then((response) => {
         setTopics(
@@ -43,9 +44,9 @@ export default function Topics() {
         {Topics.map((item, index) => (
           <TopicCard
             key={index}
+            topicId={item.id}
             title={item.title}
             avatar={item.avatar}
-            username={item.slug}
             description={item.description}
           />
         ))}
