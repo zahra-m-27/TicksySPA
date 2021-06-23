@@ -2,19 +2,25 @@ import styles from './styles.module.scss';
 import {useHistory} from 'react-router-dom';
 
 interface Props {
-  slug: string;
   icon: string;
   title: string;
   badge: string;
+  topicId: number;
   description: string;
 }
 
-export default function Topic({slug, icon, title, badge, description}: Props) {
+export default function Topic({
+  topicId,
+  icon,
+  title,
+  badge,
+  description,
+}: Props) {
   const history = useHistory();
   return (
     <div
       className={styles.topic}
-      onClick={() => history.push('/ticket/' + slug)}>
+      onClick={() => history.push('/ticket/' + topicId)}>
       <div className={styles.topic_badge}>
         <img src={badge} alt="" />
       </div>

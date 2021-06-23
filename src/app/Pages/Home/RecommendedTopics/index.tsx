@@ -18,8 +18,9 @@ export default function RecommendedTopics() {
   const [Topics, setTopics] = useState<RecommendedTopicsDto[]>(initialTopics);
 
   useEffect(() => {
-    API.GetRecommendedTopics.GetRecommendedTopics({
-      page: 1,
+    API.Topics.GetRecommendedTopics({
+      offset: 0,
+      limit: 100,
     })
       .then((response) => {
         if (IsMount.current)
@@ -44,7 +45,7 @@ export default function RecommendedTopics() {
         {Topics.map((topic, key) => (
           <Topic
             key={key}
-            slug={topic.slug}
+            topicId={topic.id}
             icon={topic.avatar}
             title={topic.title}
             description={topic.description}
