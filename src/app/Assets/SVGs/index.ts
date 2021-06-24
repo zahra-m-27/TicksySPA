@@ -11,6 +11,7 @@ import Camera from './Files/camera.svg';
 import Delete from './Files/delete.svg';
 import Attach from './Components/Attach';
 import Close2 from './Files/close_2.svg';
+import SadSvg from './Components/SadSVG';
 import History from './Files/history.svg';
 import Twitter from './Files/twitter.svg';
 import AddUser from './Files/add_user.svg';
@@ -37,8 +38,9 @@ import UserAvatar from './Files/user_avatar.svg';
 import PaperPlane from './Components/PaperPlane';
 import ProfileSvg from './Components/ProfileSvg';
 import OldMaleUser from './Components/OldMaleUser';
-import ReactLogoSvg from './Components/ReactLogoSvg';
 import AddUserMenu from './Files/add_user_menu.svg';
+import ReactLogoSvg from './Components/ReactLogoSvg';
+import CheckmarkSVG from './Components/CheckmarkSVG';
 import SuccessTick from './Components/SuccessTickSVG';
 import DefaultAvatar from './Files/default_avatar.svg';
 import OldMaleUserSVG from './Files/old_male_user.svg';
@@ -54,6 +56,7 @@ const SVGs = {
   Minus,
   Topic,
   Close,
+  SadSvg,
   Failed,
   Camera,
   Attach,
@@ -89,6 +92,7 @@ const SVGs = {
   OldMaleUser,
   AddPhotoSVG,
   SuccessTick,
+  CheckmarkSVG,
   ReactLogoSvg,
   DefaultAvatar,
   OldMaleUserSVG,

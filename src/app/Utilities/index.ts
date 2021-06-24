@@ -8,7 +8,7 @@ export function breadcrumbFindRoute(
   const resultRoute = routes.find((route) =>
     new RegExp(
       ('^/dashboard' + route.path)
-        .replace(/\/:(.*?)(\/|$)/g, '/(.*?)/')
+        .replace(/\/:(.*?)(\/|$)/g, '/([^/]*?)/')
         .replace(/\/$/i, '') + '$'
     ).test(path.replace(/\/$/i, ''))
   );
