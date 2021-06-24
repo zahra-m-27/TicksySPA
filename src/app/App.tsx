@@ -1,29 +1,27 @@
 import routes from './routes';
 import UserProvider from './Providers/UserProvider';
 import AuthorizedRoute from './Components/AuthorizedRoute';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 export default function App() {
   return (
-    <Router>
-      <UserProvider>
-        <Switch>
-          {routes.map((item, key) => {
-            if (item.needAuthorize) {
-              return (
-                <AuthorizedRoute
-                  key={key}
-                  path={item.path}
-                  component={item.component}
-                />
-              );
-            }
+    <UserProvider>
+      <Switch>
+        {routes.map((item, key) => {
+          if (item.needAuthorize) {
             return (
-              <Route key={key} path={item.path} component={item.component} />
+              <AuthorizedRoute
+                key={key}
+                path={item.path}
+                component={item.component}
+              />
             );
-          })}
-        </Switch>
-      </UserProvider>
-    </Router>
+          }
+          return (
+            <Route key={key} path={item.path} component={item.component} />
+          );
+        })}
+      </Switch>
+    </UserProvider>
   );
 }

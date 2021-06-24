@@ -28,7 +28,7 @@ const routes: Route[] = [
   {
     needAuthorize: true,
     component: CreateTicket,
-    path: ['/ticket/:username'],
+    path: ['/ticket/:topicId'],
   },
   {
     path: ['/'],

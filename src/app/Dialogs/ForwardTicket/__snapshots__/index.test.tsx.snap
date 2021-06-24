@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="header"
+  >
+    <img
+      className="arrow_right"
+      src="arrow_right.svg"
+    />
+    <img
+      className="arrow_down"
+      src="arrow_down.png"
+    />
+    <div
+      className="spliter"
+    />
+    <span
+      className="from"
+    >
+      From:
+    </span>
+    <span>
+       سید علی علوی مسئول خدمات آموزش مجازی
+    </span>
+    <div
+      className="close_container"
+    >
+      <img
+        className="close"
+        data-testid="close-button"
+        onClick={[Function]}
+        src="close_2.svg"
+      />
+    </div>
+  </div>
+  <div
+    className="content"
+  >
+    <span
+      className="label"
+    >
+      :عنوان تاپیک
+    </span>
+    <div
+      className="container topic_drop_down"
+      data-open={false}
+    >
+      <p
+        className="label"
+      />
+      <div
+        className="content"
+        data-testid="dropdown-container"
+        onClick={[Function]}
+      >
+        <img
+          alt="arrow down"
+          className="arrow_down"
+          src="arrow_down.svg"
+        />
+        <p
+          className="selected_item_label"
+        >
+          انتخاب كنيد
+        </p>
+      </div>
+      <div
+        className="items"
+      >
+        <p
+          className="item"
+          onClick={[Function]}
+        >
+          تست 1
+        </p>
+        <p
+          className="item"
+          onClick={[Function]}
+        >
+          تست 2
+        </p>
+      </div>
+    </div>
+    <span
+      className="label"
+    >
+      :دسته بندی
+    </span>
+    <div
+      className="no_topic"
+    >
+      <img
+        src="papers.png"
+      />
+      <p
+        dir="auto"
+      >
+        !شما هنوز تاپیکی را انتخاب نکرده اید
+      </p>
+    </div>
+  </div>
+  <div
+    className="footer"
+  >
+    <div
+      className="button"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#0088e3",
+        }
+      }
+    >
+      <span>
+        ارسال
+      </span>
+    </div>
+    <div
+      className="button"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#606f7b",
+        }
+      }
+    >
+      <span>
+        انصراف
+      </span>
+    </div>
+  </div>
+</div>
+`;
