@@ -118,7 +118,14 @@ export function Get<T extends BaseResponse>(
       headers['Authorization'] = `Token ${token}`;
     }
 
-    fetch(BaseUrl + url + '?' + new URLSearchParams(data), {
+    const params = new URLSearchParams(data);
+    params.forEach((v: any, k: any) => {
+      if (v === 'undefined') {
+        params.delete(k);
+      }
+    });
+
+    fetch(BaseUrl + url + '?' + params, {
       method: 'GET',
       headers: headers,
     })
