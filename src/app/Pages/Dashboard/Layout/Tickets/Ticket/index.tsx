@@ -13,8 +13,8 @@ import ForwardTicketDialog from '../../../../../Dialogs/ForwardTicket';
 
 export default function Ticket() {
   const {user} = useUser();
-  const params = useParams<{ticketId: string}>();
   const dismissDialog = useRef<() => void>();
+  const params = useParams<{ticketId: string}>();
   const [Ticket, setTicket] = useState<TicketDto>();
   const [Message, setMessage] = useState('');
   const [Attachment, setAttachment] = useState<File>();

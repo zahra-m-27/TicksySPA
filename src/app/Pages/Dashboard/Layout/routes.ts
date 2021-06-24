@@ -63,7 +63,7 @@ const routes: DashboardRoute[] = [
         ],
       },
       {
-        path: '/ticket/:sectionId',
+        path: '/ticket/:ticketId',
         name: 'محتوای تیکت',
         component: Ticket,
       },
