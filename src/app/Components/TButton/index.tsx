@@ -5,6 +5,7 @@ import ClassNames from '../../Utilities/ClassNames';
 interface Props {
   label?: string;
   className?: string;
+  disabled?: boolean;
   onClick?: () => void;
   labelClassName?: string;
   backgroundColor?: string;
@@ -13,15 +14,19 @@ interface Props {
 export default function TButton({
   label,
   onClick,
+  disabled,
   className,
   labelClassName,
   backgroundColor,
+  ...props
 }: Props) {
   return (
     <div
-      className={ClassNames(styles.button, className)}
       onClick={onClick}
-      style={{backgroundColor}}>
+      data-disabled={disabled}
+      style={{backgroundColor}}
+      className={ClassNames(styles.button, className)}
+      {...props}>
       <span className={ClassNames(styles.label, labelClassName)}>{label}</span>
     </div>
   );

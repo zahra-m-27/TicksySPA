@@ -23,9 +23,9 @@ it('render label', () => {
 
 it('render background', () => {
   const {getByText} = render(sample);
-  const buttonElement = getByText(/Test Label/i);
+  const labelElement = getByText(/Test Label/i);
   expect(
-    buttonElement.style.backgroundColor === 'rgb(35, 35, 35)'
+    labelElement.parentElement?.style.backgroundColor === 'rgb(35, 35, 35)'
   ).toBeTruthy();
 });
 
