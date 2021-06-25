@@ -177,6 +177,8 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
       'geekblue',
     ];
 
+    const {onBlur: _1, onFocus: _2, onChange: _3, ...textAreaProps} = props;
+
     return (
       <div className={inputContainerStyle} data-testid="input-container">
         <div className={innerContainer}>
@@ -196,10 +198,11 @@ const SEInput = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
                   labelClassName
                 )}
                 ref={ref as React.RefObject<HTMLTextAreaElement>}
+                {...(textAreaProps as any)}
               />
             ) : (
               <input
-                dir="auto"
+                dir="rtl"
                 type={Type}
                 value={Content}
                 onBlur={onBlur}

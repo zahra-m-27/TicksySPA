@@ -5,6 +5,7 @@ import ClassNames from '../../Utilities/ClassNames';
 
 interface IButton {
   label: string;
+  testId?: string;
   loading?: boolean;
   className?: string;
   onClick?: () => void;
@@ -13,8 +14,8 @@ interface IButton {
 interface Props {
   icon?: string;
   title: string;
-  buttons?: IButton[];
   className?: string;
+  buttons?: IButton[];
   headerClassName?: string;
   contentClassName?: string;
 }
@@ -43,6 +44,7 @@ const EditTopicCard: React.FC<Props> = ({
           type="primary"
           onClick={button.onClick}
           loading={button.loading}
+          data-testid={button.testId}
           className={button.className}>
           {button.label}
         </Button>

@@ -18,7 +18,7 @@ exports[`snapshot Input 1`] = `
       </p>
       <input
         className="input"
-        dir="auto"
+        dir="rtl"
         name="email"
         onBlur={[Function]}
         onChange={[Function]}
@@ -51,6 +51,7 @@ exports[`snapshot TextArea 1`] = `
       </p>
       <textarea
         className="input"
+        name="email"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
