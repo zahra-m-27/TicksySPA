@@ -2,7 +2,7 @@ import CategoryDto from './CategoryDto';
 import AdminsFieldDto from './AdminsFieldDto';
 import UserSerializerRestrictedDto from './UserSerializerRestrictedDto';
 
-export default interface TopicAllDetail {
+export default interface TopicAllDetailDto {
   id: number;
   creator: UserSerializerRestrictedDto;
   role: string;

@@ -5,13 +5,11 @@ namespace GetTopicUsersViewModel {
   export interface Request {
     limit: number;
     offset: number;
-    topicId: string;
+    topicId: number;
   }
 
   export interface Response extends BaseResponse {
-    next: string;
     count: number;
-    previous: string;
     results: TopicUsersListSerializerDto[];
   }
 }

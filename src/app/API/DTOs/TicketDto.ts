@@ -14,5 +14,6 @@ export default interface TicketDto {
   creation_date: Date;
   admins: AdminsFieldDto[];
   message_set: MessageDto[];
+  other_sections: CategoryDto[];
   creator: UserSerializerRestrictedDto;
 }

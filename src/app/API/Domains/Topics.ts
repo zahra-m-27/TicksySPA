@@ -63,7 +63,7 @@ function DeleteTopic(args: DeleteTopicViewModel.Request) {
 }
 
 function TopicAllDetail(args: TopicAllDetailViewModel.Request) {
-  return Get<TopicAllDetailViewModel.Response>(`/all-topics/`, args);
+  return Get<TopicAllDetailViewModel.Response>(`all-topics/`, args);
 }
 
 function GetRecommendedTopics(args: GetRecommendedTopicsViewModel.Request) {

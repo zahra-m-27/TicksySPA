@@ -6,6 +6,7 @@ namespace GetTicketsViewModel {
     limit: number;
     offset: number;
     search: string;
+    section?: number;
     section__topic?: number;
     status?: number;
     type: number;

@@ -9,7 +9,7 @@ namespace UpdateCategoryViewModel {
     admin: number;
     title: string;
     description: string;
-    avatar: string;
+    avatar?: string;
   }
 
   export interface Response extends BaseResponse, CategoryDto {}

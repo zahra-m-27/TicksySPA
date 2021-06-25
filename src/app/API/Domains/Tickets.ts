@@ -5,6 +5,7 @@ import CreateTicketViewModel from '../ViewModels/Tickets/CreateTicketViewModel';
 import CreateTicketMessageViewModel from '../ViewModels/Tickets/CreateTicketMessageViewModel';
 import UpdateMessageRateViewModel from '../ViewModels/Tickets/UpdateMessageRateViewModel';
 import EditTicketViewModel from '../ViewModels/Tickets/EditTicketViewModel';
+import ForwardTicketSectionViewModel from '../ViewModels/Tickets/ForwardTicketSectionViewModel';
 
 const ControllerName = 'ticket';
 
@@ -60,6 +61,15 @@ function EditTicket(args: EditTicketViewModel.Request) {
   );
 }
 
+function ForwardTicketSection(args: ForwardTicketSectionViewModel.Request) {
+  const {ticketId, ...data} = args;
+  return Post<ForwardTicketSectionViewModel.Response>(
+    ControllerName + `/${ticketId}/`,
+    data,
+    'PATCH'
+  );
+}
+
 const Actions = {
   GetTicket,
   GetTickets,
@@ -67,6 +77,7 @@ const Actions = {
   CreateTicket,
   UpdateMessageRate,
   CreateTicketMessage,
+  ForwardTicketSection,
 };
 
 export default Actions;
