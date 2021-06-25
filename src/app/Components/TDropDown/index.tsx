@@ -2,7 +2,6 @@ import {useEffect, useRef, useState} from 'react';
 import Assets from '../../Assets';
 import styles from './styles.module.scss';
 import ClassNames from '../../Utilities/ClassNames';
-import {log} from 'util';
 
 interface Item<T> {
   value: T;

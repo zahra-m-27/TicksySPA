@@ -45,7 +45,7 @@ test('render label', () => {
   getByText(/Test Label/i);
 });
 
-test('render label', () => {
+test('open items', () => {
   const {getByTestId} = render(sample);
   const dropdown = getByTestId('dropdown-container');
   user.click(dropdown);
@@ -56,7 +56,7 @@ test('onSelect drop down', () => {
   const item1 = getByText(/تست1/i);
   user.click(item1);
   expect(onSelect).toBeCalledTimes(1);
-  expect(onSelect).toBeCalledWith('val1');
+  expect(onSelect).toBeCalledWith(['val1']);
 });
 
 it('snapshot', () => {
