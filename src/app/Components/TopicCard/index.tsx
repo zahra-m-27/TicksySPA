@@ -29,6 +29,7 @@ export default function TopicCard({
       <div className={styles.card_footer}>
         <img
           alt="edit"
+          data-testid="edit_topic"
           src={Assets.Images.Edit}
           className={styles.card_edit}
           onClick={() => history.push('/dashboard/topics/edit/' + topicId)}
