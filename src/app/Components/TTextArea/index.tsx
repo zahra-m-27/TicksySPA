@@ -10,6 +10,8 @@ interface Props {
 
 const TTextArea = React.forwardRef<FroalaEditor, Props>(
   ({content, placeholder, onChange}, ref) => {
+    if (process.env.JEST_WORKER_ID) return <input ref={ref as any} />;
+
     return (
       <FroalaEditor
         ref={ref}

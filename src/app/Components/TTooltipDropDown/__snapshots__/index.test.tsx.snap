@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="container"
+  data-open={false}
+>
+  <div>
+    <div />
+  </div>
+  <div
+    className="items"
+  >
+    <div
+      className="item"
+      onClick={[Function]}
+    >
+      <span>
+        تست1
+      </span>
+    </div>
+    <div
+      className="item"
+      onClick={[Function]}
+    >
+      <span>
+        تست2
+      </span>
+    </div>
+    <div
+      className="item"
+      onClick={[Function]}
+    >
+      <span>
+        تست3
+      </span>
+    </div>
+  </div>
+</div>
+`;
