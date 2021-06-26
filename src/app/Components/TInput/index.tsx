@@ -119,7 +119,7 @@ export default function TInput({
         )}
         {minLines ? (
           <textarea
-            dir="auto"
+            dir="rtl"
             rows={minLines}
             value={Content}
             onChange={onChange as any}
@@ -128,7 +128,7 @@ export default function TInput({
           />
         ) : (
           <input
-            dir="auto"
+            dir="rtl"
             value={Content}
             onChange={onChange}
             className={input_style}

@@ -15,12 +15,16 @@ exports[`snapshot Input 1`] = `
   >
     <input
       className="input_class"
-      dir="auto"
+      dir="rtl"
       name="email"
       onChange={[Function]}
       onKeyDown={[Function]}
       value="Test Content"
     />
   </div>
+  <div
+    className="auto_complete_items"
+    data-active={false}
+  />
 </div>
 `;
