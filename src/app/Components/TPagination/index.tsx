@@ -23,6 +23,7 @@ export default function TPagination({
   return (
     <div className={ClassNames(styles.pagination, className)}>
       <Assets.SVGs.MoreThan
+        data-testid="previous_page_arrow"
         className={styles.move_button}
         onClick={() => pageNumber - 1 > 0 && onChange(pageNumber - 1)}
       />
@@ -46,6 +47,7 @@ export default function TPagination({
       )}
       <div className={styles.divider} />
       <Assets.SVGs.LessThan
+        data-testid="next_page_arrow"
         className={styles.move_button}
         onClick={() => pageNumber + 1 <= lastPage && onChange(pageNumber + 1)}
       />
