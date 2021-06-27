@@ -16,6 +16,11 @@ exports[`snapshot 1`] = `
   </div>
   <div
     className="content"
+    style={
+      Object {
+        "visibility": "hidden",
+      }
+    }
   >
     <img
       className="avatar"
@@ -34,17 +39,24 @@ exports[`snapshot 1`] = `
         data-testid="input-container"
       >
         <img
+          alt="icon"
           className="icon email_icon"
           src="search.png"
         />
         <input
           className="input_class"
-          dir="auto"
+          data-testid="email"
+          dir="rtl"
+          disabled={false}
           onChange={[Function]}
           onKeyDown={[Function]}
-          value=""
+          readOnly={false}
         />
       </div>
+      <div
+        className="auto_complete_items"
+        data-active={false}
+      />
     </div>
     <div
       className="container"
@@ -58,7 +70,6 @@ exports[`snapshot 1`] = `
       <div
         className="content"
         data-testid="dropdown-container"
-        onClick={[Function]}
       >
         <img
           alt="arrow down"
@@ -73,20 +84,7 @@ exports[`snapshot 1`] = `
       </div>
       <div
         className="items"
-      >
-        <p
-          className="item"
-          onClick={[Function]}
-        >
-          نقش 1
-        </p>
-        <p
-          className="item"
-          onClick={[Function]}
-        >
-          نقش 2
-        </p>
-      </div>
+      />
     </div>
     <div
       className="buttons"
@@ -100,12 +98,15 @@ exports[`snapshot 1`] = `
           }
         }
       >
-        <span>
+        <span
+          className="label"
+        >
           کاربر جدید
         </span>
       </div>
       <div
         className="button"
+        data-testid="submit_user"
         onClick={[Function]}
         style={
           Object {
@@ -113,11 +114,38 @@ exports[`snapshot 1`] = `
           }
         }
       >
-        <span>
-          ثبت کاربر
+        <span
+          className="label"
+        >
+          ثبت
         </span>
       </div>
     </div>
+  </div>
+  <div
+    className="ant-spin ant-spin-lg ant-spin-spinning loading"
+    style={
+      Object {
+        "display": undefined,
+      }
+    }
+  >
+    <span
+      className="ant-spin-dot ant-spin-dot-spin"
+    >
+      <i
+        className="ant-spin-dot-item"
+      />
+      <i
+        className="ant-spin-dot-item"
+      />
+      <i
+        className="ant-spin-dot-item"
+      />
+      <i
+        className="ant-spin-dot-item"
+      />
+    </span>
   </div>
 </div>
 `;

@@ -27,15 +27,19 @@ export default function ManageTopicUserDialog({
   const isTyping = useRef<number>();
   const dismissDialog = useRef<() => void>();
   const [Email, setEmail] = useState<string>();
-  const [SearchedUser, setSearchedUser] =
-    useState<UserSerializerRestrictedDto[]>();
+  const [SearchedUser, setSearchedUser] = useState<
+    UserSerializerRestrictedDto[]
+  >([]);
   const [UserId, setUserId] = useState<number | undefined>(user?.id);
-  const [User, setUser] = useState<TopicUsersListSerializerDto | undefined>();
   const [SelectedRoles, setSelectedRoles] = useState<number[]>(
     user?.admin_set.map((a) => a.id) ?? []
   );
   const [Roles, setRoles] = useState<TopicAdminListItemDto[]>();
   const [Loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setUserId(user?.id);
+  }, [user?.id]);
 
   useEffect(() => {
     API.Topics.GetTopicRoles({topicId: topicId, offset: 0, limit: 100}).then(
@@ -122,12 +126,13 @@ export default function ManageTopicUserDialog({
         />
         <TInput
           label="ایمیل"
+          data-testid="email"
           onChangeText={onSearch}
           readOnly={!!user?.email}
           disabled={!!user?.email}
           value={user?.email ?? Email}
           iconClassName={styles.email_icon}
-          autoCompleteData={SearchedUser?.map((item) => {
+          autoCompleteData={SearchedUser.map((item) => {
             return {
               value: item,
               label: `${item.first_name} ${item.last_name} (${item.email})`,
@@ -137,7 +142,6 @@ export default function ManageTopicUserDialog({
             setUserId(value.id);
             setEmail(value.email);
             setSearchedUser([]);
-            setUser(value);
           }}
           icon={user?.email ? undefined : Assets.Images.Search}
         />
@@ -171,7 +175,12 @@ export default function ManageTopicUserDialog({
               label="کاربر جدید"
             />
           )}
-          <TButton label="ثبت" onClick={onAddUser} backgroundColor="#1354ac" />
+          <TButton
+            label="ثبت"
+            data-testid="submit_user"
+            onClick={onAddUser}
+            backgroundColor="#1354ac"
+          />
         </div>
       </div>
       <Spin

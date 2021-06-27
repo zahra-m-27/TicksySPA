@@ -42,12 +42,16 @@ exports[`snapshot 1`] = `
       >
         <input
           className="input_class"
-          dir="auto"
+          dir="rtl"
           onChange={[Function]}
           onKeyDown={[Function]}
           value=""
         />
       </div>
+      <div
+        className="auto_complete_items"
+        data-active={false}
+      />
     </div>
     <div
       className="buttons"
@@ -61,7 +65,9 @@ exports[`snapshot 1`] = `
           }
         }
       >
-        <span>
+        <span
+          className="label"
+        >
           نقش جدید
         </span>
       </div>
@@ -74,8 +80,10 @@ exports[`snapshot 1`] = `
           }
         }
       >
-        <span>
-          ثبت نقش
+        <span
+          className="label"
+        >
+          ثبت
         </span>
       </div>
     </div>

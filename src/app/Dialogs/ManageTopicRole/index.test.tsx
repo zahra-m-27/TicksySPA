@@ -30,15 +30,12 @@ it('render role label', () => {
 it('render buttons', () => {
   const {getByText} = render(sample);
   getByText(/نقش جدید/i);
-  getByText(/ثبت نقش/i);
+  getByText(/ثبت/i);
 });
 
 it('open new dialog', async () => {
   const {getByText, findByTestId} = render(sample);
   const newRoleButton = getByText(/نقش جدید/i);
-  user.click(newRoleButton);
-  const closeButton = await findByTestId('dialog-close');
-  user.click(closeButton);
   user.click(newRoleButton);
   const dialogContainer = await findByTestId('dialog-container');
   user.click(dialogContainer);

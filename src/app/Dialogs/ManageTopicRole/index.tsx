@@ -93,11 +93,7 @@ export default function ManageTopicRoleDialog({
               label="نقش جدید"
             />
           )}
-          <TButton
-            label="ثبت نقش"
-            onClick={onAddRole}
-            backgroundColor="#1354ac"
-          />
+          <TButton label="ثبت" onClick={onAddRole} backgroundColor="#1354ac" />
         </div>
       </div>
       <Spin
