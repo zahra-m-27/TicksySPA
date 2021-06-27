@@ -21,36 +21,31 @@ export default function CreateTicketPage() {
   const [Title, setTitle] = useState('');
   const [Message, setMessage] = useState('');
   const [Attachment, setAttachment] = useState<File>();
-  const [Loading, setLoading] = useState(false);
   const [Tags, setTags] = useState<string[]>([]);
-  const [Categories, setCategories] = useState<CategoryDto[]>([]);
-  const messageRef = useRef<HTMLInputElement>(null);
   const [CurrentTag, setCurrentTag] = useState<string>('');
   const [SelectedCategory, setSelectedCategory] = useState<number>();
+  const [Categories, setCategories] = useState<CategoryDto[]>([]);
 
   useEffect(() => {
     API.Topics.GetTopic({
       topicId: parseInt(params.topicId),
     })
       .then((response) => setTopic(response))
-      .catch((error) => {
-        if (error.status === 404) {
-          message.error('تاپیک موردنظر یافت نشد.');
-        } else {
-          message.error('اشکالی در دریافت اطلاعات تایپک رخ داده.');
-        }
+      .catch(() => {
+        message.error('تاپیک موردنظر یافت نشد.');
       });
     API.Topics.GetTopicCategories({
       topicId: parseInt(params.topicId),
       limit: 100,
       offset: 0,
-    }).then((response) => {
-      setCategories(response.results);
-    });
-  }, []);
+    })
+      .then((response) => {
+        setCategories(response.results);
+      })
+      .catch(() => undefined);
+  }, [params.topicId]);
 
   const onCreateTicket = () => {
-    setLoading(true);
     API.Tickets.CreateTicket({
       priority: 1,
       title: Title,
@@ -62,14 +57,7 @@ export default function CreateTicketPage() {
       .then(() => history.replace('/dashboard/tickets'))
       .catch(() => {
         message.error('انجام این عملیات ممکن نیست');
-      })
-      .finally(() => setLoading(false));
-  };
-
-  const onTitleEnter = () => {
-    if (messageRef && messageRef.current) {
-      messageRef.current.focus();
-    }
+      });
   };
 
   let content = <Spin size="large" className={styles.loading} />;
@@ -103,8 +91,8 @@ export default function CreateTicketPage() {
         <TInput
           label="موضوع"
           content={Title}
-          onEnter={onTitleEnter}
           onChangeText={setTitle}
+          data-testid="title_input"
           inputClassName={styles.input}
           className={styles.input_container}
           labelClassName={styles.input_label}
@@ -116,6 +104,7 @@ export default function CreateTicketPage() {
           <TInput
             tags={Tags}
             label="تگ ها"
+            data-testid="tags_input"
             content={CurrentTag}
             onChangeText={setCurrentTag}
             className={styles.tag_input_container}
@@ -137,7 +126,7 @@ export default function CreateTicketPage() {
         </div>
 
         <div className={styles.submit_container}>
-          <TButton onClick={onCreateTicket} label="ثبت" />
+          <TButton onClick={onCreateTicket} label="ثبت" data-testid="submit" />
         </div>
       </>
     );

@@ -61,6 +61,8 @@
   .card_container {
     display: flex;
     margin: 7vh auto;
+    min-height: 250px;
+    position: relative;
     border-radius: 10px;
     align-items: center;
     flex-direction: column;
