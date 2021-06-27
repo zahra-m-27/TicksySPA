@@ -8,7 +8,7 @@
   background: #d5e1e6;
   align-items: center;
 
-  .spliter {
+  .splitter {
     width: 1px;
     height: 25px;
     margin-right: 10px;
@@ -16,6 +16,7 @@
   }
 
   .arrow_down {
+    user-select: none;
     object-fit: contain;
   }
 
@@ -23,6 +24,7 @@
     width: 25px;
     height: 25px;
     margin: 0 5px;
+    user-select: none;
   }
 
   img {
@@ -90,4 +92,8 @@
   padding: 15px;
   background: #d5e1e6;
   align-items: flex-start;
+
+  .button {
+    margin-right: 10px;
+  }
 }

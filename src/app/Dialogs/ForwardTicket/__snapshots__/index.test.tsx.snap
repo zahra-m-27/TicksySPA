@@ -7,16 +7,47 @@ exports[`snapshot 1`] = `
   <div
     className="header"
   >
-    <img
-      className="arrow_right"
-      src="arrow_right.svg"
-    />
-    <img
-      className="arrow_down"
-      src="arrow_down.png"
-    />
     <div
-      className="spliter"
+      className="container"
+      data-open={false}
+    >
+      <div>
+        <img
+          className="arrow_right"
+          src="arrow_right.svg"
+        />
+        <img
+          className="arrow_down"
+          data-testid="forwardType"
+          src="arrow_down.png"
+        />
+      </div>
+      <div
+        className="items"
+      >
+        <div
+          className="item"
+          onClick={[Function]}
+        >
+          <span>
+            ارسال تیکت به سایر تاپیک ها
+          </span>
+        </div>
+        <div
+          className="item"
+          onClick={[Function]}
+        >
+          <span>
+            ارسال تیکت به سایر نقش ها
+          </span>
+          <div
+            className="checkmark"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="splitter"
     />
     <span
       className="from"
@@ -24,7 +55,7 @@ exports[`snapshot 1`] = `
       From:
     </span>
     <span>
-       سید علی علوی مسئول خدمات آموزش مجازی
+      Test Title
     </span>
     <div
       className="close_container"
@@ -43,84 +74,35 @@ exports[`snapshot 1`] = `
     <span
       className="label"
     >
-      :عنوان تاپیک
+      دسته بندی
     </span>
     <div
-      className="container topic_drop_down"
-      data-open={false}
-    >
-      <p
-        className="label"
-      />
-      <div
-        className="content"
-        data-testid="dropdown-container"
-        onClick={[Function]}
-      >
-        <img
-          alt="arrow down"
-          className="arrow_down"
-          src="arrow_down.svg"
-        />
-        <p
-          className="selected_item_label"
-        >
-          انتخاب كنيد
-        </p>
-      </div>
-      <div
-        className="items"
-      >
-        <p
-          className="item"
-          onClick={[Function]}
-        >
-          تست 1
-        </p>
-        <p
-          className="item"
-          onClick={[Function]}
-        >
-          تست 2
-        </p>
-      </div>
-    </div>
-    <span
-      className="label"
-    >
-      :دسته بندی
-    </span>
-    <div
-      className="no_topic"
-    >
-      <img
-        src="papers.png"
-      />
-      <p
-        dir="auto"
-      >
-        !شما هنوز تاپیکی را انتخاب نکرده اید
-      </p>
-    </div>
+      className="categories"
+    />
   </div>
   <div
     className="footer"
   >
     <div
-      className="button"
+      className="button button"
+      data-disabled={true}
+      data-testid="submitButton"
       onClick={[Function]}
       style={
         Object {
-          "backgroundColor": "#0088e3",
+          "backgroundColor": "#96a2ab",
         }
       }
     >
-      <span>
+      <span
+        className="label"
+      >
         ارسال
       </span>
     </div>
     <div
-      className="button"
+      className="button button"
+      data-testid="cancelButton"
       onClick={[Function]}
       style={
         Object {
@@ -128,7 +110,9 @@ exports[`snapshot 1`] = `
         }
       }
     >
-      <span>
+      <span
+        className="label"
+      >
         انصراف
       </span>
     </div>

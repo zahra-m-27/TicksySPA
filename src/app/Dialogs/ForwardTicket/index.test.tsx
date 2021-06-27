@@ -6,7 +6,14 @@ import ForwardTicketDialog from './index';
 
 const Sample: React.FC = ({}) => {
   const ref = useRef(() => {});
-  return <ForwardTicketDialog onDismissRef={ref} />;
+  return (
+    <ForwardTicketDialog
+      onDismissRef={ref}
+      otherSections={[]}
+      ticketId={0}
+      section={'Test Title'}
+    />
+  );
 };
 
 const sample = <Sample />;
@@ -21,14 +28,8 @@ it('render header', () => {
   getByText(/From:/i);
 });
 
-it('render topic label', () => {
-  const {getByText} = render(sample);
-  getByText(/:عنوان تاپیک/i);
-});
-
 it('render buttons', () => {
   const {getByText} = render(sample);
-  getByText(/ارسال/i);
   getByText(/انصراف/i);
 });
 

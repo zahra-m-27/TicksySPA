@@ -8,6 +8,10 @@
   transition: all 0.3s;
   border: #d3d6dc solid 1px;
 
+  &[data-selected='true'] {
+    background: #d5e1e6;
+  }
+
   &:hover {
     background: #d5e1e6;
   }
