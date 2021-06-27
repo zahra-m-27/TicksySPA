@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 import useUser from '../../../Hooks/useUser';
 import SEInput from '../../../Components/SEInput';
 import {Link, useHistory} from 'react-router-dom';
+import TButton from '../../../Components/TButton';
 
 interface Props {
   className?: string;
@@ -94,14 +95,12 @@ export default function SignInInput({className}: Props) {
         labelClassName={styles.input_label}
         innerContainerClassName={styles.inner_container}
       />
-      <Button
-        type="primary"
-        loading={Loading}
+      <TButton
+        label="ورود"
         onClick={onSignIn}
         data-testid="submit-button"
-        className={styles.enter_button}>
-        ورود
-      </Button>
+        className={styles.enter_button}
+      />
       <Link className={styles.switch} to="/sign-up">
         حساب کابری ندارم
       </Link>

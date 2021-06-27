@@ -25,7 +25,7 @@ exports[`snapshot 1`] = `
         <input
           className="input input input_label"
           data-testid="email-input"
-          dir="auto"
+          dir="rtl"
           name="email"
           onBlur={[Function]}
           onChange={[Function]}
@@ -56,7 +56,7 @@ exports[`snapshot 1`] = `
         <input
           className="input input input_label"
           data-testid="password-input"
-          dir="auto"
+          dir="rtl"
           name="password"
           onBlur={[Function]}
           onChange={[Function]}
@@ -85,16 +85,22 @@ exports[`snapshot 1`] = `
       </div>
     </div>
   </div>
-  <button
-    className="ant-btn ant-btn-primary enter_button"
+  <div
+    className="button enter_button"
     data-testid="submit-button"
     onClick={[Function]}
-    type="button"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
   >
-    <span>
+    <span
+      className="label"
+    >
       ورود
     </span>
-  </button>
+  </div>
   <a
     className="switch"
     href="/sign-up"
