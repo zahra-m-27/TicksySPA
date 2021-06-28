@@ -5,8 +5,10 @@ import styles from './styles.module.scss';
 import {useEffect, useState} from 'react';
 import {Button, message, Spin} from 'antd';
 import UserIdentityDto from '../../../../../API/DTOs/UserIdentityDto';
+import {useHistory} from 'react-router-dom';
 
 export default function SubmitCertificate() {
+  const history = useHistory();
   const [Loading, setLoading] = useState(false);
   const [Attachment, setAttachment] = useState<File>();
   const [Identity, setIdentity] = useState<UserIdentityDto>();
@@ -21,7 +23,9 @@ export default function SubmitCertificate() {
   }, []);
 
   const getIdentity = () => {
-    API.Users.GetIdentity({})
+    API.Users.GetIdentity({
+      status: new URLSearchParams(history.location.search).get('status') ?? '1',
+    })
       .then((response) => setIdentity(response))
       .finally(() => setLoading(false));
   };
