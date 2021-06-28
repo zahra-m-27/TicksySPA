@@ -11,19 +11,19 @@ import SEInput from '../../../../Components/SEInput';
 export default function Profile() {
   const history = useHistory();
   const {user, Login} = useUser();
-  const [Avatar, setAvatar] = useState<File>();
-  const [Loading, setLoading] = useState(false);
   const [Code, setCode] = useState(user.code);
+  const [Avatar, setAvatar] = useState<File>();
   const [Email, setEmail] = useState(user.email);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const codeRef = useRef<HTMLInputElement>(null);
   const [AvatarUrl, setAvatarUrl] = useState<any>();
+  const [Loading, setLoading] = useState(false);
+  const codeRef = useRef<HTMLInputElement>(null);
+  const [LastName, setLastName] = useState(user.last_name);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const [FirstName, setFirstName] = useState(user.first_name);
   const lastNameRef = useRef<HTMLInputElement>(null);
   const [CodeHasError, setCodeHasError] = useState(false);
-  const [LastName, setLastName] = useState(user.last_name);
   const [EmailHasError, setEmailHasError] = useState(false);
   const [CanChange, setCanChange] = useState<boolean>(false);
-  const [FirstName, setFirstName] = useState(user.first_name);
   const [LastNameHasError, setLastNameHasError] = useState(false);
   const [FirstNameHasError, setFirstNameHasError] = useState(false);
 
@@ -107,6 +107,7 @@ export default function Profile() {
               <input
                 id="add"
                 type="file"
+                data-testid="update_avatar"
                 className={styles.upload_image}
                 onChange={(e) => {
                   if (e.target.files) {
@@ -132,6 +133,7 @@ export default function Profile() {
                 onEnter={onFirstNameEnter}
                 onChangeText={setFirstName}
                 hasError={FirstNameHasError}
+                data-testid="firstname_input"
                 innerContainerClassName={styles.input_inner_container}
               />
               <p className={styles.small}>نام خانوادگي</p>
@@ -142,6 +144,7 @@ export default function Profile() {
                 onEnter={onLastNameEnter}
                 onChangeText={setLastName}
                 hasError={LastNameHasError}
+                data-testid="lastname_input"
                 innerContainerClassName={styles.input_inner_container}
               />
               <p className={styles.small}>شماره دانشجویی / کد پرسنلی</p>
@@ -152,6 +155,7 @@ export default function Profile() {
                 onChangeText={setCode}
                 hasError={CodeHasError}
                 className={styles.input}
+                data-testid="personnel_code_input"
                 innerContainerClassName={styles.input_inner_container}
               />
               <p className={styles.small}>ايميل</p>
@@ -163,6 +167,7 @@ export default function Profile() {
                 className={styles.input}
                 hasError={EmailHasError}
                 onEnter={onUpdateProfile}
+                data-testid="email_input"
                 innerContainerClassName={styles.input_inner_container}
               />
             </div>
@@ -192,6 +197,7 @@ export default function Profile() {
         {!CanChange && (
           <Button
             type="primary"
+            data-testid="submit_certificate"
             onClick={() => history.push('/dashboard/submit-certificate')}
             className={styles.change_button}>
             احراز هویت
@@ -207,6 +213,7 @@ export default function Profile() {
               setCanChange(!CanChange);
             }
           }}
+          data-testid="edit_button"
           className={CanChange ? styles.change_button : styles.record_button}>
           {CanChange ? 'ثبت' : 'تغییر'}
         </Button>
