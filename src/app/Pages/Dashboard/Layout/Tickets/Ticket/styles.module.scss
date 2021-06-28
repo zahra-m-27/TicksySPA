@@ -1,14 +1,14 @@
 .container {
   display: flex;
-  margin-top: 5vh;
+  padding: 30px 3vw;
   align-items: center;
   flex-direction: column;
 
   .ticket_info_container {
-    width: 93%;
+    width: 100%;
     color: #fff;
-    padding: 30px 50px;
     display: flex;
+    padding: 30px 50px;
     border-radius: 10px;
     flex-direction: column;
     background-color: #0088e3;
@@ -22,8 +22,12 @@
       font-weight: 600;
       text-align: right;
       margin-bottom: 10px;
-      justify-content: space-between;
+      justify-content: flex-end;
       font-size: clamp(15px, 1.2vw, 22px);
+
+      span:last-of-type {
+        margin-left: 10px;
+      }
     }
 
     .ticket_info_bottom {
@@ -34,7 +38,7 @@
   }
 
   .tags_container {
-    width: 83%;
+    width: 100%;
     display: flex;
     padding: 27px;
     margin-top: 30px;
@@ -56,15 +60,16 @@
   }
 
   .chat_container {
-    width: 83%;
+    width: 100%;
     display: flex;
-    margin-top: 8vh;
+    overflow: hidden;
+    margin-top: 40px;
     min-height: 100vh;
     border-radius: 20px;
     margin-bottom: 25px;
+    background: #e7f5ff;
     flex-direction: column;
     box-shadow: 0 3px 8px 0 #76787d;
-    background-image: url('../../../../../Assets/Images/Files/chat_background.jpg');
 
     &_header {
       display: flex;
@@ -82,16 +87,11 @@
         place-content: center;
 
         &:nth-child(1) img {
-          width: 18px;
-          height: 18px;
-        }
-
-        &:nth-child(2) img {
           width: 25px;
           height: 25px;
         }
 
-        &:nth-child(3) img {
+        &:nth-child(2) img {
           width: 20px;
           height: 20px;
         }
@@ -120,7 +120,7 @@
         align-items: center;
 
         p {
-          margin: 0 4rem;
+          margin: 0 2rem;
           font-size: 18px;
           font-weight: 600;
         }
@@ -133,7 +133,7 @@
       }
 
       &_content {
-        margin: 20px !important;
+        margin: 20px;
       }
 
       &_time {

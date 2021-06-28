@@ -10,6 +10,7 @@ import SEInput from '../../../../../Components/SEInput';
 import TicketDto from '../../../../../API/DTOs/TicketDto';
 import showDialog from '../../../../../Components/TDialog';
 import ForwardTicketDialog from '../../../../../Dialogs/ForwardTicket';
+import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
 
 export default function Ticket() {
   const {user} = useUser();
@@ -54,7 +55,8 @@ export default function Ticket() {
         setMessage('');
         setAttachment(undefined);
       })
-      .catch(() => message.error('ارسال پیام مقدور نیست'));
+      .catch(() => message.error('ارسال پیام مقدور نیست'))
+      .finally(() => setLoading(false));
   };
 
   if (!Ticket) {
@@ -67,7 +69,14 @@ export default function Ticket() {
 
   const onForwardingTicket = () => {
     dismissDialog.current = showDialog({
-      content: <ForwardTicketDialog onDismissRef={dismissDialog} />,
+      content: (
+        <ForwardTicketDialog
+          ticketId={Ticket.id}
+          onDismissRef={dismissDialog}
+          section={Ticket.section.title}
+          otherSections={Ticket.other_sections}
+        />
+      ),
       style: {
         maxWidth: 'unset',
         overflow: 'hidden',
@@ -80,8 +89,8 @@ export default function Ticket() {
     <div className={styles.container}>
       <div className={styles.ticket_info_container}>
         <div className={styles.ticket_info_top}>
-          <p dir="auto">عنوان تاپیک: </p>
-          <p dir="auto">عنوان تیکت: {Ticket.title}</p>
+          <span>{Ticket.title}</span>
+          <span dir="auto">عنوان تیکت:</span>
         </div>
         <div className={styles.ticket_info_bottom}>
           <p>
@@ -117,17 +126,16 @@ export default function Ticket() {
       <div className={styles.chat_container}>
         <div className={styles.chat_container_header}>
           <div className={styles.items}>
-            <img src={Assets.SVGs.Close2} alt="close" />
-          </div>
-          <div className={styles.items}>
             <img src={Assets.SVGs.History} alt="history" />
           </div>
-          <div
-            className={styles.items}
-            onClick={onForwardingTicket}
-            data-testid="forward-button">
-            <img src={Assets.SVGs.ArrowRight} alt="forward" />
-          </div>
+          {!!Ticket.other_sections.length && (
+            <div
+              className={styles.items}
+              onClick={onForwardingTicket}
+              data-testid="forward-button">
+              <img src={Assets.SVGs.ArrowRight} alt="forward" />
+            </div>
+          )}
 
           <p dir="auto">مسئول رسیدگی به درخواست شما: </p>
         </div>
@@ -169,14 +177,14 @@ export default function Ticket() {
                   />
                 )}
               </div>
-              <p dir="auto" className={styles.message_content}>
-                {message.text.split('\n').map((line, index) => (
-                  <React.Fragment key={index}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </p>
+              <div className={styles.message_content} dir="rtl">
+                <FroalaEditorView
+                  model={message.text}
+                  config={{
+                    key: 'yDJ6hT5jU7QUv4Xy4OZh4ABVJRDRNGGUO3ITru7M5a6a21j11e13l12l7w10h7==',
+                  }}
+                />
+              </div>
               <div className={styles.message_time}>
                 <p>
                   {moment
@@ -203,6 +211,7 @@ export default function Ticket() {
               <img
                 alt="cancel"
                 src={Assets.Images.Cancel}
+                data-testid="cancel_attachment"
                 className={styles.attachment_icon}
                 onClick={() => setAttachment(undefined)}
               />
@@ -216,6 +225,7 @@ export default function Ticket() {
               <input
                 type="file"
                 id="attach_input"
+                data-testid="attach_input"
                 onChange={(e) =>
                   e.target.files && setAttachment(e.target.files[0])
                 }
@@ -229,10 +239,11 @@ export default function Ticket() {
             label="پیام شما..."
             onChangeText={setMessage}
             hasError={MessageHasError}
+            data-testid="message_input"
             className={styles.send_message_input}
             innerContainerClassName={styles.send_message_input_innerContainer}
           />
-          <div onClick={onSendMessage}>
+          <div onClick={onSendMessage} data-testid="submit">
             {Loading ? (
               <Spin size="large" />
             ) : (
