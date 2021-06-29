@@ -30,6 +30,7 @@ exports[`snapshot 1`] = `
       </label>
       <input
         className="upload_image"
+        data-testid="avatar"
         id="picture"
         onChange={[Function]}
         type="file"
@@ -53,7 +54,8 @@ exports[`snapshot 1`] = `
           >
             <input
               className="input"
-              dir="auto"
+              data-testid="title"
+              dir="rtl"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -84,6 +86,7 @@ exports[`snapshot 1`] = `
           >
             <textarea
               className="input"
+              data-testid="description"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -97,6 +100,7 @@ exports[`snapshot 1`] = `
     </div>
     <button
       className="ant-btn ant-btn-primary enter_button"
+      data-testid="submit"
       onClick={[Function]}
       type="button"
     >

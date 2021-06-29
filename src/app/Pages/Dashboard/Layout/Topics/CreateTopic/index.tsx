@@ -8,22 +8,16 @@ import SEInput from '../../../../../Components/SEInput';
 
 export default function CreateTopic() {
   const history = useHistory();
-  const [Title, setTitle] = useState('');
   const [Avatar, setAvatar] = useState<File>();
-  const [Loading, setLoading] = useState(false);
+  const [Title, setTitle] = useState('');
   const [AvatarUrl, setAvatarUrl] = useState<any>();
-  const usernameRef = useRef<HTMLInputElement>(null);
+  const [Loading, setLoading] = useState(false);
   const [Description, setDescription] = useState('');
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const [TitleHasError, setTitleHasError] = useState(false);
   const [DescriptionHasError, setDescriptionHasError] = useState(false);
 
   const onTitleEnter = () => {
-    if (usernameRef && usernameRef.current) {
-      usernameRef.current.focus();
-    }
-  };
-  const onUsernameEnter = () => {
     if (descriptionRef && descriptionRef.current) {
       descriptionRef.current.focus();
     }
@@ -83,6 +77,7 @@ export default function CreateTopic() {
           <input
             type="file"
             id="picture"
+            data-testid="avatar"
             className={styles.upload_image}
             onChange={(e) => {
               if (e.target.files) {
@@ -100,6 +95,7 @@ export default function CreateTopic() {
           <label>:عنوان</label>
           <SEInput
             content={Title}
+            data-testid="title"
             onEnter={onTitleEnter}
             onChangeText={setTitle}
             hasError={TitleHasError}
@@ -112,14 +108,16 @@ export default function CreateTopic() {
             minLines={5}
             ref={descriptionRef}
             content={Description}
+            data-testid="description"
             onChangeText={setDescription}
             hasError={DescriptionHasError}
             innerContainerClassName={styles.input}
           />
         </div>
         <Button
-          loading={Loading}
           type="primary"
+          loading={Loading}
+          data-testid="submit"
           className={styles.enter_button}
           onClick={onCreateTopic}>
           ثبت
