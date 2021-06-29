@@ -34,7 +34,7 @@ export default function Tickets() {
       search: Search,
       offset: PageNumber * PageSize,
       type: params.sectionId ? 2 : 1,
-      section__topic: params.sectionId ? parseInt(params.sectionId) : undefined,
+      section: params.sectionId ? parseInt(params.sectionId) : undefined,
     })
       .then((response) => {
         setTickets(response.results);
@@ -160,6 +160,7 @@ export default function Tickets() {
         total={Total}
         pageSize={PageSize}
         pageNumber={PageNumber + 1}
+        className={styles.pagination}
         onChange={(value) => setPageNumber(value - 1)}
       />
     </div>
