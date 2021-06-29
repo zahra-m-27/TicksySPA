@@ -20,7 +20,7 @@ export default function Categories() {
   const [PageNumber, setPageNumber] = useState(0);
   const [Categories, setCategories] = useState<CategoryDto[]>();
 
-  useEffect(() => {
+  const getData = () => {
     API.Topics.GetTopicCategories({
       limit: PageSize,
       offset: PageNumber * PageSize,
@@ -30,13 +30,29 @@ export default function Categories() {
         setTotal(response.count);
         setCategories(response.results);
       })
-      .catch((error) => {
+      .catch(() => {
         message.error('امکان گرفتن دسته بندی های این تاپیک وجود ندارد');
       });
     API.Topics.GetTopic({
       topicId: parseInt(params.topicId),
     }).then((response) => setTopic(response));
-  }, []);
+  };
+
+  const onDelete = (categoryId: number) => {
+    API.Topics.DeleteCategory({
+      categoryId: categoryId,
+      topicId: parseInt(params.topicId),
+    })
+      .then(() => {
+        getData();
+        message.success('دسته بندی حذف شد');
+      })
+      .catch(() => {
+        message.error('خطایی در حذف دسته بندی رخ داده است');
+      });
+  };
+
+  useEffect(getData, []);
 
   if (!Topic || !Categories) {
     return <Spin size="large" />;
@@ -65,7 +81,9 @@ export default function Categories() {
             <Category
               key={key}
               category={category}
+              topicId={parseInt(params.topicId)}
               onClick={() => history.push('/dashboard/tickets/' + category.id)}
+              onDelete={() => onDelete(category.id)}
             />
           ))}
         </div>
@@ -84,6 +102,15 @@ export default function Categories() {
       <div className={styles.topic}>
         <img src={Topic.avatar} alt="topic-avatar" />
         <span>{Topic.title}</span>
+
+        <TButton
+          label="ایجاد دسته بندی"
+          className={styles.create_category}
+          labelClassName={styles.create_category_label}
+          onClick={() =>
+            history.push(`/dashboard/topics/${params.topicId}/new`)
+          }
+        />
       </div>
       {content}
     </div>

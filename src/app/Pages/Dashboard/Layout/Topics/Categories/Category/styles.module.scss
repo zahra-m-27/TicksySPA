@@ -1,4 +1,5 @@
 .container {
+  margin: 5px;
   width: 250px;
   display: flex;
   padding: 15px;
@@ -23,10 +24,19 @@
     }
   }
 
+  .no_last_ticket {
+    font-weight: 600;
+    color: #e02e2e;
+  }
+
   .description {
+    width: 100%;
     text-align: end;
+    max-height: 70px;
     margin-top: 20px;
+    overflow: hidden;
     margin-bottom: 20px;
+    text-overflow: ellipsis;
   }
 
   .role {
@@ -43,6 +53,7 @@
   .label {
     color: #a5a5a5;
     font-weight: 600;
+    margin-top: auto;
   }
 
   .ticket_total {
@@ -60,6 +71,33 @@
       align-items: center;
       flex-direction: row;
       margin-bottom: 20px;
+    }
+  }
+
+  .actions {
+    width: 100%;
+    display: flex;
+    margin-top: 15px;
+    padding-top: 10px;
+    font-size: 16px !important;
+    justify-content: space-evenly;
+    border-top: 1px solid #73737391;
+
+    .action_edit {
+      width: 25px;
+      fill: #4191ff;
+    }
+
+    .action_trash {
+      width: 25px;
+      fill: #e02e2e;
+    }
+
+    .splitter {
+      width: 2px;
+      height: 85%;
+      border-radius: 5px;
+      background: #73737391;
     }
   }
 }

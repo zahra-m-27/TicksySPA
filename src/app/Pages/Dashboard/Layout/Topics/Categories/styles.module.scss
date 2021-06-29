@@ -5,6 +5,15 @@
   background: #4c4c4c12;
   flex-direction: column;
 
+  .create_category {
+    padding: 7px 10px;
+    margin-right: auto;
+
+    .create_category_label {
+      font-size: 16px;
+    }
+  }
+
   .topic {
     margin: 30px;
     display: flex;
