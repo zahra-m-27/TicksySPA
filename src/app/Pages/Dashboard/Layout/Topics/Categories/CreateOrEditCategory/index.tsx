@@ -8,10 +8,10 @@ import TopicAdminListItemDto from '../../../../../../API/DTOs/TopicAdminListItem
 import TButton from '../../../../../../Components/TButton';
 import {message, Spin} from 'antd';
 
-export default function CreateCategory() {
+export default function CreateOrEditCategory() {
   const history = useHistory();
   const isTyping = useRef<number>();
-  const params = useParams<{topicId: string}>();
+  const params = useParams<{topicId: string; sectionId: string}>();
 
   const [Role, setRole] = useState<string>();
   const [RoleId, setRoleId] = useState<number>();
@@ -22,11 +22,28 @@ export default function CreateCategory() {
   const [SearchedRoles, setSearchedRoles] = useState<TopicAdminListItemDto[]>();
 
   useEffect(() => {
+    if (params.sectionId) {
+      setLoading(true);
+      API.Topics.GetCategory({
+        topicId: parseInt(params.topicId),
+        categoryId: parseInt(params.sectionId),
+      })
+        .then((response) => {
+          setTitle(response.title);
+          setDescription(response.description);
+          setRole(response.admin_detail.title);
+          setRoleId(response.admin_detail.id);
+          setLoading(false);
+        })
+        .catch(() => undefined);
+    }
     API.Topics.GetTopicRoles({
       topicId: parseInt(params.topicId),
       limit: 1000,
       offset: 0,
-    }).then((response) => setRoles(response.results));
+    })
+      .then((response) => setRoles(response.results))
+      .catch(() => undefined);
   }, []);
 
   const onSearch = (value: string) => {
@@ -48,19 +65,36 @@ export default function CreateCategory() {
 
     setLoading(true);
 
-    API.Topics.CreateCategory({
-      topicId: parseInt(params.topicId),
-      admin: RoleId,
-      title: Title,
-      description: Description,
-    })
-      .then(() => {
-        history.push('/dashboard/topics/' + params.topicId);
+    if (params.sectionId) {
+      API.Topics.UpdateCategory({
+        categoryId: parseInt(params.sectionId),
+        topicId: parseInt(params.topicId),
+        title: Title,
+        description: Description,
+        admin: RoleId,
       })
-      .catch(() => {
-        setLoading(false);
-        message.error('خطایی در ایجاد دسته بندی رخ داده است');
-      });
+        .then(() => {
+          history.push('/dashboard/topics/' + params.topicId);
+        })
+        .catch(() => {
+          setLoading(false);
+          message.error('خطایی در بروزرسانی دسته بندی رخ داده است');
+        });
+    } else {
+      API.Topics.CreateCategory({
+        topicId: parseInt(params.topicId),
+        admin: RoleId,
+        title: Title,
+        description: Description,
+      })
+        .then(() => {
+          history.push('/dashboard/topics/' + params.topicId);
+        })
+        .catch(() => {
+          setLoading(false);
+          message.error('خطایی در ایجاد دسته بندی رخ داده است');
+        });
+    }
   };
 
   if (Loading)
@@ -75,15 +109,18 @@ export default function CreateCategory() {
       <TInput
         label="عنوان"
         content={Title}
+        data-testid="title"
         onChangeText={setTitle}
         inputContainerClassName={styles.input_container}
       />
       <TInput
-        value={Role}
+        content={Role}
         label="نقش مسئول"
+        data-testid="role"
         onChangeText={onSearch}
         iconClassName={styles.input_icon}
         inputContainerClassName={styles.input_container}
+        onFocus={() => !Role && onSearch(Role ?? '')}
         autoCompleteData={SearchedRoles?.map((item) => {
           return {
             value: item,
@@ -103,6 +140,7 @@ export default function CreateCategory() {
         minLines={4}
         label="توضیحات"
         content={Description}
+        data-testid="description"
         onChangeText={setDescription}
         inputContainerClassName={styles.input_container}
       />
