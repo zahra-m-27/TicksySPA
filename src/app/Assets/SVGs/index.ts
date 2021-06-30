@@ -14,6 +14,7 @@ import Close2 from './Files/close_2.svg';
 import SadSvg from './Components/SadSVG';
 import History from './Files/history.svg';
 import Twitter from './Files/twitter.svg';
+import EditSVG from './Components/EditSVG';
 import AddUser from './Files/add_user.svg';
 import Hashtag from './Components/Hashtag';
 import GridSVG from './Components/GridSVG';
@@ -26,6 +27,7 @@ import MaleUser from './Components/MaleUser';
 import GridView from './Components/GridView';
 import LessThan from './Components/LessThan';
 import MoreThan from './Components/MoreThan';
+import TrashSVG from './Components/TrashSVG';
 import Instagram from './Files/instagram.svg';
 import Copyright from './Files/copyright.svg';
 import ArrowDown from './Files/arrow_down.svg';
@@ -66,12 +68,14 @@ const SVGs = {
   People,
   Search,
   ArrowUp,
+  EditSVG,
   Twitter,
   History,
   AddUser,
   GridSVG,
   Hashtag,
   UserSVG,
+  TrashSVG,
   AddPhoto,
   Linkedin,
   GridView,
