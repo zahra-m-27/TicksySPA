@@ -32,6 +32,7 @@ export default function Dashboard() {
               <li>
                 <div
                   className={styles.item}
+                  data-testid="manage_tickets"
                   onClick={() => history.push('/dashboard/tickets')}>
                   <img src={Assets.Images.Ticket} alt="" />
                   <div className={styles.item_label}>

@@ -6,7 +6,7 @@ import SubmitCertificate from './Profile/SubmitCertificate';
 import EditTopic from './Topics/EditTopic';
 import CreateTopic from './Topics/CreateTopic';
 import Categories from './Topics/Categories';
-import CreateCategory from './Topics/Categories/CreateCategory';
+import CreateOrEditCategory from './Topics/Categories/CreateOrEditCategory';
 
 export interface DashboardRoute {
   name?: string;
@@ -55,8 +55,13 @@ const routes: DashboardRoute[] = [
             children: [
               {
                 name: 'ایجاد دسته بندی',
-                component: CreateCategory,
+                component: CreateOrEditCategory,
                 path: '/topics/:topicId/new',
+              },
+              {
+                name: 'ایجاد دسته بندی',
+                component: CreateOrEditCategory,
+                path: '/topics/:topicId/edit/:sectionId',
               },
             ],
           },
