@@ -27,8 +27,8 @@ export default function UserManagement({onUpdate}: Props) {
   const getData = () => {
     API.Topics.GetTopicUsers({
       limit: PageSize,
-      topicId: params.topicId,
       offset: PageNumber * PageSize,
+      topicId: parseInt(params.topicId),
     })
       .then((response) => {
         setTotal(response.count);
@@ -119,6 +119,7 @@ export default function UserManagement({onUpdate}: Props) {
                   <td>
                     <img
                       alt="edit"
+                      data-testid="edit_user"
                       src={Assets.Images.EditUsers}
                       className={styles.edit_icon}
                       onClick={() =>
