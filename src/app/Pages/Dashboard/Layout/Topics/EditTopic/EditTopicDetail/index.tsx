@@ -13,7 +13,6 @@ export default function EditTopicDetail() {
   const [Avatar, setAvatar] = useState<File>();
   const [Title, setTitle] = useState('');
   const [AvatarUrl, setAvatarUrl] = useState<any>();
-  const usernameRef = useRef<HTMLInputElement>(null);
   const [Description, setDescription] = useState('');
   const [SaveLoading, setSaveLoading] = useState(false);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
@@ -45,7 +44,7 @@ export default function EditTopicDetail() {
     if (!Avatar && !AvatarUrl) {
       message.error('برای تاپیک خود یک آواتار انتخاب کنید');
     }
-    if (!Title || !Description || (!Avatar && !AvatarUrl)) {
+    if (!Title || !Description || !Avatar) {
       return;
     }
     setTitleHasError(false);
@@ -73,8 +72,8 @@ export default function EditTopicDetail() {
   };
 
   const onTitleEnter = () => {
-    if (usernameRef && usernameRef.current) {
-      usernameRef.current.focus();
+    if (descriptionRef && descriptionRef.current) {
+      descriptionRef.current.focus();
     }
   };
 
@@ -95,6 +94,7 @@ export default function EditTopicDetail() {
         buttons={[
           {
             label: 'ثبت',
+            testId: 'submit',
             onClick: onEditTopic,
             loading: SaveLoading,
             className: styles.enter_button,
@@ -111,6 +111,7 @@ export default function EditTopicDetail() {
           <input
             type="file"
             id="picture"
+            data-testid="avatar"
             className={styles.upload_image}
             onChange={(e) => {
               if (e.target.files) {
@@ -126,9 +127,10 @@ export default function EditTopicDetail() {
         </div>
         <div className={styles.inputs_container}>
           <div className={styles.middle}>
-            <label>:عنوان</label>
+            <label>عنوان</label>
             <SEInput
               content={Title}
+              data-testid="title"
               onEnter={onTitleEnter}
               onChangeText={setTitle}
               hasError={TitleHasError}
@@ -136,11 +138,12 @@ export default function EditTopicDetail() {
             />
           </div>
           <div className={styles.below}>
-            <label>:توضيح</label>
+            <label>توضيح</label>
             <SEInput
               minLines={5}
               ref={descriptionRef}
               content={Description}
+              data-testid="description"
               onChangeText={setDescription}
               hasError={DescriptionHasError}
               inputClassName={styles.description_input}

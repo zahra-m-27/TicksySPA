@@ -26,11 +26,6 @@ it('render subject', () => {
   getByText(/عنوان/i);
 });
 
-it('render username', () => {
-  const {getByText} = render(sample);
-  getByText(/شناسه/i);
-});
-
 it('render description', () => {
   const {getByText} = render(sample);
   getByText(/توضيح/i);
