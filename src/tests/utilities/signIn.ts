@@ -2,6 +2,7 @@ import user from '@testing-library/user-event';
 import {
   Matcher,
   MatcherOptions,
+  SelectorMatcherOptions,
   waitFor,
   waitForOptions,
 } from '@testing-library/react';
@@ -13,17 +14,17 @@ export default async function signIn(
     options?: MatcherOptions | undefined,
     waitForElementOptions?: unknown
   ) => HTMLElement,
-  findByDisplayValue: (
+  queryByText: <W>(
     text:
       | ((content: string, element: Element | null) => boolean)
       | RegExp
       | number
       | string,
-    options?: MatcherOptions,
-    waitForElementOptions?: waitForOptions
-  ) => Promise<HTMLElement>
+    options?: SelectorMatcherOptions,
+    waitForElementOptions?: W
+  ) => HTMLElement | null
 ) {
-  const enterMessage = findByDisplayValue('وارد شوید!');
+  const enterMessage = queryByText('وارد شوید!');
 
   if (enterMessage == null) {
     const signInButton = getByTestId('sign-in-button');
@@ -40,5 +41,5 @@ export default async function signIn(
   user.type(password, 'TestPassword');
   user.click(submit);
 
-  await waitFor(() => expect(findByDisplayValue('وارد شوید!')).toBeNull());
+  await waitFor(() => expect(queryByText('وارد شوید!')).toBeNull());
 }
