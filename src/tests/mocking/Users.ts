@@ -8,6 +8,7 @@ import ConfirmSignUpViewModel from '../../app/API/ViewModels/Users/ConfirmSignUp
 import RequestResetPasswordViewModel from '../../app/API/ViewModels/Users/RequestResetPasswordViewModel';
 import NewPasswordResetPasswordViewModel from '../../app/API/ViewModels/Users/NewPasswordResetPasswordViewModel';
 import SearchEmailViewModel from '../../app/API/ViewModels/Users/SearchEmailViewModel';
+import UpdateProfileViewModel from '../../app/API/ViewModels/Users/UpdateProfileViewModel';
 
 export function mockUsers() {
   mockSignIn();
@@ -15,6 +16,7 @@ export function mockUsers() {
   mockGetProfile();
   mockGetIdentity();
   mockSearchEmail();
+  mockUpdateProfile();
   mockConfirmSignUp();
   mockRequestResetPassword();
   mockNewPasswordResetPassword();
@@ -110,16 +112,38 @@ function mockGetProfile() {
     typeof Users.GetProfile
   >;
   mocked.mockImplementation(({}) => {
-    return noError<GetProfileViewModel.Response>({
-      email: 'TestUser@markop.ir',
-      last_name: 'User',
-      first_name: 'Test',
-      code: '972023005',
-      avatar: '',
-      id: 12345,
-      date_joined: new Date(),
-      is_identified: true,
-    });
+    if (localStorage.getItem('token'))
+      return noError<GetProfileViewModel.Response>({
+        email: 'TestUser@markop.ir',
+        last_name: 'User',
+        first_name: 'Test',
+        code: '972023005',
+        avatar: '',
+        id: 12345,
+        date_joined: new Date(),
+        is_identified: true,
+      });
+    else return error(400);
+  });
+}
+function mockUpdateProfile() {
+  jest.spyOn(Users, 'UpdateProfile');
+  const mocked = Users.UpdateProfile as jest.MockedFunction<
+    typeof Users.UpdateProfile
+  >;
+  mocked.mockImplementation(({first_name}) => {
+    if (first_name !== 'error')
+      return noError<UpdateProfileViewModel.Response>({
+        email: 'TestUser@markop.ir',
+        last_name: 'User',
+        first_name: 'Test',
+        code: '972023005',
+        avatar: '',
+        id: 12345,
+        date_joined: new Date(),
+        is_identified: true,
+      });
+    else return error(400);
   });
 }
 
@@ -128,9 +152,9 @@ function mockGetIdentity() {
   const mocked = Users.GetIdentity as jest.MockedFunction<
     typeof Users.GetIdentity
   >;
-  mocked.mockImplementation(({}) => {
+  mocked.mockImplementation(({status}) => {
     return noError<GetIdentityViewModel.Response>({
-      status: '1',
+      status: status,
       identifier_image: '',
       expire_time: new Date(),
       request_time: new Date(),

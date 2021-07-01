@@ -4,6 +4,7 @@ import BaseResponse from '../../app/API/Common/BaseResponse';
 import {mockTopics} from './Topics';
 
 export function noError<T extends BaseResponse>(response: T = {} as T) {
+  if (Array.isArray(response)) return Promise.resolve(response);
   return Promise.resolve({...response});
 }
 

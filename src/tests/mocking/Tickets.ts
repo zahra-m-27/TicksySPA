@@ -4,12 +4,14 @@ import CreateTicketMessageViewModel from '../../app/API/ViewModels/Tickets/Creat
 import GetTicketViewModel from '../../app/API/ViewModels/Tickets/GetTicketViewModel';
 import GetTicketsViewModel from '../../app/API/ViewModels/Tickets/GetTicketsViewModel';
 import CreateTicketViewModel from '../../app/API/ViewModels/Tickets/CreateTicketViewModel';
+import ForwardTicketSectionViewModel from '../../app/API/ViewModels/Tickets/ForwardTicketSectionViewModel';
 
 export function mockTickets() {
   mockGetTicket();
   mockGetTickets();
   mockCreateTicket();
   mockCreateTicketMessage();
+  mockForwardTicketSection();
 }
 
 function mockCreateTicketMessage() {
@@ -18,7 +20,8 @@ function mockCreateTicketMessage() {
     typeof Tickets.CreateTicketMessage
   >;
   mocked.mockImplementation(({id, text, attachments}) => {
-    if (id === 0) return noError<CreateTicketMessageViewModel.Response>({});
+    if (text !== 'error')
+      return noError<CreateTicketMessageViewModel.Response>({});
     return error(400);
   });
 }
@@ -30,23 +33,25 @@ function mockCreateTicket() {
   >;
   mocked.mockImplementation(
     ({section, tags, title, priority, text, attachments}) => {
-      return noError<CreateTicketViewModel.Response>({
-        tags: tags,
-        title: title,
-        priority: priority,
-        text: text,
-        last_update: new Date(),
-        creator: {
+      if (title != 'error')
+        return noError<CreateTicketViewModel.Response>({
+          tags: tags,
+          title: title,
+          priority: priority,
+          text: text,
+          last_update: new Date(),
+          creator: {
+            id: 0,
+            avatar: '',
+            last_name: '',
+            first_name: '',
+            email: '',
+          },
           id: 0,
-          avatar: '',
-          last_name: '',
-          first_name: '',
-          email: '',
-        },
-        id: 0,
-        creation_date: new Date(),
-        status: '',
-      });
+          creation_date: new Date(),
+          status: '',
+        });
+      return error(400);
     }
   );
 }
@@ -108,6 +113,20 @@ function mockGetTicket() {
             title: 'Admin',
           },
         ],
+        other_sections: [
+          {
+            id: 0,
+            title: 'Title',
+            description: 'Description',
+            get_open_ticket_count: 0,
+            avatar: '',
+            admin_detail: {
+              id: 0,
+              title: 'Title',
+            },
+            get_last_ticket_date: new Date(),
+          },
+        ],
       });
     }
     return error(400);
@@ -126,8 +145,59 @@ function mockGetTickets() {
         {
           id: 0,
           text: 'Text',
+          title: 'Ticket Title 155',
+          status: '1',
+          creation_date: new Date(),
+          creator: {
+            id: 1,
+            first_name: 'System',
+            last_name: 'Admin',
+            avatar: '',
+            email: 'admin@ticksy.ir',
+          },
+          last_update: new Date(),
+          tags: 'Tags',
+          priority: 0,
+        },
+        {
+          id: 0,
+          text: 'Text',
           title: 'Title',
-          status: 'Status',
+          status: '2',
+          creation_date: new Date(),
+          creator: {
+            id: 1,
+            first_name: 'System',
+            last_name: 'Admin',
+            avatar: '',
+            email: 'admin@ticksy.ir',
+          },
+          last_update: new Date(),
+          tags: 'Tags',
+          priority: 0,
+        },
+        {
+          id: 0,
+          text: 'Text',
+          title: 'Title',
+          status: '3',
+          creation_date: new Date(),
+          creator: {
+            id: 1,
+            first_name: 'System',
+            last_name: 'Admin',
+            avatar: '',
+            email: 'admin@ticksy.ir',
+          },
+          last_update: new Date(),
+          tags: 'Tags',
+          priority: 0,
+        },
+        {
+          id: 0,
+          text: 'Text',
+          title: 'Title',
+          status: '4',
           creation_date: new Date(),
           creator: {
             id: 1,
@@ -142,5 +212,17 @@ function mockGetTickets() {
         },
       ],
     });
+  });
+}
+
+function mockForwardTicketSection() {
+  jest.spyOn(Tickets, 'ForwardTicketSection');
+  const mocked = Tickets.ForwardTicketSection as jest.MockedFunction<
+    typeof Tickets.ForwardTicketSection
+  >;
+  mocked.mockImplementation(({section, ticketId}) => {
+    if (section >= 0)
+      return noError<ForwardTicketSectionViewModel.Response>({} as any);
+    return error(400);
   });
 }
