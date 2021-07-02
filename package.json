@@ -61,6 +61,7 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/**/*.d.ts",
+      "!src/tests/**/*.{ts,tsx}",
       "!src/**/Assets/**/*.{ts,tsx}"
     ],
     "coveragePathIgnorePatterns": [
