@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  className="pagination"
+>
+  <svg
+    className="move_button"
+    data-testid="previous_page_arrow"
+    height="23.889"
+    onClick={[Function]}
+    viewBox="0 0 13.98 23.889"
+    width="13.98"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19.067 8.313l-2.035 2.036 9.931 9.909-9.931 9.931 2.012 2.011 10.938-10.936 1.029-1.007-1.029-1.007z"
+      fill="#76787d"
+      transform="translate(-17.031 -8.313)"
+    />
+  </svg>
+  <div
+    className="divider"
+  />
+  <div
+    className="pagination_page"
+    onClick={[Function]}
+  >
+    1
+  </div>
+  <div
+    className="pagination_page active"
+  >
+    2
+  </div>
+  <div
+    className="pagination_page"
+    onClick={[Function]}
+  >
+    3
+  </div>
+  <div
+    className="divider"
+  />
+  <svg
+    className="move_button"
+    data-testid="next_page_arrow"
+    height="23.889"
+    onClick={[Function]}
+    viewBox="0 0 13.98 23.889"
+    width="13.98"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M28.976 8.313l2.035 2.036-9.931 9.908 9.931 9.931L29 32.2 18.06 21.264l-1.029-1.007 1.029-1.007z"
+      fill="#76787d"
+      transform="translate(-17.031 -8.313)"
+    />
+  </svg>
+</div>
+`;
