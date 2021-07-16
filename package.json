@@ -4,40 +4,40 @@
   "private": true,
   "dependencies": {
     "@types/react-test-renderer": "^17.0.1",
-    "antd": "^4.16.3",
+    "antd": "^4.16.7",
     "font-awesome": "^4.7.0",
     "jalali-moment": "^3.3.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-froala-wysiwyg": "^4.0.1",
+    "react-froala-wysiwyg": "^4.0.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-test-renderer": "^17.0.2",
-    "sass": "^1.35.0",
-    "typescript": "^4.3.2",
-    "web-vitals": "^2.0.1"
+    "sass": "^1.35.2",
+    "typescript": "^4.3.5",
+    "web-vitals": "^2.1.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
+    "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.1.9",
-    "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.2",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.7",
-    "@types/react-router-dom": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.27.0",
-    "@typescript-eslint/parser": "^4.27.0",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.3.2",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.8",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
-    "prettier": "^2.3.1"
+    "prettier": "^2.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "react-scripts test"
+    "test": "react-scripts test --coverage --watchAll"
   },
   "eslintConfig": {
     "extends": [
@@ -56,5 +56,32 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/**/Assets/**/*.{ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "test-config",
+      "interfaces",
+      "jestGlobalMocks.ts",
+      ".module.ts",
+      "<rootDir>/src/app/main.ts",
+      ".mock.ts",
+      "reportWebVitals.ts",
+      "src/app/API",
+      "src/index.tsx"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 20,
+        "functions": 30,
+        "lines": 50,
+        "statements": 50
+      }
+    }
   }
 }
