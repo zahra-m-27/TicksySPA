@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import {render, waitFor} from '@testing-library/react';
 import user from '@testing-library/user-event';
 import {Router} from 'react-router-dom';
@@ -8,7 +7,7 @@ import {createMemoryHistory} from 'history';
 import signIn from '../utilities/signIn';
 
 const history = createMemoryHistory({
-  initialEntries: ['/dashboard/tickets/0'],
+  initialEntries: ['/dashboard/ticket/0'],
 });
 const sample = (
   <Router history={history}>
@@ -19,12 +18,9 @@ const sample = (
 it('forward ticket', async () => {
   mockAllAPI();
 
-  let {findByTestId, getByTestId, getByText, findByDisplayValue} =
-    render(sample);
+  let {findByTestId, getByTestId, queryByText, findByText} = render(sample);
 
-  signIn(history, getByTestId, findByDisplayValue);
-
-  history.push('/dashboard/tickets/0');
+  signIn(history, getByTestId, queryByText);
 
   await waitFor(() => findByTestId('forward-button'));
 
@@ -39,7 +35,32 @@ it('forward ticket', async () => {
   user.click(dialogContainer);
 
   user.click(forwardButton);
+  const cancelButton = await findByTestId('cancelButton');
+  user.click(cancelButton);
 
-  const item1 = getByText(/تست 1/i);
-  user.click(item1);
+  user.click(forwardButton);
+
+  const forwardType = await findByTestId('forwardType');
+
+  user.click(forwardType);
+
+  const forwardToTopic = await findByText(/ارسال تیکت به سایر تاپیک ها/i);
+
+  user.click(forwardToTopic);
+
+  const topicSearchInput = await findByTestId('topicSearch');
+
+  user.type(topicSearchInput, 'test');
+
+  const topic = await waitFor(() => findByText(/Test Topic 25/i));
+
+  user.click(topic);
+
+  const role = await waitFor(() => findByText(/Test Section 1/i));
+
+  user.click(role);
+
+  const submitButton = await findByTestId('submitButton');
+
+  user.click(submitButton);
 });
